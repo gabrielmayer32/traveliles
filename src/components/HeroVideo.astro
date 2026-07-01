@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from '../lib/utils';
+import { formatDate, slugifyCategory } from '../lib/utils';
 import CategoryLabel from './CategoryLabel.astro';
 
 interface Props {
@@ -9,90 +9,124 @@ interface Props {
 
 const { video } = Astro.props;
 const href = `/videos/${video.id}`;
+const { videoSource, videoId, title, excerpt, category, date } = video.data;
+
+const embedSrc = {
+	youtube: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`,
+	vimeo: `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&loop=1&background=1&title=0&byline=0&portrait=0`,
+	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId)}&autoplay=true&mute=true`,
+	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
+}[videoSource];
+
 const thumbnail = video.data.thumbnail ?? (
-	video.data.videoSource === 'youtube'
-		? `https://img.youtube.com/vi/${video.data.videoId}/hqdefault.jpg`
+	videoSource === 'youtube'
+		? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
 		: undefined
 );
 ---
 
 <article class="hero-video">
-	<a href={href} class="hero-link" aria-label={video.data.title}>
-		{thumbnail && <img src={thumbnail} alt="" />}
-		<span class="play-button" aria-hidden="true"></span>
-		<div class="hero-overlay">
-			<CategoryLabel category={video.data.category} linked={false} />
-			<h1>{video.data.title}</h1>
-			<p>{video.data.excerpt}</p>
-			<div class="meta">{formatDate(video.data.date)}</div>
-		</div>
-	</a>
+	<div class="hero-media">
+		{thumbnail && <img class="hero-poster" src={thumbnail} alt="" />}
+		<iframe
+			class="hero-iframe"
+			src={embedSrc}
+			title={title}
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen
+		></iframe>
+	</div>
+	<div class="hero-overlay">
+		<CategoryLabel category={category} linked={false} />
+		<h1><a href={href}>{title}</a></h1>
+		<p>{excerpt}</p>
+		<div class="meta">{formatDate(date)}</div>
+	</div>
 </article>
+
+<script>
+	function initHeroVideo() {
+		const iframe = document.querySelector<HTMLIFrameElement>('.hero-video .hero-iframe');
+		const poster = document.querySelector<HTMLImageElement>('.hero-video .hero-poster');
+		if (!iframe || !poster) return;
+
+		iframe.addEventListener('load', () => {
+			poster.classList.add('loaded');
+		});
+	}
+
+	document.addEventListener('astro:page-load', initHeroVideo);
+	initHeroVideo();
+</script>
 
 <style>
 	.hero-video {
-		background: var(--color-ink);
-	}
-
-	.hero-link {
 		position: relative;
-		display: block;
-		min-height: min(76vh, 48rem);
+		background: var(--color-ink);
 		overflow: hidden;
-		color: var(--color-white);
 	}
 
-	img {
+	.hero-media {
+		position: relative;
+		min-height: min(76vh, 48rem);
+	}
+
+	.hero-poster {
 		position: absolute;
 		inset: 0;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		opacity: 0.76;
-		transition: transform 260ms ease;
+		z-index: 2;
+		transition: opacity 800ms ease;
 	}
 
-	.hero-link:hover img {
-		transform: scale(1.02);
+	.hero-poster.loaded {
+		opacity: 0;
+		pointer-events: none;
 	}
 
-	.play-button {
+	.hero-iframe {
 		position: absolute;
-		left: 50%;
-		top: 44%;
-		width: clamp(4rem, 8vw, 6rem);
-		height: clamp(4rem, 8vw, 6rem);
-		border: 1px solid var(--color-white);
-		transform: translate(-50%, -50%);
-	}
-
-	.play-button::after {
-		content: '';
-		position: absolute;
-		left: 42%;
-		top: 32%;
-		border-block: clamp(0.75rem, 1.4vw, 1rem) solid transparent;
-		border-left: clamp(1.1rem, 2vw, 1.55rem) solid var(--color-white);
+		inset: -20% -10%;
+		width: 120%;
+		height: 140%;
+		border: 0;
+		z-index: 1;
+		pointer-events: none;
 	}
 
 	.hero-overlay {
 		position: absolute;
 		inset: auto 0 0;
+		z-index: 3;
 		display: grid;
 		gap: var(--space-4);
 		width: min(100% - 2rem, var(--max-width));
 		margin-inline: auto;
 		padding-bottom: clamp(2rem, 8vw, 6rem);
+		background: linear-gradient(transparent, rgba(0, 0, 0, 0.65) 40%);
+		padding-top: 8rem;
 	}
 
 	h1 {
 		max-width: 58rem;
-		color: var(--color-white);
 		font-size: clamp(3rem, 8vw, 5rem);
+	}
+
+	h1 a {
+		color: var(--color-white);
+	}
+
+	h1 a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
 	}
 
 	p {
 		max-width: 42rem;
+		color: var(--color-white);
 		font-size: clamp(1rem, 2vw, 1.25rem);
 		line-height: 1.55;
 	}
@@ -106,12 +140,8 @@ const thumbnail = video.data.thumbnail ?? (
 	}
 
 	@media (max-width: 640px) {
-		.hero-link {
+		.hero-media {
 			min-height: 34rem;
-		}
-
-		.play-button {
-			top: 36%;
 		}
 
 		.hero-overlay {
