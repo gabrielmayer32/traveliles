@@ -22,12 +22,13 @@ Consult these guides before working on related tasks:
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
 
 
-# Côte Nord — Project Brief
+# Travel-Îles — Project Brief
 
 ## What this is
-A static magazine website for Côte Nord, a French editorial magazine covering 
-luxury travel, hospitality, gastronomy, and art de vivre in the Indian Ocean 
-(Mauritius focus). Originally founded in 1994, this is a relaunch.
+A static magazine website for Travel-Îles, a French editorial magazine covering 
+travel, hospitality, gastronomy, culture, regional stories, and art de vivre in 
+the Indian Ocean (Mauritius focus). The site is video-first, with articles 
+supporting and extending the editorial coverage.
 
 The site is for a non-technical editor who manages all content through a 
 git-based CMS at `/admin`. No dashboards, no databases, no servers.
@@ -41,11 +42,21 @@ git-based CMS at `/admin`. No dashboards, no databases, no servers.
 ## Content
 Two types: articles and videos. Articles have a title, date, category, cover 
 image, excerpt, body (markdown), author, tags. Videos have a title, date, 
-category, videoSource (youtube or vimeo), videoId, thumbnail, excerpt.
+category, videoSource (youtube, vimeo, facebook, or instagram), videoId, 
+thumbnail, excerpt.
 
-Categories are placeholders until the client fills in her form — currently: 
-Hôtellerie, Gastronomie, Art de vivre, Immobilier de luxe, Golf, Écotourisme, 
-Culture.
+Categories are confirmed:
+- Un visage, une histoire
+- Les gardiens du Savoir Faire
+- 24heures avec....
+- Maurice demain
+- Mémoires de l'Île
+- Saveurs
+- Nos régions
+- Art & culture
+- Activités & événements
+- Nos Ambassadeurs régionaux
+- Nos adresses
 
 ## Design
 None implemented yet. A designer will apply the full visual identity via Claude 
@@ -54,7 +65,7 @@ properties for all tokens, no hardcoded colors or fonts.
 
 The brand identity is:
 - Navy blue (~#2B3A8F), white background, geometric sans-serif
-- All-caps wide-set wordmark "CÔTE NORD"
+- All-caps wide-set wordmark "TRAVEL-ÎLES"
 - Clean, minimal, European luxury feel
 - No serifs, no warm tones, no gradients
 
@@ -63,10 +74,13 @@ Sveltia CMS. The editor logs in at /admin with her GitHub account via an OAuth
 worker. Config is at public/admin/config.yml. Any change she makes creates a 
 git commit → Cloudflare Pages rebuilds automatically → live in ~30 seconds.
 
-## Pending (waiting on client form answers)
-- Final site name (may stay Côte Nord)
-- Final tagline
-- Final category list
+## Resolved client decisions
+- Final site name: Travel-Îles
+- Category list: confirmed 11-category set above
+- Video sources: YouTube, Vimeo, Facebook, Instagram
+- Editorial positioning: video-first
+
+## Pending
 - Domain name (currently travel-iles.pages.dev)
 - Whether she needs newsletter, bilingual FR/EN, or a partners/advertisers page
 

@@ -11,10 +11,22 @@ const navLinks = CATEGORIES.map((category) => ({
 	<div class="header-inner">
 		<a class="logo" href="/" aria-label="Travel-Îles, accueil">
 			<span class="logo-main">TRAVEL-ÎLES</span>
-			<span class="logo-sub">by Côte Nord</span>
 		</a>
 		<nav class="desktop-nav" aria-label="Navigation principale">
-			{navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+			<div class="rubriques">
+				<button
+					class="nav-button"
+					type="button"
+					aria-expanded="false"
+					aria-controls="rubriques-menu"
+					aria-haspopup="true"
+				>
+					Rubriques
+				</button>
+				<div id="rubriques-menu" class="rubriques-panel" hidden>
+					{navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+				</div>
+			</div>
 			<a href="/videos">Vidéos</a>
 			<a href="/a-propos">À propos</a>
 			<a href="/recherche">Recherche</a>
@@ -27,6 +39,7 @@ const navLinks = CATEGORIES.map((category) => ({
 		</button>
 	</div>
 	<nav id="mobile-menu" class="mobile-nav" aria-label="Navigation mobile" hidden>
+		<span class="mobile-nav-heading">Rubriques</span>
 		{navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
 		<a href="/articles">Articles</a>
 		<a href="/videos">Vidéos</a>
@@ -37,14 +50,17 @@ const navLinks = CATEGORIES.map((category) => ({
 </header>
 
 <script>
-	function setupMenu() {
+	function setupHeaderNavigation() {
+		const header = document.querySelector<HTMLElement>('.site-header');
 		const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
 		const menu = document.querySelector<HTMLElement>('#mobile-menu');
+		const rubriquesButton = document.querySelector<HTMLButtonElement>('.nav-button');
+		const rubriquesMenu = document.querySelector<HTMLElement>('#rubriques-menu');
 
-		if (!button || !menu) return;
-		if (button.dataset.menuReady === 'true') return;
+		if (!header || !button || !menu) return;
+		if (header.dataset.navigationReady === 'true') return;
 
-		button.dataset.menuReady = 'true';
+		header.dataset.navigationReady = 'true';
 
 		const closeMenu = () => {
 			button.setAttribute('aria-expanded', 'false');
@@ -52,20 +68,51 @@ const navLinks = CATEGORIES.map((category) => ({
 			document.body.classList.remove('menu-open');
 		};
 
+		const closeRubriques = () => {
+			if (!rubriquesButton || !rubriquesMenu) return;
+			rubriquesButton.setAttribute('aria-expanded', 'false');
+			rubriquesMenu.hidden = true;
+		};
+
 		button.addEventListener('click', () => {
 			const expanded = button.getAttribute('aria-expanded') === 'true';
 			button.setAttribute('aria-expanded', String(!expanded));
 			menu.hidden = expanded;
 			document.body.classList.toggle('menu-open', !expanded);
+			closeRubriques();
 		});
 
 		menu.querySelectorAll('a').forEach((link) => {
 			link.addEventListener('click', closeMenu);
 		});
+
+		if (rubriquesButton && rubriquesMenu) {
+			rubriquesButton.addEventListener('click', () => {
+				const expanded = rubriquesButton.getAttribute('aria-expanded') === 'true';
+				rubriquesButton.setAttribute('aria-expanded', String(!expanded));
+				rubriquesMenu.hidden = expanded;
+				closeMenu();
+			});
+
+			rubriquesMenu.querySelectorAll('a').forEach((link) => {
+				link.addEventListener('click', closeRubriques);
+			});
+
+			document.addEventListener('click', (event) => {
+				if (!(event.target instanceof Node) || header.contains(event.target)) return;
+				closeRubriques();
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (event.key !== 'Escape') return;
+				closeRubriques();
+				closeMenu();
+			});
+		}
 	}
 
-	document.addEventListener('astro:page-load', setupMenu);
-	setupMenu();
+	document.addEventListener('astro:page-load', setupHeaderNavigation);
+	setupHeaderNavigation();
 </script>
 
 <style>
@@ -103,17 +150,6 @@ const navLinks = CATEGORIES.map((category) => ({
 		line-height: 1;
 	}
 
-	.logo-sub {
-		font-family: var(--font-body);
-		font-size: 0.6rem;
-		font-weight: 500;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--color-grey-muted);
-		margin-top: 0.15rem;
-		align-self: flex-end;
-	}
-
 	.desktop-nav {
 		display: flex;
 		align-items: center;
@@ -121,6 +157,50 @@ const navLinks = CATEGORIES.map((category) => ({
 		color: #3f3f3f;
 		font-size: 0.83rem;
 		font-weight: 500;
+	}
+
+	.rubriques {
+		position: relative;
+	}
+
+	.nav-button {
+		border: 0;
+		background: transparent;
+		color: inherit;
+		cursor: pointer;
+		font: inherit;
+		font-weight: inherit;
+		padding: 0;
+	}
+
+	.nav-button:hover,
+	.nav-button[aria-expanded='true'] {
+		color: var(--color-navy);
+	}
+
+	.rubriques-panel {
+		position: absolute;
+		top: calc(100% + 1.5rem);
+		right: 0;
+		z-index: 30;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(11rem, 1fr));
+		gap: var(--space-3) var(--space-6);
+		width: min(44rem, calc(100vw - 2rem));
+		border: 1px solid var(--color-grey-light);
+		background: var(--color-white);
+		box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.08);
+		padding: var(--space-6);
+		color: var(--color-ink);
+	}
+
+	.rubriques-panel[hidden],
+	.mobile-nav[hidden] {
+		display: none;
+	}
+
+	.rubriques-panel a {
+		line-height: 1.3;
 	}
 
 	.menu-toggle {
@@ -144,6 +224,16 @@ const navLinks = CATEGORIES.map((category) => ({
 	.mobile-nav {
 		border-top: 1px solid var(--color-grey-light);
 		background: var(--color-white);
+	}
+
+	.mobile-nav-heading {
+		display: block;
+		padding: 1rem 1rem 0.5rem;
+		color: var(--color-navy);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
 	}
 
 	.mobile-nav a {

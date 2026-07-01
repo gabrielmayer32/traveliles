@@ -1,7 +1,7 @@
 ---
 title: "Villas privées: le nord en résidence"
 date: 2026-02-14
-category: "Immobilier de luxe"
+category: "Nos adresses"
 cover: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80"
 excerpt: "Jardins tropicaux, architecture traversante et services hôteliers redéfinissent le séjour en villa."
 author: "Travel-Îles"

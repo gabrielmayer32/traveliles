@@ -1,7 +1,7 @@
 ---
 title: "Gestes de cuisine mauricienne"
 date: 2026-03-10
-category: "Gastronomie"
+category: "Saveurs"
 videoSource: "vimeo"
 videoId: "76979871"
 thumbnail: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1400&q=80"

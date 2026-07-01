@@ -1,7 +1,7 @@
 ---
 title: "Grand Baie, nouvelle scène hôtelière du nord"
 date: 2026-04-18
-category: "Hôtellerie"
+category: "Nos adresses"
 cover: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1800&q=80"
 excerpt: "Entre lagon, suites ouvertes et tables de bord de mer, Grand Baie affine son langage du luxe discret."
 author: "Travel-Îles"

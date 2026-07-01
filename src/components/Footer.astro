@@ -7,10 +7,8 @@ import { CATEGORIES, slugifyCategory } from '../lib/utils';
 		<div>
 			<a class="footer-logo" href="/">
 				<span class="footer-logo-main">TRAVEL-ÎLES</span>
-				<span class="footer-logo-sub">by Côte Nord</span>
 			</a>
-			<p class="footer-tagline">Tourisme & art de vivre à l’île Maurice et les îles de l’océan Indien.</p>
-			<!-- TODO: newsletter, bilingual, partners -->
+			<p class="footer-tagline">Voyages, saveurs, cultures et adresses à Maurice et dans les îles de l’océan Indien.</p>
 		</div>
 		<nav class="footer-nav" aria-label="Navigation secondaire">
 			<a href="/articles">Articles</a>
@@ -21,7 +19,7 @@ import { CATEGORIES, slugifyCategory } from '../lib/utils';
 		</nav>
 	</div>
 	<div class="footer-bottom">
-		<p>© {new Date().getFullYear()} Travel-Îles by Côte Nord. Tous droits réservés.</p>
+		<p>© {new Date().getFullYear()} Travel-Îles. Tous droits réservés.</p>
 	</div>
 </footer>
 
@@ -56,16 +54,6 @@ import { CATEGORIES, slugifyCategory } from '../lib/utils';
 		line-height: 1;
 	}
 
-	.footer-logo-sub {
-		font-family: var(--font-body);
-		font-size: 0.6rem;
-		font-weight: 500;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--color-grey-muted);
-		margin-top: 0.15rem;
-	}
-
 	.footer-tagline {
 		max-width: 22rem;
 		margin-top: var(--space-4);
@@ -74,7 +62,7 @@ import { CATEGORIES, slugifyCategory } from '../lib/utils';
 
 	.footer-nav {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 		gap: var(--space-3) var(--space-8);
 		font-size: 0.92rem;
 		font-weight: 500;

@@ -1,23 +1,31 @@
 export const CATEGORIES = [
-	'Hôtellerie',
-	'Gastronomie',
-	'Immobilier de luxe',
-	'Art de vivre',
-	'Golf',
-	'Écotourisme',
-	'Culture',
+	'Un visage, une histoire',
+	'Les gardiens du Savoir Faire',
+	'24heures avec....',
+	'Maurice demain',
+	"Mémoires de l'Île",
+	'Saveurs',
+	'Nos régions',
+	'Art & culture',
+	'Activités & événements',
+	'Nos Ambassadeurs régionaux',
+	'Nos adresses',
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 
 export const CATEGORY_SLUG_MAP: Record<Category, string> = {
-	Hôtellerie: 'hotellerie',
-	Gastronomie: 'gastronomie',
-	'Immobilier de luxe': 'immobilier-de-luxe',
-	'Art de vivre': 'art-de-vivre',
-	Golf: 'golf',
-	Écotourisme: 'ecotourisme',
-	Culture: 'culture',
+	'Un visage, une histoire': 'un-visage-une-histoire',
+	'Les gardiens du Savoir Faire': 'les-gardiens-du-savoir-faire',
+	'24heures avec....': '24heures-avec',
+	'Maurice demain': 'maurice-demain',
+	"Mémoires de l'Île": 'memoires-de-lile',
+	Saveurs: 'saveurs',
+	'Nos régions': 'nos-regions',
+	'Art & culture': 'art-et-culture',
+	'Activités & événements': 'activites-et-evenements',
+	'Nos Ambassadeurs régionaux': 'nos-ambassadeurs-regionaux',
+	'Nos adresses': 'nos-adresses',
 };
 
 export function slugifyCategory(category: Category | string) {

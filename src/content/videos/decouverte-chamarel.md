@@ -1,7 +1,7 @@
 ---
 title: "Chamarel, reliefs et terres de couleur"
 date: 2026-05-04
-category: "Écotourisme"
+category: "Nos régions"
 videoSource: "youtube"
 videoId: "Scxs7L0vhZ4"
 thumbnail: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80"

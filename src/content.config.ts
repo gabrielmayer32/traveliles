@@ -2,14 +2,18 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const categoryEnum = z.enum([
-	'Hôtellerie',
-	'Gastronomie',
-	'Immobilier de luxe',
-	'Art de vivre',
-	'Golf',
-	'Écotourisme',
-	'Culture',
-]); // TODO: update from form answers
+	'Un visage, une histoire',
+	'Les gardiens du Savoir Faire',
+	'24heures avec....',
+	'Maurice demain',
+	"Mémoires de l'Île",
+	'Saveurs',
+	'Nos régions',
+	'Art & culture',
+	'Activités & événements',
+	'Nos Ambassadeurs régionaux',
+	'Nos adresses',
+]);
 
 const articles = defineCollection({
 	loader: glob({ pattern: '*.md', base: './src/content/articles' }),
@@ -31,7 +35,7 @@ const videos = defineCollection({
 		title: z.string(),
 		date: z.coerce.date(),
 		category: categoryEnum,
-		videoSource: z.enum(['youtube', 'vimeo']),
+		videoSource: z.enum(['youtube', 'vimeo', 'facebook', 'instagram']),
 		videoId: z.string(),
 		thumbnail: z.string().optional(),
 		excerpt: z.string(),

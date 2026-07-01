@@ -35,14 +35,17 @@ collections:
         name: category
         widget: select
         options:
-          - Hôtellerie
-          - Gastronomie
-          - Immobilier de luxe
-          - Art de vivre
-          - Golf
-          - Écotourisme
-          - Culture
-        # TODO: update from form answers
+          - Un visage, une histoire
+          - Les gardiens du Savoir Faire
+          - 24heures avec....
+          - Maurice demain
+          - Mémoires de l'Île
+          - Saveurs
+          - Nos régions
+          - Art & culture
+          - Activités & événements
+          - Nos Ambassadeurs régionaux
+          - Nos adresses
       - { name: cover, label: Image principale, widget: image, required: false }
       - { name: excerpt, label: Extrait, widget: text }
       - { name: author, label: Auteur, widget: string, default: "Travel-Îles" }
@@ -75,21 +78,26 @@ collections:
         name: category
         widget: select
         options:
-          - Hôtellerie
-          - Gastronomie
-          - Immobilier de luxe
-          - Art de vivre
-          - Golf
-          - Écotourisme
-          - Culture
-        # TODO: update from form answers
+          - Un visage, une histoire
+          - Les gardiens du Savoir Faire
+          - 24heures avec....
+          - Maurice demain
+          - Mémoires de l'Île
+          - Saveurs
+          - Nos régions
+          - Art & culture
+          - Activités & événements
+          - Nos Ambassadeurs régionaux
+          - Nos adresses
       - label: Source vidéo
         name: videoSource
         widget: select
         options:
           - { label: YouTube, value: youtube }
           - { label: Vimeo, value: vimeo }
-      - { name: videoId, label: ID vidéo, widget: string }
+          - { label: Facebook, value: facebook }
+          - { label: Instagram, value: instagram }
+      - { name: videoId, label: ID vidéo, widget: string, hint: "YouTube: ID de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post." }
       - { name: thumbnail, label: Vignette, widget: image, required: false }
       - { name: excerpt, label: Extrait, widget: text }
       - { name: published, label: Publié, widget: boolean, default: true }
