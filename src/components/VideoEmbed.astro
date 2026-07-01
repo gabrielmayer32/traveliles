@@ -7,9 +7,9 @@ interface Props {
 
 const { videoSource, videoId, title = 'Vidéo Travel-Îles' } = Astro.props;
 const src = {
-	youtube: `https://www.youtube.com/embed/${videoId}`,
-	vimeo: `https://player.vimeo.com/video/${videoId}`,
-	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId)}`,
+	youtube: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`,
+	vimeo: `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`,
+	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId)}&autoplay=true`,
 	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
 }[videoSource];
 ---
