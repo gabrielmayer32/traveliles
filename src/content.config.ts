@@ -19,7 +19,7 @@ const articles = defineCollection({
 		category: categoryEnum,
 		cover: z.string().optional(),
 		excerpt: z.string(),
-		author: z.string().default('Côte Nord'),
+		author: z.string().default('Travel-Îles'),
 		tags: z.array(z.string()).default([]),
 		published: z.boolean().default(true),
 	}),

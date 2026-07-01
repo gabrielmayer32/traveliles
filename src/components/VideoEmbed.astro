@@ -5,7 +5,7 @@ interface Props {
 	title?: string;
 }
 
-const { videoSource, videoId, title = 'Vidéo Côte Nord' } = Astro.props;
+const { videoSource, videoId, title = 'Vidéo Travel-Îles' } = Astro.props;
 const src = videoSource === 'youtube'
 	? `https://www.youtube.com/embed/${videoId}`
 	: `https://player.vimeo.com/video/${videoId}`;

@@ -3,15 +3,15 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://cotenord.mu', // TODO: replace with production domain
+	site: 'https://www.traveliles.com',
 	output: 'static',
 	fonts: [
 		{
 			provider: fontProviders.google(),
-			name: 'Jost',
+			name: 'Playfair Display',
 			cssVariable: '--font-display',
-			weights: ['300 700'],
-			styles: ['normal'],
+			weights: ['400', '500', '600', '700', '800', '900'],
+			styles: ['normal', 'italic'],
 			subsets: ['latin', 'latin-ext'],
 		},
 		{

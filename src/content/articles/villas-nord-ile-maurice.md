@@ -4,7 +4,7 @@ date: 2026-02-14
 category: "Immobilier de luxe"
 cover: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80"
 excerpt: "Jardins tropicaux, architecture traversante et services hôteliers redéfinissent le séjour en villa."
-author: "Côte Nord"
+author: "Travel-Îles"
 tags:
   - villas
   - architecture

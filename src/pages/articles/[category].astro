@@ -19,12 +19,12 @@ const articles = (await getCollection('articles'))
 const categoryName = categoryFromSlug(Astro.params.category ?? '') ?? category;
 ---
 
-<BaseLayout title={categoryName} description={`Articles Côte Nord dans la catégorie ${categoryName}.`}>
+<BaseLayout title={categoryName} description={`Articles Travel-Îles dans la catégorie ${categoryName}.`}>
 	<section class="section">
 		<div class="container">
 			<p class="page-kicker">Catégorie</p>
 			<h1 class="page-title">{categoryName}</h1>
-			<p class="page-intro">Une sélection éditoriale Côte Nord autour de {categoryName.toLowerCase()}.</p>
+			<p class="page-intro">Une sélection éditoriale Travel-Îles autour de {categoryName.toLowerCase()}.</p>
 		</div>
 	</section>
 

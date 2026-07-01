@@ -4,7 +4,7 @@ date: 2026-01-30
 category: "Art de vivre"
 cover: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1800&q=80"
 excerpt: "Des distilleries aux bars d’hôtel, le rhum local gagne une place de choix dans les caves des amateurs."
-author: "Côte Nord"
+author: "Travel-Îles"
 tags:
   - rhum
   - distilleries

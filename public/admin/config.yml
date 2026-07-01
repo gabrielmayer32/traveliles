@@ -33,7 +33,7 @@ collections:
         # TODO: update from form answers
       - { name: cover, label: Image principale, widget: image, required: false }
       - { name: excerpt, label: Extrait, widget: text }
-      - { name: author, label: Auteur, widget: string, default: "Côte Nord" }
+      - { name: author, label: Auteur, widget: string, default: "Travel-Îles" }
       - { name: tags, label: Tags, widget: list, required: false }
       - { name: published, label: Publié, widget: boolean, default: true }
       - { name: body, label: Corps, widget: markdown }
@@ -86,5 +86,5 @@ collections:
         file: src/content/pages/contact.md
         fields:
           - { name: title, label: Titre, widget: string, default: "Contact" }
-          - { name: email, label: Email, widget: string, default: "bonjour@cotenord.mu" }
+          - { name: email, label: Email, widget: string, default: "contact@traveliles.com" }
           - { name: body, label: Contenu, widget: markdown, required: false }

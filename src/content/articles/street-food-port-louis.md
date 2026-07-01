@@ -4,7 +4,7 @@ date: 2026-03-26
 category: "Gastronomie"
 cover: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=80"
 excerpt: "Dholl puri, mines frits et gâteaux piments composent une cartographie sensible de la capitale."
-author: "Côte Nord"
+author: "Travel-Îles"
 tags:
   - Port-Louis
   - street food

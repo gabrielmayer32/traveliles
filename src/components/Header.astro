@@ -9,7 +9,10 @@ const navLinks = CATEGORIES.map((category) => ({
 
 <header class="site-header">
 	<div class="header-inner">
-		<a class="logo" href="/" aria-label="Côte Nord, accueil">CÔTE NORD</a>
+		<a class="logo" href="/" aria-label="Travel-Îles, accueil">
+			<span class="logo-main">TRAVEL-ÎLES</span>
+			<span class="logo-sub">by Côte Nord</span>
+		</a>
 		<nav class="desktop-nav" aria-label="Navigation principale">
 			{navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
 			<a href="/videos">Vidéos</a>
@@ -85,12 +88,30 @@ const navLinks = CATEGORIES.map((category) => ({
 	}
 
 	.logo {
-		color: var(--color-navy);
-		font-family: var(--font-display);
-		font-size: 1.1rem;
-		font-weight: 600;
-		letter-spacing: 0.15em;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		color: var(--color-ink);
 		white-space: nowrap;
+	}
+
+	.logo-main {
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		line-height: 1;
+	}
+
+	.logo-sub {
+		font-family: var(--font-body);
+		font-size: 0.6rem;
+		font-weight: 500;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-grey-muted);
+		margin-top: 0.15rem;
+		align-self: flex-end;
 	}
 
 	.desktop-nav {

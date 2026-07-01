@@ -5,8 +5,11 @@ import { CATEGORIES, slugifyCategory } from '../lib/utils';
 <footer class="site-footer">
 	<div class="footer-inner">
 		<div>
-			<a class="footer-logo" href="/">CÔTE NORD</a>
-			<p class="footer-tagline">Magazine des voyages singuliers et des adresses choisies de l’océan Indien.</p>
+			<a class="footer-logo" href="/">
+				<span class="footer-logo-main">TRAVEL-ÎLES</span>
+				<span class="footer-logo-sub">by Côte Nord</span>
+			</a>
+			<p class="footer-tagline">Tourisme & art de vivre à l’île Maurice et les îles de l’océan Indien.</p>
 			<!-- TODO: newsletter, bilingual, partners -->
 		</div>
 		<nav class="footer-nav" aria-label="Navigation secondaire">
@@ -18,7 +21,7 @@ import { CATEGORIES, slugifyCategory } from '../lib/utils';
 		</nav>
 	</div>
 	<div class="footer-bottom">
-		<p>© {new Date().getFullYear()} Côte Nord. Tous droits réservés.</p>
+		<p>© {new Date().getFullYear()} Travel-Îles by Côte Nord. Tous droits réservés.</p>
 	</div>
 </footer>
 
@@ -39,11 +42,28 @@ import { CATEGORIES, slugifyCategory } from '../lib/utils';
 	}
 
 	.footer-logo {
-		color: var(--color-navy);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		color: var(--color-ink);
+	}
+
+	.footer-logo-main {
 		font-family: var(--font-display);
-		font-size: 1.15rem;
-		font-weight: 600;
-		letter-spacing: 0.15em;
+		font-size: 1.35rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		line-height: 1;
+	}
+
+	.footer-logo-sub {
+		font-family: var(--font-body);
+		font-size: 0.6rem;
+		font-weight: 500;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-grey-muted);
+		margin-top: 0.15rem;
 	}
 
 	.footer-tagline {
