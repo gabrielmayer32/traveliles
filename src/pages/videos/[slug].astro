@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryLabel from '../../components/CategoryLabel.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+import { formatDate } from '../../lib/utils';
+
+export async function getStaticPaths() {
+	const videos = (await getCollection('videos')).filter((video) => video.data.published);
+
+	return videos.map((video) => ({
+		params: { slug: video.id },
+		props: { video },
+	}));
+}
+
+const { video } = Astro.props;
+const { Content } = await render(video);
+---
+
+<BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={video.data.thumbnail}>
+	<article>
+		<header class="video-header">
+			<div class="container">
+				<CategoryLabel category={video.data.category} />
+				<h1>{video.data.title}</h1>
+				<p>{video.data.excerpt}</p>
+				<div class="meta">{formatDate(video.data.date)}</div>
+			</div>
+		</header>
+
+		<div class="container">
+			<VideoEmbed videoSource={video.data.videoSource} videoId={video.data.videoId} title={video.data.title} />
+		</div>
+
+		<div class="container video-content">
+			<div class="prose">
+				<Content />
+			</div>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.video-header {
+		padding-block: var(--space-16) var(--space-10);
+	}
+
+	.video-header :global(.category-label) {
+		display: inline-block;
+		margin-bottom: var(--space-6);
+	}
+
+	h1 {
+		max-width: 58rem;
+		font-size: clamp(3rem, 8vw, 6rem);
+	}
+
+	.video-header p {
+		max-width: 44rem;
+		margin-top: var(--space-6);
+		color: #444;
+		font-size: 1.2rem;
+	}
+
+	.video-header .meta {
+		margin-top: var(--space-4);
+	}
+
+	.video-content {
+		padding-block: var(--space-12);
+	}
+</style>

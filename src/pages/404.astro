@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page introuvable" description="La page demandée est introuvable.">
+	<section class="section error-page">
+		<div class="container">
+			<p class="page-kicker">404</p>
+			<h1 class="page-title">Page introuvable</h1>
+			<p class="page-intro">La page demandée n’existe pas ou a été déplacée.</p>
+			<a class="home-link" href="/">Retour à l’accueil</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.error-page {
+		min-height: 58vh;
+	}
+
+	.home-link {
+		display: inline-block;
+		margin-top: var(--space-8);
+		color: var(--color-navy);
+		font-weight: 600;
+	}
+</style>

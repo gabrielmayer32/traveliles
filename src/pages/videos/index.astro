@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VideoCard from '../../components/VideoCard.astro';
+
+const videos = (await getCollection('videos'))
+	.filter((video) => video.data.published)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Vidéos" description="Toutes les vidéos de Côte Nord.">
+	<section class="section">
+		<div class="container">
+			<p class="page-kicker">Regarder</p>
+			<h1 class="page-title">Vidéos</h1>
+			<p class="page-intro">Rencontres, paysages et savoir-faire racontés en images.</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="grid-4">
+				{videos.map((video) => <VideoCard video={video} />)}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

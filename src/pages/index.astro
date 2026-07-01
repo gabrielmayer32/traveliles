@@ -1,17 +1,71 @@
 ---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import HeroArticle from '../components/HeroArticle.astro';
+import VideoCard from '../components/VideoCard.astro';
 
+const articles = (await getCollection('articles'))
+	.filter((article) => article.data.published)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const videos = (await getCollection('videos'))
+	.filter((video) => video.data.published)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const [heroArticle, ...restArticles] = articles;
+const featuredArticles = restArticles.slice(0, 3);
+const latestArticles = restArticles.slice(3);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+	{heroArticle && <HeroArticle article={heroArticle} />}
+
+	<section class="section">
+		<div class="container">
+			<div class="section-header">
+				<h2 class="section-title">À la une</h2>
+				<a class="section-link" href="/articles">Tous les articles</a>
+			</div>
+			<div class="grid-3">
+				{featuredArticles.map((article) => <ArticleCard article={article} />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section videos-band">
+		<div class="container">
+			<div class="section-header">
+				<h2 class="section-title">Vidéos</h2>
+				<a class="section-link" href="/videos">Voir les vidéos</a>
+			</div>
+			<div class="grid-4">
+				{videos.slice(0, 4).map((video) => <VideoCard video={video} />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-header">
+				<h2 class="section-title">Derniers articles</h2>
+			</div>
+			<div class="grid-3">
+				{latestArticles.map((article) => <ArticleCard article={article} />)}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.section-link {
+		color: var(--color-navy);
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+
+	.videos-band {
+		background: var(--color-white);
+		border-block: 1px solid var(--color-grey-light);
+	}
+</style>

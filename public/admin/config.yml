@@ -1,0 +1,89 @@
+backend:
+  name: github
+  repo: OWNER/cotenord # TODO
+  branch: main
+  base_url: SVELTIA_WORKER_URL # TODO
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+locale: fr
+
+collections:
+  - name: articles
+    label: Articles
+    folder: src/content/articles
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - label: Catégorie
+        name: category
+        widget: select
+        options:
+          - Hôtellerie
+          - Gastronomie
+          - Immobilier de luxe
+          - Art de vivre
+          - Golf
+          - Écotourisme
+          - Culture
+        # TODO: update from form answers
+      - { name: cover, label: Image principale, widget: image, required: false }
+      - { name: excerpt, label: Extrait, widget: text }
+      - { name: author, label: Auteur, widget: string, default: "Côte Nord" }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: published, label: Publié, widget: boolean, default: true }
+      - { name: body, label: Corps, widget: markdown }
+
+  - name: videos
+    label: Vidéos
+    folder: src/content/videos
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - label: Catégorie
+        name: category
+        widget: select
+        options:
+          - Hôtellerie
+          - Gastronomie
+          - Immobilier de luxe
+          - Art de vivre
+          - Golf
+          - Écotourisme
+          - Culture
+        # TODO: update from form answers
+      - label: Source vidéo
+        name: videoSource
+        widget: select
+        options:
+          - { label: YouTube, value: youtube }
+          - { label: Vimeo, value: vimeo }
+      - { name: videoId, label: ID vidéo, widget: string }
+      - { name: thumbnail, label: Vignette, widget: image, required: false }
+      - { name: excerpt, label: Extrait, widget: text }
+      - { name: published, label: Publié, widget: boolean, default: true }
+      - { name: body, label: Description, widget: markdown, required: false }
+
+  - name: pages
+    label: Pages
+    files:
+      - label: À propos
+        name: a_propos
+        file: src/pages/a-propos.astro
+        fields:
+          - { name: title, label: Titre, widget: string, default: "À propos" }
+          - { name: body, label: Contenu, widget: markdown, required: false }
+      - label: Contact
+        name: contact
+        file: src/pages/contact.astro
+        fields:
+          - { name: title, label: Titre, widget: string, default: "Contact" }
+          - { name: email, label: Email, widget: string, default: "bonjour@cotenord.mu" }

@@ -1,0 +1,30 @@
+---
+import { slugifyCategory } from '../lib/utils';
+
+interface Props {
+	category: string;
+	linked?: boolean;
+}
+
+const { category, linked = true } = Astro.props;
+const href = `/articles/${slugifyCategory(category)}`;
+---
+
+{
+	linked ? (
+		<a class="category-label" href={href}>{category}</a>
+	) : (
+		<span class="category-label">{category}</span>
+	)
+}
+
+<style>
+	.category-label {
+		color: var(--color-navy);
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+</style>

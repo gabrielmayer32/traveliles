@@ -1,0 +1,81 @@
+---
+import { CATEGORIES, slugifyCategory } from '../lib/utils';
+---
+
+<footer class="site-footer">
+	<div class="footer-inner">
+		<div>
+			<a class="footer-logo" href="/">CÔTE NORD</a>
+			<p class="footer-tagline">Magazine des voyages singuliers et des adresses choisies de l’océan Indien.</p>
+			<!-- TODO: newsletter, bilingual, partners -->
+		</div>
+		<nav class="footer-nav" aria-label="Navigation secondaire">
+			<a href="/articles">Articles</a>
+			{CATEGORIES.map((category) => <a href={`/articles/${slugifyCategory(category)}`}>{category}</a>)}
+			<a href="/videos">Vidéos</a>
+			<a href="/a-propos">À propos</a>
+			<a href="/contact">Contact</a>
+		</nav>
+	</div>
+	<div class="footer-bottom">
+		<p>© {new Date().getFullYear()} Côte Nord. Tous droits réservés.</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		margin-top: var(--space-16);
+		border-top: 1px solid var(--color-grey-light);
+		background: var(--color-white);
+	}
+
+	.footer-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(16rem, 2fr);
+		gap: var(--space-12);
+		width: min(100% - 2rem, var(--max-width));
+		margin-inline: auto;
+		padding-block: var(--space-12);
+	}
+
+	.footer-logo {
+		color: var(--color-navy);
+		font-family: var(--font-display);
+		font-size: 1.15rem;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+	}
+
+	.footer-tagline {
+		max-width: 22rem;
+		margin-top: var(--space-4);
+		color: #555;
+	}
+
+	.footer-nav {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: var(--space-3) var(--space-8);
+		font-size: 0.92rem;
+		font-weight: 500;
+	}
+
+	.footer-bottom {
+		width: min(100% - 2rem, var(--max-width));
+		margin-inline: auto;
+		border-top: 1px solid var(--color-grey-light);
+		padding-block: var(--space-4);
+		color: var(--color-grey-muted);
+		font-size: 0.85rem;
+	}
+
+	@media (max-width: 760px) {
+		.footer-inner {
+			grid-template-columns: 1fr;
+		}
+
+		.footer-nav {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+</style>

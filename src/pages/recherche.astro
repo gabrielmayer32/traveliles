@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Recherche" description="Rechercher un article ou une vidéo sur Côte Nord.">
+	<section class="section search-page">
+		<div class="container">
+			<p class="page-kicker">Recherche</p>
+			<h1 class="page-title">Explorer</h1>
+			<form class="search-form" role="search">
+				<label class="sr-only" for="site-search">Rechercher</label>
+				<input id="site-search" name="q" type="search" placeholder="Rechercher une adresse, un thème, une catégorie..." autocomplete="off" />
+			</form>
+			<div id="search-results" class="search-results" aria-live="polite"></div>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	import Fuse from 'fuse.js';
+
+	type SearchItem = {
+		title: string;
+		excerpt: string;
+		category: string;
+		date: string;
+		url: string;
+		type: 'article' | 'video';
+	};
+
+	let fuse: Fuse<SearchItem> | undefined;
+	let items: SearchItem[] = [];
+
+	function formatDate(value: string) {
+		return new Intl.DateTimeFormat('fr-FR', {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric',
+		}).format(new Date(value));
+	}
+
+	function renderResults(results: SearchItem[], container: HTMLElement, query: string) {
+		if (!query) {
+			container.innerHTML = '<p class="search-empty">Saisissez un mot-clé pour lancer la recherche.</p>';
+			return;
+		}
+
+		if (results.length === 0) {
+			container.innerHTML = '<p class="search-empty">Aucun résultat trouvé.</p>';
+			return;
+		}
+
+		container.innerHTML = results.map((item) => `
+			<a class="search-result" href="${item.url}">
+				<span>${item.type === 'article' ? 'Article' : 'Vidéo'} · ${item.category}</span>
+				<strong>${item.title}</strong>
+				<small>${formatDate(item.date)}</small>
+				<p>${item.excerpt}</p>
+			</a>
+		`).join('');
+	}
+
+	async function setupSearch() {
+		const input = document.querySelector<HTMLInputElement>('#site-search');
+		const container = document.querySelector<HTMLElement>('#search-results');
+
+		if (!input || !container) return;
+
+		if (!fuse) {
+			const response = await fetch('/search-index.json');
+			items = await response.json();
+			fuse = new Fuse(items, {
+				keys: ['title', 'excerpt', 'category', 'type'],
+				threshold: 0.35,
+				ignoreLocation: true,
+			});
+		}
+
+		let timer: ReturnType<typeof setTimeout>;
+		const update = () => {
+			window.clearTimeout(timer);
+			timer = window.setTimeout(() => {
+				const query = input.value.trim();
+				const results = query ? fuse!.search(query).map((result) => result.item).slice(0, 12) : [];
+				renderResults(results, container, query);
+			}, 120);
+		};
+
+		input.addEventListener('input', update);
+		renderResults([], container, input.value.trim());
+	}
+
+	document.addEventListener('astro:page-load', setupSearch);
+	setupSearch();
+</script>
+
+<style>
+	.search-page {
+		min-height: 64vh;
+	}
+
+	.search-form {
+		margin-top: var(--space-10);
+	}
+
+	input {
+		width: 100%;
+		border: 0;
+		border-bottom: 1px solid var(--color-ink);
+		background: transparent;
+		padding: 1rem 0;
+		color: var(--color-ink);
+		font-size: clamp(1.25rem, 4vw, 2rem);
+	}
+
+	input:focus {
+		outline: 2px solid var(--color-navy);
+		outline-offset: 0.35rem;
+	}
+
+	.search-results {
+		display: grid;
+		gap: var(--space-4);
+		margin-top: var(--space-10);
+	}
+
+	.search-result {
+		display: grid;
+		gap: var(--space-2);
+		border-top: 1px solid var(--color-grey-light);
+		padding-block: var(--space-5, 1.25rem);
+	}
+
+	.search-result span,
+	.search-result small,
+	.search-empty {
+		color: var(--color-grey-muted);
+	}
+
+	.search-result span {
+		color: var(--color-navy);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.search-result strong {
+		font-family: var(--font-display);
+		font-size: clamp(1.35rem, 3vw, 2rem);
+		font-weight: 500;
+		line-height: 1.12;
+	}
+
+	.search-result p {
+		max-width: 46rem;
+		color: #4a4a4a;
+	}
+</style>

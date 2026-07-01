@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/utils';
+import CategoryLabel from './CategoryLabel.astro';
+
+interface Props {
+	article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const href = `/articles/${article.id}`;
+---
+
+<article class="article-card">
+	{article.data.cover && (
+		<a class="article-image" href={href} aria-label={article.data.title}>
+			<img src={article.data.cover} alt="" loading="lazy" />
+		</a>
+	)}
+	<div class="article-body">
+		<CategoryLabel category={article.data.category} />
+		<h3><a href={href}>{article.data.title}</a></h3>
+		<p>{article.data.excerpt}</p>
+		<div class="meta">{formatDate(article.data.date)} · {article.data.author}</div>
+	</div>
+</article>
+
+<style>
+	.article-card {
+		display: grid;
+		gap: var(--space-4);
+	}
+
+	.article-image {
+		display: block;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		background: var(--color-grey-light);
+	}
+
+	.article-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 220ms ease;
+	}
+
+	.article-card:hover .article-image img {
+		transform: scale(1.03);
+	}
+
+	.article-body {
+		display: grid;
+		gap: var(--space-3);
+	}
+
+	h3 {
+		font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+	}
+
+	p {
+		color: #4a4a4a;
+	}
+</style>
