@@ -39,6 +39,9 @@ const navLinks = CATEGORIES.map((category) => ({
 		const menu = document.querySelector<HTMLElement>('#mobile-menu');
 
 		if (!button || !menu) return;
+		if (button.dataset.menuReady === 'true') return;
+
+		button.dataset.menuReady = 'true';
 
 		const closeMenu = () => {
 			button.setAttribute('aria-expanded', 'false');

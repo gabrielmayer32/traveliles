@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: OWNER/cotenord # TODO
+  repo: gabrielmayer32/travel-iles
   branch: main
-  base_url: SVELTIA_WORKER_URL # TODO
+  base_url: https://sveltia-cms-auth.gabriel0mayer.workers.dev
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
@@ -77,13 +77,14 @@ collections:
     files:
       - label: À propos
         name: a_propos
-        file: src/pages/a-propos.astro
+        file: src/content/pages/a-propos.md
         fields:
           - { name: title, label: Titre, widget: string, default: "À propos" }
-          - { name: body, label: Contenu, widget: markdown, required: false }
+          - { name: body, label: Contenu, widget: markdown }
       - label: Contact
         name: contact
-        file: src/pages/contact.astro
+        file: src/content/pages/contact.md
         fields:
           - { name: title, label: Titre, widget: string, default: "Contact" }
           - { name: email, label: Email, widget: string, default: "bonjour@cotenord.mu" }
+          - { name: body, label: Contenu, widget: markdown, required: false }
