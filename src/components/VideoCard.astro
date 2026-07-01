@@ -11,29 +11,73 @@ interface Props {
 
 const { video, size = 'md' } = Astro.props;
 const href = `/videos/${video.id}`;
+const { videoSource, videoId } = video.data;
 const thumbnail = video.data.thumbnail ?? (
-	video.data.videoSource === 'youtube'
-		? `https://img.youtube.com/vi/${video.data.videoId}/hqdefault.jpg`
+	videoSource === 'youtube'
+		? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
 		: undefined
 );
 const playSize = size === 'lg' ? 76 : 60;
 const iconSize = size === 'lg' ? 30 : 24;
+
+const embedSrc = {
+	youtube: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&rel=0&modestbranding=1&playsinline=1`,
+	vimeo: `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`,
+	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId)}&autoplay=true`,
+	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
+}[videoSource];
 ---
 
-<a class:list={['video-card', `video-card--${size}`]} href={href}>
-	<div class="video-thumbnail">
+<div class:list={['video-card', `video-card--${size}`]}>
+	<div class="video-thumbnail" data-embed-src={embedSrc}>
 		{thumbnail && <img src={thumbnail} alt="" loading="lazy" />}
 		<span class="video-scrim"></span>
-		<span class="play-btn" style={`width:${playSize}px;height:${playSize}px;padding-left:${playSize * 0.06}px`}>
+		<button
+			class="play-btn"
+			type="button"
+			aria-label="Lancer la vidéo"
+			style={`width:${playSize}px;height:${playSize}px;padding-left:${playSize * 0.06}px`}
+		>
 			<Fragment set:html={iconSvg('play', iconSize)} />
-		</span>
+		</button>
 	</div>
-	<div class="video-body">
+	<a class="video-body" href={href}>
 		<CategoryLabel category={video.data.category} linked={false} />
 		<h3 class="video-title">{video.data.title}</h3>
 		<div class="meta">{formatDate(video.data.date)}</div>
-	</div>
-</a>
+	</a>
+</div>
+
+<script>
+	function initVideoCards() {
+		document.querySelectorAll<HTMLElement>('.video-card').forEach((card) => {
+			const thumb = card.querySelector<HTMLElement>('.video-thumbnail');
+			const playBtn = thumb?.querySelector<HTMLButtonElement>('.play-btn');
+			if (!thumb || !playBtn || thumb.dataset.vcReady === 'true') return;
+			thumb.dataset.vcReady = 'true';
+
+			playBtn.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const src = thumb.dataset.embedSrc;
+				if (!src) return;
+
+				const iframe = document.createElement('iframe');
+				iframe.className = 'vc-iframe';
+				iframe.src = src;
+				iframe.title = 'Vidéo';
+				iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+				iframe.allowFullscreen = true;
+				thumb.appendChild(iframe);
+
+				playBtn.hidden = true;
+				const scrim = thumb.querySelector('.video-scrim');
+				if (scrim) (scrim as HTMLElement).hidden = true;
+			});
+		});
+	}
+	document.addEventListener('astro:page-load', initVideoCards);
+	initVideoCards();
+</script>
 
 <style>
 	.video-card {
@@ -69,6 +113,7 @@ const iconSize = size === 'lg' ? 30 : 24;
 		position: absolute;
 		inset: 0;
 		background: linear-gradient(to top, rgba(20, 26, 63, 0.45), rgba(20, 26, 63, 0) 60%);
+		pointer-events: none;
 	}
 
 	.play-btn {
@@ -83,17 +128,33 @@ const iconSize = size === 'lg' ? 30 : 24;
 		border: 1px solid rgba(255, 255, 255, 0.6);
 		box-shadow: 0 6px 24px rgba(20, 26, 63, 0.28);
 		transition: all var(--dur) var(--ease-out);
+		cursor: pointer;
+		z-index: 2;
 	}
 
-	.video-card:hover .play-btn {
+	.play-btn:hover {
 		background: var(--navy);
 		color: var(--white);
+	}
+
+	.play-btn[hidden] {
+		display: none;
+	}
+
+	.video-thumbnail :global(.vc-iframe) {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+		z-index: 3;
 	}
 
 	.video-body {
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-2);
+		color: inherit;
 	}
 
 	.video-title {

@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { formatDate } from '../lib/utils';
 import CategoryLabel from './CategoryLabel.astro';
+import { iconSvg } from '../lib/icons';
 
 interface Props {
 	video: CollectionEntry<'videos'>;
@@ -25,18 +26,20 @@ const thumbnail = video.data.thumbnail ?? (
 );
 ---
 
-<section class="hero-video">
+<section class="hero-video" data-embed-src={embedSrc}>
 	<div class="hero-media">
 		{thumbnail && <img class="hero-poster" src={thumbnail} alt="" />}
-		<iframe
-			class="hero-iframe"
-			src={embedSrc}
-			title={title}
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen
-		></iframe>
+		<div class="hero-iframe-slot"></div>
 	</div>
 	<div class="hero-scrim"></div>
+
+	<!-- Play button — visible until user clicks -->
+	<button class="hero-play-btn" aria-label="Lancer la vidéo" type="button">
+		<span class="hero-play-circle">
+			<Fragment set:html={iconSvg('play', 36)} />
+		</span>
+	</button>
+
 	<div class="hero-overlay container-wide">
 		<CategoryLabel category={category} variant="overlay" linked={false} />
 		<h2 class="hero-title"><a href={href}>{title}</a></h2>
@@ -47,10 +50,31 @@ const thumbnail = video.data.thumbnail ?? (
 
 <script>
 	function initHeroVideo() {
-		const iframe = document.querySelector<HTMLIFrameElement>('.hero-video .hero-iframe');
-		const poster = document.querySelector<HTMLImageElement>('.hero-video .hero-poster');
-		if (!iframe || !poster) return;
-		iframe.addEventListener('load', () => poster.classList.add('loaded'));
+		const hero = document.querySelector<HTMLElement>('.hero-video');
+		const playBtn = hero?.querySelector<HTMLButtonElement>('.hero-play-btn');
+		const poster = hero?.querySelector<HTMLImageElement>('.hero-poster');
+		const slot = hero?.querySelector<HTMLElement>('.hero-iframe-slot');
+		if (!hero || !playBtn || !slot) return;
+		if (hero.dataset.heroReady === 'true') return;
+		hero.dataset.heroReady = 'true';
+
+		const embedSrc = hero.dataset.embedSrc;
+
+		playBtn.addEventListener('click', () => {
+			if (!embedSrc) return;
+			const iframe = document.createElement('iframe');
+			iframe.className = 'hero-iframe';
+			iframe.src = embedSrc;
+			iframe.title = 'Vidéo Travel-Îles';
+			iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+			iframe.allowFullscreen = true;
+			slot.appendChild(iframe);
+
+			playBtn.classList.add('hidden');
+			if (poster) {
+				iframe.addEventListener('load', () => poster.classList.add('loaded'));
+			}
+		});
 	}
 	document.addEventListener('astro:page-load', initHeroVideo);
 	initHeroVideo();
@@ -61,6 +85,7 @@ const thumbnail = video.data.thumbnail ?? (
 		position: relative;
 		background: var(--navy-950);
 		overflow: hidden;
+		border-radius: var(--radius-sm);
 	}
 
 	.hero-media {
@@ -83,13 +108,18 @@ const thumbnail = video.data.thumbnail ?? (
 		pointer-events: none;
 	}
 
-	.hero-iframe {
+	.hero-iframe-slot {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+
+	.hero-iframe-slot :global(.hero-iframe) {
 		position: absolute;
 		inset: -20% -10%;
 		width: 120%;
 		height: 140%;
 		border: 0;
-		z-index: 1;
 		pointer-events: none;
 	}
 
@@ -104,6 +134,41 @@ const thumbnail = video.data.thumbnail ?? (
 			rgba(20, 26, 63, 0.10) 100%
 		);
 		pointer-events: none;
+	}
+
+	.hero-play-btn {
+		position: absolute;
+		inset: 0;
+		z-index: 6;
+		display: grid;
+		place-items: center;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+	}
+
+	.hero-play-btn.hidden {
+		display: none;
+	}
+
+	.hero-play-circle {
+		display: grid;
+		place-items: center;
+		width: 92px;
+		height: 92px;
+		padding-left: 6px;
+		border-radius: var(--radius-pill);
+		background: rgba(255, 255, 255, 0.9);
+		color: var(--navy);
+		border: 1px solid rgba(255, 255, 255, 0.6);
+		box-shadow: 0 10px 40px rgba(20, 26, 63, 0.35);
+		transition: all var(--dur) var(--ease-out);
+	}
+
+	.hero-play-btn:hover .hero-play-circle {
+		background: var(--navy);
+		color: var(--white);
 	}
 
 	.hero-overlay {
@@ -148,6 +213,17 @@ const thumbnail = video.data.thumbnail ?? (
 	@media (max-width: 640px) {
 		.hero-media {
 			height: clamp(320px, 50vh, 420px);
+		}
+
+		.hero-play-circle {
+			width: 72px;
+			height: 72px;
+			padding-left: 4px;
+		}
+
+		.hero-play-circle :global(svg) {
+			width: 28px;
+			height: 28px;
 		}
 	}
 </style>
