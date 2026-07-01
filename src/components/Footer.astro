@@ -1,89 +1,215 @@
 ---
 import { CATEGORIES, slugifyCategory } from '../lib/utils';
+import { iconSvg } from '../lib/icons';
+
+const half = Math.ceil(CATEGORIES.length / 2);
+const colA = CATEGORIES.slice(0, half);
+const colB = CATEGORIES.slice(half);
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-	<div class="footer-inner">
-		<div>
-			<a class="footer-logo" href="/">
-				<span class="footer-logo-main">TRAVEL-ÎLES</span>
-			</a>
-			<p class="footer-tagline">Voyages, saveurs, cultures et adresses à Maurice et dans les îles de l’océan Indien.</p>
+	<div class="container-wide footer-main">
+		<div class="footer-grid">
+			<!-- Brand column -->
+			<div class="footer-brand">
+				<a class="footer-logo" href="/" aria-label="Travel-Îles">
+					<span class="footer-logo-main">Travel-Îles</span>
+					<span class="footer-logo-tagline">Océan Indien</span>
+				</a>
+				<p class="footer-desc">Le magazine vidéo des îles de l'océan Indien&nbsp;: hospitalité, tables, régions et art de vivre mauricien.</p>
+				<div class="footer-social">
+					{(['youtube', 'instagram', 'facebook'] as const).map((name) => (
+						<a href="#" aria-label={name} class="social-icon">
+							<Fragment set:html={iconSvg(name, 18)} />
+						</a>
+					))}
+				</div>
+			</div>
+
+			<!-- Rubriques (2 columns) -->
+			<nav class="footer-rubriques">
+				<div class="footer-col-title">Rubriques</div>
+				<div class="footer-rubriques-grid">
+					<div>
+						{colA.map((category) => (
+							<a class="footer-link" href={`/articles/${slugifyCategory(category)}`}>{category}</a>
+						))}
+					</div>
+					<div>
+						{colB.map((category) => (
+							<a class="footer-link" href={`/articles/${slugifyCategory(category)}`}>{category}</a>
+						))}
+					</div>
+				</div>
+			</nav>
+
+			<!-- Le magazine -->
+			<nav class="footer-magazine">
+				<div class="footer-col-title">Le magazine</div>
+				<a class="footer-link" href="/videos">Vidéos</a>
+				<a class="footer-link" href="/articles">Articles</a>
+				<a class="footer-link" href="/a-propos">À propos</a>
+				<a class="footer-link" href="/contact">Contact</a>
+				<a class="footer-link" href="/recherche">Recherche</a>
+			</nav>
 		</div>
-		<nav class="footer-nav" aria-label="Navigation secondaire">
-			<a href="/articles">Articles</a>
-			{CATEGORIES.map((category) => <a href={`/articles/${slugifyCategory(category)}`}>{category}</a>)}
-			<a href="/videos">Vidéos</a>
-			<a href="/a-propos">À propos</a>
-			<a href="/contact">Contact</a>
-		</nav>
-	</div>
-	<div class="footer-bottom">
-		<p>© {new Date().getFullYear()} Travel-Îles. Tous droits réservés.</p>
+
+		<!-- Bottom bar -->
+		<div class="footer-bottom">
+			<span>© {year} Travel-Îles. Tous droits réservés.</span>
+			<span class="footer-legal">
+				<a href="/mentions-legales">Mentions légales</a>
+				<a href="/confidentialite">Confidentialité</a>
+			</span>
+		</div>
 	</div>
 </footer>
 
 <style>
 	.site-footer {
-		margin-top: var(--space-16);
-		border-top: 1px solid var(--color-grey-light);
-		background: var(--color-white);
+		background: var(--navy-950);
+		color: var(--white);
 	}
 
-	.footer-inner {
+	.footer-main {
+		padding-block: var(--space-20);
+	}
+
+	.footer-grid {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(16rem, 2fr);
-		gap: var(--space-12);
-		width: min(100% - 2rem, var(--max-width));
-		margin-inline: auto;
-		padding-block: var(--space-12);
+		grid-template-columns: 1.4fr 1fr 1fr 1fr;
+		gap: var(--space-10);
 	}
 
 	.footer-logo {
-		display: flex;
+		display: inline-flex;
 		flex-direction: column;
 		align-items: flex-start;
-		color: var(--color-ink);
+		gap: 0.3em;
+		color: var(--white);
+		line-height: 1;
+	}
+
+	.footer-logo-tagline {
+		font-family: var(--font-body);
+		font-weight: var(--fw-bold);
+		font-size: 0.5rem;
+		letter-spacing: 0.085em;
+		text-transform: uppercase;
+		line-height: 1.15;
+		color: rgba(255, 255, 255, 0.7);
+		order: -1;
 	}
 
 	.footer-logo-main {
 		font-family: var(--font-display);
-		font-size: 1.35rem;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		line-height: 1;
+		font-weight: var(--fw-bold);
+		font-size: 1.9rem;
+		letter-spacing: -0.005em;
+		text-transform: uppercase;
+		line-height: 0.92;
+		white-space: nowrap;
 	}
 
-	.footer-tagline {
-		max-width: 22rem;
-		margin-top: var(--space-4);
-		color: #555;
+	.footer-desc {
+		margin-top: var(--space-5);
+		max-width: 26ch;
+		color: rgba(255, 255, 255, 0.66);
+		font-size: var(--text-sm);
+		line-height: var(--leading-normal);
 	}
 
-	.footer-nav {
+	.footer-social {
+		display: flex;
+		gap: var(--space-3);
+		margin-top: var(--space-6);
+	}
+
+	.social-icon {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: var(--space-3) var(--space-8);
-		font-size: 0.92rem;
-		font-weight: 500;
+		place-items: center;
+		width: 40px;
+		height: 40px;
+		color: rgba(255, 255, 255, 0.85);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: var(--radius-pill);
+		transition: border-color var(--dur-fast) var(--ease-out);
+	}
+
+	.social-icon:hover {
+		border-color: rgba(255, 255, 255, 0.5);
+		color: var(--white);
+	}
+
+	.footer-col-title {
+		font-family: var(--font-body);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: var(--tracking-wider);
+		text-transform: uppercase;
+		color: var(--white);
+		margin-bottom: var(--space-4);
+	}
+
+	.footer-rubriques {
+		grid-column: span 2;
+	}
+
+	.footer-rubriques-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0 var(--space-8);
+	}
+
+	.footer-link {
+		display: block;
+		color: rgba(255, 255, 255, 0.72);
+		font-size: var(--text-sm);
+		line-height: 1.6;
+		padding-block: 0.28em;
+	}
+
+	.footer-link:hover {
+		color: var(--white);
 	}
 
 	.footer-bottom {
-		width: min(100% - 2rem, var(--max-width));
-		margin-inline: auto;
-		border-top: 1px solid var(--color-grey-light);
-		padding-block: var(--space-4);
-		color: var(--color-grey-muted);
-		font-size: 0.85rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--space-4);
+		margin-top: var(--space-16);
+		padding-top: var(--space-6);
+		border-top: 1px solid rgba(255, 255, 255, 0.14);
+		color: rgba(255, 255, 255, 0.5);
+		font-size: var(--text-xs);
+		letter-spacing: 0.02em;
 	}
 
-	@media (max-width: 760px) {
-		.footer-inner {
-			grid-template-columns: 1fr;
-		}
+	.footer-legal {
+		display: flex;
+		gap: var(--space-5);
+	}
 
-		.footer-nav {
+	.footer-legal a {
+		color: inherit;
+	}
+
+	.footer-legal a:hover {
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	@media (max-width: 900px) {
+		.footer-grid {
 			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.footer-grid {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

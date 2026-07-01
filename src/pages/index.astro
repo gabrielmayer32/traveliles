@@ -4,57 +4,161 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import HeroVideo from '../components/HeroVideo.astro';
 import VideoCard from '../components/VideoCard.astro';
+import { iconSvg } from '../lib/icons';
 
 const articles = (await getCollection('articles'))
-	.filter((article) => article.data.published)
+	.filter((a) => a.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const videos = (await getCollection('videos'))
-	.filter((video) => video.data.published)
+	.filter((v) => v.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const [heroVideo, ...restVideos] = videos;
 const latestVideos = restVideos.slice(0, 6);
 const latestArticles = articles.slice(0, 3);
+const featureArticle = articles[3] ?? articles[0];
 ---
 
 <BaseLayout>
-	{heroVideo && <HeroVideo video={heroVideo} />}
+	<!-- Hero -->
+	{heroVideo && (
+		<section class="container-wide hero-section">
+			<div class="hero-header">
+				<span class="kicker">À la une · Vidéo</span>
+				<span class="meta hero-tagline">Le magazine vidéo de l'océan Indien</span>
+			</div>
+			<HeroVideo video={heroVideo} />
+		</section>
+	)}
 
-	<section class="section videos-band">
-		<div class="container">
-			<div class="section-header">
+	<!-- Recent videos -->
+	<section class="container-wide section videos-section">
+		<div class="section-header">
+			<div class="section-header-left">
+				<span class="kicker">Vidéos</span>
 				<h2 class="section-title">Dernières vidéos</h2>
-				<a class="section-link" href="/videos">Voir les vidéos</a>
 			</div>
-			<div class="grid-4">
-				{latestVideos.map((video) => <VideoCard video={video} />)}
-			</div>
+			<a class="section-cta" href="/videos">
+				Toutes les vidéos <Fragment set:html={iconSvg('arrow-right', 16)} />
+			</a>
+		</div>
+		<div class="grid-3">
+			{latestVideos.map((video) => <VideoCard video={video} />)}
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="container">
-			<div class="section-header">
-				<h2 class="section-title">Articles</h2>
-				<a class="section-link" href="/articles">Tous les articles</a>
+	<!-- Feature article -->
+	{featureArticle && (
+		<section class="feature-band">
+			<div class="container-wide section">
+				<span class="kicker feature-kicker">En lecture</span>
+				<ArticleCard article={featureArticle} orientation="horizontal" size="lg" />
 			</div>
-			<div class="grid-3">
-				{latestArticles.map((article) => <ArticleCard article={article} />)}
+		</section>
+	)}
+
+	<!-- Articles -->
+	<section class="container-wide section">
+		<div class="section-header">
+			<div class="section-header-left">
+				<span class="kicker">Articles</span>
+				<h2 class="section-title">À lire</h2>
 			</div>
+			<a class="section-cta" href="/articles">
+				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
+			</a>
+		</div>
+		<div class="grid-3">
+			{latestArticles.map((article) => <ArticleCard article={article} />)}
+		</div>
+		<div class="articles-more">
+			<a class="btn-secondary" href="/articles">
+				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
+			</a>
 		</div>
 	</section>
 </BaseLayout>
 
 <style>
-	.section-link {
-		color: var(--color-navy);
-		font-size: 0.9rem;
-		font-weight: 600;
+	.hero-section {
+		padding-top: var(--space-10);
 	}
 
-	.videos-band {
-		background: var(--color-white);
-		border-block: 1px solid var(--color-grey-light);
+	.hero-header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: var(--space-5);
+	}
+
+	.hero-tagline {
+		letter-spacing: 0.04em;
+	}
+
+	.section-header-left {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.section-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		color: var(--navy);
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.feature-band {
+		background: var(--navy-050);
+	}
+
+	.feature-kicker {
+		display: block;
+		margin-bottom: var(--space-6);
+	}
+
+	.articles-more {
+		display: flex;
+		justify-content: center;
+		margin-top: var(--space-12);
+	}
+
+	.btn-secondary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+		color: var(--ink);
+		background: transparent;
+		border: 1px solid var(--ink);
+		border-radius: var(--radius-xs);
+		padding: 0.8em 1.5em;
+		transition: all var(--dur-fast) var(--ease-out);
+	}
+
+	.btn-secondary:hover {
+		background: var(--ink);
+		color: var(--white);
+	}
+
+	.videos-section {
+		padding-bottom: var(--space-16);
+	}
+
+	@media (max-width: 640px) {
+		.hero-header {
+			flex-direction: column;
+			gap: var(--space-2);
+		}
 	}
 </style>

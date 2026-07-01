@@ -3,11 +3,12 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../components/CategoryLabel.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
+import VideoCard from '../../components/VideoCard.astro';
 import { formatDate } from '../../lib/utils';
+import { iconSvg } from '../../lib/icons';
 
 export async function getStaticPaths() {
-	const videos = (await getCollection('videos')).filter((video) => video.data.published);
-
+	const videos = (await getCollection('videos')).filter((v) => v.data.published);
 	return videos.map((video) => ({
 		params: { slug: video.id },
 		props: { video },
@@ -16,58 +17,98 @@ export async function getStaticPaths() {
 
 const { video } = Astro.props;
 const { Content } = await render(video);
+
+const allVideos = (await getCollection('videos'))
+	.filter((v) => v.data.published && v.id !== video.id)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const more = allVideos.slice(0, 3);
 ---
 
 <BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={video.data.thumbnail}>
-	<article>
-		<header class="video-header">
-			<div class="container">
-				<CategoryLabel category={video.data.category} />
-				<h1>{video.data.title}</h1>
-				<p>{video.data.excerpt}</p>
-				<div class="meta">{formatDate(video.data.date)}</div>
-			</div>
-		</header>
+	<div class="container-wide video-page">
+		<a class="back-link" href="/videos">
+			<span class="back-arrow"><Fragment set:html={iconSvg('arrow-right', 16)} /></span>
+			Toutes les vidéos
+		</a>
 
-		<div class="container">
+		<div class="video-player">
 			<VideoEmbed videoSource={video.data.videoSource} videoId={video.data.videoId} title={video.data.title} />
 		</div>
 
-		<div class="container video-content">
-			<div class="prose">
+		<div class="video-info">
+			<div class="video-info-top">
+				<CategoryLabel category={video.data.category} variant="solid" linked={false} />
+				<span class="meta">Vidéo · {formatDate(video.data.date)}</span>
+			</div>
+			<h1>{video.data.title}</h1>
+			<div class="prose video-body">
 				<Content />
 			</div>
 		</div>
-	</article>
+	</div>
+
+	{more.length > 0 && (
+		<section class="container-wide section">
+			<div class="section-header">
+				<h2 class="section-title more-title">À voir aussi</h2>
+			</div>
+			<div class="grid-3">
+				{more.map((v) => <VideoCard video={v} />)}
+			</div>
+		</section>
+	)}
 </BaseLayout>
 
 <style>
-	.video-header {
-		padding-block: var(--space-16) var(--space-10);
+	.video-page {
+		padding-top: var(--space-10);
 	}
 
-	.video-header :global(.category-label) {
-		display: inline-block;
-		margin-bottom: var(--space-6);
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		color: var(--text-muted);
+		font-size: var(--text-sm);
+		letter-spacing: 0.04em;
+		margin-bottom: var(--space-8);
+	}
+
+	.back-arrow {
+		display: inline-flex;
+		transform: rotate(180deg);
+	}
+
+	.video-player {
+		border-radius: var(--radius-sm);
+		overflow: hidden;
+		background: var(--navy-950);
+	}
+
+	.video-info {
+		max-width: 52rem;
+		margin-top: var(--space-8);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.video-info-top {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
 	}
 
 	h1 {
-		max-width: 58rem;
-		font-size: clamp(3rem, 8vw, 6rem);
+		font-size: clamp(1.875rem, 5vw, 3rem);
+		line-height: 1.06;
 	}
 
-	.video-header p {
-		max-width: 44rem;
-		margin-top: var(--space-6);
-		color: #444;
-		font-size: 1.2rem;
+	.video-body {
+		color: var(--text-secondary);
 	}
 
-	.video-header .meta {
-		margin-top: var(--space-4);
-	}
-
-	.video-content {
-		padding-block: var(--space-12);
+	.more-title {
+		font-size: var(--text-2xl);
 	}
 </style>

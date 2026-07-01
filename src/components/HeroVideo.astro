@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate, slugifyCategory } from '../lib/utils';
+import { formatDate } from '../lib/utils';
 import CategoryLabel from './CategoryLabel.astro';
 
 interface Props {
@@ -25,7 +25,7 @@ const thumbnail = video.data.thumbnail ?? (
 );
 ---
 
-<article class="hero-video">
+<section class="hero-video">
 	<div class="hero-media">
 		{thumbnail && <img class="hero-poster" src={thumbnail} alt="" />}
 		<iframe
@@ -36,26 +36,22 @@ const thumbnail = video.data.thumbnail ?? (
 			allowfullscreen
 		></iframe>
 	</div>
-	<div class="hero-gradient"></div>
-	<div class="hero-overlay">
-		<CategoryLabel category={category} linked={false} />
-		<h1><a href={href}>{title}</a></h1>
-		<p>{excerpt}</p>
-		<div class="meta">{formatDate(date)}</div>
+	<div class="hero-scrim"></div>
+	<div class="hero-overlay container-wide">
+		<CategoryLabel category={category} variant="overlay" linked={false} />
+		<h2 class="hero-title"><a href={href}>{title}</a></h2>
+		{excerpt && <p class="hero-excerpt">{excerpt}</p>}
+		<div class="meta hero-meta">{formatDate(date)}</div>
 	</div>
-</article>
+</section>
 
 <script>
 	function initHeroVideo() {
 		const iframe = document.querySelector<HTMLIFrameElement>('.hero-video .hero-iframe');
 		const poster = document.querySelector<HTMLImageElement>('.hero-video .hero-poster');
 		if (!iframe || !poster) return;
-
-		iframe.addEventListener('load', () => {
-			poster.classList.add('loaded');
-		});
+		iframe.addEventListener('load', () => poster.classList.add('loaded'));
 	}
-
 	document.addEventListener('astro:page-load', initHeroVideo);
 	initHeroVideo();
 </script>
@@ -63,13 +59,13 @@ const thumbnail = video.data.thumbnail ?? (
 <style>
 	.hero-video {
 		position: relative;
-		background: var(--color-ink);
+		background: var(--navy-950);
 		overflow: hidden;
 	}
 
 	.hero-media {
 		position: relative;
-		min-height: min(76vh, 48rem);
+		height: clamp(420px, 62vh, 640px);
 	}
 
 	.hero-poster {
@@ -79,7 +75,7 @@ const thumbnail = video.data.thumbnail ?? (
 		height: 100%;
 		object-fit: cover;
 		z-index: 3;
-		transition: opacity 800ms ease;
+		transition: opacity 800ms var(--ease-out);
 	}
 
 	.hero-poster.loaded {
@@ -97,62 +93,61 @@ const thumbnail = video.data.thumbnail ?? (
 		pointer-events: none;
 	}
 
-	.hero-gradient {
+	.hero-scrim {
 		position: absolute;
-		inset: auto 0 0;
-		z-index: 2;
-		height: 60%;
-		background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+		inset: 0;
+		z-index: 4;
+		background: linear-gradient(
+			to top,
+			rgba(20, 26, 63, 0.78) 0%,
+			rgba(20, 26, 63, 0.28) 46%,
+			rgba(20, 26, 63, 0.10) 100%
+		);
 		pointer-events: none;
 	}
 
 	.hero-overlay {
 		position: absolute;
-		inset: auto 0 0;
-		z-index: 4;
-		display: grid;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 5;
+		display: flex;
+		flex-direction: column;
 		gap: var(--space-4);
-		width: min(100% - 2rem, var(--max-width));
-		margin-inline: auto;
-		padding-bottom: clamp(2rem, 8vw, 6rem);
+		padding-bottom: clamp(1.5rem, 4vw, 3rem);
+		max-width: 52rem;
 	}
 
-	h1 {
-		max-width: 58rem;
-		font-size: clamp(3rem, 8vw, 5rem);
+	.hero-title {
+		font-size: clamp(2rem, 5vw, 3.75rem);
+		line-height: var(--leading-tight);
+		text-wrap: balance;
 	}
 
-	h1 a {
-		color: var(--color-white);
+	.hero-title a {
+		color: var(--white);
 	}
 
-	h1 a:hover {
+	.hero-title a:hover {
 		text-decoration: underline;
 		text-underline-offset: 0.15em;
 	}
 
-	p {
-		max-width: 42rem;
-		color: var(--color-white);
-		font-size: clamp(1rem, 2vw, 1.25rem);
-		line-height: 1.55;
+	.hero-excerpt {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: var(--text-lg);
+		line-height: var(--leading-normal);
+		max-width: 40rem;
 	}
 
-	.meta {
+	.hero-meta {
 		color: rgba(255, 255, 255, 0.78);
-	}
-
-	:global(.hero-video .category-label) {
-		color: var(--color-white) !important;
 	}
 
 	@media (max-width: 640px) {
 		.hero-media {
-			min-height: 34rem;
-		}
-
-		.hero-overlay {
-			width: min(100% - 1.25rem, var(--max-width));
+			height: clamp(320px, 50vh, 420px);
 		}
 	}
 </style>

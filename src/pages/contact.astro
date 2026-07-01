@@ -1,26 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { iconSvg } from '../lib/icons';
 ---
 
 <BaseLayout title="Contact" description="Contacter la rédaction de Travel-Îles.">
-	<section class="section">
-		<div class="container">
-			<p class="page-kicker">Contact</p>
+	<section class="container-wide contact-page">
+		<header class="contact-header">
+			<span class="kicker">Contact</span>
 			<h1 class="page-title">Nous écrire</h1>
-			<p class="page-intro">Pour une adresse à proposer, une collaboration éditoriale ou une demande de partenariat, contactez la rédaction.</p>
-		</div>
-	</section>
+		</header>
 
-	<section class="section contact-body">
-		<div class="container prose">
-			<!-- TODO: replace email -->
+		<div class="prose">
+			<p>Pour une adresse à proposer, une collaboration éditoriale ou une demande de partenariat, contactez la rédaction.</p>
 			<p><a href="mailto:contact@traveliles.com">contact@traveliles.com</a></p>
 		</div>
 	</section>
 </BaseLayout>
 
 <style>
-	.contact-body {
-		padding-top: 0;
+	.contact-page {
+		padding-top: var(--space-10);
+		padding-bottom: var(--space-20);
+	}
+
+	.contact-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		margin-bottom: var(--space-10);
 	}
 </style>

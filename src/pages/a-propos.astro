@@ -1,27 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { iconSvg } from '../lib/icons';
 ---
 
 <BaseLayout title="À propos" description="À propos de Travel-Îles.">
-	<section class="section">
-		<div class="container">
-			<p class="page-kicker">À propos</p>
-			<h1 class="page-title">Travel-Îles</h1>
-			<p class="page-intro">Travel-Îles est un magazine indépendant consacré aux voyages, aux saveurs, aux cultures, aux adresses et aux visages qui racontent Maurice et les îles de l’océan Indien.</p>
-		</div>
-	</section>
+	<section class="container-wide about-page">
+		<header class="about-header">
+			<span class="kicker">À propos</span>
+			<h1 class="page-title">Le regard, le lieu, le temps.</h1>
+		</header>
 
-	<section class="section about-body">
-		<div class="container prose">
-			<p>Nous racontons les adresses qui prennent le temps, les savoir-faire transmis, les régions qui se réinventent, les chefs, les artistes, les événements et les paysages encore discrets.</p>
-			<p>Chaque sujet privilégie le regard éditorial, la qualité des détails et la relation au lieu. Les vidéos occupent une place centrale, complétées par des articles pensés pour prolonger la découverte.</p>
-			<p><a href="/contact">Contacter la rédaction</a></p>
+		<div class="prose about-prose">
+			<p>Travel-Îles est un magazine indépendant consacré aux voyages d'exception, aux maisons d'hospitalité, aux tables, aux ateliers et aux paysages qui composent l'art de vivre mauricien.</p>
+			<p>Nous racontons les adresses qui prennent le temps&nbsp;: hôtels de caractère, villas privées, chefs, artisans, artistes, parcours de golf, lagons préservés et territoires encore discrets.</p>
+			<p>Chaque sujet privilégie le regard éditorial, la qualité des détails et la relation au lieu. Différent, mais lié à ce que nous faisions.</p>
+		</div>
+
+		<div class="about-cta">
+			<a class="btn-primary" href="/contact">
+				Nous écrire <Fragment set:html={iconSvg('mail', 16)} />
+			</a>
 		</div>
 	</section>
 </BaseLayout>
 
 <style>
-	.about-body {
-		padding-top: 0;
+	.about-page {
+		padding-top: var(--space-16);
+		padding-bottom: var(--space-20);
+	}
+
+	.about-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-5);
+		margin-bottom: var(--space-10);
+	}
+
+	.about-prose {
+		max-width: var(--prose-width);
+	}
+
+	.about-cta {
+		margin-top: var(--space-12);
+	}
+
+	.btn-primary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+		color: var(--white);
+		background: var(--navy);
+		border: none;
+		border-radius: var(--radius-xs);
+		padding: 0.85em 1.6em;
+		transition: background var(--dur-fast) var(--ease-out);
+	}
+
+	.btn-primary:hover {
+		background: var(--navy-900);
 	}
 </style>

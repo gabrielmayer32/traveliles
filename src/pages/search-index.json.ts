@@ -10,6 +10,7 @@ export async function GET() {
 			date: article.data.date.toISOString(),
 			url: `/articles/${article.id}`,
 			type: 'article',
+			cover: article.data.cover ?? null,
 		}));
 
 	const videos = (await getCollection('videos'))
@@ -21,6 +22,7 @@ export async function GET() {
 			date: video.data.date.toISOString(),
 			url: `/videos/${video.id}`,
 			type: 'video',
+			thumbnail: video.data.thumbnail ?? null,
 		}));
 
 	return new Response(JSON.stringify([...articles, ...videos]), {
