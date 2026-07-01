@@ -16,6 +16,18 @@ collections:
     slug: "{{slug}}"
     extension: md
     format: frontmatter
+    sortable_fields:
+      - title
+      - date
+      - category
+      - author
+    view_groups:
+      - label: Catégorie
+        field: category
+      - label: Auteur
+        field: author
+      - label: Publié
+        field: published
     fields:
       - { name: title, label: Titre, widget: string }
       - { name: date, label: Date, widget: datetime }
@@ -45,6 +57,17 @@ collections:
     slug: "{{slug}}"
     extension: md
     format: frontmatter
+    sortable_fields:
+      - title
+      - date
+      - category
+    view_groups:
+      - label: Catégorie
+        field: category
+      - label: Source
+        field: videoSource
+      - label: Publié
+        field: published
     fields:
       - { name: title, label: Titre, widget: string }
       - { name: date, label: Date, widget: datetime }
