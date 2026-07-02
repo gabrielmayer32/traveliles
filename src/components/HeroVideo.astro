@@ -67,7 +67,7 @@ const thumbnail = video.data.thumbnail ?? (
 				});
 			}
 
-			// Use YouTube IFrame API to force-restart on end, preventing the end screen
+			// Use YouTube IFrame API to force-restart on end, hiding the end screen
 			if (embedSrc!.includes('youtube.com')) {
 				function attachYTPlayer() {
 					const player = new (window as any).YT.Player(iframe, {
@@ -75,8 +75,21 @@ const thumbnail = video.data.thumbnail ?? (
 							onStateChange(event: any) {
 								// YT.PlayerState.ENDED === 0
 								if (event.data === 0) {
+									// Show poster to cover the end screen, then seek & replay
+									if (poster) {
+										poster.style.transition = 'none';
+										poster.style.opacity = '1';
+										poster.style.pointerEvents = 'none';
+									}
 									player.seekTo(0);
 									player.playVideo();
+									// Fade poster back out once video is playing again
+									setTimeout(() => {
+										if (poster) {
+											poster.style.transition = '';
+											poster.style.opacity = '0';
+										}
+									}, 800);
 								}
 							}
 						}
@@ -156,7 +169,7 @@ const thumbnail = video.data.thumbnail ?? (
 		min-height: 100%;
 		border: 0;
 		pointer-events: none;
-		transform: translate(-50%, -50%) scale(1.12);
+		transform: translate(-50%, -50%) scale(1.25);
 	}
 
 	.hero-scrim {
