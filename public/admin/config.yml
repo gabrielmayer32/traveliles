@@ -64,12 +64,11 @@ collections:
 
   - name: videos
     label: Vidéos
-    folder: src/content/videos
+    folder: src/content/videos/fr
     create: true
     slug: "{{slug}}"
     extension: md
     format: frontmatter
-    i18n: true
     sortable_fields:
       - title
       - date
@@ -82,12 +81,11 @@ collections:
       - label: Publié
         field: published
     fields:
-      - { name: title, label: Titre / Title, widget: string, required: false, i18n: true }
-      - { name: date, label: Date, widget: datetime, i18n: duplicate }
+      - { name: title, label: Titre, widget: string }
+      - { name: date, label: Date, widget: datetime }
       - label: Catégorie
         name: category
         widget: select
-        i18n: duplicate
         options:
           - Un visage, une histoire
           - Les gardiens du Savoir Faire
@@ -103,17 +101,16 @@ collections:
       - label: Source vidéo
         name: videoSource
         widget: select
-        i18n: duplicate
         options:
           - { label: YouTube, value: youtube }
           - { label: Vimeo, value: vimeo }
           - { label: Facebook, value: facebook }
           - { label: Instagram, value: instagram }
-      - { name: videoId, label: ID vidéo, widget: string, i18n: duplicate, hint: "YouTube: ID de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post." }
-      - { name: thumbnail, label: Vignette, widget: image, required: false, i18n: duplicate }
-      - { name: excerpt, label: Extrait / Excerpt, widget: text, required: false, i18n: true }
-      - { name: published, label: Publié, widget: boolean, default: false, i18n: true }
-      - { name: body, label: Description, widget: markdown, required: false, i18n: true }
+      - { name: videoId, label: ID vidéo, widget: string, hint: "YouTube: ID de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post." }
+      - { name: thumbnail, label: Vignette, widget: image, required: false }
+      - { name: excerpt, label: Extrait, widget: text, required: false }
+      - { name: published, label: Publié, widget: boolean, default: false }
+      - { name: body, label: Description, widget: markdown, required: false }
 
   - name: pages
     label: Pages

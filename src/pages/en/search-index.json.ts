@@ -13,14 +13,14 @@ export async function GET() {
 			cover: a.data.cover ?? null,
 		}));
 
-	const videos = (await getCollection('videos_en'))
-		.filter((v) => v.data.published && !!v.data.title)
+	const videos = (await getCollection('videos'))
+		.filter((v) => v.data.published)
 		.map((v) => ({
 			title: v.data.title,
 			excerpt: v.data.excerpt,
 			category: v.data.category,
 			date: v.data.date.toISOString(),
-			url: `/en/videos/${v.id}`,
+			url: `/videos/${v.id}`,
 			type: 'video',
 			thumbnail: v.data.thumbnail ?? null,
 		}));

@@ -9,16 +9,15 @@ import { iconSvg } from '../../lib/icons';
 
 export async function getStaticPaths() {
 	const videos = (await getCollection('videos')).filter((v) => v.data.published);
-	const enVideos = await getCollection('videos_en');
 	return videos.map((video) => ({
 		params: { slug: video.id },
-		props: { video, hasEn: enVideos.some((e) => e.id === video.id && e.data.published && !!e.data.title) },
+		props: { video },
 	}));
 }
 
-const { video, hasEn } = Astro.props;
+const { video } = Astro.props;
 const { Content } = await render(video);
-const alternateUrl = hasEn ? `/en/videos/${video.id}` : undefined;
+const alternateUrl = undefined;
 
 const videoSchema = JSON.stringify({
 	'@context': 'https://schema.org',
