@@ -24,40 +24,54 @@ const related = allArticles.slice(0, 3);
 ---
 
 <BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover}>
-	<div class="container back-link-wrap">
-		<a class="back-link" href="/articles">
-			<span class="back-arrow"><Fragment set:html={iconSvg('arrow-right', 16)} /></span>
-			Tous les articles
-		</a>
-	</div>
-
 	<article>
-		<header class="article-header container">
+		<!-- Back link -->
+		<div class="back-wrap">
+			<a class="back-link" href="/articles">
+				<span class="back-arrow"><Fragment set:html={iconSvg('arrow-right', 16)} /></span>
+				Tous les articles
+			</a>
+		</div>
+
+		<!-- Centered title block -->
+		<header class="article-header">
 			<CategoryLabel category={article.data.category} />
 			<h1>{article.data.title}</h1>
 			<p class="article-lead">{article.data.excerpt}</p>
-			<div class="meta article-meta">
+			<div class="article-meta meta">
 				<span class="article-author">{article.data.author}</span>
-				<span>·</span>
+				<span aria-hidden="true">·</span>
 				<span>{formatDate(article.data.date)}</span>
 			</div>
 		</header>
 
+		<!-- Hero image — 3:2, contained at 62rem, with caption -->
 		{article.data.cover && (
-			<div class="article-cover container-wide">
-				<img src={article.data.cover} alt="" />
-			</div>
+			<figure class="article-figure">
+				<div class="article-cover">
+					<img src={article.data.cover} alt="" />
+				</div>
+				<figcaption class="meta article-caption">
+					{article.data.category} · Travel-Îles
+				</figcaption>
+			</figure>
 		)}
 
-		<div class="container article-content">
-			<div class="prose">
+		<!-- Body — lead paragraph + prose at 40rem -->
+		<div class="article-body">
+			<div class="prose article-prose">
 				<Content />
 			</div>
+
+			<!-- Tags footer — ruled -->
 			{article.data.tags.length > 0 && (
-				<div class="tags">
-					{article.data.tags.map((tag) => (
-						<span class="tag">{tag}</span>
-					))}
+				<div class="tags-footer">
+					<span class="kicker tags-kicker">Sujets</span>
+					<div class="tags">
+						{article.data.tags.map((tag) => (
+							<span class="tag">{tag}</span>
+						))}
+					</div>
 				</div>
 			)}
 		</div>
@@ -76,8 +90,11 @@ const related = allArticles.slice(0, 3);
 </BaseLayout>
 
 <style>
-	.back-link-wrap {
-		padding-top: var(--space-10);
+	/* Back link */
+	.back-wrap {
+		width: min(100% - 2.5rem, 46rem);
+		margin: 0 auto;
+		padding-top: var(--space-8);
 	}
 
 	.back-link {
@@ -95,40 +112,56 @@ const related = allArticles.slice(0, 3);
 		transform: rotate(180deg);
 	}
 
+	/* Centered title block */
 	.article-header {
-		max-width: 68rem;
+		width: min(100% - 2.5rem, 46rem);
+		margin: 0 auto;
+		text-align: center;
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-5);
+		align-items: center;
+		gap: var(--space-6);
 	}
 
 	h1 {
-		font-size: clamp(2.25rem, 6vw, 4rem);
-		line-height: 1.04;
+		font-size: clamp(2.5rem, 6vw, 4.25rem);
+		line-height: 1.03;
+		text-wrap: balance;
+		margin: 0;
 	}
 
 	.article-lead {
 		font-size: var(--text-lg);
 		line-height: var(--leading-normal);
 		color: var(--text-secondary);
-		max-width: 52rem;
+		max-width: 38rem;
+		text-wrap: pretty;
+		margin: 0;
 	}
 
 	.article-meta {
-		display: flex;
+		display: inline-flex;
 		gap: var(--space-3);
 		align-items: center;
-		margin-top: var(--space-2);
+		padding-top: var(--space-5);
+		border-top: 1px solid var(--border-subtle);
+		width: fit-content;
 	}
 
 	.article-author {
 		color: var(--ink);
 		font-weight: var(--fw-medium);
+		letter-spacing: 0.02em;
+	}
+
+	/* Hero figure */
+	.article-figure {
+		margin: var(--space-12) auto 0;
+		width: min(100% - 2.5rem, 62rem);
 	}
 
 	.article-cover {
-		margin-block: var(--space-12);
-		aspect-ratio: 16 / 8;
+		aspect-ratio: 3 / 2;
 		overflow: hidden;
 		border-radius: var(--radius-sm);
 		background: var(--surface-sunken);
@@ -140,16 +173,51 @@ const related = allArticles.slice(0, 3);
 		object-fit: cover;
 	}
 
-	.article-content {
-		padding-block: var(--space-4) var(--space-12);
+	.article-caption {
+		margin-top: var(--space-3);
+		font-size: var(--text-sm);
+		color: var(--text-muted);
+		font-style: italic;
+	}
+
+	/* Body */
+	.article-body {
+		width: min(100% - 2.5rem, 40rem);
+		margin: 0 auto;
+		padding-top: var(--space-16);
+		padding-bottom: var(--space-12);
+	}
+
+	/* First paragraph rendered as editorial lead in Playfair Display */
+	.article-prose :global(p:first-child) {
+		font-family: var(--font-display);
+		font-weight: var(--fw-regular);
+		font-size: clamp(1.375rem, 2.4vw, 1.625rem);
+		line-height: 1.5;
+		color: var(--ink);
+		margin-bottom: var(--space-8);
+	}
+
+	.article-prose {
+		max-width: none;
+	}
+
+	/* Tags footer */
+	.tags-footer {
+		margin-top: var(--space-12);
+		padding-top: var(--space-6);
+		border-top: 1px solid var(--border-subtle);
+	}
+
+	.tags-kicker {
+		display: block;
+		margin-bottom: var(--space-4);
 	}
 
 	.tags {
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--space-2);
-		margin-top: var(--space-10);
-		max-width: var(--prose-width);
 	}
 
 	.tag {
