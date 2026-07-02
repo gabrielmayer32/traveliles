@@ -15,9 +15,12 @@ const videos = (await getCollection('videos'))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const [heroVideo, ...restVideos] = videos;
-const latestVideos = restVideos.slice(0, 6);
-const latestArticles = articles.slice(0, 3);
-const featureArticle = articles[3] ?? articles[0];
+// Lead video card + up to 4 secondary cards in the grid
+const leadVideo = restVideos[0];
+const gridVideos = restVideos.slice(1, 5);
+// Feature article (horizontal, prominent) + 3-column grid below
+const [featureArticle, ...gridArticles] = articles;
+const latestArticles = gridArticles.slice(0, 3);
 ---
 
 <BaseLayout>
@@ -32,7 +35,7 @@ const featureArticle = articles[3] ?? articles[0];
 		</section>
 	)}
 
-	<!-- Recent videos -->
+	<!-- Videos: lead + grid -->
 	<section class="container-wide section videos-section">
 		<div class="section-header">
 			<div class="section-header-left">
@@ -43,23 +46,35 @@ const featureArticle = articles[3] ?? articles[0];
 				Toutes les vidéos <Fragment set:html={iconSvg('arrow-right', 16)} />
 			</a>
 		</div>
-		<div class="grid-3">
-			{latestVideos.map((video) => <VideoCard video={video} />)}
-		</div>
+
+		{leadVideo && (
+			<div class="videos-lead">
+				<div class="videos-lead-card">
+					<VideoCard video={leadVideo} size="lg" />
+				</div>
+				{gridVideos.length > 0 && (
+					<div class="videos-lead-grid">
+						{gridVideos.map((v) => <VideoCard video={v} />)}
+					</div>
+				)}
+			</div>
+		)}
 	</section>
 
-	<!-- Feature article -->
+	<!-- Feature article — editorial horizontal banner -->
 	{featureArticle && (
 		<section class="feature-band">
-			<div class="container-wide section">
-				<span class="kicker feature-kicker">En lecture</span>
+			<div class="container-wide section feature-section">
+				<div class="feature-label">
+					<span class="kicker">En lecture</span>
+				</div>
 				<ArticleCard article={featureArticle} orientation="horizontal" size="lg" />
 			</div>
 		</section>
 	)}
 
-	<!-- Articles -->
-	<section class="container-wide section">
+	<!-- Articles grid -->
+	<section class="container-wide section articles-section">
 		<div class="section-header">
 			<div class="section-header-left">
 				<span class="kicker">Articles</span>
@@ -71,11 +86,6 @@ const featureArticle = articles[3] ?? articles[0];
 		</div>
 		<div class="grid-3">
 			{latestArticles.map((article) => <ArticleCard article={article} />)}
-		</div>
-		<div class="articles-more">
-			<a class="btn-secondary" href="/articles">
-				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
-			</a>
 		</div>
 	</section>
 </BaseLayout>
@@ -99,7 +109,7 @@ const featureArticle = articles[3] ?? articles[0];
 	.section-header-left {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: var(--space-2);
 	}
 
 	.section-cta {
@@ -112,53 +122,65 @@ const featureArticle = articles[3] ?? articles[0];
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
+	/* Videos — large lead left (58%), stacked column right (42%) */
+	.videos-section {
+		padding-bottom: var(--space-20);
+	}
+
+	.videos-lead {
+		display: grid;
+		grid-template-columns: 58fr 42fr;
+		gap: var(--space-8);
+		align-items: start;
+	}
+
+	.videos-lead-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-6);
+	}
+
+	/* Feature band */
 	.feature-band {
 		background: var(--navy-050);
 	}
 
-	.feature-kicker {
-		display: block;
-		margin-bottom: var(--space-6);
-	}
-
-	.articles-more {
+	.feature-section {
 		display: flex;
-		justify-content: center;
-		margin-top: var(--space-12);
+		flex-direction: column;
+		gap: var(--space-6);
 	}
 
-	.btn-secondary {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5em;
-		font-family: var(--font-body);
-		font-size: var(--text-sm);
-		font-weight: var(--fw-semibold);
-		letter-spacing: var(--tracking-wide);
-		text-transform: uppercase;
-		color: var(--ink);
-		background: transparent;
-		border: 1px solid var(--ink);
-		border-radius: var(--radius-xs);
-		padding: 0.8em 1.5em;
-		transition: all var(--dur-fast) var(--ease-out);
+	/* Articles section */
+	.articles-section {
+		padding-top: var(--space-20);
 	}
 
-	.btn-secondary:hover {
-		background: var(--ink);
-		color: var(--white);
-	}
+	@media (max-width: 860px) {
+		.videos-lead {
+			grid-template-columns: 1fr;
+		}
 
-	.videos-section {
-		padding-bottom: var(--space-16);
+		.videos-lead-grid {
+			grid-template-columns: 1fr 1fr;
+		}
 	}
 
 	@media (max-width: 640px) {
 		.hero-header {
 			flex-direction: column;
 			gap: var(--space-2);
+		}
+
+		.videos-lead-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.videos-lead-card :global(.video-card--lg .video-title) {
+			font-size: var(--text-lg);
 		}
 	}
 </style>

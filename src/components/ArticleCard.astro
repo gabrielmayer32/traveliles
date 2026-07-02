@@ -42,8 +42,9 @@ const horizontal = orientation === 'horizontal';
 
 	.article-card--horizontal {
 		display: grid;
-		grid-template-columns: 0.9fr 1.1fr;
-		gap: var(--space-6);
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-10);
+		align-items: center;
 	}
 
 	.article-image {
@@ -55,7 +56,11 @@ const horizontal = orientation === 'horizontal';
 	}
 
 	.article-card--horizontal .article-image {
-		aspect-ratio: 4 / 3;
+		aspect-ratio: 3 / 2;
+	}
+
+	.article-card--horizontal .article-body {
+		gap: var(--space-4);
 	}
 
 	.article-image img {
@@ -89,7 +94,13 @@ const horizontal = orientation === 'horizontal';
 	}
 
 	.article-card--lg .article-title {
-		font-size: var(--text-2xl);
+		font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+		line-height: 1.1;
+	}
+
+	.article-card--horizontal.article-card--lg .article-excerpt {
+		font-size: var(--text-lg);
+		line-height: var(--leading-normal);
 	}
 
 	.article-card:hover .article-title {
