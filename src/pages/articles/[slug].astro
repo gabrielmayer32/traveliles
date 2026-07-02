@@ -112,40 +112,42 @@ const related = allArticles.slice(0, 3);
 		transform: rotate(180deg);
 	}
 
-	/* Centered title block */
+	/* Title block — left-aligned, editorial */
 	.article-header {
 		width: min(100% - 2.5rem, 46rem);
 		margin: 0 auto;
-		text-align: center;
+		text-align: left;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		gap: var(--space-6);
+		align-items: flex-start;
+		gap: var(--space-5);
+		padding-top: var(--space-4);
 	}
 
 	h1 {
-		font-size: clamp(2.5rem, 6vw, 4.25rem);
-		line-height: 1.03;
+		font-size: clamp(2.25rem, 5.5vw, 4rem);
+		line-height: 1.05;
 		text-wrap: balance;
 		margin: 0;
+		letter-spacing: -0.01em;
 	}
 
 	.article-lead {
 		font-size: var(--text-lg);
 		line-height: var(--leading-normal);
 		color: var(--text-secondary);
-		max-width: 38rem;
+		max-width: 36rem;
 		text-wrap: pretty;
 		margin: 0;
 	}
 
 	.article-meta {
-		display: inline-flex;
+		display: flex;
 		gap: var(--space-3);
 		align-items: center;
-		padding-top: var(--space-5);
+		padding-top: var(--space-4);
 		border-top: 1px solid var(--border-subtle);
-		width: fit-content;
+		width: 100%;
 	}
 
 	.article-author {
