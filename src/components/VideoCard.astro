@@ -17,16 +17,21 @@ const thumbnail = video.data.thumbnail ?? (
 		: undefined
 );
 const playSize = size === 'lg' ? 76 : 60;
-const iconSize = size === 'lg' ? 30 : 24;
+const iconSize = Math.round(playSize * 0.4);
+const playPaddingLeft = Math.round(playSize * 0.06);
+const duration = (video.data as any).duration as string | undefined;
 ---
 
 <a class:list={['video-card', `video-card--${size}`]} href={href}>
 	<div class="video-thumbnail">
 		{thumbnail && <img src={thumbnail} alt="" loading="lazy" />}
 		<span class="video-scrim"></span>
-		<span class="play-btn" style={`width:${playSize}px;height:${playSize}px;padding-left:${playSize * 0.06}px`}>
+		<span class="play-btn" style={`width:${playSize}px;height:${playSize}px;padding-left:${playPaddingLeft}px`}>
 			<Fragment set:html={iconSvg('play', iconSize)} />
 		</span>
+		{duration && (
+			<span class="video-duration">{duration}</span>
+		)}
 	</div>
 	<div class="video-body">
 		<CategoryLabel category={video.data.category} linked={false} />
@@ -80,7 +85,6 @@ const iconSize = size === 'lg' ? 30 : 24;
 		border-radius: var(--radius-pill);
 		background: rgba(255, 255, 255, 0.92);
 		color: var(--navy);
-		border: 1px solid rgba(255, 255, 255, 0.6);
 		box-shadow: 0 6px 24px rgba(20, 26, 63, 0.28);
 		transition: all var(--dur) var(--ease-out);
 	}
@@ -88,6 +92,20 @@ const iconSize = size === 'lg' ? 30 : 24;
 	.video-card:hover .play-btn {
 		background: var(--navy);
 		color: var(--white);
+	}
+
+	.video-duration {
+		position: absolute;
+		right: var(--space-3);
+		bottom: var(--space-3);
+		padding: 0.2em 0.55em;
+		background: rgba(20, 26, 63, 0.78);
+		color: var(--white);
+		font-family: var(--font-body);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-medium);
+		letter-spacing: 0.02em;
+		border-radius: var(--radius-xs);
 	}
 
 	.video-body {
@@ -101,6 +119,7 @@ const iconSize = size === 'lg' ? 30 : 24;
 		line-height: var(--leading-snug);
 		color: var(--text-heading);
 		transition: color var(--dur-fast) var(--ease-out);
+		margin: 0;
 	}
 
 	.video-card--lg .video-title {
