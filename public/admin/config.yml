@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: gabrielmayer32/traveliles
-  branch: main
+  branch: dev
   base_url: https://sveltia-cms-auth.gabriel0mayer.workers.dev
 
 media_folder: public/images/uploads
