@@ -132,14 +132,14 @@ const latestArticles = gridArticles.slice(0, 3);
 
 	.videos-lead {
 		display: grid;
-		grid-template-columns: 58fr 42fr;
+		grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
 		gap: var(--space-8);
 		align-items: start;
 	}
 
 	.videos-lead-grid {
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
 		gap: var(--space-6);
 	}
 
