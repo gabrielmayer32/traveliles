@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 
 export async function GET() {
 	const articles = (await getCollection('articles_en'))
-		.filter((a) => a.data.published)
+		.filter((a) => a.data.published && !!a.data.title)
 		.map((a) => ({
 			title: a.data.title,
 			excerpt: a.data.excerpt,
@@ -14,7 +14,7 @@ export async function GET() {
 		}));
 
 	const videos = (await getCollection('videos_en'))
-		.filter((v) => v.data.published)
+		.filter((v) => v.data.published && !!v.data.title)
 		.map((v) => ({
 			title: v.data.title,
 			excerpt: v.data.excerpt,

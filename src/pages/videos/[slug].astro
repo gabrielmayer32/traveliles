@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 	const enVideos = await getCollection('videos_en');
 	return videos.map((video) => ({
 		params: { slug: video.id },
-		props: { video, hasEn: enVideos.some((e) => e.id === video.id && e.data.published) },
+		props: { video, hasEn: enVideos.some((e) => e.id === video.id && e.data.published && !!e.data.title) },
 	}));
 }
 

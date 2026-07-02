@@ -10,7 +10,7 @@ import { iconSvg } from '../../../lib/icons';
 const locale = 'en' as const;
 
 export async function getStaticPaths() {
-	const videos = (await getCollection('videos_en')).filter((v) => v.data.published);
+	const videos = (await getCollection('videos_en')).filter((v) => v.data.published && !!v.data.title);
 	const frVideos = await getCollection('videos');
 	return videos.map((video) => ({
 		params: { slug: video.id },

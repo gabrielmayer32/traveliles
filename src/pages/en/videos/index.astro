@@ -8,7 +8,7 @@ import { t, localizedCategory } from '../../../lib/i18n';
 const locale = 'en' as const;
 
 const videos = (await getCollection('videos_en'))
-	.filter((v) => v.data.published)
+	.filter((v) => v.data.published && !!v.data.title)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 

@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 	const enArticles = await getCollection('articles_en');
 	return articles.map((article) => ({
 		params: { slug: article.id },
-		props: { article, hasEn: enArticles.some((e) => e.id === article.id && e.data.published) },
+		props: { article, hasEn: enArticles.some((e) => e.id === article.id && e.data.published && !!e.data.title) },
 	}));
 }
 

@@ -59,7 +59,7 @@ collections:
       - { name: excerpt, label: Extrait / Excerpt, widget: text, required: false, i18n: true }
       - { name: author, label: Auteur, widget: string, default: "Travel-Îles", i18n: duplicate }
       - { name: tags, label: Tags, widget: list, required: false, i18n: true }
-      - { name: published, label: Publié, widget: boolean, default: true, i18n: duplicate }
+      - { name: published, label: Publié, widget: boolean, default: false, i18n: true }
       - { name: body, label: Corps / Body, widget: markdown, required: false, i18n: true }
 
   - name: videos
@@ -112,7 +112,7 @@ collections:
       - { name: videoId, label: ID vidéo, widget: string, i18n: duplicate, hint: "YouTube: ID de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post." }
       - { name: thumbnail, label: Vignette, widget: image, required: false, i18n: duplicate }
       - { name: excerpt, label: Extrait / Excerpt, widget: text, required: false, i18n: true }
-      - { name: published, label: Publié, widget: boolean, default: true, i18n: duplicate }
+      - { name: published, label: Publié, widget: boolean, default: false, i18n: true }
       - { name: body, label: Description, widget: markdown, required: false, i18n: true }
 
   - name: pages

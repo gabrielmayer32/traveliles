@@ -17,7 +17,7 @@ export function getStaticPaths() {
 const { category } = Astro.props;
 
 const articles = (await getCollection('articles_en'))
-	.filter((a) => a.data.published && a.data.category === category)
+	.filter((a) => a.data.published && !!a.data.title && a.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const displayCategory = localizedCategory(category, locale);
