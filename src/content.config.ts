@@ -52,9 +52,4 @@ const videos = defineCollection({
 	schema: videoSchema,
 });
 
-const videos_en = defineCollection({
-	loader: glob({ pattern: '*.md', base: './src/content/videos/en' }),
-	schema: videoSchema,
-});
-
-export const collections = { articles, articles_en, videos, videos_en };
+export const collections = { articles, articles_en, videos };

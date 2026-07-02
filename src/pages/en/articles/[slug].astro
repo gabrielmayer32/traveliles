@@ -21,6 +21,18 @@ const { article, hasFr } = Astro.props;
 const { Content } = await render(article);
 const alternateUrl = hasFr ? `/articles/${article.id}` : undefined;
 
+const articleSchema = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: article.data.title,
+	description: article.data.excerpt,
+	datePublished: article.data.date.toISOString(),
+	author: { '@type': 'Person', name: article.data.author },
+	publisher: { '@type': 'Organization', name: 'Travel-Îles', url: Astro.site?.href },
+	...(article.data.cover ? { image: new URL(article.data.cover, Astro.site).href } : {}),
+	url: new URL(Astro.url.pathname, Astro.site).href,
+});
+
 const allArticles = (await getCollection('articles_en'))
 	.filter((a) => a.data.published && a.id !== article.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -28,6 +40,7 @@ const related = allArticles.slice(0, 3);
 ---
 
 <BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover} locale={locale} alternateUrl={alternateUrl}>
+	<script type="application/ld+json" set:html={articleSchema} />
 	<article>
 		<div class="back-wrap">
 			<a class="back-link" href="/en/articles">

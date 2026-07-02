@@ -41,7 +41,12 @@ const xDefaultUrl = locale === 'fr' ? canonicalUrl : (altUrl ?? canonicalUrl);
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:image" content={ogImage} />
+		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:locale" content={locale === 'en' ? 'en_GB' : 'fr_FR'} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 		<title>{pageTitle}</title>
 		<link rel="canonical" href={canonicalUrl} />
 		<link rel="alternate" hreflang={locale} href={canonicalUrl} />

@@ -13,16 +13,9 @@ const articles = (await getCollection('articles_en'))
 	.filter((a) => a.data.published && !!a.data.title)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const videos = (await getCollection('videos_en'))
-	.filter((v) => v.data.published && !!v.data.title)
+const videoSource = (await getCollection('videos'))
+	.filter((v) => v.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-// Fall back to FR videos if no EN videos yet
-const frVideos = videos.length === 0
-	? (await getCollection('videos')).filter((v) => v.data.published).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-	: null;
-
-const videoSource = videos.length > 0 ? videos : frVideos ?? [];
 const [heroVideo, ...restVideos] = videoSource;
 const leadVideo = restVideos[0];
 const gridVideos = restVideos.slice(1, 5);
@@ -38,7 +31,7 @@ const latestArticles = gridArticles.slice(0, 3);
 				<span class="kicker">{t('home.featured', locale)}</span>
 				<span class="meta hero-tagline">{t('home.tagline', locale)}</span>
 			</div>
-			<HeroVideo video={heroVideo} locale={locale} />
+			<HeroVideo video={heroVideo} locale="fr" />
 		</section>
 	)}
 
@@ -49,7 +42,7 @@ const latestArticles = gridArticles.slice(0, 3);
 					<span class="kicker">{t('home.videos_kicker', locale)}</span>
 					<h2 class="section-title">{t('home.latest_videos', locale)}</h2>
 				</div>
-				<a class="section-cta" href="/en/videos">
+				<a class="section-cta" href="/videos">
 					{t('home.all_videos', locale)} <Fragment set:html={iconSvg('arrow-right', 16)} />
 				</a>
 			</div>
@@ -57,11 +50,11 @@ const latestArticles = gridArticles.slice(0, 3);
 			{leadVideo && (
 				<div class="videos-lead">
 					<div class="videos-lead-card">
-						<VideoCard video={leadVideo} size="lg" locale={locale} />
+						<VideoCard video={leadVideo} size="lg" locale="fr" />
 					</div>
 					{gridVideos.length > 0 && (
 						<div class="videos-lead-grid">
-							{gridVideos.map((v) => <VideoCard video={v} locale={locale} />)}
+							{gridVideos.map((v) => <VideoCard video={v} locale="fr" />)}
 						</div>
 					)}
 				</div>
