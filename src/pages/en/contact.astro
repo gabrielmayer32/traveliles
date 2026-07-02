@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact" description="Contact the Travel-Îles editorial team." locale="en" alternateUrl="/contact">
+	<section class="container-wide contact-page">
+		<header class="contact-header">
+			<span class="kicker">Contact</span>
+			<h1 class="page-title">Write to us</h1>
+		</header>
+
+		<div class="prose">
+			<p>To suggest an address, propose an editorial collaboration, or enquire about partnerships, contact the editorial team.</p>
+			<p><a href="mailto:contact@traveliles.com">contact@traveliles.com</a></p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.contact-page { padding-top: var(--space-10); padding-bottom: var(--space-20); }
+	.contact-header { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-10); }
+</style>

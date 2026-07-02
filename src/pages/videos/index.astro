@@ -9,7 +9,7 @@ const videos = (await getCollection('videos'))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Vidéos" description="Toutes les vidéos de Travel-Îles.">
+<BaseLayout title="Vidéos" description="Toutes les vidéos de Travel-Îles." locale="fr" alternateUrl="/en/videos">
 	<section class="container-wide listing-page">
 		<header class="listing-header">
 			<span class="kicker">Le magazine vidéo</span>

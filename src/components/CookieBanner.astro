@@ -1,14 +1,15 @@
 ---
+import { t, type Locale } from '../lib/i18n';
+interface Props { locale?: Locale; }
+const { locale = 'fr' } = Astro.props;
 ---
 
 <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Consentement cookies" hidden>
 	<div class="cookie-inner container-wide">
-		<p class="cookie-text">
-			Ce site utilise des cookies tiers (YouTube, Vimeo) pour la lecture des vidéos.
-		</p>
+		<p class="cookie-text">{t('cookies.text', locale)}</p>
 		<div class="cookie-actions">
-			<button id="cookie-refuse" class="cookie-btn cookie-btn--refuse" type="button">Refuser</button>
-			<button id="cookie-accept" class="cookie-btn cookie-btn--accept" type="button">Accepter</button>
+			<button id="cookie-refuse" class="cookie-btn cookie-btn--refuse" type="button">{t('cookies.refuse', locale)}</button>
+			<button id="cookie-accept" class="cookie-btn cookie-btn--accept" type="button">{t('cookies.accept', locale)}</button>
 		</div>
 	</div>
 </div>

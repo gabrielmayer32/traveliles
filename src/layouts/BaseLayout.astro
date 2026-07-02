@@ -4,24 +4,32 @@ import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import type { Locale } from '../lib/i18n';
 import '../styles/global.css';
 
 interface Props {
 	title?: string;
 	description?: string;
 	ogImage?: string;
+	locale?: Locale;
+	alternateUrl?: string;
 }
 
 const {
 	title,
-	description = "Travel-Îles — voyages, saveurs, cultures et adresses à Maurice et dans les îles de l’océan Indien.",
+	description = "Travel-Îles — voyages, saveurs, cultures et adresses à Maurice et dans les îles de l'océan Indien.",
 	ogImage = '/images/uploads/cote-nord-og.jpg',
+	locale = 'fr',
+	alternateUrl,
 } = Astro.props;
 
 const pageTitle = title ? `${title} — Travel-Îles` : 'Travel-Îles';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const altUrl = alternateUrl ? new URL(alternateUrl, Astro.site).href : undefined;
+const xDefaultUrl = locale === 'fr' ? canonicalUrl : (altUrl ?? canonicalUrl);
 ---
 
-<html lang="fr">
+<html lang={locale}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -33,17 +41,22 @@ const pageTitle = title ? `${title} — Travel-Îles` : 'Travel-Îles';
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:image" content={ogImage} />
+		<meta property="og:locale" content={locale === 'en' ? 'en_GB' : 'fr_FR'} />
 		<title>{pageTitle}</title>
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="alternate" hreflang={locale} href={canonicalUrl} />
+		{altUrl && <link rel="alternate" hreflang={locale === 'fr' ? 'en' : 'fr'} href={altUrl} />}
+		<link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 		<Font cssVariable="--font-display" />
 		<Font cssVariable="--font-body" />
 		<ClientRouter />
 	</head>
 	<body>
-		<Header />
+		<Header locale={locale} alternateUrl={alternateUrl} />
 		<main>
 			<slot />
 		</main>
-		<Footer />
-		<CookieBanner />
+		<Footer locale={locale} />
+		<CookieBanner locale={locale} />
 	</body>
 </html>

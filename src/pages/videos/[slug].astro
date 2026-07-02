@@ -9,14 +9,16 @@ import { iconSvg } from '../../lib/icons';
 
 export async function getStaticPaths() {
 	const videos = (await getCollection('videos')).filter((v) => v.data.published);
+	const enVideos = await getCollection('videos_en');
 	return videos.map((video) => ({
 		params: { slug: video.id },
-		props: { video },
+		props: { video, hasEn: enVideos.some((e) => e.id === video.id && e.data.published) },
 	}));
 }
 
-const { video } = Astro.props;
+const { video, hasEn } = Astro.props;
 const { Content } = await render(video);
+const alternateUrl = hasEn ? `/en/videos/${video.id}` : undefined;
 
 const allVideos = (await getCollection('videos'))
 	.filter((v) => v.data.published && v.id !== video.id)
@@ -24,7 +26,7 @@ const allVideos = (await getCollection('videos'))
 const more = allVideos.slice(0, 3);
 ---
 
-<BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={video.data.thumbnail}>
+<BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={video.data.thumbnail} locale="fr" alternateUrl={alternateUrl}>
 	<div class="video-page">
 		<!-- Back link -->
 		<div class="back-wrap">

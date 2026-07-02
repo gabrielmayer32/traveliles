@@ -9,7 +9,7 @@ const articles = (await getCollection('articles'))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Articles" description="Tous les articles de Travel-Îles.">
+<BaseLayout title="Articles" description="Tous les articles de Travel-Îles." locale="fr" alternateUrl="/en/articles">
 	<section class="container-wide listing-page">
 		<header class="listing-header">
 			<span class="kicker">Lecture</span>

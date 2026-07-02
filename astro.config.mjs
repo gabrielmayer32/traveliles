@@ -1,10 +1,26 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.traveliles.com',
 	output: 'static',
+	i18n: {
+		defaultLocale: 'fr',
+		locales: ['fr', 'en'],
+		routing: {
+			prefixDefaultLocale: false,
+		},
+	},
+	integrations: [
+		sitemap({
+			i18n: {
+				defaultLocale: 'fr',
+				locales: { fr: 'fr-FR', en: 'en-GB' },
+			},
+		}),
+	],
 	fonts: [
 		{
 			provider: fontProviders.google(),

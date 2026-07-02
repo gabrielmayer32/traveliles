@@ -1,0 +1,112 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CategoryLabel from '../../../components/CategoryLabel.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { formatDateLocale } from '../../../lib/i18n';
+import { iconSvg } from '../../../lib/icons';
+
+const locale = 'en' as const;
+
+export async function getStaticPaths() {
+	const articles = (await getCollection('articles_en')).filter((a) => a.data.published);
+	const frArticles = await getCollection('articles');
+	return articles.map((article) => ({
+		params: { slug: article.id },
+		props: { article, hasFr: frArticles.some((f) => f.id === article.id && f.data.published) },
+	}));
+}
+
+const { article, hasFr } = Astro.props;
+const { Content } = await render(article);
+const alternateUrl = hasFr ? `/articles/${article.id}` : undefined;
+
+const allArticles = (await getCollection('articles_en'))
+	.filter((a) => a.data.published && a.id !== article.id)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const related = allArticles.slice(0, 3);
+---
+
+<BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover} locale={locale} alternateUrl={alternateUrl}>
+	<article>
+		<div class="back-wrap">
+			<a class="back-link" href="/en/articles">
+				<span class="back-arrow"><Fragment set:html={iconSvg('arrow-right', 16)} /></span>
+				All articles
+			</a>
+		</div>
+
+		<header class="article-header">
+			<CategoryLabel category={article.data.category} locale={locale} />
+			<h1>{article.data.title}</h1>
+			<p class="article-lead">{article.data.excerpt}</p>
+			<div class="article-meta meta">
+				<span class="article-author">{article.data.author}</span>
+				<span aria-hidden="true">·</span>
+				<span>{formatDateLocale(article.data.date, locale)}</span>
+			</div>
+		</header>
+
+		{article.data.cover && (
+			<figure class="article-figure">
+				<div class="article-cover">
+					<img src={article.data.cover} alt="" />
+				</div>
+				<figcaption class="meta article-caption">
+					{article.data.category} · Travel-Îles
+				</figcaption>
+			</figure>
+		)}
+
+		<div class="article-body">
+			<div class="prose article-prose">
+				<Content />
+			</div>
+
+			{article.data.tags.length > 0 && (
+				<div class="tags-footer">
+					<span class="kicker tags-kicker">Topics</span>
+					<div class="tags">
+						{article.data.tags.map((tag) => (
+							<span class="tag">{tag}</span>
+						))}
+					</div>
+				</div>
+			)}
+		</div>
+	</article>
+
+	{related.length > 0 && (
+		<section class="container-wide section">
+			<div class="section-header">
+				<h2 class="section-title related-title">Related articles</h2>
+			</div>
+			<div class="grid-3">
+				{related.map((r) => <ArticleCard article={r} locale={locale} />)}
+			</div>
+		</section>
+	)}
+</BaseLayout>
+
+<style>
+	.back-wrap { width: min(100% - 2.5rem, 46rem); margin: 0 auto; padding-top: var(--space-8); }
+	.back-link { display: inline-flex; align-items: center; gap: 0.5em; color: var(--text-muted); font-size: var(--text-sm); letter-spacing: 0.04em; margin-bottom: var(--space-8); }
+	.back-arrow { display: inline-flex; transform: rotate(180deg); }
+	.article-header { width: min(100% - 2.5rem, 46rem); margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
+	h1 { font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.03; text-wrap: balance; margin: 0; }
+	.article-lead { font-size: var(--text-lg); line-height: var(--leading-normal); color: var(--text-secondary); max-width: 38rem; text-wrap: pretty; margin: 0; }
+	.article-meta { display: inline-flex; gap: var(--space-3); align-items: center; padding-top: var(--space-5); border-top: 1px solid var(--border-subtle); width: fit-content; }
+	.article-author { color: var(--ink); font-weight: var(--fw-medium); letter-spacing: 0.02em; }
+	.article-figure { margin: var(--space-12) auto 0; width: min(100% - 2.5rem, 62rem); }
+	.article-cover { aspect-ratio: 3 / 2; overflow: hidden; border-radius: var(--radius-sm); background: var(--surface-sunken); }
+	.article-cover img { width: 100%; height: 100%; object-fit: cover; }
+	.article-caption { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--text-muted); font-style: italic; }
+	.article-body { width: min(100% - 2.5rem, 40rem); margin: 0 auto; padding-top: var(--space-16); padding-bottom: var(--space-12); }
+	.article-prose :global(p:first-child) { font-family: var(--font-display); font-weight: var(--fw-regular); font-size: clamp(1.375rem, 2.4vw, 1.625rem); line-height: 1.5; color: var(--ink); margin-bottom: var(--space-8); }
+	.article-prose { max-width: none; }
+	.tags-footer { margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--border-subtle); }
+	.tags-kicker { display: block; margin-bottom: var(--space-4); }
+	.tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+	.tag { display: inline-block; font-size: var(--text-xs); font-weight: var(--fw-medium); letter-spacing: 0.02em; color: var(--text-secondary); background: var(--surface-sunken); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); padding: 0.35em 0.85em; line-height: 1.3; }
+	.related-title { font-size: var(--text-2xl); }
+</style>
