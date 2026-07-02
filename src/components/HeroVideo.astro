@@ -13,7 +13,7 @@ const href = `/videos/${video.id}`;
 const { videoSource, videoId, title, excerpt, category, date } = video.data;
 
 const embedSrc = {
-	youtube: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3&disablekb=1`,
+	youtube: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3&disablekb=1&end_screen=0`,
 	vimeo: `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&loop=1&background=1&title=0&byline=0&portrait=0`,
 	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId)}&autoplay=true&mute=true`,
 	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
@@ -65,6 +65,38 @@ const thumbnail = video.data.thumbnail ?? (
 				iframe.addEventListener('load', () => {
 					setTimeout(() => poster.classList.add('loaded'), 600);
 				});
+			}
+
+			// Use YouTube IFrame API to force-restart on end, preventing the end screen
+			if (embedSrc!.includes('youtube.com')) {
+				function attachYTPlayer() {
+					const player = new (window as any).YT.Player(iframe, {
+						events: {
+							onStateChange(event: any) {
+								// YT.PlayerState.ENDED === 0
+								if (event.data === 0) {
+									player.seekTo(0);
+									player.playVideo();
+								}
+							}
+						}
+					});
+				}
+
+				if ((window as any).YT && (window as any).YT.Player) {
+					attachYTPlayer();
+				} else {
+					const prev = (window as any).onYouTubeIframeAPIReady;
+					(window as any).onYouTubeIframeAPIReady = function() {
+						if (prev) prev();
+						attachYTPlayer();
+					};
+					if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+						const tag = document.createElement('script');
+						tag.src = 'https://www.youtube.com/iframe_api';
+						document.head.appendChild(tag);
+					}
+				}
 			}
 		}
 
