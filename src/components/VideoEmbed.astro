@@ -12,17 +12,66 @@ const src = {
 	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId)}&autoplay=true`,
 	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
 }[videoSource];
+
+const directUrl = {
+	youtube: `https://www.youtube.com/watch?v=${videoId}`,
+	vimeo: `https://vimeo.com/${videoId}`,
+	facebook: videoId,
+	instagram: `https://www.instagram.com/reel/${videoId}/`,
+}[videoSource];
 ---
 
-<div class="video-embed">
-	<iframe
-		src={src}
-		title={title}
-		loading="lazy"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-		allowfullscreen
-	></iframe>
+<div class="video-embed" data-embed-src={src} data-embed-title={title}>
+	<div class="video-embed-placeholder">
+		<p>Cette vidéo est hébergée par un service tiers ({videoSource === 'youtube' ? 'YouTube' : videoSource === 'vimeo' ? 'Vimeo' : videoSource === 'facebook' ? 'Facebook' : 'Instagram'}).</p>
+		<button class="video-embed-accept" type="button">Accepter les cookies et lire la vidéo</button>
+		<a class="video-embed-external" href={directUrl} target="_blank" rel="noopener">
+			Voir sur {videoSource === 'youtube' ? 'YouTube' : videoSource === 'vimeo' ? 'Vimeo' : videoSource === 'facebook' ? 'Facebook' : 'Instagram'} ↗
+		</a>
+	</div>
 </div>
+
+<script>
+	function initVideoEmbeds() {
+		document.querySelectorAll<HTMLElement>('.video-embed').forEach((el) => {
+			if (el.dataset.embedReady === 'true') return;
+			el.dataset.embedReady = 'true';
+
+			const src = el.dataset.embedSrc;
+			const title = el.dataset.embedTitle || 'Vidéo';
+			const placeholder = el.querySelector<HTMLElement>('.video-embed-placeholder');
+			const acceptBtn = el.querySelector<HTMLButtonElement>('.video-embed-accept');
+
+			function loadIframe() {
+				if (!src || !placeholder) return;
+				const iframe = document.createElement('iframe');
+				iframe.src = src;
+				iframe.title = title;
+				iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+				iframe.allowFullscreen = true;
+				iframe.style.cssText = 'display:block;width:100%;height:100%;border:0';
+				placeholder.remove();
+				el.appendChild(iframe);
+			}
+
+			const consent = localStorage.getItem('ti-cookies');
+			if (consent === 'accepted') {
+				loadIframe();
+			} else {
+				acceptBtn?.addEventListener('click', () => {
+					localStorage.setItem('ti-cookies', 'accepted');
+					document.getElementById('cookie-banner')?.setAttribute('hidden', '');
+					loadIframe();
+				});
+
+				document.addEventListener('ti:cookies-accepted', () => loadIframe(), { once: true });
+			}
+		});
+	}
+
+	document.addEventListener('astro:page-load', initVideoEmbeds);
+	initVideoEmbeds();
+</script>
 
 <style>
 	.video-embed {
@@ -31,10 +80,42 @@ const src = {
 		background: var(--navy-950);
 	}
 
-	iframe {
-		display: block;
-		width: 100%;
+	.video-embed-placeholder {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-4);
 		height: 100%;
-		border: 0;
+		padding: var(--space-6);
+		text-align: center;
+		color: rgba(255, 255, 255, 0.7);
+		font-size: var(--text-sm);
+	}
+
+	.video-embed-accept {
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		color: var(--navy-950);
+		background: var(--white);
+		border: none;
+		border-radius: var(--radius-xs);
+		padding: 0.7em 1.4em;
+		cursor: pointer;
+		transition: background var(--dur-fast) var(--ease-out);
+	}
+
+	.video-embed-accept:hover {
+		background: var(--navy-100);
+	}
+
+	.video-embed-external {
+		font-size: var(--text-xs);
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	.video-embed-external:hover {
+		color: rgba(255, 255, 255, 0.8);
 	}
 </style>

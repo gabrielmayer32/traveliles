@@ -311,6 +311,7 @@ const navLinks = CATEGORIES.map((category) => ({
 
 	.mobile-nav-top {
 		display: flex;
+		flex-wrap: wrap;
 		gap: var(--space-6);
 		margin-bottom: var(--space-6);
 	}
@@ -353,6 +354,49 @@ const navLinks = CATEGORIES.map((category) => ({
 
 		.mobile-trigger {
 			display: grid;
+		}
+
+		.mobile-nav {
+			position: fixed;
+			inset-inline: 0;
+			top: var(--header-height);
+			bottom: 0;
+			z-index: 45;
+			height: calc(100dvh - var(--header-height));
+			overflow-y: auto;
+			overscroll-behavior: contain;
+			-webkit-overflow-scrolling: touch;
+			box-shadow: var(--shadow-lg);
+		}
+
+		.mobile-nav-inner {
+			padding-block: var(--space-5) max(var(--space-8), env(safe-area-inset-bottom));
+		}
+
+		.mobile-nav-top {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: var(--space-3);
+			margin-bottom: var(--space-5);
+		}
+
+		.mobile-nav-top a {
+			min-width: 0;
+			border: 1px solid var(--border-subtle);
+			padding: var(--space-3);
+			text-align: center;
+			line-height: var(--leading-snug);
+		}
+
+		.mobile-nav-list a {
+			padding-block: var(--space-3);
+			line-height: var(--leading-snug);
+		}
+	}
+
+	@media (max-width: 460px) {
+		.mobile-nav-top {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

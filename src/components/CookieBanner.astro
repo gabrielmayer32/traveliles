@@ -1,0 +1,113 @@
+---
+---
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Consentement cookies" hidden>
+	<div class="cookie-inner container-wide">
+		<p class="cookie-text">
+			Ce site utilise des cookies tiers (YouTube, Vimeo) pour la lecture des vidéos.
+		</p>
+		<div class="cookie-actions">
+			<button id="cookie-refuse" class="cookie-btn cookie-btn--refuse" type="button">Refuser</button>
+			<button id="cookie-accept" class="cookie-btn cookie-btn--accept" type="button">Accepter</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	function initCookieBanner() {
+		const banner = document.getElementById('cookie-banner');
+		const acceptBtn = document.getElementById('cookie-accept');
+		const refuseBtn = document.getElementById('cookie-refuse');
+		if (!banner || !acceptBtn || !refuseBtn) return;
+
+		const consent = localStorage.getItem('ti-cookies');
+
+		if (!consent) {
+			banner.hidden = false;
+		}
+
+		acceptBtn.addEventListener('click', () => {
+			localStorage.setItem('ti-cookies', 'accepted');
+			banner.hidden = true;
+			document.dispatchEvent(new CustomEvent('ti:cookies-accepted'));
+		});
+
+		refuseBtn.addEventListener('click', () => {
+			localStorage.setItem('ti-cookies', 'refused');
+			banner.hidden = true;
+		});
+	}
+
+	document.addEventListener('astro:page-load', initCookieBanner);
+	initCookieBanner();
+</script>
+
+<style>
+	.cookie-banner {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		background: var(--navy-950);
+		color: var(--white);
+		padding-block: var(--space-4);
+	}
+
+	.cookie-banner[hidden] {
+		display: none;
+	}
+
+	.cookie-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-6);
+		flex-wrap: wrap;
+	}
+
+	.cookie-text {
+		font-size: var(--text-sm);
+		color: rgba(255, 255, 255, 0.85);
+		line-height: var(--leading-normal);
+	}
+
+	.cookie-actions {
+		display: flex;
+		gap: var(--space-3);
+		flex-shrink: 0;
+	}
+
+	.cookie-btn {
+		font-family: var(--font-body);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		border: none;
+		border-radius: var(--radius-xs);
+		padding: 0.65em 1.2em;
+		cursor: pointer;
+		transition: all var(--dur-fast) var(--ease-out);
+	}
+
+	.cookie-btn--accept {
+		background: var(--white);
+		color: var(--navy-950);
+	}
+
+	.cookie-btn--accept:hover {
+		background: var(--navy-100);
+	}
+
+	.cookie-btn--refuse {
+		background: transparent;
+		color: rgba(255, 255, 255, 0.7);
+		border: 1px solid rgba(255, 255, 255, 0.25);
+	}
+
+	.cookie-btn--refuse:hover {
+		color: var(--white);
+		border-color: rgba(255, 255, 255, 0.5);
+	}
+</style>

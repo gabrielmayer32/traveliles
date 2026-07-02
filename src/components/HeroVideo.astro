@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { formatDate } from '../lib/utils';
 import CategoryLabel from './CategoryLabel.astro';
+import { iconSvg } from '../lib/icons';
 
 interface Props {
 	video: CollectionEntry<'videos'>;
@@ -25,16 +26,10 @@ const thumbnail = video.data.thumbnail ?? (
 );
 ---
 
-<section class="hero-video">
+<section class="hero-video" data-embed-src={embedSrc}>
 	<div class="hero-media">
 		{thumbnail && <img class="hero-poster" src={thumbnail} alt="" />}
-		<iframe
-			class="hero-iframe"
-			src={embedSrc}
-			title={title}
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen
-		></iframe>
+		<div class="hero-iframe-slot"></div>
 	</div>
 	<div class="hero-scrim"></div>
 	<div class="hero-overlay container-wide">
@@ -51,14 +46,36 @@ const thumbnail = video.data.thumbnail ?? (
 		if (!hero || hero.dataset.heroReady === 'true') return;
 		hero.dataset.heroReady = 'true';
 
-		const iframe = hero.querySelector<HTMLIFrameElement>('.hero-iframe');
+		const slot = hero.querySelector<HTMLElement>('.hero-iframe-slot');
 		const poster = hero.querySelector<HTMLImageElement>('.hero-poster');
-		if (!iframe || !poster) return;
+		const embedSrc = hero.dataset.embedSrc;
+		if (!slot || !embedSrc) return;
 
-		iframe.addEventListener('load', () => {
-			setTimeout(() => poster.classList.add('loaded'), 600);
-		});
+		function injectIframe() {
+			if (slot.querySelector('iframe')) return;
+			const iframe = document.createElement('iframe');
+			iframe.className = 'hero-iframe';
+			iframe.src = embedSrc!;
+			iframe.title = 'Vidéo Travel-Îles';
+			iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+			iframe.allowFullscreen = true;
+			slot.appendChild(iframe);
+
+			if (poster) {
+				iframe.addEventListener('load', () => {
+					setTimeout(() => poster.classList.add('loaded'), 600);
+				});
+			}
+		}
+
+		const consent = localStorage.getItem('ti-cookies');
+		if (consent === 'accepted') {
+			injectIframe();
+		} else {
+			document.addEventListener('ti:cookies-accepted', () => injectIframe(), { once: true });
+		}
 	}
+
 	document.addEventListener('astro:page-load', initHeroVideo);
 	initHeroVideo();
 </script>
@@ -91,13 +108,18 @@ const thumbnail = video.data.thumbnail ?? (
 		pointer-events: none;
 	}
 
-	.hero-iframe {
+	.hero-iframe-slot {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+
+	.hero-iframe-slot :global(.hero-iframe) {
 		position: absolute;
 		inset: -20% -10%;
 		width: 120%;
 		height: 140%;
 		border: 0;
-		z-index: 1;
 		pointer-events: none;
 	}
 
