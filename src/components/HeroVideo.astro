@@ -61,21 +61,26 @@ const thumbnail = video.data.thumbnail ?? (
 			iframe.allowFullscreen = true;
 			slot.appendChild(iframe);
 
-			if (poster) {
+			// Non-YouTube: fade poster on iframe load (no API available)
+			if (!embedSrc!.includes('youtube.com') && poster) {
 				iframe.addEventListener('load', () => {
-					setTimeout(() => poster.classList.add('loaded'), 600);
+					setTimeout(() => poster.classList.add('loaded'), 800);
 				});
 			}
 
-			// Use YouTube IFrame API to force-restart on end, hiding the end screen
+			// Use YouTube IFrame API to hide poster only when playing, and loop on end
 			if (embedSrc!.includes('youtube.com')) {
 				function attachYTPlayer() {
 					const player = new (window as any).YT.Player(iframe, {
 						events: {
 							onStateChange(event: any) {
-								// YT.PlayerState.ENDED === 0
-								if (event.data === 0) {
-									// Show poster to cover the end screen, then seek & replay
+								const PLAYING = 1;
+								const ENDED = 0;
+								if (event.data === PLAYING) {
+									// Video is actually running — now safe to hide poster
+									if (poster) poster.classList.add('loaded');
+								} else if (event.data === ENDED) {
+									// Cover end screen with poster instantly, seek & replay
 									if (poster) {
 										poster.style.transition = 'none';
 										poster.style.opacity = '1';
@@ -83,7 +88,7 @@ const thumbnail = video.data.thumbnail ?? (
 									}
 									player.seekTo(0);
 									player.playVideo();
-									// Fade poster back out once video is playing again
+									// Fade poster out again once playback resumes
 									setTimeout(() => {
 										if (poster) {
 											poster.style.transition = '';
