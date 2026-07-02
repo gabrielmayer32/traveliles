@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel-Îles — Vérification SEO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #2B3A8F;
+    --navy-dark: #1e2a6e;
+    --navy-light: #eef0fa;
+    --ink: #111827;
+    --muted: #6b7280;
+    --border: #d1d5db;
+    --surface: #f9fafb;
+    --white: #ffffff;
+    --pass: #15803d;
+    --pass-bg: #f0fdf4;
+    --warn: #b45309;
+    --warn-bg: #fffbeb;
+    --fail: #b91c1c;
+    --fail-bg: #fef2f2;
+    --radius: 4px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Top bar */
+  .topbar {
+    background: var(--navy);
+    color: #fff;
+    padding: 0 24px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-brand {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .topbar-back {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .topbar-back:hover { color: #fff; }
+
+  /* Layout */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 24px 64px; }
+  .page-title {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .page-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+  /* Panels */
+  .panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .panel-head {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .panel-body { padding: 20px; }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  input[type=text] {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 13px;
+    background: var(--surface);
+    color: var(--ink);
+    margin-bottom: 16px;
+    outline: none;
+  }
+  input[type=text]:focus { border-color: var(--navy); box-shadow: 0 0 0 2px var(--navy-light); }
+  textarea {
+    width: 100%;
+    min-height: 320px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: 'SF Mono', Consolas, 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    resize: vertical;
+    background: var(--surface);
+    color: var(--ink);
+    outline: none;
+  }
+  textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 2px var(--navy-light); }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.6; }
+
+  .run-btn {
+    margin-top: 16px;
+    width: 100%;
+    padding: 11px 20px;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--navy);
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .run-btn:hover { background: var(--navy-dark); }
+  .run-btn:disabled { opacity: 0.4; cursor: default; }
+
+  /* Empty state */
+  .empty-state {
+    padding: 48px 20px;
+    text-align: center;
+    color: var(--muted);
+  }
+  .empty-state svg { margin-bottom: 12px; opacity: 0.35; }
+  .empty-state p { font-size: 13px; line-height: 1.7; max-width: 300px; margin: 0 auto; }
+
+  /* Verdict banner */
+  .verdict {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .verdict-badge {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .verdict-badge.a { background: var(--pass); }
+  .verdict-badge.b { background: var(--warn); }
+  .verdict-badge.c { background: var(--fail); }
+  .verdict-label { font-size: 16px; font-weight: 600; }
+  .verdict-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* Score bar */
+  .score-bar-wrap { padding: 14px 20px; border-bottom: 1px solid var(--border); }
+  .score-bar-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .score-label { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  .score-num { font-size: 13px; font-weight: 700; color: var(--ink); }
+  .score-bar { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 99px; transition: width 0.4s ease; }
+
+  /* Category sections */
+  .cat-title {
+    padding: 10px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--navy-light);
+    border-bottom: 1px solid var(--border);
+  }
+  .check {
+    display: flex;
+    gap: 12px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .check:last-child { border-bottom: none; }
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 1px;
+  }
+  .check-icon.pass { background: var(--pass); }
+  .check-icon.warn { background: var(--warn); }
+  .check-icon.fail { background: var(--fail); }
+  .check-title { font-size: 13px; font-weight: 600; }
+  .check-detail { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.6; }
+
+  .footer-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-brand">Travel-Îles &mdash; Vérification SEO</span>
+  <a class="topbar-back" href="/admin">&larr; Retour au CMS</a>
+</div>
+
+<div class="wrap">
+  <h1 class="page-title">Vérification SEO</h1>
+  <p class="page-sub">Collez le code source d'une page pour obtenir un rapport avant ou après publication.</p>
+
+  <div class="grid">
+    <!-- Input -->
+    <div class="panel">
+      <div class="panel-head">Source de la page</div>
+      <div class="panel-body">
+        <label for="urlField">URL de la page (facultatif)</label>
+        <input type="text" id="urlField" placeholder="https://traveliles.com/articles/mon-article">
+
+        <label for="htmlField">Code source HTML</label>
+        <textarea id="htmlField" placeholder="Ouvrez la page publiée ou en prévisualisation → clic droit → Afficher le code source (Ctrl/Cmd+U) → tout sélectionner → coller ici."></textarea>
+        <div class="hint">L'analyse se fait entièrement dans votre navigateur. Rien n'est envoyé sur un serveur.</div>
+        <button class="run-btn" id="runBtn">Analyser la page</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="panel">
+      <div class="panel-head">Rapport</div>
+      <div id="resultsArea">
+        <div class="empty-state">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <p>Collez le code source d'une page à gauche et cliquez sur Analyser. Vous obtiendrez un rapport sur les titres, la structure, les images, les vidéos et les balises sociales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    Cet outil détecte les erreurs courantes et corrigeables : titre manquant, pas de méta description, hiérarchie de titres incorrecte, images sans texte alternatif, pas de balises sociales. Il ne juge pas la qualité rédactionnelle, la pertinence des mots-clés ni les backlinks.
+  </p>
+</div>
+
+<script>
+function runCheck() {
+  const html = document.getElementById('htmlField').value;
+  const resultsArea = document.getElementById('resultsArea');
+
+  if (!html.trim()) {
+    resultsArea.innerHTML = '<div class="empty-state"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><p>Collez d\'abord le code source HTML d\'une page.</p></div>';
+    return;
+  }
+
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const checks = [];
+  const add = (cat, title, status, detail) => checks.push({ cat, title, status, detail });
+
+  // ── Meta & titres ──────────────────────────────────────────────────
+  const titleTag = doc.querySelector('title');
+  const titleText = titleTag ? titleTag.textContent.trim() : '';
+  if (!titleText) {
+    add('Meta & titres', 'Balise title', 'fail', 'Aucune balise <title> trouvée ou vide. Chaque page doit avoir un titre unique et descriptif.');
+  } else if (titleText.length < 25 || titleText.length > 65) {
+    add('Meta & titres', 'Longueur du titre', 'warn', `${titleText.length} caractères : "${titleText}". Visez 30 à 60 caractères pour ne pas être tronqué dans les résultats.`);
+  } else {
+    add('Meta & titres', 'Balise title', 'pass', `"${titleText}" — ${titleText.length} caractères, longueur idéale.`);
+  }
+
+  const metaDesc = doc.querySelector('meta[name="description"]');
+  const descContent = metaDesc ? (metaDesc.getAttribute('content') || '').trim() : '';
+  if (!descContent) {
+    add('Meta & titres', 'Méta description', 'fail', 'Aucune méta description. Rédigez-en une spécifique à cette page — c\'est souvent ce qui s\'affiche dans les résultats de recherche.');
+  } else if (descContent.length < 70 || descContent.length > 165) {
+    add('Meta & titres', 'Longueur méta description', 'warn', `${descContent.length} caractères. Visez 120 à 160 pour un affichage complet.`);
+  } else {
+    add('Meta & titres', 'Méta description', 'pass', `${descContent.length} caractères — bonne longueur.`);
+  }
+
+  const canonical = doc.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    add('Meta & titres', 'URL canonique', 'warn', 'Pas de balise canonical. Utile pour un magazine qui peut avoir du contenu syndiqué ou republié.');
+  } else {
+    add('Meta & titres', 'URL canonique', 'pass', `Pointe vers ${canonical.getAttribute('href')}`);
+  }
+
+  const htmlLang = doc.documentElement.getAttribute('lang');
+  if (!htmlLang) {
+    add('Meta & titres', 'Attribut de langue', 'warn', 'La balise <html> n\'a pas d\'attribut lang. Ajoutez lang="fr" pour que Google et les lecteurs d\'écran connaissent la langue.');
+  } else {
+    add('Meta & titres', 'Attribut de langue', 'pass', `Défini sur "${htmlLang}"`);
+  }
+
+  const hreflang = doc.querySelectorAll('link[rel="alternate"][hreflang]');
+  if (hreflang.length === 0) {
+    add('Meta & titres', 'Hreflang (bilingue)', 'warn', 'Aucune balise hreflang détectée. Pour les pages disponibles en FR et EN, ces balises indiquent à Google quelle version montrer selon la langue de l\'utilisateur.');
+  } else {
+    const langs = Array.from(hreflang).map(l => l.getAttribute('hreflang')).join(', ');
+    add('Meta & titres', 'Hreflang (bilingue)', 'pass', `Balises hreflang présentes : ${langs}`);
+  }
+
+  // ── Contenu & structure ────────────────────────────────────────────
+  const h1s = doc.querySelectorAll('h1');
+  if (h1s.length === 0) {
+    add('Contenu & structure', 'Titre H1', 'fail', 'Aucun H1 trouvé. Chaque article doit avoir exactement un titre principal.');
+  } else if (h1s.length > 1) {
+    add('Contenu & structure', 'Titre H1', 'warn', `${h1s.length} balises H1 trouvées. N'en utilisez qu'une par page — rétrogradez les autres en H2.`);
+  } else {
+    add('Contenu & structure', 'Titre H1', 'pass', `Un seul H1 : "${h1s[0].textContent.trim().slice(0, 80)}"`);
+  }
+
+  const headings = Array.from(doc.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+  let skipped = false, lastLevel = 0;
+  headings.forEach(h => {
+    const lvl = parseInt(h.tagName[1]);
+    if (lastLevel && lvl - lastLevel > 1) skipped = true;
+    lastLevel = lvl;
+  });
+  if (headings.length > 1 && skipped) {
+    add('Contenu & structure', 'Hiérarchie des titres', 'warn', 'Les niveaux de titre sautent une étape (ex. H2 vers H4 directement). Gardez-les dans l\'ordre.');
+  } else if (headings.length > 1) {
+    add('Contenu & structure', 'Hiérarchie des titres', 'pass', `${headings.length} titres, hiérarchie correcte.`);
+  }
+
+  const bodyClone = doc.body ? doc.body.cloneNode(true) : null;
+  let wordCount = 0;
+  if (bodyClone) {
+    bodyClone.querySelectorAll('script,style,nav,footer,header').forEach(el => el.remove());
+    const text = bodyClone.textContent.replace(/\s+/g, ' ').trim();
+    wordCount = text ? text.split(' ').length : 0;
+  }
+  if (wordCount < 250) {
+    add('Contenu & structure', 'Longueur de l\'article', 'warn', `Environ ${wordCount} mots. Contenu court — pour un article de fond, visez davantage sauf si c\'est un format volontairement court.`);
+  } else {
+    add('Contenu & structure', 'Longueur de l\'article', 'pass', `Environ ${wordCount} mots — bon volume.`);
+  }
+
+  function urlFieldHost() {
+    const u = document.getElementById('urlField').value.trim();
+    if (!u) return '';
+    try { return new URL(u).host; } catch (e) { return ''; }
+  }
+  const links = Array.from(doc.querySelectorAll('a[href]'));
+  const internalLinks = links.filter(a => {
+    const href = a.getAttribute('href') || '';
+    return href.startsWith('/') || href.startsWith('#') || (urlFieldHost() && href.includes(urlFieldHost()));
+  });
+  if (links.length === 0) {
+    add('Contenu & structure', 'Liens', 'warn', 'Aucun lien trouvé. Les liens internes aident les lecteurs (et Google) à trouver les articles connexes.');
+  } else if (internalLinks.length === 0) {
+    add('Contenu & structure', 'Liens internes', 'warn', `${links.length} liens trouvés, aucun interne. Ajoutez des liens vers d'autres articles Travel-Îles.`);
+  } else {
+    add('Contenu & structure', 'Liens internes', 'pass', `${internalLinks.length} lien(s) interne(s) sur ${links.length} au total.`);
+  }
+
+  // ── Médias ─────────────────────────────────────────────────────────
+  const imgs = Array.from(doc.querySelectorAll('img'));
+  const missingAlt = imgs.filter(img => !img.getAttribute('alt') || !img.getAttribute('alt').trim());
+  if (imgs.length === 0) {
+    add('Médias', 'Images', 'warn', 'Aucune balise <img> trouvée — inhabituel pour un magazine. Vérifiez que les images ne sont pas chargées uniquement en CSS ou via JavaScript.');
+  } else if (missingAlt.length > 0) {
+    add('Médias', 'Texte alternatif', 'fail', `${missingAlt.length} image(s) sur ${imgs.length} n'ont pas de texte alternatif. Ajoutez une courte description à chacune.`);
+  } else {
+    add('Médias', 'Texte alternatif', 'pass', `Toutes les ${imgs.length} images ont un texte alternatif.`);
+  }
+
+  const lazyImgs = imgs.filter(img => img.getAttribute('loading') === 'lazy');
+  if (imgs.length > 3 && lazyImgs.length === 0) {
+    add('Médias', 'Chargement des images', 'warn', 'Aucune image n\'utilise loading="lazy". Pour les articles riches en images, le chargement différé accélère la page.');
+  } else if (imgs.length > 0) {
+    add('Médias', 'Chargement des images', 'pass', `${lazyImgs.length} image(s) sur ${imgs.length} en chargement différé.`);
+  }
+
+  const iframeVideos = Array.from(doc.querySelectorAll('iframe')).filter(f => {
+    const src = (f.getAttribute('src') || '').toLowerCase();
+    return src.includes('youtube') || src.includes('vimeo') || src.includes('facebook') || src.includes('instagram');
+  });
+  const nativeVideos = Array.from(doc.querySelectorAll('video'));
+  const allVideos = iframeVideos.concat(nativeVideos);
+
+  if (allVideos.length > 0) {
+    const iframesWithTitle = iframeVideos.filter(f => f.getAttribute('title'));
+    if (iframeVideos.length > 0 && iframesWithTitle.length < iframeVideos.length) {
+      add('Médias', 'Titre de la vidéo intégrée', 'warn', `${iframeVideos.length - iframesWithTitle.length} iframe(s) vidéo sans attribut title. Ajoutez-en un pour décrire la vidéo.`);
+    } else if (iframeVideos.length > 0) {
+      add('Médias', 'Titre de la vidéo intégrée', 'pass', `${iframeVideos.length} vidéo(s) intégrée(s) avec un titre.`);
+    }
+    const hasVideoSchema = /"@type"\s*:\s*"VideoObject"/.test(html);
+    if (!hasVideoSchema) {
+      add('Médias', 'Données structurées vidéo', 'warn', 'Pas de données structurées VideoObject détectées. Les ajouter permet aux vidéos d\'apparaître comme résultats enrichis dans Google.');
+    } else {
+      add('Médias', 'Données structurées vidéo', 'pass', 'Schema VideoObject détecté.');
+    }
+  } else {
+    add('Médias', 'Vidéo', 'warn', 'Aucune vidéo détectée sur cette page.');
+  }
+
+  // ── Technique & mobile ─────────────────────────────────────────────
+  const viewport = doc.querySelector('meta[name="viewport"]');
+  if (!viewport) {
+    add('Technique & mobile', 'Balise viewport', 'fail', 'Pas de balise viewport — la page ne s\'affichera probablement pas correctement sur mobile.');
+  } else {
+    add('Technique & mobile', 'Balise viewport', 'pass', 'Présente.');
+  }
+
+  const urlVal = document.getElementById('urlField').value.trim();
+  if (urlVal && !urlVal.startsWith('https://')) {
+    add('Technique & mobile', 'HTTPS', 'warn', 'L\'URL saisie n\'est pas en https:// — assurez-vous que le site est bien en HTTPS.');
+  } else if (urlVal) {
+    add('Technique & mobile', 'HTTPS', 'pass', 'URL en HTTPS.');
+  }
+
+  // ── Partage social ─────────────────────────────────────────────────
+  const ogTitle = doc.querySelector('meta[property="og:title"]');
+  const ogDesc = doc.querySelector('meta[property="og:description"]');
+  const ogImage = doc.querySelector('meta[property="og:image"]');
+  const missingOg = [!ogTitle && 'og:title', !ogDesc && 'og:description', !ogImage && 'og:image'].filter(Boolean);
+  if (missingOg.length) {
+    add('Partage social', 'Balises Open Graph', 'warn', `Manquantes : ${missingOg.join(', ')}. Sans elles, les liens partagés sur Facebook et les réseaux sociaux n\'auront pas d\'aperçu.`);
+  } else {
+    add('Partage social', 'Balises Open Graph', 'pass', 'og:title, og:description et og:image présentes.');
+  }
+
+  const twitterCard = doc.querySelector('meta[name="twitter:card"]');
+  if (!twitterCard) {
+    add('Partage social', 'Carte X / Twitter', 'warn', 'Pas de balise twitter:card — ajoutez-en une pour que les partages sur X s\'affichent avec une image.');
+  } else {
+    add('Partage social', 'Carte X / Twitter', 'pass', 'Présente.');
+  }
+
+  // ── Données structurées ────────────────────────────────────────────
+  const jsonLdScripts = Array.from(doc.querySelectorAll('script[type="application/ld+json"]'));
+  if (jsonLdScripts.length === 0) {
+    add('Données structurées', 'Balisage Schema', 'warn', 'Aucune donnée structurée JSON-LD trouvée. Pour les articles, ajoutez un schema Article (titre, auteur, datePublished, image) pour les résultats enrichis.');
+  } else {
+    let valid = 0;
+    jsonLdScripts.forEach(s => { try { JSON.parse(s.textContent); valid++; } catch (e) {} });
+    if (valid < jsonLdScripts.length) {
+      add('Données structurées', 'Balisage Schema', 'fail', `${jsonLdScripts.length - valid} bloc(s) JSON-LD contiennent du JSON invalide et ne seront pas lus par les moteurs de recherche.`);
+    } else {
+      add('Données structurées', 'Balisage Schema', 'pass', `${jsonLdScripts.length} bloc(s) JSON-LD valides.`);
+    }
+  }
+
+  render(checks);
+}
+
+function render(checks) {
+  const passCount = checks.filter(c => c.status === 'pass').length;
+  const warnCount = checks.filter(c => c.status === 'warn').length;
+  const failCount = checks.filter(c => c.status === 'fail').length;
+  const total = checks.length;
+  const score = Math.round((passCount + warnCount * 0.4) / total * 100);
+
+  let grade, verdictText, verdictSub;
+  if (failCount === 0 && warnCount <= 1) {
+    grade = 'a'; verdictText = 'Prêt à publier';
+    verdictSub = `${passCount} vérifications réussies${warnCount ? ', ' + warnCount + ' remarque mineure' : ''}.`;
+  } else if (failCount === 0) {
+    grade = 'b'; verdictText = 'Presque prêt';
+    verdictSub = `${passCount} réussites, ${warnCount} points à revoir avant publication.`;
+  } else {
+    grade = 'c'; verdictText = 'À corriger';
+    verdictSub = `${failCount} erreur(s) à corriger, ${warnCount} point(s) à améliorer.`;
+  }
+
+  const barColor = grade === 'a' ? 'var(--pass)' : grade === 'b' ? 'var(--warn)' : 'var(--fail)';
+
+  const cats = [...new Set(checks.map(c => c.cat))];
+  let html = `
+    <div class="verdict">
+      <div class="verdict-badge ${grade}">${grade.toUpperCase()}</div>
+      <div>
+        <div class="verdict-label">${verdictText}</div>
+        <div class="verdict-sub">${verdictSub}</div>
+      </div>
+    </div>
+    <div class="score-bar-wrap">
+      <div class="score-bar-row">
+        <span class="score-label">Score</span>
+        <span class="score-num">${score} / 100</span>
+      </div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:${score}%;background:${barColor}"></div></div>
+    </div>`;
+
+  cats.forEach(cat => {
+    html += `<div class="cat-title">${cat}</div>`;
+    checks.filter(c => c.cat === cat).forEach(c => {
+      const icon = c.status === 'pass' ? '✓' : c.status === 'warn' ? '!' : '✕';
+      html += `<div class="check">
+        <div class="check-icon ${c.status}">${icon}</div>
+        <div>
+          <div class="check-title">${c.title}</div>
+          <div class="check-detail">${c.detail}</div>
+        </div>
+      </div>`;
+    });
+  });
+
+  document.getElementById('resultsArea').innerHTML = html;
+}
+
+document.getElementById('runBtn').addEventListener('click', runCheck);
+</script>
+</body>
+</html>
