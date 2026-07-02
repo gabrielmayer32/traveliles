@@ -103,6 +103,13 @@ const horizontal = orientation === 'horizontal';
 		line-height: var(--leading-normal);
 	}
 
+	@media (max-width: 640px) {
+		.article-card--horizontal {
+			grid-template-columns: 1fr;
+			gap: var(--space-5);
+		}
+	}
+
 	.article-card:hover .article-title {
 		color: var(--navy);
 	}
