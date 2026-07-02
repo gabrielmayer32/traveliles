@@ -1,0 +1,74 @@
+---
+const pageTitle = 'Bientôt disponible — Travel-Îles';
+const description = "Travel-Îles arrive bientôt. Voyages, saveurs, cultures et adresses à Maurice et dans les îles de l'océan Indien.";
+---
+
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta name="robots" content="noindex, nofollow" />
+		<title>{pageTitle}</title>
+		<style>
+			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+			body {
+				min-height: 100dvh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background: #ffffff;
+				color: #1a1a1a;
+				font-family: system-ui, sans-serif;
+				padding: 2rem;
+				text-align: center;
+			}
+
+			.wordmark {
+				font-size: clamp(1.5rem, 6vw, 3rem);
+				font-weight: 700;
+				letter-spacing: 0.25em;
+				text-transform: uppercase;
+				color: #141a1a;
+				margin-bottom: 3rem;
+			}
+
+			.divider {
+				width: 3rem;
+				height: 2px;
+				background: #2b3a8f;
+				margin: 0 auto 2.5rem;
+			}
+
+			h1 {
+				font-size: clamp(1rem, 3vw, 1.25rem);
+				font-weight: 400;
+				letter-spacing: 0.15em;
+				text-transform: uppercase;
+				color: #2b3a8f;
+				margin-bottom: 1.25rem;
+			}
+
+			p {
+				font-size: 1rem;
+				line-height: 1.7;
+				color: #444444;
+				max-width: 36ch;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wordmark">Travel-Îles</div>
+		<div class="divider"></div>
+		<h1>Bientôt disponible</h1>
+		<p>Le magazine des îles de l'océan Indien arrive bientôt. Voyages, saveurs, cultures et art de vivre.</p>
+	</body>
+</html>

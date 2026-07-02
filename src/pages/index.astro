@@ -1,4 +1,8 @@
 ---
+if (import.meta.env.COMING_SOON === 'true') {
+	return Astro.redirect('/coming-soon', 302);
+}
+
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
