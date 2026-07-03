@@ -18,11 +18,6 @@ i18n:
 collections:
   - name: hero
     label: Vidéo à la une
-    folder: src/content/hero
-    create: false
-    slug: "hero"
-    extension: md
-    format: frontmatter
     files:
       - name: hero
         label: Vidéo à la une
