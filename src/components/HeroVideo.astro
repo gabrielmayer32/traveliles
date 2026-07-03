@@ -20,13 +20,11 @@ const { title, label, excerpt, videoFile } = hero.data;
 			playsinline
 			preload="auto"
 			aria-hidden="true"
-			oncanplay="this.style.opacity='1'"
-			style="opacity:0;transition:opacity 600ms"
 		/>
 	</div>
 	<div class="hero-scrim"></div>
 	<div class="hero-overlay container-wide">
-		<span class="hero-label">{label}</span>
+		{label && <span class="hero-label">{label}</span>}
 		<h2 class="hero-title">{title}</h2>
 		{excerpt && <p class="hero-excerpt">{excerpt}</p>}
 	</div>
@@ -35,7 +33,6 @@ const { title, label, excerpt, videoFile } = hero.data;
 <style>
 	.hero-video {
 		position: relative;
-		background: var(--navy-950);
 		overflow: hidden;
 		border-radius: var(--radius-sm);
 	}

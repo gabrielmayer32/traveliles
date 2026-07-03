@@ -40,7 +40,7 @@ const videoSchema = z.object({
 
 const heroSchema = z.object({
 	title: z.string(),
-	label: z.string(),
+	label: z.string().optional(),
 	excerpt: z.string().optional(),
 	videoFile: z.string(),
 	published: z.boolean().default(true),
