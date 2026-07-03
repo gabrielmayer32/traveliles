@@ -1,11 +1,20 @@
 ---
 import { CATEGORIES, slugifyCategory } from '../lib/utils';
 import { iconSvg } from '../lib/icons';
+import { t, localizedCategory, localizedPath, type Locale } from '../lib/i18n';
+
+interface Props { locale?: Locale; }
+const { locale = 'fr' } = Astro.props;
 
 const half = Math.ceil(CATEGORIES.length / 2);
 const colA = CATEGORIES.slice(0, half);
 const colB = CATEGORIES.slice(half);
 const year = new Date().getFullYear();
+
+const aboutHref  = locale === 'en' ? '/en/about'   : '/a-propos';
+const searchHref = locale === 'en' ? '/en/search'  : '/recherche';
+const legalHref  = locale === 'en' ? '/en/legal-notice' : '/mentions-legales';
+const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 ---
 
 <footer class="site-footer">
@@ -13,11 +22,11 @@ const year = new Date().getFullYear();
 		<div class="footer-grid">
 			<!-- Brand column -->
 			<div class="footer-brand">
-				<a class="footer-logo" href="/" aria-label="Travel-Îles">
+				<a class="footer-logo" href={localizedPath('/', locale)} aria-label="Travel-Îles">
 					<span class="footer-logo-main">Travel-Îles</span>
-					<span class="footer-logo-tagline">Océan Indien</span>
+					<span class="footer-logo-tagline">{t('footer.tagline', locale)}</span>
 				</a>
-				<p class="footer-desc">Le magazine vidéo des îles de l'océan Indien&nbsp;: hospitalité, tables, régions et art de vivre mauricien.</p>
+				<p class="footer-desc">{t('footer.desc', locale)}</p>
 				<div class="footer-social">
 					{(['youtube', 'instagram', 'facebook'] as const).map((name) => (
 						<a href="#" aria-label={name} class="social-icon">
@@ -29,16 +38,20 @@ const year = new Date().getFullYear();
 
 			<!-- Rubriques (2 columns) -->
 			<nav class="footer-rubriques">
-				<div class="footer-col-title">Rubriques</div>
+				<div class="footer-col-title">{t('footer.sections', locale)}</div>
 				<div class="footer-rubriques-grid">
 					<div>
 						{colA.map((category) => (
-							<a class="footer-link" href={`/articles/${slugifyCategory(category)}`}>{category}</a>
+							<a class="footer-link" href={localizedPath(`/articles/${slugifyCategory(category)}`, locale)}>
+								{localizedCategory(category, locale)}
+							</a>
 						))}
 					</div>
 					<div>
 						{colB.map((category) => (
-							<a class="footer-link" href={`/articles/${slugifyCategory(category)}`}>{category}</a>
+							<a class="footer-link" href={localizedPath(`/articles/${slugifyCategory(category)}`, locale)}>
+								{localizedCategory(category, locale)}
+							</a>
 						))}
 					</div>
 				</div>
@@ -46,21 +59,21 @@ const year = new Date().getFullYear();
 
 			<!-- Le magazine -->
 			<nav class="footer-magazine">
-				<div class="footer-col-title">Le magazine</div>
-				<a class="footer-link" href="/videos">Vidéos</a>
-				<a class="footer-link" href="/articles">Articles</a>
-				<a class="footer-link" href="/a-propos">À propos</a>
-				<a class="footer-link" href="/contact">Contact</a>
-				<a class="footer-link" href="/recherche">Recherche</a>
+				<div class="footer-col-title">{t('footer.magazine', locale)}</div>
+				<a class="footer-link" href={localizedPath('/videos', locale)}>{t('footer.videos', locale)}</a>
+				<a class="footer-link" href={localizedPath('/articles', locale)}>{t('footer.articles', locale)}</a>
+				<a class="footer-link" href={aboutHref}>{t('footer.about', locale)}</a>
+				<a class="footer-link" href={localizedPath('/contact', locale)}>{t('footer.contact', locale)}</a>
+				<a class="footer-link" href={searchHref}>{t('footer.search', locale)}</a>
 			</nav>
 		</div>
 
 		<!-- Bottom bar -->
 		<div class="footer-bottom">
-			<span>© {year} Travel-Îles. Tous droits réservés.</span>
+			<span>© {year} Travel-Îles. {t('footer.rights', locale)}</span>
 			<span class="footer-legal">
-				<a href="/mentions-legales">Mentions légales</a>
-				<a href="/confidentialite">Confidentialité</a>
+				<a href={legalHref}>{t('footer.legal', locale)}</a>
+				<a href={privacyHref}>{t('footer.privacy', locale)}</a>
 			</span>
 		</div>
 	</div>

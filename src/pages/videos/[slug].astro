@@ -17,6 +17,17 @@ export async function getStaticPaths() {
 
 const { video } = Astro.props;
 const { Content } = await render(video);
+const alternateUrl = undefined;
+
+const videoSchema = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@type': 'VideoObject',
+	name: video.data.title,
+	description: video.data.excerpt,
+	uploadDate: video.data.date.toISOString(),
+	...(video.data.thumbnail ? { thumbnailUrl: new URL(video.data.thumbnail, Astro.site).href } : {}),
+	url: new URL(Astro.url.pathname, Astro.site).href,
+});
 
 const allVideos = (await getCollection('videos'))
 	.filter((v) => v.data.published && v.id !== video.id)
@@ -24,7 +35,8 @@ const allVideos = (await getCollection('videos'))
 const more = allVideos.slice(0, 3);
 ---
 
-<BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={video.data.thumbnail}>
+<BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={video.data.thumbnail} locale="fr" alternateUrl={alternateUrl}>
+	<script type="application/ld+json" set:html={videoSchema} />
 	<div class="video-page">
 		<!-- Back link -->
 		<div class="back-wrap">
@@ -45,7 +57,7 @@ const more = allVideos.slice(0, 3);
 
 		<!-- Player — prominent 16:9 -->
 		<div class="video-player">
-			<VideoEmbed videoSource={video.data.videoSource} videoId={video.data.videoId} title={video.data.title} />
+			<VideoEmbed videoSource={video.data.videoSource} videoId={video.data.videoId} videoFile={video.data.videoFile} thumbnail={video.data.thumbnail} title={video.data.title} />
 		</div>
 
 		<!-- Description — centered reading measure -->

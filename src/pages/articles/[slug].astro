@@ -8,14 +8,28 @@ import { iconSvg } from '../../lib/icons';
 
 export async function getStaticPaths() {
 	const articles = (await getCollection('articles')).filter((a) => a.data.published);
+	const enArticles = await getCollection('articles_en');
 	return articles.map((article) => ({
 		params: { slug: article.id },
-		props: { article },
+		props: { article, hasEn: enArticles.some((e) => e.id === article.id && e.data.published && !!e.data.title) },
 	}));
 }
 
-const { article } = Astro.props;
+const { article, hasEn } = Astro.props;
 const { Content } = await render(article);
+const alternateUrl = hasEn ? `/en/articles/${article.id}` : undefined;
+
+const articleSchema = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: article.data.title,
+	description: article.data.excerpt,
+	datePublished: article.data.date.toISOString(),
+	author: { '@type': 'Person', name: article.data.author },
+	publisher: { '@type': 'Organization', name: 'Travel-Îles', url: Astro.site?.href },
+	...(article.data.cover ? { image: new URL(article.data.cover, Astro.site).href } : {}),
+	url: new URL(Astro.url.pathname, Astro.site).href,
+});
 
 const allArticles = (await getCollection('articles'))
 	.filter((a) => a.data.published && a.id !== article.id)
@@ -23,7 +37,8 @@ const allArticles = (await getCollection('articles'))
 const related = allArticles.slice(0, 3);
 ---
 
-<BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover}>
+<BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover} locale="fr" alternateUrl={alternateUrl}>
+	<script type="application/ld+json" set:html={articleSchema} />
 	<article>
 		<!-- Back link -->
 		<div class="back-wrap">
@@ -49,7 +64,7 @@ const related = allArticles.slice(0, 3);
 		{article.data.cover && (
 			<figure class="article-figure">
 				<div class="article-cover">
-					<img src={article.data.cover} alt="" />
+					<img src={article.data.cover} alt={article.data.title} />
 				</div>
 				<figcaption class="meta article-caption">
 					{article.data.category} · Travel-Îles

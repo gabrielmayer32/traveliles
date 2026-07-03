@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Legal notice" description="Legal notice for Travel-Îles." locale="en" alternateUrl="/mentions-legales">
+	<section class="container-wide legal-page">
+		<header class="legal-header">
+			<span class="kicker">Legal information</span>
+			<h1 class="page-title">Legal notice</h1>
+		</header>
+
+		<div class="prose">
+			<h2>Publisher</h2>
+			<p>Travel-Îles<br />
+			Online magazine dedicated to travel and art de vivre in the Indian Ocean.<br />
+			Contact: <a href="mailto:contact@traveliles.com">contact@traveliles.com</a></p>
+
+			<h2>Hosting</h2>
+			<p>This site is hosted by Cloudflare, Inc.<br />
+			101 Townsend St, San Francisco, CA 94107, United States.<br />
+			<a href="https://www.cloudflare.com" target="_blank" rel="noopener">www.cloudflare.com</a></p>
+
+			<h2>Intellectual property</h2>
+			<p>All content published on this site (texts, photographs, videos, illustrations, layout) is protected by copyright. Any reproduction, even partial, requires prior authorisation from the publisher.</p>
+
+			<h2>Credits</h2>
+			<p>Design and development: Travel-Îles.<br />
+			Typography: Playfair Display, Inter (Google Fonts).</p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.legal-page { padding-top: var(--space-12); padding-bottom: var(--space-20); }
+	.legal-header { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-10); }
+</style>

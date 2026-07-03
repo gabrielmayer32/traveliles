@@ -15,32 +15,55 @@ const categoryEnum = z.enum([
 	'Nos adresses',
 ]);
 
+const articleSchema = z.object({
+	title: z.string(),
+	date: z.coerce.date(),
+	category: categoryEnum,
+	cover: z.string().optional(),
+	excerpt: z.string(),
+	author: z.string().default('Travel-Îles'),
+	tags: z.array(z.string()).default([]),
+	published: z.boolean().default(true),
+});
+
+const videoSchema = z.object({
+	title: z.string(),
+	date: z.coerce.date(),
+	category: categoryEnum,
+	videoSource: z.enum(['youtube', 'vimeo', 'facebook', 'instagram', 'r2']),
+	videoId: z.string().optional(),
+	videoFile: z.string().optional(),
+	thumbnail: z.string().optional(),
+	excerpt: z.string(),
+	published: z.boolean().default(true),
+});
+
+const heroSchema = z.object({
+	title: z.string(),
+	label: z.string().optional(),
+	excerpt: z.string().optional(),
+	videoFile: z.string(),
+	published: z.boolean().default(true),
+});
+
+const hero = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/hero' }),
+	schema: heroSchema,
+});
+
 const articles = defineCollection({
-	loader: glob({ pattern: '*.md', base: './src/content/articles' }),
-	schema: z.object({
-		title: z.string(),
-		date: z.coerce.date(),
-		category: categoryEnum,
-		cover: z.string().optional(),
-		excerpt: z.string(),
-		author: z.string().default('Travel-Îles'),
-		tags: z.array(z.string()).default([]),
-		published: z.boolean().default(true),
-	}),
+	loader: glob({ pattern: '*.md', base: './src/content/articles/fr' }),
+	schema: articleSchema,
+});
+
+const articles_en = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/articles/en' }),
+	schema: articleSchema,
 });
 
 const videos = defineCollection({
-	loader: glob({ pattern: '*.md', base: './src/content/videos' }),
-	schema: z.object({
-		title: z.string(),
-		date: z.coerce.date(),
-		category: categoryEnum,
-		videoSource: z.enum(['youtube', 'vimeo', 'facebook', 'instagram']),
-		videoId: z.string(),
-		thumbnail: z.string().optional(),
-		excerpt: z.string(),
-		published: z.boolean().default(true),
-	}),
+	loader: glob({ pattern: '*.md', base: './src/content/videos/fr' }),
+	schema: videoSchema,
 });
 
-export const collections = { articles, videos };
+export const collections = { articles, articles_en, videos, hero };

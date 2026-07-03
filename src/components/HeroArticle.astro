@@ -13,7 +13,7 @@ const href = `/articles/${article.id}`;
 
 <article class="hero-article">
 	<a href={href} class="hero-link" aria-label={article.data.title}>
-		{article.data.cover && <img src={article.data.cover} alt="" />}
+		{article.data.cover && <img src={article.data.cover} alt={article.data.title} />}
 		<div class="hero-overlay">
 			<CategoryLabel category={article.data.category} linked={false} />
 			<h1>{article.data.title}</h1>

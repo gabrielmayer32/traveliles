@@ -1,16 +1,17 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from '../lib/utils';
+import { formatDateLocale, type Locale } from '../lib/i18n';
 import CategoryLabel from './CategoryLabel.astro';
 import { iconSvg } from '../lib/icons';
 
 interface Props {
 	video: CollectionEntry<'videos'>;
 	size?: 'md' | 'lg';
+	locale?: Locale;
 }
 
-const { video, size = 'md' } = Astro.props;
-const href = `/videos/${video.id}`;
+const { video, size = 'md', locale = 'fr' } = Astro.props;
+const href = locale === 'en' ? `/en/videos/${video.id}` : `/videos/${video.id}`;
 const thumbnail = video.data.thumbnail ?? (
 	video.data.videoSource === 'youtube'
 		? `https://img.youtube.com/vi/${video.data.videoId}/hqdefault.jpg`
@@ -24,7 +25,7 @@ const duration = (video.data as any).duration as string | undefined;
 
 <a class:list={['video-card', `video-card--${size}`]} href={href}>
 	<div class="video-thumbnail">
-		{thumbnail && <img src={thumbnail} alt="" loading="lazy" />}
+		{thumbnail && <img src={thumbnail} alt={video.data.title} loading="lazy" />}
 		<span class="video-scrim"></span>
 		<span class="play-btn" style={`width:${playSize}px;height:${playSize}px;padding-left:${playPaddingLeft}px`}>
 			<Fragment set:html={iconSvg('play', iconSize)} />
@@ -36,7 +37,7 @@ const duration = (video.data as any).duration as string | undefined;
 	<div class="video-body">
 		<CategoryLabel category={video.data.category} linked={false} />
 		<h3 class="video-title">{video.data.title}</h3>
-		<div class="meta">{formatDate(video.data.date)}</div>
+		<div class="meta">{formatDateLocale(video.data.date, locale)}</div>
 	</div>
 </a>
 

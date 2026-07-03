@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import HeroVideo from '../../components/HeroVideo.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import { iconSvg } from '../../lib/icons';
+import { t } from '../../lib/i18n';
+
+const locale = 'en' as const;
+
+const articles = (await getCollection('articles_en'))
+	.filter((a) => a.data.published && !!a.data.title)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allVideos = (await getCollection('videos'))
+	.filter((v) => v.data.published)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const leadVideo = allVideos[0];
+const gridVideos = allVideos.slice(1, 5);
+
+const heroEntries = await getCollection('hero');
+const heroEntry = heroEntries.find((h) => h.data.published);
+
+const [featureArticle, ...gridArticles] = articles;
+const latestArticles = gridArticles.slice(0, 3);
+---
+
+<BaseLayout locale={locale} alternateUrl="/">
+	{heroEntry && (
+		<section class="container-wide hero-section">
+			<div class="hero-header">
+				<span class="kicker">{t('home.tagline', locale)}</span>
+			</div>
+			<HeroVideo hero={heroEntry} />
+		</section>
+	)}
+
+	{allVideos.length > 0 && (
+		<section class="container-wide section videos-section">
+			<div class="section-header">
+				<div class="section-header-left">
+					<span class="kicker">{t('home.videos_kicker', locale)}</span>
+					<h2 class="section-title">{t('home.latest_videos', locale)}</h2>
+				</div>
+				<a class="section-cta" href="/videos">
+					{t('home.all_videos', locale)} <Fragment set:html={iconSvg('arrow-right', 16)} />
+				</a>
+			</div>
+
+			{leadVideo && (
+				<div class="videos-lead">
+					<div class="videos-lead-card">
+						<VideoCard video={leadVideo} size="lg" locale="fr" />
+					</div>
+					{gridVideos.length > 0 && (
+						<div class="videos-lead-grid">
+							{gridVideos.map((v) => <VideoCard video={v} locale="fr" />)}
+						</div>
+					)}
+				</div>
+			)}
+		</section>
+	)}
+
+	{featureArticle && (
+		<section class="feature-band">
+			<div class="container-wide section feature-section">
+				<div class="feature-label">
+					<span class="kicker">{t('home.reading', locale)}</span>
+				</div>
+				<ArticleCard article={featureArticle} orientation="horizontal" size="lg" locale={locale} />
+			</div>
+		</section>
+	)}
+
+	{latestArticles.length > 0 && (
+		<section class="container-wide section articles-section">
+			<div class="section-header">
+				<div class="section-header-left">
+					<span class="kicker">{t('home.articles_kicker', locale)}</span>
+					<h2 class="section-title">{t('home.to_read', locale)}</h2>
+				</div>
+				<a class="section-cta" href="/en/articles">
+					{t('home.all_articles', locale)} <Fragment set:html={iconSvg('arrow-right', 16)} />
+				</a>
+			</div>
+			<div class="grid-3">
+				{latestArticles.map((article) => <ArticleCard article={article} locale={locale} />)}
+			</div>
+		</section>
+	)}
+
+	{articles.length === 0 && (
+		<section class="container-wide empty-en">
+			<p>English content coming soon. <a href="/">Visit the French edition →</a></p>
+		</section>
+	)}
+</BaseLayout>
+
+<style>
+	.hero-section { padding-top: var(--space-10); }
+	.hero-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-5); }
+	.hero-tagline { letter-spacing: 0.04em; }
+	.section-header-left { display: flex; flex-direction: column; gap: var(--space-2); }
+	.section-cta {
+		display: inline-flex; align-items: center; gap: 0.5em;
+		color: var(--navy); font-size: var(--text-sm); font-weight: var(--fw-semibold);
+		letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
+	}
+	.videos-section { padding-bottom: var(--space-20); }
+	.videos-lead { display: grid; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); gap: var(--space-8); align-items: start; }
+	.videos-lead-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+	.feature-band { background: var(--navy-050); }
+	.feature-section { display: flex; flex-direction: column; gap: var(--space-6); }
+	.articles-section { padding-top: var(--space-20); }
+	.empty-en { padding-block: var(--space-20); text-align: center; color: var(--text-muted); font-size: var(--text-lg); }
+
+	@media (max-width: 860px) {
+		.videos-lead { grid-template-columns: 1fr; }
+		.videos-lead-grid { grid-template-columns: 1fr 1fr; }
+	}
+	@media (max-width: 640px) {
+		.hero-header { flex-direction: column; gap: var(--space-2); }
+		.videos-lead-grid { grid-template-columns: 1fr; }
+		.videos-lead-card :global(.video-card--lg .video-title) { font-size: var(--text-lg); }
+		.feature-section { gap: var(--space-4); }
+	}
+</style>

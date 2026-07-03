@@ -1,32 +1,45 @@
 ---
 import { CATEGORIES, slugifyCategory } from '../lib/utils';
 import { iconSvg } from '../lib/icons';
+import { t, localizedCategory, localizedPath, STATIC_ALTERNATES, type Locale } from '../lib/i18n';
+
+interface Props {
+	locale?: Locale;
+	alternateUrl?: string;
+}
+const { locale = 'fr', alternateUrl } = Astro.props;
+
+const otherLocale = locale === 'fr' ? 'en' : 'fr';
+const switchHref = alternateUrl ?? STATIC_ALTERNATES[Astro.url.pathname] ?? (locale === 'fr' ? '/en/' : '/');
 
 const navLinks = CATEGORIES.map((category) => ({
-	label: category,
-	href: `/articles/${slugifyCategory(category)}`,
+	label: localizedCategory(category, locale),
+	href: localizedPath(`/articles/${slugifyCategory(category)}`, locale),
 }));
 ---
 
 <header class="site-header">
 	<div class="header-inner container-wide">
-		<a class="logo" href="/" aria-label="Travel-Îles, accueil">
+		<a class="logo" href={localizedPath('/', locale)} aria-label="Travel-Îles, accueil">
 			<span class="logo-main">Travel-Îles</span>
 		</a>
 
 		<nav class="desktop-nav" aria-label="Navigation principale">
 			<div class="rubriques-wrapper">
 				<button class="nav-link rubriques-trigger" type="button" aria-expanded="false" aria-controls="rubriques-menu" aria-haspopup="true">
-					Rubriques
+					{t('nav.sections', locale)}
 					<span class="chevron" aria-hidden="true">
 						<Fragment set:html={iconSvg('chevron-down', 16)} />
 					</span>
 				</button>
 			</div>
-			<a class="nav-link" href="/videos">Vidéos</a>
-			<a class="nav-link" href="/a-propos">À propos</a>
-			<a class="search-btn" href="/recherche" aria-label="Recherche">
+			<a class="nav-link" href={localizedPath('/videos', locale)}>{t('nav.videos', locale)}</a>
+			<a class="nav-link" href={localizedPath('/a-propos', locale) === '/en/a-propos' ? '/en/about' : '/a-propos'}>{t('nav.about', locale)}</a>
+			<a class="search-btn" href={localizedPath('/recherche', locale) === '/en/recherche' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
 				<Fragment set:html={iconSvg('search', 20)} />
+			</a>
+			<a class="lang-switch" href={switchHref} hreflang={otherLocale} aria-label={otherLocale === 'en' ? 'Switch to English' : 'Passer en français'}>
+				{otherLocale.toUpperCase()}
 			</a>
 		</nav>
 
@@ -41,7 +54,7 @@ const navLinks = CATEGORIES.map((category) => ({
 	<div id="rubriques-menu" class="rubriques-panel" hidden>
 		<div class="container-wide rubriques-panel-inner">
 			<div class="rubriques-panel-header">
-				<span class="kicker">Les rubriques</span>
+				<span class="kicker">{t('nav.sections', locale)}</span>
 			</div>
 			<ul class="rubriques-grid">
 				{navLinks.map((link) => (
@@ -55,11 +68,12 @@ const navLinks = CATEGORIES.map((category) => ({
 	<nav id="mobile-menu" class="mobile-nav" aria-label="Navigation mobile" hidden>
 		<div class="container mobile-nav-inner">
 			<div class="mobile-nav-top">
-				<a href="/videos">Vidéos</a>
-				<a href="/a-propos">À propos</a>
-				<a href="/recherche">Recherche</a>
+				<a href={localizedPath('/videos', locale)}>{t('nav.videos', locale)}</a>
+				<a href={locale === 'en' ? '/en/about' : '/a-propos'}>{t('nav.about', locale)}</a>
+				<a href={locale === 'en' ? '/en/search' : '/recherche'}>{t('nav.search', locale)}</a>
+				<a class="lang-switch-mobile" href={switchHref} hreflang={otherLocale}>{otherLocale.toUpperCase()}</a>
 			</div>
-			<span class="kicker mobile-nav-heading">Rubriques</span>
+			<span class="kicker mobile-nav-heading">{t('nav.sections', locale)}</span>
 			<ul class="mobile-nav-list">
 				{navLinks.map((link) => (
 					<li><a href={link.href}>{link.label}</a></li>
@@ -232,6 +246,32 @@ const navLinks = CATEGORIES.map((category) => ({
 
 	.search-btn:hover {
 		color: var(--navy);
+	}
+
+	.lang-switch {
+		display: inline-flex;
+		align-items: center;
+		font-family: var(--font-body);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: var(--tracking-wider);
+		color: var(--text-muted);
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-pill);
+		padding: 0.3em 0.7em;
+		transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+	}
+
+	.lang-switch:hover {
+		color: var(--navy);
+		border-color: var(--navy);
+	}
+
+	.lang-switch-mobile {
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 	}
 
 	.rubriques-panel {

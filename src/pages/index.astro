@@ -14,25 +14,26 @@ const videos = (await getCollection('videos'))
 	.filter((v) => v.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const [heroVideo, ...restVideos] = videos;
-// Lead video card + up to 4 secondary cards in the grid
-const leadVideo = restVideos[0];
-const gridVideos = restVideos.slice(1, 5);
+const heroEntries = await getCollection('hero');
+const heroEntry = heroEntries.find((h) => h.data.published);
+
+// All videos go into the video section
+const leadVideo = videos[0];
+const gridVideos = videos.slice(1, 5);
 // Feature article (horizontal, prominent) + 3-column grid below
 const [featureArticle, ...gridArticles] = articles;
 const latestArticles = gridArticles.slice(0, 3);
 ---
 
-<BaseLayout>
+<BaseLayout locale="fr" alternateUrl="/en/">
 	<!-- deploy -->
 	<!-- Hero -->
-	{heroVideo && (
+	{heroEntry && (
 		<section class="container-wide hero-section">
 			<div class="hero-header">
-				<span class="kicker">À la une · Vidéo</span>
-				<span class="meta hero-tagline">Le magazine vidéo de l'océan Indien</span>
+				<span class="kicker">Le magazine vidéo de l'océan Indien</span>
 			</div>
-			<HeroVideo video={heroVideo} />
+			<HeroVideo hero={heroEntry} />
 		</section>
 	)}
 
@@ -62,19 +63,7 @@ const latestArticles = gridArticles.slice(0, 3);
 		)}
 	</section>
 
-	<!-- Feature article — editorial horizontal banner -->
-	{featureArticle && (
-		<section class="feature-band">
-			<div class="container-wide section feature-section">
-				<div class="feature-label">
-					<span class="kicker">En lecture</span>
-				</div>
-				<ArticleCard article={featureArticle} orientation="horizontal" size="lg" />
-			</div>
-		</section>
-	)}
-
-	<!-- Articles grid -->
+	<!-- Articles: feature lead + grid -->
 	<section class="container-wide section articles-section">
 		<div class="section-header">
 			<div class="section-header-left">
@@ -85,9 +74,16 @@ const latestArticles = gridArticles.slice(0, 3);
 				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
 			</a>
 		</div>
-		<div class="grid-3">
-			{latestArticles.map((article) => <ArticleCard article={article} />)}
-		</div>
+		{featureArticle && (
+			<div class="articles-feature">
+				<ArticleCard article={featureArticle} orientation="horizontal" size="lg" />
+			</div>
+		)}
+		{latestArticles.length > 0 && (
+			<div class="grid-3">
+				{latestArticles.map((article) => <ArticleCard article={article} />)}
+			</div>
+		)}
 	</section>
 </BaseLayout>
 
@@ -97,14 +93,7 @@ const latestArticles = gridArticles.slice(0, 3);
 	}
 
 	.hero-header {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
 		margin-bottom: var(--space-5);
-	}
-
-	.hero-tagline {
-		letter-spacing: 0.04em;
 	}
 
 	.section-header-left {
@@ -144,20 +133,15 @@ const latestArticles = gridArticles.slice(0, 3);
 		gap: var(--space-6);
 	}
 
-	/* Feature band */
-	.feature-band {
-		background: var(--navy-050);
-	}
-
-	.feature-section {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-6);
-	}
-
 	/* Articles section */
 	.articles-section {
 		padding-top: var(--space-20);
+	}
+
+	.articles-feature {
+		margin-bottom: var(--space-16);
+		padding-bottom: var(--space-16);
+		border-bottom: 1px solid var(--border-subtle);
 	}
 
 	@media (max-width: 860px) {
@@ -184,8 +168,5 @@ const latestArticles = gridArticles.slice(0, 3);
 			font-size: var(--text-lg);
 		}
 
-		.feature-section {
-			gap: var(--space-4);
-		}
-	}
+}
 </style>
