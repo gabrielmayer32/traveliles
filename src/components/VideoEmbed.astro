@@ -1,39 +1,63 @@
 ---
 interface Props {
-	videoSource: 'youtube' | 'vimeo' | 'facebook' | 'instagram';
-	videoId: string;
+	videoSource: 'youtube' | 'vimeo' | 'facebook' | 'instagram' | 'r2';
+	videoId?: string;
+	videoFile?: string;
 	title?: string;
+	thumbnail?: string;
 }
 
-const { videoSource, videoId, title = 'Vidéo Travel-Îles' } = Astro.props;
-const src = {
+const { videoSource, videoId, videoFile, title = 'Vidéo Travel-Îles', thumbnail } = Astro.props;
+
+const isR2 = videoSource === 'r2';
+
+const src = isR2 ? undefined : {
 	youtube: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`,
 	vimeo: `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`,
-	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId)}&autoplay=true`,
+	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId ?? '')}&autoplay=true`,
 	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
-}[videoSource];
+}[videoSource as 'youtube' | 'vimeo' | 'facebook' | 'instagram'];
 
-const directUrl = {
+const platformName = { youtube: 'YouTube', vimeo: 'Vimeo', facebook: 'Facebook', instagram: 'Instagram' }[videoSource as string] ?? videoSource;
+
+const directUrl = isR2 ? undefined : {
 	youtube: `https://www.youtube.com/watch?v=${videoId}`,
 	vimeo: `https://vimeo.com/${videoId}`,
 	facebook: videoId,
 	instagram: `https://www.instagram.com/reel/${videoId}/`,
-}[videoSource];
+}[videoSource as 'youtube' | 'vimeo' | 'facebook' | 'instagram'];
 ---
 
-<div class="video-embed" data-embed-src={src} data-embed-title={title}>
-	<div class="video-embed-placeholder">
-		<p>Cette vidéo est hébergée par un service tiers ({videoSource === 'youtube' ? 'YouTube' : videoSource === 'vimeo' ? 'Vimeo' : videoSource === 'facebook' ? 'Facebook' : 'Instagram'}).</p>
-		<button class="video-embed-accept" type="button">Accepter les cookies et lire la vidéo</button>
-		<a class="video-embed-external" href={directUrl} target="_blank" rel="noopener">
-			Voir sur {videoSource === 'youtube' ? 'YouTube' : videoSource === 'vimeo' ? 'Vimeo' : videoSource === 'facebook' ? 'Facebook' : 'Instagram'} ↗
-		</a>
+{isR2 && videoFile ? (
+	<div class="video-embed video-embed--r2">
+		<video
+			src={videoFile}
+			controls
+			playsinline
+			preload="metadata"
+			poster={thumbnail}
+			style="display:block;width:100%;height:100%;background:#000"
+		>
+			<p>Votre navigateur ne supporte pas la lecture vidéo.</p>
+		</video>
 	</div>
-</div>
+) : (
+	<div class="video-embed" data-embed-src={src} data-embed-title={title}>
+		<div class="video-embed-placeholder">
+			<p>Cette vidéo est hébergée par un service tiers ({platformName}).</p>
+			<button class="video-embed-accept" type="button">Accepter les cookies et lire la vidéo</button>
+			{directUrl && (
+				<a class="video-embed-external" href={directUrl} target="_blank" rel="noopener">
+					Voir sur {platformName} ↗
+				</a>
+			)}
+		</div>
+	</div>
+)}
 
 <script>
 	function initVideoEmbeds() {
-		document.querySelectorAll<HTMLElement>('.video-embed').forEach((el) => {
+		document.querySelectorAll<HTMLElement>('.video-embed:not(.video-embed--r2)').forEach((el) => {
 			if (el.dataset.embedReady === 'true') return;
 			el.dataset.embedReady = 'true';
 
