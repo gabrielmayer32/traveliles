@@ -21,11 +21,11 @@ const embedSrc = isR2 ? undefined : {
 	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
 }[videoSource as 'youtube' | 'vimeo' | 'facebook' | 'instagram'];
 
-const thumbnail = video.data.thumbnail ?? (
+const thumbnail = isR2 ? undefined : (video.data.thumbnail ?? (
 	videoSource === 'youtube' && videoId
 		? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
 		: undefined
-);
+));
 ---
 
 <section class="hero-video" data-embed-src={embedSrc ?? ''} data-is-r2={isR2 ? 'true' : undefined}>
@@ -40,6 +40,8 @@ const thumbnail = video.data.thumbnail ?? (
 				playsinline
 				preload="auto"
 				aria-hidden="true"
+				oncanplay="this.style.opacity='1'"
+				style="opacity:0;transition:opacity 600ms"
 			/>
 		) : (
 			<>
@@ -51,9 +53,11 @@ const thumbnail = video.data.thumbnail ?? (
 	<div class="hero-scrim"></div>
 	<div class="hero-overlay container-wide">
 		<CategoryLabel category={category} variant="overlay" linked={false} />
-		<h2 class="hero-title"><a href={href}>{title}</a></h2>
+		<h2 class="hero-title">
+			{isR2 ? title : <a href={href}>{title}</a>}
+		</h2>
 		{excerpt && <p class="hero-excerpt">{excerpt}</p>}
-		<div class="meta hero-meta">{formatDateLocale(date, locale)}</div>
+		{!isR2 && <div class="meta hero-meta">{formatDateLocale(date, locale)}</div>}
 	</div>
 </section>
 
