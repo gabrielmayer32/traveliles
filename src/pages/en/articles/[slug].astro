@@ -63,7 +63,7 @@ const related = allArticles.slice(0, 3);
 		{article.data.cover && (
 			<figure class="article-figure">
 				<div class="article-cover">
-					<img src={article.data.cover} alt="" />
+					<img src={article.data.cover} alt={article.data.title} />
 				</div>
 				<figcaption class="meta article-caption">
 					{article.data.category} · Travel-Îles

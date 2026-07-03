@@ -29,7 +29,7 @@ const thumbnail = video.data.thumbnail ?? (
 
 <section class="hero-video" data-embed-src={embedSrc}>
 	<div class="hero-media">
-		{thumbnail && <img class="hero-poster" src={thumbnail} alt="" />}
+		{thumbnail && <img class="hero-poster" src={thumbnail} alt={title} />}
 		<div class="hero-iframe-slot"></div>
 	</div>
 	<div class="hero-scrim"></div>

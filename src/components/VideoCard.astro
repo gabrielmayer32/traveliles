@@ -25,7 +25,7 @@ const duration = (video.data as any).duration as string | undefined;
 
 <a class:list={['video-card', `video-card--${size}`]} href={href}>
 	<div class="video-thumbnail">
-		{thumbnail && <img src={thumbnail} alt="" loading="lazy" />}
+		{thumbnail && <img src={thumbnail} alt={video.data.title} loading="lazy" />}
 		<span class="video-scrim"></span>
 		<span class="play-btn" style={`width:${playSize}px;height:${playSize}px;padding-left:${playPaddingLeft}px`}>
 			<Fragment set:html={iconSvg('play', iconSize)} />
