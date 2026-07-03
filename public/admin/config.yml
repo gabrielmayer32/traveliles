@@ -106,7 +106,9 @@ collections:
           - { label: Vimeo, value: vimeo }
           - { label: Facebook, value: facebook }
           - { label: Instagram, value: instagram }
-      - { name: videoId, label: ID vidéo, widget: string, hint: "YouTube: ID de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post." }
+          - { label: Cloudflare R2, value: r2 }
+      - { name: videoId, label: ID vidéo, widget: string, required: false, hint: "YouTube: ID de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post. Laisser vide pour R2." }
+      - { name: videoFile, label: URL vidéo R2, widget: string, required: false, hint: "URL publique du fichier vidéo sur Cloudflare R2. Utiliser uniquement si Source = Cloudflare R2." }
       - { name: thumbnail, label: Vignette, widget: image, required: false }
       - { name: excerpt, label: Extrait, widget: text, required: false }
       - { name: published, label: Publié, widget: boolean, default: false }
