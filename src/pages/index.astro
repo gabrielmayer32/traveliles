@@ -14,10 +14,12 @@ const videos = (await getCollection('videos'))
 	.filter((v) => v.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const [heroVideo, ...restVideos] = videos;
-// Lead video card + up to 4 secondary cards in the grid
-const leadVideo = restVideos[0];
-const gridVideos = restVideos.slice(1, 5);
+const heroEntries = await getCollection('hero');
+const heroEntry = heroEntries.find((h) => h.data.published);
+
+// All videos go into the video section
+const leadVideo = videos[0];
+const gridVideos = videos.slice(1, 5);
 // Feature article (horizontal, prominent) + 3-column grid below
 const [featureArticle, ...gridArticles] = articles;
 const latestArticles = gridArticles.slice(0, 3);
@@ -26,13 +28,12 @@ const latestArticles = gridArticles.slice(0, 3);
 <BaseLayout locale="fr" alternateUrl="/en/">
 	<!-- deploy -->
 	<!-- Hero -->
-	{heroVideo && (
+	{heroEntry && (
 		<section class="container-wide hero-section">
 			<div class="hero-header">
-				<span class="kicker">À la une · Vidéo</span>
-				<span class="meta hero-tagline">Le magazine vidéo de l'océan Indien</span>
+				<span class="kicker">Le magazine vidéo de l'océan Indien</span>
 			</div>
-			<HeroVideo video={heroVideo} />
+			<HeroVideo hero={heroEntry} />
 		</section>
 	)}
 
@@ -97,14 +98,7 @@ const latestArticles = gridArticles.slice(0, 3);
 	}
 
 	.hero-header {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
 		margin-bottom: var(--space-5);
-	}
-
-	.hero-tagline {
-		letter-spacing: 0.04em;
 	}
 
 	.section-header-left {

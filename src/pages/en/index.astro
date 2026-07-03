@@ -13,29 +13,30 @@ const articles = (await getCollection('articles_en'))
 	.filter((a) => a.data.published && !!a.data.title)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const videoSource = (await getCollection('videos'))
+const allVideos = (await getCollection('videos'))
 	.filter((v) => v.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const [heroVideo, ...restVideos] = videoSource;
-const leadVideo = restVideos[0];
-const gridVideos = restVideos.slice(1, 5);
+const leadVideo = allVideos[0];
+const gridVideos = allVideos.slice(1, 5);
+
+const heroEntries = await getCollection('hero');
+const heroEntry = heroEntries.find((h) => h.data.published);
 
 const [featureArticle, ...gridArticles] = articles;
 const latestArticles = gridArticles.slice(0, 3);
 ---
 
 <BaseLayout locale={locale} alternateUrl="/">
-	{heroVideo && (
+	{heroEntry && (
 		<section class="container-wide hero-section">
 			<div class="hero-header">
-				<span class="kicker">{t('home.featured', locale)}</span>
-				<span class="meta hero-tagline">{t('home.tagline', locale)}</span>
+				<span class="kicker">{t('home.tagline', locale)}</span>
 			</div>
-			<HeroVideo video={heroVideo} locale="fr" />
+			<HeroVideo hero={heroEntry} />
 		</section>
 	)}
 
-	{videoSource.length > 1 && (
+	{allVideos.length > 0 && (
 		<section class="container-wide section videos-section">
 			<div class="section-header">
 				<div class="section-header-left">

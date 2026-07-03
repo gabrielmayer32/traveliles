@@ -38,6 +38,19 @@ const videoSchema = z.object({
 	published: z.boolean().default(true),
 });
 
+const heroSchema = z.object({
+	title: z.string(),
+	label: z.string(),
+	excerpt: z.string().optional(),
+	videoFile: z.string(),
+	published: z.boolean().default(true),
+});
+
+const hero = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/hero' }),
+	schema: heroSchema,
+});
+
 const articles = defineCollection({
 	loader: glob({ pattern: '*.md', base: './src/content/articles/fr' }),
 	schema: articleSchema,
@@ -53,4 +66,4 @@ const videos = defineCollection({
 	schema: videoSchema,
 });
 
-export const collections = { articles, articles_en, videos };
+export const collections = { articles, articles_en, videos, hero };

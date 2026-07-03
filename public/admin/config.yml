@@ -16,6 +16,24 @@ i18n:
   save_all_locales: false
 
 collections:
+  - name: hero
+    label: Vidéo à la une
+    folder: src/content/hero
+    create: false
+    slug: "hero"
+    extension: md
+    format: frontmatter
+    files:
+      - name: hero
+        label: Vidéo à la une
+        file: src/content/hero/hero.md
+        fields:
+          - { name: title, label: Titre, widget: string }
+          - { name: label, label: Étiquette, widget: string, hint: "Texte libre affiché au-dessus du titre (ex: Nos adresses, Nouveau, Exclusif…)" }
+          - { name: excerpt, label: Extrait, widget: text, required: false }
+          - { name: videoFile, label: URL vidéo R2, widget: string, hint: "URL publique du fichier MP4 sur Cloudflare R2" }
+          - { name: published, label: Publié, widget: boolean, default: true }
+
   - name: articles
     label: Articles
     folder: src/content/articles
