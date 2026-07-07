@@ -43,6 +43,7 @@ const heroSchema = z.object({
 	label: z.string().optional(),
 	excerpt: z.string().optional(),
 	videoFile: z.string(),
+	poster: z.string().optional(),
 	published: z.boolean().default(true),
 });
 

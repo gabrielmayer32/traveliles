@@ -30,6 +30,15 @@ const { title, label, excerpt, videoFile } = hero.data;
 	</div>
 </section>
 
+<script>
+	const video = document.querySelector('.hero-r2') as HTMLVideoElement | null;
+	if (video) {
+		video.addEventListener('loadedmetadata', () => {
+			video.currentTime = 0.001;
+		}, { once: true });
+	}
+</script>
+
 <style>
 	.hero-video {
 		position: relative;
@@ -40,6 +49,7 @@ const { title, label, excerpt, videoFile } = hero.data;
 	.hero-media {
 		position: relative;
 		height: clamp(420px, 62vh, 640px);
+		background: #141a3f;
 	}
 
 	.hero-r2 {
