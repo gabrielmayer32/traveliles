@@ -27,6 +27,7 @@ collections:
           - { name: label, label: Étiquette, widget: string, required: false, hint: "Texte libre affiché au-dessus du titre (ex: Nos adresses, Nouveau, Exclusif…)" }
           - { name: excerpt, label: Extrait, widget: text, required: false }
           - { name: videoFile, label: URL vidéo R2, widget: string, hint: "URL publique du fichier MP4 sur Cloudflare R2" }
+          - { name: poster, label: Image de démarrage, widget: image, required: false, hint: "Image affichée avant que la vidéo ne démarre (évite l'écran gris)" }
           - { name: published, label: Publié, widget: boolean, default: true }
 
   - name: articles
