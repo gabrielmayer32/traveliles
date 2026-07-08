@@ -14,11 +14,11 @@ export function getStaticPaths() {
 
 const { category } = Astro.props;
 const articles = (await getCollection('articles'))
-	.filter((article) => article.data.category === category)
+	.filter((article) => article.data.published && article.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const videos = (await getCollection('videos'))
-	.filter((video) => video.data.category === category)
+	.filter((video) => video.data.published && video.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 4);
 ---

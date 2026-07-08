@@ -5,6 +5,7 @@ import VideoCard from '../../components/VideoCard.astro';
 import { CATEGORIES } from '../../lib/utils';
 
 const videos = (await getCollection('videos'))
+	.filter((v) => v.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 

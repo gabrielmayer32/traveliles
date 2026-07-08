@@ -7,11 +7,11 @@ import { formatDate } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 
 export async function getStaticPaths() {
-	const articles = await getCollection('articles');
+	const articles = (await getCollection('articles')).filter((a) => a.data.published);
 	const enArticles = await getCollection('articles_en');
 	return articles.map((article) => ({
 		params: { slug: article.id },
-		props: { article, hasEn: enArticles.some((e) => e.id === article.id && !!e.data.title) },
+		props: { article, hasEn: enArticles.some((e) => e.id === article.id && e.data.published && !!e.data.title) },
 	}));
 }
 
@@ -32,7 +32,7 @@ const articleSchema = JSON.stringify({
 });
 
 const allArticles = (await getCollection('articles'))
-	.filter((a) => a.id !== article.id)
+	.filter((a) => a.data.published && a.id !== article.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const related = allArticles.slice(0, 3);
 ---

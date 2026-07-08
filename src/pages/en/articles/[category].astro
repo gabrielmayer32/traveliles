@@ -18,11 +18,11 @@ export function getStaticPaths() {
 const { category } = Astro.props;
 
 const articles = (await getCollection('articles_en'))
-	.filter((a) => !!a.data.title && a.data.category === category)
+	.filter((a) => a.data.published && !!a.data.title && a.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const videos = (await getCollection('videos'))
-	.filter((video) => video.data.category === category)
+	.filter((video) => video.data.published && video.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 4);
 

@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 
 export async function GET() {
 	const articles = (await getCollection('articles'))
+		.filter((article) => article.data.published)
 		.map((article) => ({
 			title: article.data.title,
 			excerpt: article.data.excerpt,
@@ -13,6 +14,7 @@ export async function GET() {
 		}));
 
 	const videos = (await getCollection('videos'))
+		.filter((video) => video.data.published)
 		.map((video) => ({
 			title: video.data.title,
 			excerpt: video.data.excerpt,

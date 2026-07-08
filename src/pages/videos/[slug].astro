@@ -8,7 +8,7 @@ import { formatDate } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 
 export async function getStaticPaths() {
-	const videos = await getCollection('videos');
+	const videos = (await getCollection('videos')).filter((v) => v.data.published);
 	return videos.map((video) => ({
 		params: { slug: video.id },
 		props: { video },
@@ -30,7 +30,7 @@ const videoSchema = JSON.stringify({
 });
 
 const allVideos = (await getCollection('videos'))
-	.filter((v) => v.id !== video.id)
+	.filter((v) => v.data.published && v.id !== video.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const more = allVideos.slice(0, 3);
 ---
