@@ -8,7 +8,7 @@ import { formatDate } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 
 export async function getStaticPaths() {
-	const videos = (await getCollection('videos')).filter((v) => v.data.published);
+	const videos = await getCollection('videos');
 	return videos.map((video) => ({
 		params: { slug: video.id },
 		props: { video },

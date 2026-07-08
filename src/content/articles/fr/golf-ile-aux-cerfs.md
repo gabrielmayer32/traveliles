@@ -1,7 +1,7 @@
 ---
 title: Île aux Cerfs, parcours entre vent et lagon
 date: 2025-12-08
-category: Activités & événements
+category: Activités & Evénements
 cover: https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1800&q=80
 excerpt: Un parcours insulaire où la stratégie dépend autant de la ligne de jeu que du souffle marin.
 author: Travel-Îles

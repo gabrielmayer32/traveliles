@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
-import { CATEGORIES, categoryFromSlug, slugifyCategory } from '../../lib/utils';
+import VideoCard from '../../components/VideoCard.astro';
+import { CATEGORIES, slugifyCategory } from '../../lib/utils';
 
 export function getStaticPaths() {
 	return CATEGORIES.map((category) => ({
@@ -12,11 +13,14 @@ export function getStaticPaths() {
 }
 
 const { category } = Astro.props;
-const currentSlug = Astro.params.category;
-
 const articles = (await getCollection('articles'))
 	.filter((article) => article.data.published && article.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const videos = (await getCollection('videos'))
+	.filter((video) => video.data.published && video.data.category === category)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 4);
 ---
 
 <BaseLayout title={category} description={`Articles Travel-Îles — ${category}.`}>
@@ -38,15 +42,31 @@ const articles = (await getCollection('articles'))
 			))}
 		</div>
 
-		{articles.length > 0 ? (
-			<div class="grid-3">
-				{articles.map((article) => <ArticleCard article={article} />)}
-			</div>
-		) : (
-			<p class="empty-state">
-				Aucun sujet dans cette rubrique pour le moment.
-			</p>
-		)}
+		<section class="listing-section">
+			<h2 class="subsection-title">Nos dernières vidéos</h2>
+			{videos.length > 0 ? (
+				<div class="grid-4">
+					{videos.map((video) => <VideoCard video={video} />)}
+				</div>
+			) : (
+				<p class="empty-state empty-state--compact">
+					Aucune vidéo dans cette rubrique pour le moment.
+				</p>
+			)}
+		</section>
+
+		<section class="listing-section">
+			<h2 class="subsection-title">Articles</h2>
+			{articles.length > 0 ? (
+				<div class="grid-3">
+					{articles.map((article) => <ArticleCard article={article} />)}
+				</div>
+			) : (
+				<p class="empty-state">
+					Aucun sujet dans cette rubrique pour le moment.
+				</p>
+			)}
+		</section>
 	</section>
 </BaseLayout>
 
@@ -111,10 +131,29 @@ const articles = (await getCollection('articles'))
 		color: var(--white);
 	}
 
+	.listing-section {
+		padding-top: var(--space-12);
+	}
+
+	.listing-section + .listing-section {
+		margin-top: var(--space-12);
+		padding-top: var(--space-12);
+		border-top: 1px solid var(--border-subtle);
+	}
+
+	.subsection-title {
+		margin-bottom: var(--space-8);
+		font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+	}
+
 	.empty-state {
 		text-align: center;
 		color: var(--text-muted);
 		font-size: var(--text-lg);
 		padding: var(--space-16) 0;
+	}
+
+	.empty-state--compact {
+		padding: var(--space-8) 0;
 	}
 </style>

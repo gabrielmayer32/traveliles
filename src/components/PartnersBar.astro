@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import type { Locale } from '../lib/i18n';
+
+interface Props {
+	locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const partnerEntries = await getCollection('partners');
+const partners = partnerEntries[0]?.data.partners ?? [];
+const title = locale === 'en' ? 'Our Partners' : 'Nos Partenaires';
+---
+
+<section class="partners-section">
+	<div class="container-wide">
+		<div class="partners-header">
+			<span class="kicker">{title}</span>
+		</div>
+		<div class="partners-grid">
+			{partners.length > 0 ? (
+				partners.map((partner) => (
+					partner.url ? (
+						<a class="partner-slot" href={partner.url} target="_blank" rel="noopener noreferrer">
+							<img src={partner.logo} alt={partner.name} loading="lazy" />
+						</a>
+					) : (
+						<div class="partner-slot">
+							<img src={partner.logo} alt={partner.name} loading="lazy" />
+						</div>
+					)
+				))
+			) : (
+				Array.from({ length: 5 }).map((_, i) => (
+					<div class="partner-slot partner-slot--empty">
+						<span class="partner-slot-label">Logo</span>
+					</div>
+				))
+			)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.partners-section {
+		padding-block: var(--space-24);
+	}
+
+	.partners-header {
+		margin-bottom: var(--space-12);
+		padding-bottom: var(--space-4);
+		border-bottom: 1px solid var(--border-strong);
+	}
+
+	.partners-grid {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-12);
+	}
+
+	.partner-slot {
+		display: grid;
+		place-items: center;
+		width: 10rem;
+		height: 5rem;
+	}
+
+	.partner-slot img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		filter: grayscale(1);
+		opacity: 0.6;
+		transition: opacity var(--dur) var(--ease-out), filter var(--dur) var(--ease-out);
+	}
+
+	.partner-slot:hover img {
+		filter: grayscale(0);
+		opacity: 1;
+	}
+
+	.partner-slot--empty {
+		border: 1px dashed var(--border-subtle);
+		border-radius: var(--radius);
+		background: var(--grey-050);
+	}
+
+	.partner-slot-label {
+		font-size: var(--text-xs);
+		color: var(--text-muted);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 860px) {
+		.partners-grid {
+			gap: var(--space-8);
+		}
+		.partner-slot {
+			width: 8rem;
+			height: 4rem;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.partners-section {
+			padding-block: var(--space-16);
+		}
+		.partners-grid {
+			gap: var(--space-6);
+		}
+		.partner-slot {
+			width: 7rem;
+			height: 3.5rem;
+		}
+	}
+</style>

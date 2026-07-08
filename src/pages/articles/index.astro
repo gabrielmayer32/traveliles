@@ -5,7 +5,7 @@ import ArticleCard from '../../components/ArticleCard.astro';
 import { CATEGORIES, slugifyCategory } from '../../lib/utils';
 
 const articles = (await getCollection('articles'))
-	.filter((article) => article.data.published)
+	.filter((a) => a.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 

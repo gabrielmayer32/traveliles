@@ -12,7 +12,7 @@ const translations = {
 
 	// Homepage
 	'home.featured':      { fr: 'À la une · Vidéo',                    en: 'Featured · Video' },
-	'home.tagline':       { fr: "Le magazine vidéo de l'océan Indien", en: 'The Indian Ocean video magazine' },
+	'home.tagline':       { fr: "Le magazine de l'océan Indien",       en: 'The Indian Ocean magazine' },
 	'home.latest_videos': { fr: 'Dernières vidéos',                    en: 'Latest videos' },
 	'home.all_videos':    { fr: 'Toutes les vidéos',                   en: 'All videos' },
 	'home.reading':       { fr: 'En lecture',                          en: 'Now reading' },
@@ -71,16 +71,14 @@ const translations = {
 } as const;
 
 export const CATEGORIES_EN: Record<string, string> = {
-	'Un visage, une histoire':        'A Face, a Story',
-	'Les gardiens du Savoir Faire':   'Guardians of Craftsmanship',
-	'24heures avec....':              '24 Hours With...',
+	'Rencontres':                     'Encounters',
 	'Maurice demain':                 'Mauritius Tomorrow',
-	"Mémoires de l'Île":             'Island Memories',
-	'Saveurs':                        'Flavours',
 	'Nos régions':                    'Our Regions',
-	'Art & culture':                  'Art & Culture',
-	'Activités & événements':         'Activities & Events',
-	'Nos Ambassadeurs régionaux':     'Our Regional Ambassadors',
+	'Nos Ambassadeurs':               'Our Ambassadors',
+	'Savoir-faire':                   'Craftsmanship',
+	"Mémoires d'îles":               'Island Memories',
+	'Saveurs':                        'Flavours',
+	'Activités & Evénements':         'Activities & Events',
 	'Nos adresses':                   'Our Picks',
 };
 
