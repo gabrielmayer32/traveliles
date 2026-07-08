@@ -20,7 +20,7 @@ const heroEntry = heroEntries.find((h) => h.data.published);
 
 // All videos go into the video section
 const leadVideo = videos[0];
-const gridVideos = videos.slice(1, 5);
+const gridVideos = videos.slice(1, 3);
 // Feature article (horizontal, prominent) + 3-column grid below
 const [featureArticle, ...gridArticles] = articles;
 const latestArticles = gridArticles.slice(0, 3);
@@ -31,9 +31,6 @@ const latestArticles = gridArticles.slice(0, 3);
 	<!-- Hero -->
 	{heroEntry && (
 		<section class="container-wide hero-section">
-			<div class="hero-header">
-				<span class="kicker">Le magazine de l'océan Indien</span>
-			</div>
 			<HeroVideo hero={heroEntry} />
 		</section>
 	)}
@@ -42,7 +39,6 @@ const latestArticles = gridArticles.slice(0, 3);
 	<section class="container-wide section videos-section">
 		<div class="section-header">
 			<div class="section-header-left">
-				<span class="kicker">Vidéos</span>
 				<h2 class="section-title">Dernières vidéos</h2>
 			</div>
 			<a class="section-cta" href="/videos">
@@ -57,7 +53,7 @@ const latestArticles = gridArticles.slice(0, 3);
 				</div>
 				{gridVideos.length > 0 && (
 					<div class="videos-lead-grid">
-						{gridVideos.map((v) => <VideoCard video={v} />)}
+						{gridVideos.map((v) => <VideoCard video={v} size="sm" />)}
 					</div>
 				)}
 			</div>
@@ -68,7 +64,6 @@ const latestArticles = gridArticles.slice(0, 3);
 	<section class="container-wide section articles-section">
 		<div class="section-header">
 			<div class="section-header-left">
-				<span class="kicker">Articles</span>
 				<h2 class="section-title">Articles</h2>
 			</div>
 			<a class="section-cta" href="/articles">
@@ -98,10 +93,6 @@ const latestArticles = gridArticles.slice(0, 3);
 <style>
 	.hero-section {
 		padding-top: var(--space-10);
-	}
-
-	.hero-header {
-		margin-bottom: var(--space-5);
 	}
 
 	.section-header-left {
@@ -153,8 +144,8 @@ const latestArticles = gridArticles.slice(0, 3);
 	.brand-closer-name {
 		display: block;
 		color: var(--text-wordmark);
-		font-family: var(--font-display);
-		font-size: clamp(var(--text-3xl), 7vw, var(--text-5xl));
+		font-family: var(--font-logo);
+		font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
 		font-weight: var(--fw-bold);
 		letter-spacing: -0.005em;
 		line-height: 0.95;
@@ -184,11 +175,6 @@ const latestArticles = gridArticles.slice(0, 3);
 	}
 
 	@media (max-width: 640px) {
-		.hero-header {
-			flex-direction: column;
-			gap: var(--space-2);
-		}
-
 		.videos-lead-grid {
 			grid-template-columns: 1fr;
 		}

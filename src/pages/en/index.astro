@@ -18,7 +18,7 @@ const allVideos = (await getCollection('videos'))
 	.filter((v) => v.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const leadVideo = allVideos[0];
-const gridVideos = allVideos.slice(1, 5);
+const gridVideos = allVideos.slice(1, 3);
 
 const heroEntries = await getCollection('hero');
 const heroEntry = heroEntries.find((h) => h.data.published);
@@ -30,9 +30,6 @@ const latestArticles = gridArticles.slice(0, 3);
 <BaseLayout locale={locale} alternateUrl="/">
 	{heroEntry && (
 		<section class="container-wide hero-section">
-			<div class="hero-header">
-				<span class="kicker">{t('home.tagline', locale)}</span>
-			</div>
 			<HeroVideo hero={heroEntry} />
 		</section>
 	)}
@@ -41,7 +38,6 @@ const latestArticles = gridArticles.slice(0, 3);
 		<section class="container-wide section videos-section">
 			<div class="section-header">
 				<div class="section-header-left">
-					<span class="kicker">{t('home.videos_kicker', locale)}</span>
 					<h2 class="section-title">{t('home.latest_videos', locale)}</h2>
 				</div>
 				<a class="section-cta" href="/videos">
@@ -56,7 +52,7 @@ const latestArticles = gridArticles.slice(0, 3);
 					</div>
 					{gridVideos.length > 0 && (
 						<div class="videos-lead-grid">
-							{gridVideos.map((v) => <VideoCard video={v} locale="fr" />)}
+							{gridVideos.map((v) => <VideoCard video={v} size="sm" locale="fr" />)}
 						</div>
 					)}
 				</div>
@@ -79,7 +75,6 @@ const latestArticles = gridArticles.slice(0, 3);
 		<section class="container-wide section articles-section">
 			<div class="section-header">
 				<div class="section-header-left">
-					<span class="kicker">{t('home.articles_kicker', locale)}</span>
 					<h2 class="section-title">Articles</h2>
 				</div>
 				<a class="section-cta" href="/en/articles">
@@ -108,7 +103,6 @@ const latestArticles = gridArticles.slice(0, 3);
 
 <style>
 	.hero-section { padding-top: var(--space-10); }
-	.hero-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-5); }
 	.section-header-left { display: flex; flex-direction: column; gap: var(--space-2); }
 	.section-cta {
 		display: inline-flex; align-items: center; gap: 0.5em;
@@ -123,7 +117,7 @@ const latestArticles = gridArticles.slice(0, 3);
 	.articles-section { padding-top: var(--space-20); }
 	.empty-en { padding-block: var(--space-20); text-align: center; color: var(--text-muted); font-size: var(--text-lg); }
 	.brand-closer { text-align: center; }
-	.brand-closer-name { display: block; color: var(--text-wordmark); font-family: var(--font-display); font-size: clamp(var(--text-3xl), 7vw, var(--text-5xl)); font-weight: var(--fw-bold); letter-spacing: -0.005em; line-height: 0.95; text-transform: uppercase; }
+	.brand-closer-name { display: block; color: var(--text-wordmark); font-family: var(--font-logo); font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl)); font-weight: var(--fw-bold); letter-spacing: -0.005em; line-height: 0.95; text-transform: uppercase; }
 	.brand-closer-tagline { margin-top: var(--space-5); color: var(--text-secondary); font-size: var(--text-lg); }
 
 	@media (max-width: 860px) {
@@ -131,7 +125,6 @@ const latestArticles = gridArticles.slice(0, 3);
 		.videos-lead-grid { grid-template-columns: 1fr 1fr; }
 	}
 	@media (max-width: 640px) {
-		.hero-header { flex-direction: column; gap: var(--space-2); }
 		.videos-lead-grid { grid-template-columns: 1fr; }
 		.videos-lead-card :global(.video-card--lg .video-title) { font-size: var(--text-lg); }
 		.feature-section { gap: var(--space-4); }

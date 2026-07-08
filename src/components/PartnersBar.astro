@@ -19,23 +19,38 @@ const title = locale === 'en' ? 'Our Partners' : 'Nos Partenaires';
 		</div>
 		<div class="partners-grid">
 			{partners.length > 0 ? (
-				partners.map((partner) => (
-					partner.url ? (
-						<a class="partner-slot" href={partner.url} target="_blank" rel="noopener noreferrer">
-							<img src={partner.logo} alt={partner.name} loading="lazy" />
-						</a>
-					) : (
-						<div class="partner-slot">
-							<img src={partner.logo} alt={partner.name} loading="lazy" />
-						</div>
-					)
-				))
+				<div class={`partners-track ${partners.length > 5 ? 'partners-track--scroll' : ''}`}>
+					{partners.map((partner) => (
+						partner.url ? (
+							<a class="partner-slot" href={partner.url} target="_blank" rel="noopener noreferrer">
+								<img src={partner.logo} alt={partner.name} loading="lazy" />
+							</a>
+						) : (
+							<div class="partner-slot">
+								<img src={partner.logo} alt={partner.name} loading="lazy" />
+							</div>
+						)
+					))}
+					{partners.length > 5 && partners.map((partner) => (
+						partner.url ? (
+							<a class="partner-slot" href={partner.url} target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+								<img src={partner.logo} alt="" loading="lazy" />
+							</a>
+						) : (
+							<div class="partner-slot" aria-hidden="true">
+								<img src={partner.logo} alt="" loading="lazy" />
+							</div>
+						)
+					))}
+				</div>
 			) : (
-				Array.from({ length: 5 }).map((_, i) => (
-					<div class="partner-slot partner-slot--empty">
-						<span class="partner-slot-label">Logo</span>
-					</div>
-				))
+				<div class="partners-track">
+					{Array.from({ length: 5 }).map(() => (
+						<div class="partner-slot partner-slot--empty">
+							<span class="partner-slot-label">Logo</span>
+						</div>
+					))}
+				</div>
 			)}
 		</div>
 	</div>
@@ -52,12 +67,28 @@ const title = locale === 'en' ? 'Our Partners' : 'Nos Partenaires';
 		border-bottom: 1px solid var(--border-strong);
 	}
 
-	.partners-grid {
+	.partners-track {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
 		gap: var(--space-12);
+		flex-wrap: wrap;
+	}
+
+	.partners-track--scroll {
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		overflow: hidden;
+		animation: partners-scroll 30s linear infinite;
+	}
+
+	.partners-track--scroll:hover {
+		animation-play-state: paused;
+	}
+
+	@keyframes partners-scroll {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(-50%); }
 	}
 
 	.partner-slot {
@@ -65,20 +96,18 @@ const title = locale === 'en' ? 'Our Partners' : 'Nos Partenaires';
 		place-items: center;
 		width: 10rem;
 		height: 5rem;
+		flex-shrink: 0;
 	}
 
 	.partner-slot img {
 		max-width: 100%;
 		max-height: 100%;
 		object-fit: contain;
-		filter: grayscale(1);
-		opacity: 0.6;
-		transition: opacity var(--dur) var(--ease-out), filter var(--dur) var(--ease-out);
+		transition: opacity var(--dur) var(--ease-out);
 	}
 
 	.partner-slot:hover img {
-		filter: grayscale(0);
-		opacity: 1;
+		opacity: 0.7;
 	}
 
 	.partner-slot--empty {
@@ -95,7 +124,7 @@ const title = locale === 'en' ? 'Our Partners' : 'Nos Partenaires';
 	}
 
 	@media (max-width: 860px) {
-		.partners-grid {
+		.partners-track {
 			gap: var(--space-8);
 		}
 		.partner-slot {
@@ -108,7 +137,7 @@ const title = locale === 'en' ? 'Our Partners' : 'Nos Partenaires';
 		.partners-section {
 			padding-block: var(--space-16);
 		}
-		.partners-grid {
+		.partners-track {
 			gap: var(--space-6);
 		}
 		.partner-slot {

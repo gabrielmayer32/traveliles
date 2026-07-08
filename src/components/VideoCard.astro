@@ -6,7 +6,7 @@ import { iconSvg } from '../lib/icons';
 
 interface Props {
 	video: CollectionEntry<'videos'>;
-	size?: 'md' | 'lg';
+	size?: 'sm' | 'md' | 'lg';
 	locale?: Locale;
 }
 
@@ -129,5 +129,26 @@ const duration = (video.data as any).duration as string | undefined;
 
 	.video-card:hover .video-title {
 		color: var(--navy);
+	}
+
+	.video-card--sm {
+		flex-direction: row;
+		gap: var(--space-4);
+		align-items: flex-start;
+	}
+
+	.video-card--sm .video-thumbnail {
+		width: 45%;
+		flex-shrink: 0;
+	}
+
+	.video-card--sm .video-body {
+		flex: 1;
+		min-width: 0;
+		padding-top: var(--space-1);
+	}
+
+	.video-card--sm .video-title {
+		font-size: var(--text-base);
 	}
 </style>

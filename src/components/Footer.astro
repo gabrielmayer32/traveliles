@@ -57,15 +57,16 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 				</div>
 			</nav>
 
-			<!-- Le magazine -->
 			<nav class="footer-magazine">
-				<div class="footer-col-title">{t('footer.magazine', locale)}</div>
 				<a class="footer-link" href={localizedPath('/videos', locale)}>{t('footer.videos', locale)}</a>
 				<a class="footer-link" href={localizedPath('/articles', locale)}>{t('footer.articles', locale)}</a>
 				<a class="footer-link" href={aboutHref}>{t('footer.about', locale)}</a>
 				<a class="footer-link" href={localizedPath('/contact', locale)}>{t('footer.contact', locale)}</a>
 				<a class="footer-link" href={searchHref}>{t('footer.search', locale)}</a>
 			</nav>
+
+			<!-- Newsletter (placeholder — form will be added later) -->
+			<div class="footer-newsletter"></div>
 		</div>
 
 		<!-- Bottom bar -->
@@ -91,7 +92,7 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 
 	.footer-grid {
 		display: grid;
-		grid-template-columns: 1.4fr 1fr 1fr 1fr;
+		grid-template-columns: 1.4fr 1fr 0.6fr 1.2fr;
 		gap: var(--space-10);
 	}
 
@@ -116,7 +117,7 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 	}
 
 	.footer-logo-main {
-		font-family: var(--font-display);
+		font-family: var(--font-logo);
 		font-weight: var(--fw-bold);
 		font-size: 1.9rem;
 		letter-spacing: -0.005em;
