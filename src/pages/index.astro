@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import HeroVideo from '../components/HeroVideo.astro';
+import PartnersBar from '../components/PartnersBar.astro';
 import VideoCard from '../components/VideoCard.astro';
 import { iconSvg } from '../lib/icons';
 
@@ -30,9 +31,6 @@ const latestArticles = gridArticles.slice(0, 3);
 	<!-- Hero -->
 	{heroEntry && (
 		<section class="container-wide hero-section">
-			<div class="hero-header">
-				<span class="kicker">Le magazine vidéo de l'océan Indien</span>
-			</div>
 			<HeroVideo hero={heroEntry} />
 		</section>
 	)}
@@ -68,7 +66,7 @@ const latestArticles = gridArticles.slice(0, 3);
 		<div class="section-header">
 			<div class="section-header-left">
 				<span class="kicker">Articles</span>
-				<h2 class="section-title">À lire</h2>
+				<h2 class="section-title">Articles</h2>
 			</div>
 			<a class="section-cta" href="/articles">
 				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
@@ -85,15 +83,18 @@ const latestArticles = gridArticles.slice(0, 3);
 			</div>
 		)}
 	</section>
+
+	<PartnersBar />
+
+	<section class="container-wide section brand-closer">
+		<span class="brand-closer-name">Travel-Îles</span>
+		<p class="brand-closer-tagline">[Phrase d'accroche à finaliser]</p>
+	</section>
 </BaseLayout>
 
 <style>
 	.hero-section {
 		padding-top: var(--space-10);
-	}
-
-	.hero-header {
-		margin-bottom: var(--space-5);
 	}
 
 	.section-header-left {
@@ -138,6 +139,27 @@ const latestArticles = gridArticles.slice(0, 3);
 		padding-top: var(--space-20);
 	}
 
+	.brand-closer {
+		text-align: center;
+	}
+
+	.brand-closer-name {
+		display: block;
+		color: var(--text-wordmark);
+		font-family: var(--font-display);
+		font-size: clamp(var(--text-3xl), 7vw, var(--text-5xl));
+		font-weight: var(--fw-bold);
+		letter-spacing: -0.005em;
+		line-height: 0.95;
+		text-transform: uppercase;
+	}
+
+	.brand-closer-tagline {
+		margin-top: var(--space-5);
+		color: var(--text-secondary);
+		font-size: var(--text-lg);
+	}
+
 	.articles-feature {
 		margin-bottom: var(--space-16);
 		padding-bottom: var(--space-16);
@@ -155,11 +177,6 @@ const latestArticles = gridArticles.slice(0, 3);
 	}
 
 	@media (max-width: 640px) {
-		.hero-header {
-			flex-direction: column;
-			gap: var(--space-2);
-		}
-
 		.videos-lead-grid {
 			grid-template-columns: 1fr;
 		}

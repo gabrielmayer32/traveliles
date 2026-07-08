@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
+import VideoCard from '../../../components/VideoCard.astro';
 import { CATEGORIES, slugifyCategory } from '../../../lib/utils';
 import { t, localizedCategory } from '../../../lib/i18n';
 
@@ -19,6 +20,11 @@ const { category } = Astro.props;
 const articles = (await getCollection('articles_en'))
 	.filter((a) => a.data.published && !!a.data.title && a.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const videos = (await getCollection('videos'))
+	.filter((video) => video.data.published && video.data.category === category)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 4);
 
 const displayCategory = localizedCategory(category, locale);
 ---
@@ -42,13 +48,27 @@ const displayCategory = localizedCategory(category, locale);
 			))}
 		</div>
 
-		{articles.length > 0 ? (
-			<div class="grid-3">
-				{articles.map((article) => <ArticleCard article={article} locale={locale} />)}
-			</div>
-		) : (
-			<p class="empty-state">{t('listing.empty', locale)}</p>
-		)}
+		<section class="listing-section">
+			<h2 class="subsection-title">Latest videos</h2>
+			{videos.length > 0 ? (
+				<div class="grid-4">
+					{videos.map((video) => <VideoCard video={video} locale="fr" />)}
+				</div>
+			) : (
+				<p class="empty-state empty-state--compact">No videos in this section yet.</p>
+			)}
+		</section>
+
+		<section class="listing-section">
+			<h2 class="subsection-title">Articles</h2>
+			{articles.length > 0 ? (
+				<div class="grid-3">
+					{articles.map((article) => <ArticleCard article={article} locale={locale} />)}
+				</div>
+			) : (
+				<p class="empty-state">{t('listing.empty', locale)}</p>
+			)}
+		</section>
 	</section>
 </BaseLayout>
 
@@ -61,5 +81,9 @@ const displayCategory = localizedCategory(category, locale);
 	.chip:hover { color: var(--navy); border-color: var(--navy); }
 	.chip--active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 	.chip--active:hover { background: var(--navy-900); border-color: var(--navy-900); color: var(--white); }
+	.listing-section { padding-top: var(--space-12); }
+	.listing-section + .listing-section { margin-top: var(--space-12); padding-top: var(--space-12); border-top: 1px solid var(--border-subtle); }
+	.subsection-title { margin-bottom: var(--space-8); font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl)); }
 	.empty-state { text-align: center; color: var(--text-muted); font-size: var(--text-lg); padding: var(--space-16) 0; }
+	.empty-state--compact { padding: var(--space-8) 0; }
 </style>

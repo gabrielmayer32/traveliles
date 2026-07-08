@@ -2,16 +2,14 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const categoryEnum = z.enum([
-	'Un visage, une histoire',
-	'Les gardiens du Savoir Faire',
-	'24heures avec....',
+	'Rencontres',
 	'Maurice demain',
-	"Mémoires de l'Île",
-	'Saveurs',
 	'Nos régions',
-	'Art & culture',
-	'Activités & événements',
-	'Nos Ambassadeurs régionaux',
+	'Nos Ambassadeurs',
+	'Savoir-faire',
+	"Mémoires d'îles",
+	'Saveurs',
+	'Activités & Evénements',
 	'Nos adresses',
 ]);
 
@@ -47,6 +45,14 @@ const heroSchema = z.object({
 	published: z.boolean().default(true),
 });
 
+const partnersSchema = z.object({
+	partners: z.array(z.object({
+		name: z.string(),
+		logo: z.string(),
+		url: z.string().optional(),
+	})).default([]),
+});
+
 const hero = defineCollection({
 	loader: glob({ pattern: '*.md', base: './src/content/hero' }),
 	schema: heroSchema,
@@ -67,4 +73,9 @@ const videos = defineCollection({
 	schema: videoSchema,
 });
 
-export const collections = { articles, articles_en, videos, hero };
+const partners = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/partners' }),
+	schema: partnersSchema,
+});
+
+export const collections = { articles, articles_en, videos, hero, partners };

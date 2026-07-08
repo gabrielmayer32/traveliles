@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import type { Locale } from '../lib/i18n';
+
+interface Props {
+	locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const partnerEntries = await getCollection('partners');
+const partners = partnerEntries[0]?.data.partners ?? [];
+const title = locale === 'en' ? 'Our partners' : 'Nos partenaires';
+---
+
+<section class="partners-bar" aria-label={title}>
+	<div class="container-wide partners-inner">
+		<h2 class="partners-title">{title}</h2>
+		<div class="partners-list">
+			{partners.length > 0 ? (
+				partners.map((partner) => (
+					partner.url ? (
+						<a class="partner-logo" href={partner.url} target="_blank" rel="noopener noreferrer">
+							<img src={partner.logo} alt={partner.name} loading="lazy" />
+						</a>
+					) : (
+						<div class="partner-logo">
+							<img src={partner.logo} alt={partner.name} loading="lazy" />
+						</div>
+					)
+				))
+			) : (
+				Array.from({ length: 4 }).map(() => <span class="partner-placeholder" aria-hidden="true"></span>)
+			)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.partners-bar {
+		background: var(--grey-050);
+		border-block: 1px solid var(--border-subtle);
+	}
+
+	.partners-inner {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: center;
+		gap: var(--space-8);
+		padding-block: var(--space-10);
+	}
+
+	.partners-title {
+		font-family: var(--font-body);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: var(--tracking-wider);
+		text-transform: uppercase;
+		color: var(--text-secondary);
+	}
+
+	.partners-list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-6);
+		min-height: 56px;
+	}
+
+	.partner-logo,
+	.partner-placeholder {
+		display: grid;
+		place-items: center;
+		width: min(9rem, 38vw);
+		height: 56px;
+	}
+
+	.partner-logo img {
+		max-width: 100%;
+		max-height: 48px;
+		object-fit: contain;
+		filter: grayscale(1);
+		opacity: 0.78;
+		transition: opacity var(--dur-fast) var(--ease-out);
+	}
+
+	.partner-logo:hover img {
+		opacity: 1;
+	}
+
+	.partner-placeholder {
+		border: 1px dashed var(--border-subtle);
+		background: var(--white);
+	}
+
+	@media (max-width: 720px) {
+		.partners-inner {
+			grid-template-columns: 1fr;
+			gap: var(--space-5);
+			text-align: center;
+		}
+	}
+</style>

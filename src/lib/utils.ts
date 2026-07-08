@@ -1,30 +1,26 @@
 export const CATEGORIES = [
-	'Un visage, une histoire',
-	'Les gardiens du Savoir Faire',
-	'24heures avec....',
+	'Rencontres',
 	'Maurice demain',
-	"Mémoires de l'Île",
-	'Saveurs',
 	'Nos régions',
-	'Art & culture',
-	'Activités & événements',
-	'Nos Ambassadeurs régionaux',
+	'Nos Ambassadeurs',
+	'Savoir-faire',
+	"Mémoires d'îles",
+	'Saveurs',
+	'Activités & Evénements',
 	'Nos adresses',
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 
 export const CATEGORY_SLUG_MAP: Record<Category, string> = {
-	'Un visage, une histoire': 'un-visage-une-histoire',
-	'Les gardiens du Savoir Faire': 'les-gardiens-du-savoir-faire',
-	'24heures avec....': '24heures-avec',
+	Rencontres: 'rencontres',
 	'Maurice demain': 'maurice-demain',
-	"Mémoires de l'Île": 'memoires-de-lile',
-	Saveurs: 'saveurs',
 	'Nos régions': 'nos-regions',
-	'Art & culture': 'art-et-culture',
-	'Activités & événements': 'activites-et-evenements',
-	'Nos Ambassadeurs régionaux': 'nos-ambassadeurs-regionaux',
+	'Nos Ambassadeurs': 'nos-ambassadeurs',
+	'Savoir-faire': 'savoir-faire',
+	"Mémoires d'îles": 'memoires-diles',
+	Saveurs: 'saveurs',
+	'Activités & Evénements': 'activites-et-evenements',
 	'Nos adresses': 'nos-adresses',
 };
 

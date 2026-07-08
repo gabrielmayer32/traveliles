@@ -33,7 +33,6 @@ const navLinks = CATEGORIES.map((category) => ({
 					</span>
 				</button>
 			</div>
-			<a class="nav-link" href={localizedPath('/videos', locale)}>{t('nav.videos', locale)}</a>
 			<a class="nav-link" href={localizedPath('/a-propos', locale) === '/en/a-propos' ? '/en/about' : '/a-propos'}>{t('nav.about', locale)}</a>
 			<a class="search-btn" href={localizedPath('/recherche', locale) === '/en/recherche' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
 				<Fragment set:html={iconSvg('search', 20)} />
@@ -68,7 +67,6 @@ const navLinks = CATEGORIES.map((category) => ({
 	<nav id="mobile-menu" class="mobile-nav" aria-label="Navigation mobile" hidden>
 		<div class="container mobile-nav-inner">
 			<div class="mobile-nav-top">
-				<a href={localizedPath('/videos', locale)}>{t('nav.videos', locale)}</a>
 				<a href={locale === 'en' ? '/en/about' : '/a-propos'}>{t('nav.about', locale)}</a>
 				<a href={locale === 'en' ? '/en/search' : '/recherche'}>{t('nav.search', locale)}</a>
 				<a class="lang-switch-mobile" href={switchHref} hreflang={otherLocale}>{otherLocale.toUpperCase()}</a>
@@ -187,7 +185,7 @@ const navLinks = CATEGORIES.map((category) => ({
 	.logo-main {
 		font-family: var(--font-display);
 		font-weight: var(--fw-bold);
-		font-size: 1.2rem;
+		font-size: clamp(1.4rem, 2.5vw, 1.9rem);
 		letter-spacing: -0.005em;
 		text-transform: uppercase;
 		line-height: 0.92;
