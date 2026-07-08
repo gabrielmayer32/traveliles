@@ -9,7 +9,7 @@ tags:
   - Grand Baie
   - hôtels
   - luxe
-published: true
+published: false
 ---
 
 Le nord mauricien cultive une hospitalité qui tient autant du paysage que du service. À Grand Baie, les nouvelles adresses cherchent moins l’effet spectaculaire que la précision: une lumière douce au petit déjeuner, une terrasse bien orientée, un service qui sait disparaître.
