@@ -4,11 +4,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../components/CategoryLabel.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 import VideoCard from '../../components/VideoCard.astro';
-import { formatDate } from '../../lib/utils';
+import { formatDate, isVisible } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 
 export async function getStaticPaths() {
-	const videos = (await getCollection('videos')).filter((v) => v.data.published);
+	const videos = (await getCollection('videos')).filter((v) => isVisible(v));
 	return videos.map((video) => ({
 		params: { slug: video.id },
 		props: { video },
@@ -30,7 +30,7 @@ const videoSchema = JSON.stringify({
 });
 
 const allVideos = (await getCollection('videos'))
-	.filter((v) => v.data.published && v.id !== video.id)
+	.filter((v) => isVisible(v) && v.id !== video.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const more = allVideos.slice(0, 3);
 ---

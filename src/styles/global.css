@@ -94,7 +94,7 @@
 	--tracking-widest: 0.24em;
 
 	--display-title: var(--fw-medium) var(--text-6xl) / var(--leading-tight) var(--font-display);
-	--kicker-size: var(--text-xs);
+	--kicker-size: var(--text-sm);
 	--kicker-tracking: var(--tracking-wider);
 
 	/* ---------- Spacing ---------- */

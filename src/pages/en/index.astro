@@ -7,21 +7,22 @@ import PartnersBar from '../../components/PartnersBar.astro';
 import VideoCard from '../../components/VideoCard.astro';
 import { iconSvg } from '../../lib/icons';
 import { t } from '../../lib/i18n';
+import { isVisible } from '../../lib/utils';
 
 const locale = 'en' as const;
 
 const articles = (await getCollection('articles_en'))
-	.filter((a) => a.data.published && !!a.data.title)
+	.filter((a) => isVisible(a) && !!a.data.title)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const allVideos = (await getCollection('videos'))
-	.filter((v) => v.data.published)
+	.filter((v) => isVisible(v))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const leadVideo = allVideos[0];
 const gridVideos = allVideos.slice(1, 5);
 
 const heroEntries = await getCollection('hero');
-const heroEntry = heroEntries.find((h) => h.data.published);
+const heroEntry = heroEntries.find((h) => isVisible(h));
 
 const [featureArticle, ...gridArticles] = articles;
 const latestArticles = gridArticles.slice(0, 3);

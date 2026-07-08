@@ -37,6 +37,13 @@ export function categoryFromSlug(slug: string) {
 	return CATEGORIES.find((category) => CATEGORY_SLUG_MAP[category] === slug);
 }
 
+export const SHOW_DRAFTS = import.meta.env.SHOW_DRAFTS === 'true'
+	|| (import.meta.env.CF_PAGES_BRANCH !== undefined && import.meta.env.CF_PAGES_BRANCH !== 'main');
+
+export function isVisible(entry: { data: { published: boolean } }) {
+	return SHOW_DRAFTS || entry.data.published;
+}
+
 export function formatDate(date: Date | string) {
 	return new Intl.DateTimeFormat('fr-FR', {
 		day: 'numeric',

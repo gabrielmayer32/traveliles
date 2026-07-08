@@ -4,6 +4,9 @@ backend:
   branch: multilang
   base_url: https://sveltia-cms-auth.gabriel0mayer.workers.dev
 
+site_url: https://multilang.traveliles.pages.dev
+display_url: https://multilang.traveliles.pages.dev
+
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
@@ -38,6 +41,7 @@ collections:
     extension: md
     format: frontmatter
     i18n: true
+    preview_path: "articles/{{slug}}"
     sortable_fields:
       - title
       - date
@@ -81,6 +85,7 @@ collections:
     slug: "{{slug}}"
     extension: md
     format: frontmatter
+    preview_path: "videos/{{slug}}"
     sortable_fields:
       - title
       - date

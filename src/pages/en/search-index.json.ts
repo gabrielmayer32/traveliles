@@ -1,8 +1,9 @@
 import { getCollection } from 'astro:content';
+import { isVisible } from '../../lib/utils';
 
 export async function GET() {
 	const articles = (await getCollection('articles_en'))
-		.filter((a) => a.data.published && !!a.data.title)
+		.filter((a) => isVisible(a) && !!a.data.title)
 		.map((a) => ({
 			title: a.data.title,
 			excerpt: a.data.excerpt,
@@ -14,7 +15,7 @@ export async function GET() {
 		}));
 
 	const videos = (await getCollection('videos'))
-		.filter((v) => v.data.published)
+		.filter((v) => isVisible(v))
 		.map((v) => ({
 			title: v.data.title,
 			excerpt: v.data.excerpt,
