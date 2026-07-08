@@ -30,6 +30,9 @@ const latestArticles = gridArticles.slice(0, 3);
 <BaseLayout locale={locale} alternateUrl="/">
 	{heroEntry && (
 		<section class="container-wide hero-section">
+			<div class="hero-header">
+				<span class="kicker">{t('home.tagline', locale)}</span>
+			</div>
 			<HeroVideo hero={heroEntry} />
 		</section>
 	)}
@@ -105,6 +108,7 @@ const latestArticles = gridArticles.slice(0, 3);
 
 <style>
 	.hero-section { padding-top: var(--space-10); }
+	.hero-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-5); }
 	.section-header-left { display: flex; flex-direction: column; gap: var(--space-2); }
 	.section-cta {
 		display: inline-flex; align-items: center; gap: 0.5em;
@@ -127,6 +131,7 @@ const latestArticles = gridArticles.slice(0, 3);
 		.videos-lead-grid { grid-template-columns: 1fr 1fr; }
 	}
 	@media (max-width: 640px) {
+		.hero-header { flex-direction: column; gap: var(--space-2); }
 		.videos-lead-grid { grid-template-columns: 1fr; }
 		.videos-lead-card :global(.video-card--lg .video-title) { font-size: var(--text-lg); }
 		.feature-section { gap: var(--space-4); }

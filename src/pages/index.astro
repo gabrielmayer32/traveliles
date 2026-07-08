@@ -31,6 +31,9 @@ const latestArticles = gridArticles.slice(0, 3);
 	<!-- Hero -->
 	{heroEntry && (
 		<section class="container-wide hero-section">
+			<div class="hero-header">
+				<span class="kicker">Le magazine de l'océan Indien</span>
+			</div>
 			<HeroVideo hero={heroEntry} />
 		</section>
 	)}
@@ -95,6 +98,10 @@ const latestArticles = gridArticles.slice(0, 3);
 <style>
 	.hero-section {
 		padding-top: var(--space-10);
+	}
+
+	.hero-header {
+		margin-bottom: var(--space-5);
 	}
 
 	.section-header-left {
@@ -177,6 +184,11 @@ const latestArticles = gridArticles.slice(0, 3);
 	}
 
 	@media (max-width: 640px) {
+		.hero-header {
+			flex-direction: column;
+			gap: var(--space-2);
+		}
+
 		.videos-lead-grid {
 			grid-template-columns: 1fr;
 		}
