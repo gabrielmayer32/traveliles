@@ -277,7 +277,7 @@ textarea {
 
 .page-title {
 	max-width: 20ch;
-	font-size: clamp(var(--text-4xl), 9vw, var(--text-6xl));
+	font-size: clamp(2rem, 5vw, 3.5rem);
 	line-height: var(--leading-none);
 }
 
