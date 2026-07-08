@@ -4,8 +4,8 @@ backend:
   branch: multilang
   base_url: https://sveltia-cms-auth.gabriel0mayer.workers.dev
 
-site_url: https://multilang.traveliles.pages.dev
-display_url: https://multilang.traveliles.pages.dev
+site_url: https://multilang.travel-iles.pages.dev
+display_url: https://multilang.travel-iles.pages.dev
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
