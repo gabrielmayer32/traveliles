@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
 import VideoCard from '../../../components/VideoCard.astro';
-import { CATEGORIES, slugifyCategory, isVisible } from '../../../lib/utils';
+import { CATEGORIES, slugifyCategory } from '../../../lib/utils';
 import { t, localizedCategory } from '../../../lib/i18n';
 
 const locale = 'en' as const;
@@ -18,11 +18,11 @@ export function getStaticPaths() {
 const { category } = Astro.props;
 
 const articles = (await getCollection('articles_en'))
-	.filter((a) => isVisible(a) && !!a.data.title && a.data.category === category)
+	.filter((a) => !!a.data.title && a.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const videos = (await getCollection('videos'))
-	.filter((video) => isVisible(video) && video.data.category === category)
+	.filter((video) => video.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 4);
 

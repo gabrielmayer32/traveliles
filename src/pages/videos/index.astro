@@ -2,10 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VideoCard from '../../components/VideoCard.astro';
-import { CATEGORIES, isVisible } from '../../lib/utils';
+import { CATEGORIES } from '../../lib/utils';
 
 const videos = (await getCollection('videos'))
-	.filter((video) => isVisible(video))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 

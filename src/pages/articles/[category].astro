@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import VideoCard from '../../components/VideoCard.astro';
-import { CATEGORIES, slugifyCategory, isVisible } from '../../lib/utils';
+import { CATEGORIES, slugifyCategory } from '../../lib/utils';
 
 export function getStaticPaths() {
 	return CATEGORIES.map((category) => ({
@@ -14,11 +14,11 @@ export function getStaticPaths() {
 
 const { category } = Astro.props;
 const articles = (await getCollection('articles'))
-	.filter((article) => isVisible(article) && article.data.category === category)
+	.filter((article) => article.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const videos = (await getCollection('videos'))
-	.filter((video) => isVisible(video) && video.data.category === category)
+	.filter((video) => video.data.category === category)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 4);
 ---

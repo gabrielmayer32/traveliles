@@ -6,18 +6,15 @@ import HeroVideo from '../components/HeroVideo.astro';
 import PartnersBar from '../components/PartnersBar.astro';
 import VideoCard from '../components/VideoCard.astro';
 import { iconSvg } from '../lib/icons';
-import { isVisible } from '../lib/utils';
 
 const articles = (await getCollection('articles'))
-	.filter((a) => isVisible(a))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const videos = (await getCollection('videos'))
-	.filter((v) => isVisible(v))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const heroEntries = await getCollection('hero');
-const heroEntry = heroEntries.find((h) => isVisible(h));
+const heroEntry = heroEntries[0];
 
 // All videos go into the video section
 const leadVideo = videos[0];
