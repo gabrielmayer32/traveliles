@@ -36,6 +36,13 @@ const latestArticles = gridArticles.slice(0, 3);
 		<meta name="robots" content="noindex, nofollow" />
 		<title>Bientôt disponible — Travel-Îles</title>
 		<style>
+			@font-face {
+				font-family: 'Isidora';
+				src: url('/fonts/isidora-medium.otf') format('opentype');
+				font-weight: 500;
+				font-style: normal;
+				font-display: swap;
+			}
 			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 			body {
 				min-height: 100dvh;
@@ -44,17 +51,16 @@ const latestArticles = gridArticles.slice(0, 3);
 				align-items: center;
 				justify-content: center;
 				background: #ffffff;
-				font-family: system-ui, sans-serif;
+				font-family: 'Isidora', system-ui, sans-serif;
 				padding: 2rem;
 				text-align: center;
 			}
 			.wordmark {
-				font-size: clamp(1.5rem, 6vw, 3rem);
-				font-weight: 700;
-				letter-spacing: 0.25em;
-				text-transform: uppercase;
-				color: #141a1a;
 				margin-bottom: 3rem;
+			}
+			.wordmark img {
+				height: clamp(2rem, 6vw, 3.5rem);
+				width: auto;
 			}
 			.divider {
 				width: 3rem;
@@ -74,7 +80,7 @@ const latestArticles = gridArticles.slice(0, 3);
 		</style>
 	</head>
 	<body>
-		<div class="wordmark">Travel-Îles</div>
+		<div class="wordmark"><img src="/images/logo-travel-iles.png" alt="Travel-Îles" /></div>
 		<div class="divider"></div>
 		<h1>Bientôt disponible</h1>
 		<p>Le magazine des îles de l'océan Indien arrive bientôt. Voyages, saveurs, cultures et art de vivre.</p>
