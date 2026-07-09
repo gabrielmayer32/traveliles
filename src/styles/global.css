@@ -2,6 +2,14 @@
    TRAVEL-ÎLES — Design tokens & base styles
    ============================================================ */
 
+@font-face {
+	font-family: 'Isidora';
+	src: url('/fonts/isidora-thin.otf') format('opentype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* ---------- Colors ---------- */
 :root {
 	--navy-950: #141a3f;
@@ -57,9 +65,9 @@
 	);
 
 	/* ---------- Typography ---------- */
-	--font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-	--font-logo: 'Linotype Didot', var(--font-display);
-	--font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-display: 'Isidora', 'Playfair Display', Georgia, 'Times New Roman', serif;
+	--font-logo: 'Playfair Display', Georgia, 'Times New Roman', serif;
+	--font-body: 'Isidora', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
 	--fw-normal: 400;
 	--fw-regular: 400;
