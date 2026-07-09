@@ -85,7 +85,7 @@ const latestArticles = gridArticles.slice(0, 3);
 	<PartnersBar />
 
 	<section class="container-wide section brand-closer">
-		<span class="brand-closer-name">Travel-Îles</span>
+		<img class="brand-closer-logo" src="/images/logo-travel-iles.png" alt="Travel-Îles" />
 		<p class="brand-closer-tagline">L'océan Indien comme vous ne l'avez jamais vu.</p>
 	</section>
 </BaseLayout>
@@ -141,15 +141,10 @@ const latestArticles = gridArticles.slice(0, 3);
 		text-align: center;
 	}
 
-	.brand-closer-name {
-		display: block;
-		color: var(--text-wordmark);
-		font-family: var(--font-logo);
-		font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
-		font-weight: var(--fw-bold);
-		letter-spacing: -0.005em;
-		line-height: 0.95;
-		text-transform: uppercase;
+	.brand-closer-logo {
+		height: clamp(1.8rem, 4vw, 2.8rem);
+		width: auto;
+		margin-inline: auto;
 	}
 
 	.brand-closer-tagline {

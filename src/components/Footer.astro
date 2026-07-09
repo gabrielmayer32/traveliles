@@ -23,7 +23,7 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 			<!-- Brand column -->
 			<div class="footer-brand">
 				<a class="footer-logo" href={localizedPath('/', locale)} aria-label="Travel-Îles">
-					<span class="footer-logo-main">Travel-Îles</span>
+					<img class="footer-logo-img" src="/images/logo-travel-iles.png" alt="Travel-Îles" />
 					<span class="footer-logo-tagline">{t('footer.tagline', locale)}</span>
 				</a>
 				<p class="footer-desc">{t('footer.desc', locale)}</p>
@@ -116,14 +116,11 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 		order: -1;
 	}
 
-	.footer-logo-main {
-		font-family: var(--font-logo);
-		font-weight: var(--fw-bold);
-		font-size: 1.9rem;
-		letter-spacing: -0.005em;
-		text-transform: uppercase;
-		line-height: 0.92;
-		white-space: nowrap;
+	.footer-logo-img {
+		height: 1.6rem;
+		width: auto;
+		display: block;
+		filter: invert(1);
 	}
 
 	.footer-desc {

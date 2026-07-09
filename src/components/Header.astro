@@ -21,7 +21,7 @@ const navLinks = CATEGORIES.map((category) => ({
 <header class="site-header">
 	<div class="header-inner container-wide">
 		<a class="logo" href={localizedPath('/', locale)} aria-label="Travel-Îles, accueil">
-			<span class="logo-main">Travel-Îles</span>
+			<img class="logo-img" src="/images/logo-travel-iles.png" alt="Travel-Îles" />
 		</a>
 
 		<nav class="desktop-nav" aria-label="Navigation principale">
@@ -182,14 +182,10 @@ const navLinks = CATEGORIES.map((category) => ({
 		line-height: 1;
 	}
 
-	.logo-main {
-		font-family: var(--font-logo);
-		font-weight: var(--fw-bold);
-		font-size: clamp(1.5rem, 2.8vw, 2.1rem);
-		letter-spacing: -0.005em;
-		text-transform: uppercase;
-		line-height: 0.92;
-		white-space: nowrap;
+	.logo-img {
+		height: clamp(1.4rem, 2.5vw, 1.8rem);
+		width: auto;
+		display: block;
 	}
 
 	.desktop-nav {
