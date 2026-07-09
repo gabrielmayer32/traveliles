@@ -24,7 +24,6 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 			<div class="footer-brand">
 				<a class="footer-logo" href={localizedPath('/', locale)} aria-label="Travel-Îles">
 					<img class="footer-logo-img" src="/images/logo-travel-iles.png" alt="Travel-Îles" />
-					<span class="footer-logo-tagline">{t('footer.tagline', locale)}</span>
 				</a>
 				<p class="footer-desc">{t('footer.desc', locale)}</p>
 				<div class="footer-social">
@@ -117,7 +116,7 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 	}
 
 	.footer-logo-img {
-		height: clamp(4.5rem, 8vw, 7rem);
+		height: clamp(1.4rem, 2.5vw, 1.9rem);
 		width: auto;
 		display: block;
 		filter: invert(1);

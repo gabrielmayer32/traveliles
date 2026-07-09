@@ -146,7 +146,7 @@
 	--dur-slow: 420ms;
 	--transition: var(--dur) var(--ease-out);
 
-	--header-height: 110px;
+	--header-height: 76px;
 }
 
 /* ---------- Base resets ---------- */
