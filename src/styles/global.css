@@ -4,8 +4,8 @@
 
 @font-face {
 	font-family: 'Isidora';
-	src: url('/fonts/isidora-thin.otf') format('opentype');
-	font-weight: 100;
+	src: url('/fonts/isidora-medium.otf') format('opentype');
+	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
