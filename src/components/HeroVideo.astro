@@ -27,7 +27,7 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 	<div class="hero-scrim"></div>
 	<div class="hero-overlay container-wide">
 		{label && <span class="hero-label">{label}</span>}
-		<img class="hero-logo" src="/images/logo-travel-iles.png" alt={title} />
+		<h2 class="hero-title">{title}</h2>
 		{excerpt && <p class="hero-excerpt">{excerpt}</p>}
 	</div>
 </section>
@@ -144,10 +144,11 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 		color: rgba(255, 255, 255, 0.7);
 	}
 
-	.hero-logo {
-		height: clamp(1.8rem, 4.5vw, 3.2rem);
-		width: auto;
-		filter: invert(1);
+	.hero-title {
+		font-size: clamp(2rem, 5vw, 3.75rem);
+		line-height: var(--leading-tight);
+		text-wrap: balance;
+		color: var(--white);
 	}
 
 	.hero-excerpt {
