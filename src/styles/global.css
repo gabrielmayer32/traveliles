@@ -2,14 +2,6 @@
    TRAVEL-ÎLES — Design tokens & base styles
    ============================================================ */
 
-@font-face {
-	font-family: 'Michel Light';
-	src: url('/fonts/michel-light.otf') format('opentype');
-	font-weight: 300;
-	font-style: normal;
-	font-display: swap;
-}
-
 /* ---------- Colors ---------- */
 :root {
 	--navy-950: #141a3f;
@@ -66,7 +58,7 @@
 
 	/* ---------- Typography ---------- */
 	--font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-	--font-logo: 'Michel Light', var(--font-display);
+	--font-logo: 'Linotype Didot', var(--font-display);
 	--font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
 	--fw-normal: 400;
