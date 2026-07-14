@@ -25,11 +25,13 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 		/>
 	</div>
 	<div class="hero-scrim"></div>
-	<div class="hero-overlay container-wide">
-		{label && <span class="hero-label">{label}</span>}
-		<h2 class="hero-title">{title}</h2>
-		{excerpt && <p class="hero-excerpt">{excerpt}</p>}
-	</div>
+	{(title || label || excerpt) && (
+		<div class="hero-overlay container-wide">
+			{label && <span class="hero-label">{label}</span>}
+			{title && <h2 class="hero-title">{title}</h2>}
+			{excerpt && <p class="hero-excerpt">{excerpt}</p>}
+		</div>
+	)}
 </section>
 
 <script>
