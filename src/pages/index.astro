@@ -53,7 +53,7 @@ const carouselVideos = videos.slice(0, 6);
 				</div>
 				{gridVideos.length > 0 && (
 					<div class="videos-lead-grid">
-						{gridVideos.map((v) => <VideoCard video={v} size="sm" />)}
+						{gridVideos.map((v) => <VideoCard video={v} />)}
 					</div>
 				)}
 			</div>
@@ -77,7 +77,7 @@ const carouselVideos = videos.slice(0, 6);
 				</div>
 				{sideArticles.length > 0 && (
 					<div class="articles-lead-grid">
-						{sideArticles.map((article) => <ArticleCard article={article} size="sm" />)}
+						{sideArticles.map((article) => <ArticleCard article={article} size="sm" orientation="vertical" />)}
 					</div>
 				)}
 			</div>
@@ -189,7 +189,7 @@ setupCarousel();
 
 	.videos-lead {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		grid-template-columns: 1.4fr 1fr;
 		gap: var(--space-8);
 		align-items: stretch;
 	}
@@ -206,9 +206,9 @@ setupCarousel();
 		padding-bottom: var(--space-10);
 	}
 
-.articles-lead {
+	.articles-lead {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		grid-template-columns: 1.4fr 1fr;
 		gap: var(--space-8);
 		align-items: stretch;
 	}
@@ -217,22 +217,6 @@ setupCarousel();
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-	}
-
-	.articles-lead-grid :global(.article-card--sm) {
-		flex-direction: row;
-		gap: var(--space-4);
-		align-items: flex-start;
-	}
-
-	.articles-lead-grid :global(.article-card--sm .article-image) {
-		width: 45%;
-		flex-shrink: 0;
-	}
-
-	.articles-lead-grid :global(.article-card--sm .article-body) {
-		flex: 1;
-		min-width: 0;
 	}
 
 	@media (max-width: 860px) {
@@ -247,7 +231,7 @@ setupCarousel();
 
 		.articles-lead-grid {
 			flex-direction: row;
-			gap: var(--space-8);
+			gap: var(--space-6);
 		}
 	}
 
