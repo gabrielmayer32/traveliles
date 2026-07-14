@@ -2,8 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import CategoryNav from '../../components/CategoryNav.astro';
 import VideoCard from '../../components/VideoCard.astro';
-import { CATEGORIES, slugifyCategory } from '../../lib/utils';
+import { CATEGORIES, getCategoryParent, getCategoryScope, slugifyCategory, type Category } from '../../lib/utils';
 
 export function getStaticPaths() {
 	return CATEGORIES.map((category) => ({
@@ -12,13 +13,15 @@ export function getStaticPaths() {
 	}));
 }
 
-const { category } = Astro.props;
+const { category } = Astro.props as { category: Category };
+const parentCategory = getCategoryParent(category);
+const categoryScope = getCategoryScope(category);
 const articles = (await getCollection('articles'))
-	.filter((article) => article.data.published && article.data.category === category)
+	.filter((article) => article.data.published && categoryScope.includes(article.data.category))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const videos = (await getCollection('videos'))
-	.filter((video) => video.data.published && video.data.category === category)
+	.filter((video) => video.data.published && categoryScope.includes(video.data.category))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 4);
 ---
@@ -26,21 +29,19 @@ const videos = (await getCollection('videos'))
 <BaseLayout title={category} description={`Articles Travel-Îles — ${category}.`}>
 	<section class="container-wide listing-page">
 		<header class="listing-header">
-			<span class="kicker">Rubrique</span>
+			{parentCategory ? (
+				<div class="category-context">
+					<a href={`/articles/${slugifyCategory(parentCategory)}`}>{parentCategory}</a>
+					<span aria-hidden="true">/</span>
+					<span>Sous-rubrique</span>
+				</div>
+			) : (
+				<span class="kicker">Rubrique</span>
+			)}
 			<h1 class="page-title">{category}</h1>
 		</header>
 
-		<div class="filter-chips" role="radiogroup" aria-label="Filtrer par rubrique">
-			<a class="chip" href="/articles">Toutes</a>
-			{CATEGORIES.map((cat) => (
-				<a
-					class:list={['chip', { 'chip--active': cat === category }]}
-					href={`/articles/${slugifyCategory(cat)}`}
-				>
-					{cat}
-				</a>
-			))}
-		</div>
+		<CategoryNav active={category} />
 
 		<section class="listing-section">
 			<h2 class="subsection-title">Nos dernières vidéos</h2>
@@ -89,46 +90,19 @@ const videos = (await getCollection('videos'))
 		font-size: clamp(2rem, 5vw, 3.5rem);
 	}
 
-	.filter-chips {
+	.category-context {
 		display: flex;
-		flex-wrap: wrap;
+		align-items: center;
 		gap: var(--space-2);
-		margin-bottom: var(--space-10);
-	}
-
-	.chip {
-		display: inline-block;
-		font-family: var(--font-body);
-		font-size: var(--text-xs);
+		font-size: var(--text-sm);
 		font-weight: var(--fw-semibold);
-		letter-spacing: 0.08em;
+		letter-spacing: var(--tracking-wider);
 		text-transform: uppercase;
-		color: var(--text-secondary);
-		background: transparent;
-		border: 1px solid var(--border-subtle);
-		border-radius: var(--radius-pill);
-		padding: 0.55em 1.05em;
-		cursor: pointer;
-		transition: all var(--dur-fast) var(--ease-out);
-		white-space: nowrap;
-		text-decoration: none;
+		color: var(--text-muted);
 	}
 
-	.chip:hover {
+	.category-context a {
 		color: var(--navy);
-		border-color: var(--navy);
-	}
-
-	.chip--active {
-		background: var(--navy);
-		color: var(--white);
-		border-color: var(--navy);
-	}
-
-	.chip--active:hover {
-		background: var(--navy-900);
-		border-color: var(--navy-900);
-		color: var(--white);
 	}
 
 	.listing-section {

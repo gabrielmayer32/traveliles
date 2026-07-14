@@ -17,7 +17,7 @@ export const CATEGORIES = [
 export type Category = (typeof CATEGORIES)[number];
 
 export interface RubriqueGroup {
-	label: string;
+	label: Category;
 	children?: Category[];
 }
 
@@ -33,6 +33,15 @@ export const RUBRIQUES: RubriqueGroup[] = [
 	{ label: 'Nos adresses' },
 	{ label: 'Escapades' },
 ];
+
+export function getCategoryParent(category: Category): Category | undefined {
+	return RUBRIQUES.find((group) => group.children?.includes(category))?.label;
+}
+
+export function getCategoryScope(category: Category): Category[] {
+	const group = RUBRIQUES.find(({ label }) => label === category);
+	return group?.children ? [category, ...group.children] : [category];
+}
 
 export const CATEGORY_SLUG_MAP: Record<Category, string> = {
 	Rencontres: 'rencontres',

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
-import { CATEGORIES, slugifyCategory } from '../../lib/utils';
+import CategoryNav from '../../components/CategoryNav.astro';
 
 const articles = (await getCollection('articles'))
 	.filter((a) => a.data.published)
@@ -16,12 +16,7 @@ const articles = (await getCollection('articles'))
 			<h1 class="page-title">Articles</h1>
 		</header>
 
-		<div class="filter-chips" role="radiogroup" aria-label="Filtrer par rubrique">
-			<button class="chip chip--active" data-category="all">Toutes</button>
-			{CATEGORIES.map((cat) => (
-				<a class="chip" href={`/articles/${slugifyCategory(cat)}`} data-category={cat}>{cat}</a>
-			))}
-		</div>
+		<CategoryNav mode="filters" />
 
 		<div class="grid-3 listing-grid" id="listing-grid">
 			{articles.map((article) => (
@@ -45,14 +40,14 @@ const articles = (await getCollection('articles'))
 	chips.forEach((chip) => {
 		chip.addEventListener('click', (e) => {
 			e.preventDefault();
-			const cat = chip.dataset.category;
+			const categories = (chip.dataset.categories ?? '').split('|');
 
 			chips.forEach((c) => c.classList.remove('chip--active'));
 			chip.classList.add('chip--active');
 
 			let visible = 0;
 			items.forEach((item) => {
-				const show = cat === 'all' || item.dataset.cat === cat;
+				const show = categories.includes('all') || categories.includes(item.dataset.cat ?? '');
 				item.hidden = !show;
 				if (show) visible++;
 			});
@@ -79,48 +74,6 @@ const articles = (await getCollection('articles'))
 
 	.listing-header .page-title {
 		font-size: clamp(2rem, 5vw, 3.5rem);
-	}
-
-	.filter-chips {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2);
-		margin-bottom: var(--space-10);
-	}
-
-	.chip {
-		display: inline-block;
-		font-family: var(--font-body);
-		font-size: var(--text-xs);
-		font-weight: var(--fw-semibold);
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--text-secondary);
-		background: transparent;
-		border: 1px solid var(--border-subtle);
-		border-radius: var(--radius-pill);
-		padding: 0.55em 1.05em;
-		cursor: pointer;
-		transition: all var(--dur-fast) var(--ease-out);
-		white-space: nowrap;
-		text-decoration: none;
-	}
-
-	.chip:hover {
-		color: var(--navy);
-		border-color: var(--navy);
-	}
-
-	.chip--active {
-		background: var(--navy);
-		color: var(--white);
-		border-color: var(--navy);
-	}
-
-	.chip--active:hover {
-		background: var(--navy-900);
-		border-color: var(--navy-900);
-		color: var(--white);
 	}
 
 	.listing-grid {

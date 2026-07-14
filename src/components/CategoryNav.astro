@@ -1,0 +1,154 @@
+---
+import { RUBRIQUES, getCategoryScope, slugifyCategory, type Category } from '../lib/utils';
+import { localizedCategory, type Locale } from '../lib/i18n';
+
+interface Props {
+	active?: Category;
+	locale?: Locale;
+	mode?: 'links' | 'filters';
+	ariaLabel?: string;
+}
+
+const {
+	active,
+	locale = 'fr',
+	mode = 'links',
+	ariaLabel = locale === 'en' ? 'Filter by section' : 'Filtrer par rubrique',
+} = Astro.props;
+
+const basePath = locale === 'en' ? '/en/articles' : '/articles';
+const allLabel = locale === 'en' ? 'All' : 'Toutes';
+---
+
+<nav class="category-nav" aria-label={ariaLabel}>
+	{mode === 'filters' ? (
+		<button class:list={['chip', { 'chip--active': !active }]} type="button" data-categories="all">{allLabel}</button>
+	) : (
+		<a class="chip" href={basePath}>{allLabel}</a>
+	)}
+
+	{RUBRIQUES.map((group) => {
+		const parentActive = active === group.label;
+		const childActive = !!active && !!group.children?.includes(active);
+		const parentClasses = ['chip', 'chip--parent', {
+			'chip--active': parentActive,
+			'chip--context': childActive,
+		}];
+		const parentLabel = localizedCategory(group.label, locale);
+		const parentHref = `${basePath}/${slugifyCategory(group.label)}`;
+
+		return (
+			<span class:list={['category-group', { 'category-group--nested': group.children }] }>
+				{mode === 'filters' ? (
+					<button
+						class:list={parentClasses}
+						type="button"
+						data-categories={getCategoryScope(group.label).join('|')}
+					>
+						{parentLabel}
+					</button>
+				) : (
+					<a class:list={parentClasses} href={parentHref} aria-current={parentActive ? 'page' : undefined}>
+						{parentLabel}
+					</a>
+				)}
+
+				{group.children && (
+					<span class="subcategory-list" aria-label={`${parentLabel} — ${locale === 'en' ? 'subsections' : 'sous-rubriques'}`}>
+						{group.children.map((child) => {
+							const childLabel = localizedCategory(child, locale);
+							const childClasses = ['chip', 'chip--child', { 'chip--active': child === active }];
+							return mode === 'filters' ? (
+								<button class:list={childClasses} type="button" data-categories={child}>{childLabel}</button>
+							) : (
+								<a
+									class:list={childClasses}
+									href={`${basePath}/${slugifyCategory(child)}`}
+									aria-current={child === active ? 'page' : undefined}
+								>
+									{childLabel}
+								</a>
+							);
+						})}
+					</span>
+				)}
+			</span>
+		);
+	})}
+</nav>
+
+<style>
+	.category-nav {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-2);
+		margin-bottom: var(--space-10);
+	}
+
+	.category-group,
+	.subcategory-list {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-1);
+	}
+
+	.subcategory-list {
+		padding-left: var(--space-2);
+		margin-left: var(--space-1);
+		border-left: 1px solid var(--navy-300);
+	}
+
+	.chip {
+		display: inline-block;
+		font-family: var(--font-body);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-secondary);
+		background: transparent;
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-pill);
+		padding: 0.55em 1.05em;
+		cursor: pointer;
+		transition: all var(--dur-fast) var(--ease-out);
+		white-space: nowrap;
+		text-decoration: none;
+	}
+
+	.chip:hover,
+	.chip--context {
+		color: var(--navy);
+		border-color: var(--navy);
+	}
+
+	.chip--child {
+		padding-inline: 0.85em;
+		color: var(--text-muted);
+		background: var(--surface-sunken);
+	}
+
+	.chip--active {
+		background: var(--navy);
+		color: var(--white);
+		border-color: var(--navy);
+	}
+
+	.chip--active:hover {
+		background: var(--navy-900);
+		border-color: var(--navy-900);
+		color: var(--white);
+	}
+
+	@media (max-width: 640px) {
+		.category-group--nested {
+			flex-basis: 100%;
+			flex-wrap: wrap;
+		}
+
+		.subcategory-list {
+			flex-wrap: wrap;
+		}
+	}
+</style>
