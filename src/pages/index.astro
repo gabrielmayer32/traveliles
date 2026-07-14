@@ -182,14 +182,14 @@ setupCarousel();
 		flex-shrink: 0;
 	}
 
-	/* Videos — large lead left (58%), stacked column right (42%) */
+	/* Videos — equal columns, with the side stack matching the lead image. */
 	.videos-section {
 		padding-bottom: var(--space-10);
 	}
 
 	.videos-lead {
 		display: grid;
-		grid-template-columns: 1.4fr 1fr;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		gap: var(--space-8);
 		align-items: stretch;
 	}
@@ -198,8 +198,7 @@ setupCarousel();
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		/* The lead column is 1.4× wider and its thumbnail is 16:9. */
-		aspect-ratio: 80 / 63;
+		aspect-ratio: 16 / 9;
 		align-self: start;
 	}
 
@@ -211,7 +210,7 @@ setupCarousel();
 
 	.articles-lead {
 		display: grid;
-		grid-template-columns: 1.4fr 1fr;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		gap: var(--space-8);
 		align-items: stretch;
 	}
@@ -220,6 +219,24 @@ setupCarousel();
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		aspect-ratio: 3 / 2;
+		align-self: start;
+	}
+
+	.articles-lead-grid :global(.article-card--sm) {
+		flex-direction: row;
+		gap: var(--space-4);
+		align-items: flex-start;
+	}
+
+	.articles-lead-grid :global(.article-card--sm .article-image) {
+		width: 45%;
+		flex-shrink: 0;
+	}
+
+	.articles-lead-grid :global(.article-card--sm .article-body) {
+		flex: 1;
+		min-width: 0;
 	}
 
 	@media (max-width: 860px) {
@@ -238,6 +255,7 @@ setupCarousel();
 		.articles-lead-grid {
 			flex-direction: row;
 			gap: var(--space-6);
+			aspect-ratio: auto;
 		}
 	}
 
