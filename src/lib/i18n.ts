@@ -72,14 +72,18 @@ const translations = {
 
 export const CATEGORIES_EN: Record<string, string> = {
 	'Rencontres':                     'Encounters',
-	'Maurice demain':                 'Mauritius Tomorrow',
-	'Nos régions':                    'Our Regions',
 	'Nos Ambassadeurs':               'Our Ambassadors',
+	'Nos régions':                    'Our Regions',
 	'Savoir-faire':                   'Craftsmanship',
+	'Héritage':                       'Heritage',
+	'Maurice demain':                 'Mauritius Tomorrow',
 	"Mémoires d'îles":               'Island Memories',
 	'Saveurs':                        'Flavours',
-	'Activités & Evénements':         'Activities & Events',
+	'Art & Culture':                  'Art & Culture',
+	'Activités & Événements':         'Activities & Events',
+	'News':                           'News',
 	'Nos adresses':                   'Our Picks',
+	'Escapades':                      'Getaways',
 };
 
 export function t(key: keyof typeof translations, locale: Locale): string {

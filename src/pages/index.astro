@@ -21,9 +21,9 @@ const heroEntry = heroEntries.find((h) => h.data.published);
 // All videos go into the video section
 const leadVideo = videos[0];
 const gridVideos = videos.slice(1, 3);
-// Feature article (horizontal, prominent) + 3-column grid below
-const [featureArticle, ...gridArticles] = articles;
-const latestArticles = gridArticles.slice(0, 3);
+const leadArticle = articles[0];
+const sideArticles = articles.slice(1, 3);
+const carouselVideos = videos.slice(0, 6);
 ---
 
 <BaseLayout locale="fr" alternateUrl="/en/">
@@ -70,24 +70,92 @@ const latestArticles = gridArticles.slice(0, 3);
 				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
 			</a>
 		</div>
-		{featureArticle && (
-			<div class="articles-feature">
-				<ArticleCard article={featureArticle} orientation="horizontal" size="lg" />
-			</div>
-		)}
-		{latestArticles.length > 0 && (
-			<div class="grid-3">
-				{latestArticles.map((article) => <ArticleCard article={article} />)}
+		{leadArticle && (
+			<div class="articles-lead">
+				<div class="articles-lead-card">
+					<ArticleCard article={leadArticle} size="lg" />
+				</div>
+				{sideArticles.length > 0 && (
+					<div class="articles-lead-grid">
+						{sideArticles.map((article) => <ArticleCard article={article} size="sm" />)}
+					</div>
+				)}
 			</div>
 		)}
 	</section>
+
+	<!-- Video carousel -->
+	{carouselVideos.length > 0 && (
+		<section class="container-wide section carousel-section">
+			<div class="section-header">
+				<div class="section-header-left">
+					<h2 class="section-title">À voir aussi</h2>
+				</div>
+				<div class="carousel-arrows">
+					<button class="carousel-arrow carousel-prev" type="button" aria-label="Précédent" data-dir="prev">
+						<Fragment set:html={iconSvg('arrow-left', 20)} />
+					</button>
+					<button class="carousel-arrow carousel-next" type="button" aria-label="Suivant" data-dir="next">
+						<Fragment set:html={iconSvg('arrow-right', 20)} />
+					</button>
+				</div>
+			</div>
+			<div class="carousel-track-wrapper">
+				<div class="carousel-track">
+					{carouselVideos.map((v) => (
+						<div class="carousel-slide">
+							<VideoCard video={v} />
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
 
 	<PartnersBar />
 
-	<section class="container-wide section brand-closer">
-		<img class="brand-closer-logo" src="/images/logo-travel-iles.png" alt="Travel-Îles" />
-		<p class="brand-closer-tagline">L'océan Indien comme vous ne l'avez jamais vu.</p>
-	</section>
+<script>
+function setupCarousel() {
+	const wrapper = document.querySelector<HTMLElement>('.carousel-track-wrapper');
+	const track = document.querySelector<HTMLElement>('.carousel-track');
+	const prev = document.querySelector<HTMLButtonElement>('.carousel-prev');
+	const next = document.querySelector<HTMLButtonElement>('.carousel-next');
+	if (!wrapper || !track || !prev || !next) return;
+
+	const slides = track.querySelectorAll<HTMLElement>('.carousel-slide');
+	if (slides.length === 0) return;
+
+	let index = 0;
+
+	function visibleCount() {
+		const w = window.innerWidth;
+		if (w <= 560) return 1;
+		if (w <= 860) return 2;
+		return 3;
+	}
+
+	function maxIndex() {
+		return Math.max(0, slides.length - visibleCount());
+	}
+
+	function update() {
+		const slide = slides[0];
+		const gap = parseFloat(getComputedStyle(track).gap) || 0;
+		const offset = index * (slide.offsetWidth + gap);
+		track.style.transform = `translateX(-${offset}px)`;
+		prev.disabled = index === 0;
+		next.disabled = index >= maxIndex();
+	}
+
+	prev.addEventListener('click', () => { if (index > 0) { index--; update(); } });
+	next.addEventListener('click', () => { if (index < maxIndex()) { index++; update(); } });
+	window.addEventListener('resize', () => { index = Math.min(index, maxIndex()); update(); });
+	update();
+}
+
+document.addEventListener('astro:page-load', setupCarousel);
+setupCarousel();
+</script>
 </BaseLayout>
 
 <style>
@@ -116,56 +184,72 @@ const latestArticles = gridArticles.slice(0, 3);
 
 	/* Videos — large lead left (58%), stacked column right (42%) */
 	.videos-section {
-		padding-bottom: var(--space-20);
+		padding-bottom: var(--space-10);
 	}
 
 	.videos-lead {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		gap: var(--space-8);
-		align-items: start;
+		align-items: stretch;
 	}
 
 	.videos-lead-grid {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 		gap: var(--space-6);
 	}
 
 	/* Articles section */
 	.articles-section {
-		padding-top: var(--space-20);
+		padding-top: var(--space-8);
+		padding-bottom: var(--space-10);
 	}
 
-	.brand-closer {
-		text-align: center;
+.articles-lead {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: var(--space-8);
+		align-items: stretch;
 	}
 
-	.brand-closer-logo {
-		height: clamp(1.8rem, 4vw, 2.8rem);
-		width: auto;
-		margin-inline: auto;
+	.articles-lead-grid {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: var(--space-6);
 	}
 
-	.brand-closer-tagline {
-		margin-top: var(--space-5);
-		color: var(--text-secondary);
-		font-size: var(--text-lg);
+	.articles-lead-grid :global(.article-card--sm) {
+		flex-direction: row;
+		gap: var(--space-4);
+		align-items: flex-start;
 	}
 
-	.articles-feature {
-		margin-bottom: var(--space-16);
-		padding-bottom: var(--space-16);
-		border-bottom: 1px solid var(--border-subtle);
+	.articles-lead-grid :global(.article-card--sm .article-image) {
+		width: 45%;
+		flex-shrink: 0;
+	}
+
+	.articles-lead-grid :global(.article-card--sm .article-body) {
+		flex: 1;
+		min-width: 0;
 	}
 
 	@media (max-width: 860px) {
-		.videos-lead {
+		.videos-lead,
+		.articles-lead {
 			grid-template-columns: 1fr;
 		}
 
 		.videos-lead-grid {
 			grid-template-columns: 1fr 1fr;
+		}
+
+		.articles-lead-grid {
+			flex-direction: row;
+			gap: var(--space-8);
 		}
 	}
 
@@ -178,5 +262,71 @@ const latestArticles = gridArticles.slice(0, 3);
 			font-size: var(--text-lg);
 		}
 
-}
+		.articles-lead-grid {
+			flex-direction: column;
+		}
+	}
+
+	/* Carousel */
+	.carousel-section {
+		padding-top: var(--space-8);
+		padding-bottom: var(--space-10);
+	}
+
+	.carousel-arrows {
+		display: flex;
+		gap: var(--space-2);
+		flex-shrink: 0;
+	}
+
+	.carousel-arrow {
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius-pill);
+		background: var(--white);
+		color: var(--ink);
+		cursor: pointer;
+		transition: all var(--dur-fast) var(--ease-out);
+	}
+
+	.carousel-arrow:hover:not(:disabled) {
+		background: var(--navy);
+		border-color: var(--navy);
+		color: var(--white);
+	}
+
+	.carousel-arrow:disabled {
+		opacity: 0.3;
+		cursor: default;
+	}
+
+	.carousel-track-wrapper {
+		overflow: hidden;
+	}
+
+	.carousel-track {
+		display: flex;
+		gap: var(--space-8);
+		transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+
+	.carousel-slide {
+		flex: 0 0 calc((100% - var(--space-8) * 2) / 3);
+		min-width: 0;
+	}
+
+	@media (max-width: 860px) {
+		.carousel-slide {
+			flex: 0 0 calc((100% - var(--space-8)) / 2);
+		}
+	}
+
+	@media (max-width: 560px) {
+		.carousel-slide {
+			flex: 0 0 100%;
+		}
+	}
 </style>

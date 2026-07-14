@@ -65,14 +65,18 @@ collections:
         i18n: duplicate
         options:
           - Rencontres
-          - Maurice demain
-          - Nos régions
           - Nos Ambassadeurs
+          - Nos régions
           - Savoir-faire
+          - Héritage
+          - Maurice demain
           - Mémoires d'îles
           - Saveurs
-          - Activités & Evénements
+          - Art & Culture
+          - Activités & Événements
+          - News
           - Nos adresses
+          - Escapades
       - { name: cover, label: Image principale, widget: image, required: false, i18n: duplicate }
       - { name: excerpt, label: Extrait / Excerpt, widget: text, required: false, i18n: true }
       - { name: author, label: Auteur, widget: string, default: "Travel-Îles", i18n: duplicate }
@@ -107,14 +111,18 @@ collections:
         widget: select
         options:
           - Rencontres
-          - Maurice demain
-          - Nos régions
           - Nos Ambassadeurs
+          - Nos régions
           - Savoir-faire
+          - Héritage
+          - Maurice demain
           - Mémoires d'îles
           - Saveurs
-          - Activités & Evénements
+          - Art & Culture
+          - Activités & Événements
+          - News
           - Nos adresses
+          - Escapades
       - label: Source vidéo
         name: videoSource
         widget: select

@@ -95,10 +95,6 @@ const latestArticles = gridArticles.slice(0, 3);
 
 	<PartnersBar locale={locale} />
 
-	<section class="container-wide section brand-closer">
-		<img class="brand-closer-logo" src="/images/logo-travel-iles.png" alt="Travel-Îles" />
-		<p class="brand-closer-tagline">[Tagline to be finalized]</p>
-	</section>
 </BaseLayout>
 
 <style>
@@ -116,9 +112,6 @@ const latestArticles = gridArticles.slice(0, 3);
 	.feature-section { display: flex; flex-direction: column; gap: var(--space-6); }
 	.articles-section { padding-top: var(--space-20); }
 	.empty-en { padding-block: var(--space-20); text-align: center; color: var(--text-muted); font-size: var(--text-lg); }
-	.brand-closer { text-align: center; }
-	.brand-closer-logo { height: clamp(1.8rem, 4vw, 2.8rem); width: auto; margin-inline: auto; }
-	.brand-closer-tagline { margin-top: var(--space-5); color: var(--text-secondary); font-size: var(--text-lg); }
 
 	@media (max-width: 860px) {
 		.videos-lead { grid-template-columns: 1fr; }

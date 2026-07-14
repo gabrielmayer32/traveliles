@@ -6,6 +6,7 @@ export const ICONS: Record<string, IconDef> = {
 	close: { s: ['M18 6 6 18', 'm6 6 12 12'] },
 	'chevron-down': { s: ['m6 9 6 6 6-6'] },
 	'chevron-right': { s: ['m9 18 6-6-6-6'] },
+	'arrow-left': { s: ['M19 12H5', 'm12 19-7-7 7-7'] },
 	'arrow-right': { s: ['M5 12h14', 'm12 5 7 7-7 7'] },
 	'arrow-up-right': { s: ['M7 7h10v10', 'M7 17 17 7'] },
 	mail: { s: ['M22 4H2v16h20z', 'm22 5-10 6L2 5'] },

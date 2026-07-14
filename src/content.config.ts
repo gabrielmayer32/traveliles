@@ -3,14 +3,18 @@ import { glob } from 'astro/loaders';
 
 const categoryEnum = z.enum([
 	'Rencontres',
-	'Maurice demain',
-	'Nos régions',
 	'Nos Ambassadeurs',
+	'Nos régions',
 	'Savoir-faire',
+	'Héritage',
+	'Maurice demain',
 	"Mémoires d'îles",
 	'Saveurs',
-	'Activités & Evénements',
+	'Art & Culture',
+	'Activités & Événements',
+	'News',
 	'Nos adresses',
+	'Escapades',
 ]);
 
 const articleSchema = z.object({

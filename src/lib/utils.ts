@@ -1,27 +1,53 @@
 export const CATEGORIES = [
 	'Rencontres',
-	'Maurice demain',
-	'Nos régions',
 	'Nos Ambassadeurs',
+	'Nos régions',
 	'Savoir-faire',
+	'Héritage',
+	'Maurice demain',
 	"Mémoires d'îles",
 	'Saveurs',
-	'Activités & Evénements',
+	'Art & Culture',
+	'Activités & Événements',
+	'News',
 	'Nos adresses',
+	'Escapades',
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 
+export interface RubriqueGroup {
+	label: string;
+	children?: Category[];
+}
+
+export const RUBRIQUES: RubriqueGroup[] = [
+	{ label: 'Rencontres',              children: ['Nos Ambassadeurs'] },
+	{ label: 'Nos régions' },
+	{ label: 'Savoir-faire',            children: ['Héritage', 'Maurice demain'] },
+	{ label: "Mémoires d'îles" },
+	{ label: 'Saveurs' },
+	{ label: 'Art & Culture' },
+	{ label: 'Activités & Événements' },
+	{ label: 'News' },
+	{ label: 'Nos adresses' },
+	{ label: 'Escapades' },
+];
+
 export const CATEGORY_SLUG_MAP: Record<Category, string> = {
 	Rencontres: 'rencontres',
-	'Maurice demain': 'maurice-demain',
-	'Nos régions': 'nos-regions',
 	'Nos Ambassadeurs': 'nos-ambassadeurs',
+	'Nos régions': 'nos-regions',
 	'Savoir-faire': 'savoir-faire',
+	'Héritage': 'heritage',
+	'Maurice demain': 'maurice-demain',
 	"Mémoires d'îles": 'memoires-diles',
 	Saveurs: 'saveurs',
-	'Activités & Evénements': 'activites-et-evenements',
+	'Art & Culture': 'art-et-culture',
+	'Activités & Événements': 'activites-et-evenements',
+	News: 'news',
 	'Nos adresses': 'nos-adresses',
+	Escapades: 'escapades',
 };
 
 export function slugifyCategory(category: Category | string) {

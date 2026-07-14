@@ -1,14 +1,15 @@
 ---
-import { CATEGORIES, slugifyCategory } from '../lib/utils';
+import { RUBRIQUES, slugifyCategory, type Category } from '../lib/utils';
 import { iconSvg } from '../lib/icons';
 import { t, localizedCategory, localizedPath, type Locale } from '../lib/i18n';
 
 interface Props { locale?: Locale; }
 const { locale = 'fr' } = Astro.props;
 
-const half = Math.ceil(CATEGORIES.length / 2);
-const colA = CATEGORIES.slice(0, half);
-const colB = CATEGORIES.slice(half);
+const parentLabels = RUBRIQUES.map((g) => g.label as Category);
+const half = Math.ceil(parentLabels.length / 2);
+const colA = parentLabels.slice(0, half);
+const colB = parentLabels.slice(half);
 const year = new Date().getFullYear();
 
 const aboutHref  = locale === 'en' ? '/en/about'   : '/a-propos';
@@ -57,15 +58,14 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 			</nav>
 
 			<nav class="footer-magazine">
+				<div class="footer-col-title">{locale === 'en' ? 'The magazine' : 'Le magazine'}</div>
 				<a class="footer-link" href={localizedPath('/videos', locale)}>{t('footer.videos', locale)}</a>
 				<a class="footer-link" href={localizedPath('/articles', locale)}>{t('footer.articles', locale)}</a>
 				<a class="footer-link" href={aboutHref}>{t('footer.about', locale)}</a>
 				<a class="footer-link" href={localizedPath('/contact', locale)}>{t('footer.contact', locale)}</a>
 				<a class="footer-link" href={searchHref}>{t('footer.search', locale)}</a>
+				<a class="footer-link" href={localizedPath('/archives', locale)}>{locale === 'en' ? 'Archives' : 'Archives'}</a>
 			</nav>
-
-			<!-- Newsletter (placeholder — form will be added later) -->
-			<div class="footer-newsletter"></div>
 		</div>
 
 		<!-- Bottom bar -->
@@ -86,12 +86,12 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 	}
 
 	.footer-main {
-		padding-block: var(--space-20);
+		padding-block: var(--space-12);
 	}
 
 	.footer-grid {
 		display: grid;
-		grid-template-columns: 1.4fr 1fr 0.6fr 1.2fr;
+		grid-template-columns: 1.4fr 1.2fr 0.8fr;
 		gap: var(--space-10);
 	}
 
@@ -107,7 +107,7 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 	.footer-logo-tagline {
 		font-family: var(--font-body);
 		font-weight: var(--fw-bold);
-		font-size: 0.5rem;
+		font-size: 0.625rem;
 		letter-spacing: 0.085em;
 		text-transform: uppercase;
 		line-height: 1.15;
@@ -116,7 +116,7 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 	}
 
 	.footer-logo-img {
-		height: clamp(1.4rem, 2.5vw, 1.9rem);
+		height: clamp(1.75rem, 3.1vw, 2.375rem);
 		width: auto;
 		display: block;
 		filter: invert(1);
@@ -163,7 +163,6 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 	}
 
 	.footer-rubriques {
-		grid-column: span 2;
 	}
 
 	.footer-rubriques-grid {
