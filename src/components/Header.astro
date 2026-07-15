@@ -48,6 +48,10 @@ const navLinks = RUBRIQUES.map((group) => ({
 			</a>
 		</nav>
 
+		<a class="mobile-search" href={locale === 'en' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
+			<Fragment set:html={iconSvg('search', 20)} />
+		</a>
+
 		<button class="mobile-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
 			<span class="mobile-trigger-icon" aria-hidden="true">
 				<Fragment set:html={iconSvg('menu', 24)} />
@@ -363,6 +367,19 @@ const navLinks = RUBRIQUES.map((group) => ({
 		color: var(--navy);
 	}
 
+	.mobile-search {
+		display: none;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		color: var(--ink);
+		border-radius: var(--radius-pill);
+	}
+
+	.mobile-search:hover {
+		color: var(--navy);
+	}
+
 	.mobile-trigger {
 		display: none;
 		place-items: center;
@@ -454,6 +471,7 @@ const navLinks = RUBRIQUES.map((group) => ({
 			display: none;
 		}
 
+		.mobile-search,
 		.mobile-trigger {
 			display: grid;
 		}
