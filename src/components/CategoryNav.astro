@@ -23,6 +23,9 @@ const levelUpLabel = locale === 'en' ? 'Sections' : 'Rubriques';
 const activeBranch = active
 	? RUBRIQUES.find((group) => group.children && (group.label === active || group.children.includes(active)))
 	: undefined;
+const levelUpHref = active && activeBranch?.children?.includes(active)
+	? `${basePath}/${slugifyCategory(activeBranch.label)}`
+	: basePath;
 ---
 
 <nav class="category-nav" aria-label={ariaLabel} data-category-nav>
@@ -76,7 +79,7 @@ const activeBranch = active
 						{levelUpLabel}
 					</button>
 				) : (
-					<a class="chip chip--back" href={basePath}>
+					<a class="chip chip--back" href={levelUpHref}>
 						<Fragment set:html={iconSvg('arrow-left', 14)} />
 						{levelUpLabel}
 					</a>
