@@ -48,15 +48,16 @@ const navLinks = RUBRIQUES.map((group) => ({
 			</a>
 		</nav>
 
-		<a class="mobile-search" href={locale === 'en' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
-			<Fragment set:html={iconSvg('search', 20)} />
-		</a>
-
-		<button class="mobile-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
-			<span class="mobile-trigger-icon" aria-hidden="true">
-				<Fragment set:html={iconSvg('menu', 24)} />
-			</span>
-		</button>
+		<div class="mobile-actions">
+			<a class="mobile-search" href={locale === 'en' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
+				<Fragment set:html={iconSvg('search', 20)} />
+			</a>
+			<button class="mobile-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+				<span class="mobile-trigger-icon" aria-hidden="true">
+					<Fragment set:html={iconSvg('menu', 24)} />
+				</span>
+			</button>
+		</div>
 	</div>
 
 	<!-- Rubriques mega-menu -->
@@ -367,13 +368,18 @@ const navLinks = RUBRIQUES.map((group) => ({
 		color: var(--navy);
 	}
 
-	.mobile-search {
+	.mobile-actions {
 		display: none;
+		align-items: center;
+		gap: 0;
+	}
+
+	.mobile-search {
+		display: grid;
 		place-items: center;
 		width: 44px;
 		height: 44px;
 		color: var(--ink);
-		border-radius: var(--radius-pill);
 	}
 
 	.mobile-search:hover {
@@ -471,9 +477,8 @@ const navLinks = RUBRIQUES.map((group) => ({
 			display: none;
 		}
 
-		.mobile-search,
-		.mobile-trigger {
-			display: grid;
+		.mobile-actions {
+			display: flex;
 		}
 
 		.mobile-nav {
