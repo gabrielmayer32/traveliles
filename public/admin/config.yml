@@ -9,6 +9,8 @@ display_url: https://multilang.travel-iles.pages.dev
 
 autosave: true
 
+show_preview_links: false
+
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
