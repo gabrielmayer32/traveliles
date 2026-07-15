@@ -82,4 +82,19 @@ const partners = defineCollection({
 	schema: partnersSchema,
 });
 
-export const collections = { articles, articles_en, videos, hero, partners };
+const pagesSchema = z.object({
+	title: z.string().optional(),
+	email: z.string().optional(),
+});
+
+const pages_fr = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/pages/fr' }),
+	schema: pagesSchema,
+});
+
+const pages_en = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/pages/en' }),
+	schema: pagesSchema,
+});
+
+export const collections = { articles, articles_en, videos, hero, partners, pages_fr, pages_en };

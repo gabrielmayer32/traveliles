@@ -156,13 +156,54 @@ collections:
 
   - name: pages
     label: Pages
-    folder: src/content/pages
-    create: false
-    slug: "{{slug}}"
-    extension: md
-    format: frontmatter
-    i18n: true
-    fields:
-      - { name: title, label: Titre / Title, widget: string, required: false, i18n: true }
-      - { name: email, label: Email, widget: string, required: false, i18n: duplicate }
-      - { name: body, label: Contenu / Content, widget: markdown, required: false, i18n: true }
+    files:
+      - name: a-propos
+        label: À propos (FR)
+        file: src/content/pages/fr/a-propos.md
+        fields:
+          - { name: title, label: Titre, widget: string, required: false }
+          - { name: body, label: Contenu, widget: markdown, required: false }
+      - name: a-propos-en
+        label: About (EN)
+        file: src/content/pages/en/a-propos.md
+        fields:
+          - { name: title, label: Title, widget: string, required: false }
+          - { name: body, label: Content, widget: markdown, required: false }
+      - name: contact
+        label: Contact (FR)
+        file: src/content/pages/fr/contact.md
+        fields:
+          - { name: title, label: Titre, widget: string, required: false }
+          - { name: email, label: Email, widget: string, required: false }
+          - { name: body, label: Contenu, widget: markdown, required: false }
+      - name: contact-en
+        label: Contact (EN)
+        file: src/content/pages/en/contact.md
+        fields:
+          - { name: title, label: Title, widget: string, required: false }
+          - { name: email, label: Email, widget: string, required: false }
+          - { name: body, label: Content, widget: markdown, required: false }
+      - name: mentions-legales
+        label: Mentions légales (FR)
+        file: src/content/pages/fr/mentions-legales.md
+        fields:
+          - { name: title, label: Titre, widget: string, required: false }
+          - { name: body, label: Contenu, widget: markdown, required: false }
+      - name: mentions-legales-en
+        label: Legal notice (EN)
+        file: src/content/pages/en/mentions-legales.md
+        fields:
+          - { name: title, label: Title, widget: string, required: false }
+          - { name: body, label: Content, widget: markdown, required: false }
+      - name: confidentialite
+        label: Confidentialité (FR)
+        file: src/content/pages/fr/confidentialite.md
+        fields:
+          - { name: title, label: Titre, widget: string, required: false }
+          - { name: body, label: Contenu, widget: markdown, required: false }
+      - name: confidentialite-en
+        label: Privacy policy (EN)
+        file: src/content/pages/en/confidentialite.md
+        fields:
+          - { name: title, label: Title, widget: string, required: false }
+          - { name: body, label: Content, widget: markdown, required: false }

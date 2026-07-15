@@ -28,11 +28,15 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 				</a>
 				<p class="footer-desc">{t('footer.desc', locale)}</p>
 				<div class="footer-social">
-					{(['youtube', 'instagram', 'facebook'] as const).map((name) => (
-						<a href="#" aria-label={name} class="social-icon">
-							<Fragment set:html={iconSvg(name, 18)} />
-						</a>
-					))}
+					<a href="https://www.youtube.com/@TravelIles" aria-label="YouTube" class="social-icon" target="_blank" rel="noopener">
+						<Fragment set:html={iconSvg('youtube', 18)} />
+					</a>
+					<a href="#" aria-label="Instagram" class="social-icon" target="_blank" rel="noopener">
+						<Fragment set:html={iconSvg('instagram', 18)} />
+					</a>
+					<a href="https://www.facebook.com/traveliles" aria-label="Facebook" class="social-icon" target="_blank" rel="noopener">
+						<Fragment set:html={iconSvg('facebook', 18)} />
+					</a>
 				</div>
 			</div>
 

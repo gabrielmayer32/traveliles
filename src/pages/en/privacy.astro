@@ -1,30 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages_en', 'confidentialite');
+const { Content } = entry ? await render(entry) : { Content: null };
+const title = entry?.data.title ?? 'Privacy policy';
 ---
 
-<BaseLayout title="Privacy policy" description="Privacy policy for Travel-Îles." locale="en" alternateUrl="/confidentialite">
+<BaseLayout title={title} description="Privacy policy for Travel-Îles." locale="en" alternateUrl="/confidentialite">
 	<section class="container-wide legal-page">
 		<header class="legal-header">
 			<span class="kicker">Privacy</span>
-			<h1 class="page-title">Privacy policy</h1>
+			<h1 class="page-title">{title}</h1>
 		</header>
 
 		<div class="prose">
-			<h2>Data collected</h2>
-			<p>Travel-Îles does not collect any personal data. The site uses no registration form, traffic analytics tool, or advertising tracking pixel.</p>
-
-			<h2>Cookies</h2>
-			<p>The site uses a single local cookie (<code>ti-cookies</code>) to store your choice regarding embedded videos. This cookie is stored in your browser and is not shared with any third party.</p>
-			<p>If you accept cookies, YouTube, Vimeo, Facebook, or Instagram video players may set their own cookies. These cookies are governed by the respective privacy policies of those platforms.</p>
-
-			<h2>Embedded videos</h2>
-			<p>Videos are hosted by third-party services (YouTube, Vimeo, Facebook, Instagram). By accepting video playback, you accept the terms of use and privacy policy of those services.</p>
-
-			<h2>Hosting</h2>
-			<p>The site is hosted on Cloudflare Pages. Cloudflare may collect technical data (IP address, HTTP headers) for security and performance purposes. See the <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare privacy policy</a>.</p>
-
-			<h2>Your rights</h2>
-			<p>You can delete the consent cookie at any time in your browser settings. For any questions, contact us at <a href="mailto:contact@traveliles.com">contact@traveliles.com</a>.</p>
+			{Content ? <Content /> : null}
 		</div>
 	</section>
 </BaseLayout>

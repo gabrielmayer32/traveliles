@@ -1,30 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages_fr', 'confidentialite');
+const { Content } = entry ? await render(entry) : { Content: null };
+const title = entry?.data.title ?? 'Politique de confidentialité';
 ---
 
-<BaseLayout title="Politique de confidentialité" description="Politique de confidentialité du site Travel-Îles.">
+<BaseLayout title={title} description="Politique de confidentialité du site Travel-Îles.">
 	<section class="container-wide legal-page">
 		<header class="legal-header">
 			<span class="kicker">Confidentialité</span>
-			<h1 class="page-title">Politique de confidentialité</h1>
+			<h1 class="page-title">{title}</h1>
 		</header>
 
 		<div class="prose">
-			<h2>Données collectées</h2>
-			<p>Travel-Îles ne collecte aucune donnée personnelle. Le site n'utilise ni formulaire d'inscription, ni outil d'analyse de trafic, ni pixel de suivi publicitaire.</p>
-
-			<h2>Cookies</h2>
-			<p>Le site utilise un unique cookie local (<code>ti-cookies</code>) pour enregistrer votre choix concernant les vidéos intégrées. Ce cookie est stocké dans votre navigateur et n'est transmis à aucun tiers.</p>
-			<p>Si vous acceptez les cookies, les lecteurs vidéo YouTube, Vimeo, Facebook ou Instagram peuvent déposer leurs propres cookies. Ces cookies sont régis par les politiques de confidentialité respectives de ces plateformes.</p>
-
-			<h2>Vidéos intégrées</h2>
-			<p>Les vidéos sont hébergées par des services tiers (YouTube, Vimeo, Facebook, Instagram). En acceptant la lecture de ces vidéos, vous acceptez les conditions d'utilisation et la politique de confidentialité de ces services.</p>
-
-			<h2>Hébergement</h2>
-			<p>Le site est hébergé par Cloudflare Pages. Cloudflare peut collecter des données techniques (adresse IP, en-têtes HTTP) à des fins de sécurité et de performance. Consultez la <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">politique de confidentialité de Cloudflare</a>.</p>
-
-			<h2>Vos droits</h2>
-			<p>Vous pouvez à tout moment supprimer le cookie de consentement dans les paramètres de votre navigateur. Pour toute question, contactez-nous à <a href="mailto:contact@traveliles.com">contact@traveliles.com</a>.</p>
+			{Content ? <Content /> : null}
 		</div>
 	</section>
 </BaseLayout>

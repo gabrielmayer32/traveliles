@@ -1,19 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { iconSvg } from '../lib/icons';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages_fr', 'a-propos');
+const { Content } = entry ? await render(entry) : { Content: null };
+const title = entry?.data.title ?? 'À propos';
 ---
 
-<BaseLayout title="À propos" description="À propos de Travel-Îles.">
+<BaseLayout title={title} description="À propos de Travel-Îles.">
 	<section class="container-wide about-page">
 		<header class="about-header">
 			<span class="kicker">À propos</span>
-			<h1 class="page-title">Le regard, le lieu, le temps.</h1>
+			<h1 class="page-title">{title}</h1>
 		</header>
 
 		<div class="prose about-prose">
-			<p>Travel-Îles est un magazine indépendant consacré aux voyages d'exception, aux maisons d'hospitalité, aux tables, aux ateliers et aux paysages qui composent l'art de vivre mauricien.</p>
-			<p>Nous racontons les adresses qui prennent le temps&nbsp;: hôtels de caractère, villas privées, chefs, artisans, artistes, parcours de golf, lagons préservés et territoires encore discrets.</p>
-			<p>Chaque sujet privilégie le regard éditorial, la qualité des détails et la relation au lieu. Différent, mais lié à ce que nous faisions.</p>
+			{Content ? <Content /> : null}
 		</div>
 
 		<div class="about-cta">

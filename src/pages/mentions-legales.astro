@@ -1,31 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages_fr', 'mentions-legales');
+const { Content } = entry ? await render(entry) : { Content: null };
+const title = entry?.data.title ?? 'Mentions légales';
 ---
 
-<BaseLayout title="Mentions légales" description="Mentions légales du site Travel-Îles.">
+<BaseLayout title={title} description="Mentions légales du site Travel-Îles.">
 	<section class="container-wide legal-page">
 		<header class="legal-header">
 			<span class="kicker">Informations légales</span>
-			<h1 class="page-title">Mentions légales</h1>
+			<h1 class="page-title">{title}</h1>
 		</header>
 
 		<div class="prose">
-			<h2>Éditeur du site</h2>
-			<p>Travel-Îles<br />
-			Magazine en ligne consacré au tourisme et à l'art de vivre dans l'océan Indien.<br />
-			Contact : <a href="mailto:contact@traveliles.com">contact@traveliles.com</a></p>
-
-			<h2>Hébergement</h2>
-			<p>Ce site est hébergé par Cloudflare, Inc.<br />
-			101 Townsend St, San Francisco, CA 94107, États-Unis.<br />
-			<a href="https://www.cloudflare.com" target="_blank" rel="noopener">www.cloudflare.com</a></p>
-
-			<h2>Propriété intellectuelle</h2>
-			<p>L'ensemble des contenus (textes, photographies, vidéos, illustrations, mise en page) publiés sur ce site est protégé par le droit d'auteur. Toute reproduction, même partielle, est soumise à autorisation préalable de l'éditeur.</p>
-
-			<h2>Crédits</h2>
-			<p>Conception et développement : Travel-Îles.<br />
-			Typographies : Playfair Display, Inter (Google Fonts).</p>
+			{Content ? <Content /> : null}
 		</div>
 	</section>
 </BaseLayout>

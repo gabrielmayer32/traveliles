@@ -1,18 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { iconSvg } from '../lib/icons';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages_fr', 'contact');
+const { Content } = entry ? await render(entry) : { Content: null };
+const title = entry?.data.title ?? 'Contact';
+const email = entry?.data.email ?? 'contact@traveliles.com';
 ---
 
-<BaseLayout title="Contact" description="Contacter la rédaction de Travel-Îles.">
+<BaseLayout title={title} description="Contacter la rédaction de Travel-Îles.">
 	<section class="container-wide contact-page">
 		<header class="contact-header">
 			<span class="kicker">Contact</span>
-			<h1 class="page-title">Nous écrire</h1>
+			<h1 class="page-title">{title}</h1>
 		</header>
 
 		<div class="prose">
-			<p>Pour une adresse à proposer, une collaboration éditoriale ou une demande de partenariat, contactez la rédaction.</p>
-			<p><a href="mailto:contact@traveliles.com">contact@traveliles.com</a></p>
+			{Content ? <Content /> : null}
+			<p><a href={`mailto:${email}`}>{email}</a></p>
 		</div>
 	</section>
 </BaseLayout>
