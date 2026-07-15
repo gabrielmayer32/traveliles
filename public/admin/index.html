@@ -9,7 +9,6 @@
 		<script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 
 		<script>
-			// Article live preview template
 			const articlePreviewStyles = `
 				@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
 
@@ -18,7 +17,6 @@
 				:root {
 					--navy: #2b3a8f;
 					--navy-300: #97a1d2;
-					--navy-900: #1b2559;
 					--ink: #1a1a1a;
 					--ink-600: #444444;
 					--ink-800: #262626;
@@ -26,69 +24,30 @@
 					--grey-line: #e5e5e5;
 					--grey-050: #f5f5f5;
 					--bg: #fafafa;
-					--white: #ffffff;
-
-					--text-heading: var(--ink);
-					--text-body: var(--ink-800);
-					--text-secondary: var(--ink-600);
-					--text-muted: var(--grey-muted);
-					--text-brand: var(--navy);
-					--surface-sunken: var(--grey-050);
-					--border-subtle: var(--grey-line);
-					--link: var(--navy);
-
 					--font-display: 'Playfair Display', Georgia, serif;
 					--font-body: 'Inter', system-ui, sans-serif;
-
-					--fw-regular: 400;
-					--fw-medium: 500;
-					--fw-semibold: 600;
-
-					--text-xs: 0.75rem;
-					--text-sm: 0.875rem;
-					--text-base: 1rem;
-					--text-md: 1.0625rem;
-					--text-lg: 1.25rem;
-
 					--leading-tight: 1.05;
-					--leading-normal: 1.5;
-					--leading-body: 1.7;
 					--leading-relaxed: 1.8;
-
 					--tracking-wider: 0.14em;
-					--kicker-size: var(--text-sm);
-					--kicker-tracking: var(--tracking-wider);
-
 					--radius-sm: 3px;
 					--radius-pill: 999px;
-
-					--space-2: 0.5rem;
-					--space-3: 0.75rem;
-					--space-4: 1rem;
-					--space-5: 1.25rem;
-					--space-6: 1.5rem;
-					--space-8: 2rem;
-					--space-10: 2.5rem;
-					--space-12: 3rem;
-					--space-16: 4rem;
 				}
 
 				html, body {
-					margin: 0;
-					padding: 0;
+					margin: 0; padding: 0;
 					background: var(--bg);
-					color: var(--text-body);
+					color: var(--ink-800);
 					font-family: var(--font-body);
-					font-size: var(--text-base);
-					line-height: var(--leading-body);
+					font-size: 1rem;
+					line-height: 1.7;
 					-webkit-font-smoothing: antialiased;
 				}
 
 				h1, h2, h3, h4 {
 					margin: 0;
-					color: var(--text-heading);
+					color: var(--ink);
 					font-family: var(--font-display);
-					font-weight: var(--fw-medium);
+					font-weight: 500;
 					line-height: var(--leading-tight);
 					letter-spacing: -0.02em;
 				}
@@ -99,65 +58,52 @@
 
 				.kicker {
 					display: inline-block;
-					color: var(--text-brand);
+					color: var(--navy);
 					font-family: var(--font-body);
-					font-size: var(--kicker-size);
-					font-weight: var(--fw-semibold);
-					letter-spacing: var(--kicker-tracking);
+					font-size: 0.875rem;
+					font-weight: 600;
+					letter-spacing: var(--tracking-wider);
 					text-transform: uppercase;
 				}
 
-				.meta {
-					color: var(--text-muted);
-					font-size: var(--text-sm);
-					letter-spacing: 0.01em;
-				}
-
-				/* Article layout */
 				.article-header {
 					width: min(100% - 2.5rem, 46rem);
-					margin: var(--space-10) auto 0;
-					text-align: left;
+					margin: 2.5rem auto 0;
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
-					gap: var(--space-5);
+					gap: 1.25rem;
 				}
 
 				.article-header h1 {
 					font-size: clamp(2.25rem, 5.5vw, 4rem);
 					line-height: 1.05;
-					text-wrap: balance;
 					margin: 0;
-					letter-spacing: -0.01em;
 				}
 
 				.article-lead {
-					font-size: var(--text-lg);
-					line-height: var(--leading-normal);
-					color: var(--text-secondary);
+					font-size: 1.25rem;
+					line-height: 1.5;
+					color: var(--ink-600);
 					max-width: 36rem;
-					text-wrap: pretty;
 					margin: 0;
 				}
 
 				.article-meta {
 					display: flex;
-					gap: var(--space-3);
+					gap: 0.75rem;
 					align-items: center;
-					padding-top: var(--space-4);
-					border-top: 1px solid var(--border-subtle);
+					padding-top: 1rem;
+					border-top: 1px solid var(--grey-line);
 					width: 100%;
+					color: var(--grey-muted);
+					font-size: 0.875rem;
 				}
 
-				.article-author {
-					color: var(--ink);
-					font-weight: var(--fw-medium);
-					letter-spacing: 0.02em;
-				}
+				.article-author { color: var(--ink); font-weight: 500; }
 
 				.article-figure {
-					margin: var(--space-12) auto 0;
+					margin: 3rem auto 0;
 					width: min(100% - 2.5rem, 62rem);
 				}
 
@@ -165,88 +111,50 @@
 					aspect-ratio: 3 / 2;
 					overflow: hidden;
 					border-radius: var(--radius-sm);
-					background: var(--surface-sunken);
+					background: var(--grey-050);
 				}
 
-				.article-cover img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-				}
+				.article-cover img { width: 100%; height: 100%; object-fit: cover; }
 
 				.article-caption {
-					margin-top: var(--space-3);
-					font-size: var(--text-sm);
-					color: var(--text-muted);
+					margin-top: 0.75rem;
+					font-size: 0.875rem;
+					color: var(--grey-muted);
 					font-style: italic;
 				}
 
 				.article-body {
 					width: min(100% - 2.5rem, 40rem);
 					margin: 0 auto;
-					padding-top: var(--space-16);
-					padding-bottom: var(--space-12);
+					padding-top: 4rem;
+					padding-bottom: 3rem;
 				}
 
-				.prose {
-					font-size: var(--text-md);
-					line-height: var(--leading-relaxed);
-					color: var(--text-body);
-				}
-
+				.prose { font-size: 1.0625rem; line-height: var(--leading-relaxed); }
 				.prose > * + * { margin-top: 1.35rem; }
-
-				.prose p:first-child {
-					font-family: var(--font-display);
-					font-weight: var(--fw-regular);
-					font-size: clamp(1.375rem, 2.4vw, 1.625rem);
-					line-height: 1.5;
-					color: var(--ink);
-					margin-bottom: var(--space-8);
-				}
-
 				.prose h2, .prose h3 { margin-top: 2.75rem; }
-
-				.prose a {
-					color: var(--link);
-					border-bottom: 1px solid var(--navy-300);
-				}
+				.prose a { color: var(--navy); border-bottom: 1px solid var(--navy-300); }
 
 				.tags-footer {
-					margin-top: var(--space-12);
-					padding-top: var(--space-6);
-					border-top: 1px solid var(--border-subtle);
+					margin-top: 3rem;
+					padding-top: 1.5rem;
+					border-top: 1px solid var(--grey-line);
 				}
 
-				.tags-kicker {
-					display: block;
-					margin-bottom: var(--space-4);
-				}
-
-				.tags {
-					display: flex;
-					flex-wrap: wrap;
-					gap: var(--space-2);
-				}
+				.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 
 				.tag {
 					display: inline-block;
-					font-size: var(--text-xs);
-					font-weight: var(--fw-medium);
-					letter-spacing: 0.02em;
-					color: var(--text-secondary);
-					background: var(--surface-sunken);
-					border: 1px solid var(--border-subtle);
+					font-size: 0.75rem;
+					font-weight: 500;
+					color: var(--ink-600);
+					background: var(--grey-050);
+					border: 1px solid var(--grey-line);
 					border-radius: var(--radius-pill);
 					padding: 0.35em 0.85em;
-					line-height: 1.3;
 				}
 
-				.empty-state {
-					color: var(--text-muted);
-					font-style: italic;
-					font-size: var(--text-sm);
-				}
+				.empty-state { color: var(--grey-muted); font-style: italic; font-size: 0.875rem; }
 			`;
 
 			function formatDate(dateStr) {
@@ -256,79 +164,73 @@
 				return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 			}
 
-			// Simple markdown-to-html converter for the preview
 			function markdownToHtml(md) {
 				if (!md) return '';
 				return md
-					// headings
 					.replace(/^### (.+)$/gm, '<h3>$1</h3>')
 					.replace(/^## (.+)$/gm, '<h2>$1</h2>')
 					.replace(/^# (.+)$/gm, '<h1>$1</h1>')
-					// bold / italic
 					.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
 					.replace(/\*(.+?)\*/g, '<em>$1</em>')
-					// links
 					.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
-					// paragraphs (blank-line separated)
 					.split(/\n{2,}/)
 					.map(block => block.trim())
 					.filter(Boolean)
-					.map(block => (block.startsWith('<h') || block.startsWith('<ul') || block.startsWith('<ol') ? block : `<p>${block.replace(/\n/g, '<br>')}</p>`))
+					.map(block => (block.startsWith('<h') ? block : `<p>${block.replace(/\n/g, '<br>')}</p>`))
 					.join('\n');
 			}
 
-			CMS.registerPreviewStyle(articlePreviewStyles, { raw: true });
-
-			CMS.registerPreviewTemplate('articles', ({ entry }) => {
+			function buildArticlePreview(entry) {
 				const data = entry.get('data');
-				const title = data.get('title') || '';
-				const excerpt = data.get('excerpt') || '';
+				const title    = data.get('title')    || '';
+				const excerpt  = data.get('excerpt')  || '';
 				const category = data.get('category') || '';
-				const author = data.get('author') || 'Travel-Îles';
-				const date = data.get('date') || '';
-				const cover = data.get('cover') || '';
-				const tags = data.get('tags') ? data.get('tags').toJS() : [];
-				const body = data.get('body') || '';
+				const author   = data.get('author')   || 'Travel-Îles';
+				const date     = data.get('date')     || '';
+				const cover    = data.get('cover')    || '';
+				const tags     = data.get('tags') ? data.get('tags').toJS() : [];
+				const body     = data.get('body')     || '';
 
-				const coverHtml = cover ? `
-					<figure class="article-figure">
-						<div class="article-cover">
-							<img src="${cover}" alt="${title}" />
-						</div>
-						<figcaption class="meta article-caption">${category} · Travel-Îles</figcaption>
-					</figure>` : '';
+				const coverHtml = cover
+					? `<figure class="article-figure">
+							<div class="article-cover"><img src="${cover}" alt="${title}" /></div>
+							<figcaption class="article-caption">${category} · Travel-Îles</figcaption>
+						</figure>`
+					: '';
 
-				const tagsHtml = tags.length > 0 ? `
-					<div class="tags-footer">
-						<span class="kicker tags-kicker">Sujets</span>
-						<div class="tags">
-							${tags.map(t => `<span class="tag">${t}</span>`).join('')}
-						</div>
-					</div>` : '';
+				const tagsHtml = tags.length
+					? `<div class="tags-footer">
+							<span class="kicker">Sujets</span>
+							<div class="tags">${tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+						</div>`
+					: '';
 
 				const bodyHtml = body
 					? `<div class="prose">${markdownToHtml(body)}</div>`
 					: '<p class="empty-state">Le corps de l\'article apparaîtra ici…</p>';
 
-				return `
-					<article>
-						<header class="article-header">
-							${category ? `<span class="kicker">${category}</span>` : ''}
-							<h1>${title || '<span class="empty-state">Titre…</span>'}</h1>
-							${excerpt ? `<p class="article-lead">${excerpt}</p>` : ''}
-							<div class="article-meta meta">
-								<span class="article-author">${author}</span>
-								${date ? `<span aria-hidden="true">·</span><span>${formatDate(date)}</span>` : ''}
-							</div>
-						</header>
-						${coverHtml}
-						<div class="article-body">
-							${bodyHtml}
-							${tagsHtml}
+				const el = document.createElement('article');
+				el.innerHTML = `
+					<header class="article-header">
+						${category ? `<span class="kicker">${category}</span>` : ''}
+						<h1>${title || '<span class="empty-state">Titre…</span>'}</h1>
+						${excerpt ? `<p class="article-lead">${excerpt}</p>` : ''}
+						<div class="article-meta">
+							<span class="article-author">${author}</span>
+							${date ? `<span aria-hidden="true">·</span><span>${formatDate(date)}</span>` : ''}
 						</div>
-					</article>
+					</header>
+					${coverHtml}
+					<div class="article-body">
+						${bodyHtml}
+						${tagsHtml}
+					</div>
 				`;
-			});
+				return el;
+			}
+
+			CMS.registerPreviewStyle(articlePreviewStyles, { raw: true });
+			CMS.registerPreviewTemplate('articles', ({ entry }) => buildArticlePreview(entry));
 		</script>
 	</body>
 </html>
