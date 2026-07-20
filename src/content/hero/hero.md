@@ -1,7 +1,7 @@
 ---
-title: L’île Maurice comme vous ne l’avez jamais vue.
+title: L’île Maurice comme vous ne l’avez jamais vue. Une immersion au cœur de l’île et de l’océan Indien.
 label: ''
-excerpt: Une immersion au cœur de l’île et de l’océan Indien.
+excerpt: ''
 videoFile: https://pub-2a785cffa6fd467baf833d04c033dfc7.r2.dev/DJI_0536.mp4
 poster: /images/uploads/poster-ti.png
 published: true
