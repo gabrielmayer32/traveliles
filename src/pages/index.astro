@@ -7,9 +7,12 @@ import PartnersBar from '../components/PartnersBar.astro';
 import VideoCard from '../components/VideoCard.astro';
 import { iconSvg } from '../lib/icons';
 
-const articles = (await getCollection('articles'))
+const allPublishedArticles = (await getCollection('articles'))
 	.filter((a) => a.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Articles section excludes News
+const articles = allPublishedArticles.filter((a) => a.data.category !== 'News');
 
 const videos = (await getCollection('videos'))
 	.filter((v) => v.data.published)
@@ -26,7 +29,7 @@ const sideArticles = articles.slice(1, 3);
 const carouselVideos = videos.slice(0, 6);
 
 // News: articles in the News category, shuffled randomly at build time
-const newsArticles = articles.filter((a) => a.data.category === 'News');
+const newsArticles = allPublishedArticles.filter((a) => a.data.category === 'News');
 for (let i = newsArticles.length - 1; i > 0; i--) {
 	const j = Math.floor(Math.random() * (i + 1));
 	[newsArticles[i], newsArticles[j]] = [newsArticles[j], newsArticles[i]];
