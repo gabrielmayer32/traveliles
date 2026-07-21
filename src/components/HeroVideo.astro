@@ -127,14 +127,15 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 
 	.hero-overlay {
 		position: absolute;
-		left: 0;
-		right: 0;
+		left: clamp(1.5rem, 4vw, 3rem);
+		right: clamp(1.5rem, 4vw, 3rem);
 		bottom: 0;
 		z-index: 5;
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-4);
+		gap: var(--space-2);
 		padding-bottom: clamp(1.5rem, 4vw, 3rem);
+		max-width: 44rem;
 	}
 
 	.hero-label {
@@ -147,20 +148,23 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 	}
 
 	.hero-title {
-		font-size: clamp(1rem, 1.6vw, 1.2rem);
-		line-height: var(--leading-normal);
-		max-width: 36ch;
+		font-size: clamp(1rem, 1.5vw, 1.15rem);
+		line-height: var(--leading-snug);
 		color: var(--white);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.hero-tagline {
 		color: rgba(255, 255, 255, 0.75);
-		font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+		font-size: clamp(0.85rem, 1.3vw, 1rem);
 		font-weight: var(--fw-medium);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
-		max-width: 36ch;
-		margin-top: calc(var(--space-2) * -1);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.hero-excerpt {
