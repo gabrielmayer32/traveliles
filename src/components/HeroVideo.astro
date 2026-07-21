@@ -26,7 +26,7 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 	</div>
 	<div class="hero-scrim"></div>
 	{(title || label || excerpt) && (
-		<div class="hero-overlay container-wide">
+		<div class="hero-overlay">
 			{label && <span class="hero-label">{label}</span>}
 			{title && <h2 class="hero-title">{title}</h2>}
 			<p class="hero-tagline">Une immersion au cœur de l'océan Indien</p>
@@ -135,7 +135,7 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 		flex-direction: column;
 		gap: var(--space-2);
 		padding-bottom: clamp(1.5rem, 4vw, 3rem);
-		max-width: 44rem;
+		max-width: 68rem;
 	}
 
 	.hero-label {
@@ -148,23 +148,17 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 	}
 
 	.hero-title {
-		font-size: clamp(1rem, 1.5vw, 1.15rem);
+		font-size: clamp(1.15rem, 1.7vw, 1.35rem);
 		line-height: var(--leading-snug);
 		color: var(--white);
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 
 	.hero-tagline {
 		color: rgba(255, 255, 255, 0.75);
-		font-size: clamp(0.85rem, 1.3vw, 1rem);
+		font-size: clamp(0.95rem, 1.4vw, 1.1rem);
 		font-weight: var(--fw-medium);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 
 	.hero-excerpt {
