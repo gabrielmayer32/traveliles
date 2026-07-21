@@ -10,9 +10,12 @@ import { t } from '../../lib/i18n';
 
 const locale = 'en' as const;
 
-const articles = (await getCollection('articles_en'))
+const allPublishedArticles = (await getCollection('articles_en'))
 	.filter((a) => a.data.published && !!a.data.title)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Articles section excludes News
+const articles = allPublishedArticles.filter((a) => a.data.category !== 'News');
 
 const allVideos = (await getCollection('videos'))
 	.filter((v) => v.data.published)
@@ -25,6 +28,14 @@ const heroEntry = heroEntries.find((h) => h.data.published);
 
 const [featureArticle, ...gridArticles] = articles;
 const latestArticles = gridArticles.slice(0, 3);
+
+// News: shuffled randomly at build time
+const newsArticles = allPublishedArticles.filter((a) => a.data.category === 'News');
+for (let i = newsArticles.length - 1; i > 0; i--) {
+	const j = Math.floor(Math.random() * (i + 1));
+	[newsArticles[i], newsArticles[j]] = [newsArticles[j], newsArticles[i]];
+}
+const carouselNews = newsArticles.slice(0, 6);
 ---
 
 <BaseLayout locale={locale} alternateUrl="/">
@@ -93,6 +104,33 @@ const latestArticles = gridArticles.slice(0, 3);
 		</section>
 	)}
 
+	{carouselNews.length > 0 && (
+		<section class="container-wide section carousel-section" id="news-carousel">
+			<div class="section-header">
+				<div class="section-header-left">
+					<h2 class="section-title">News</h2>
+				</div>
+				<div class="carousel-arrows">
+					<button class="carousel-arrow news-prev" type="button" aria-label="Previous">
+						<Fragment set:html={iconSvg('arrow-left', 20)} />
+					</button>
+					<button class="carousel-arrow news-next" type="button" aria-label="Next">
+						<Fragment set:html={iconSvg('arrow-right', 20)} />
+					</button>
+				</div>
+			</div>
+			<div class="carousel-track-wrapper">
+				<div class="carousel-track" id="news-track">
+					{carouselNews.map((a) => (
+						<div class="carousel-slide">
+							<ArticleCard article={a} locale={locale} />
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
 	<PartnersBar locale={locale} />
 
 </BaseLayout>
@@ -122,4 +160,55 @@ const latestArticles = gridArticles.slice(0, 3);
 		.videos-lead-card :global(.video-card--lg .video-title) { font-size: var(--text-lg); }
 		.feature-section { gap: var(--space-4); }
 	}
+
+	.carousel-section { padding-top: var(--space-8); padding-bottom: var(--space-10); }
+	.carousel-arrows { display: flex; gap: var(--space-2); flex-shrink: 0; }
+	.carousel-arrow { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--border-strong); border-radius: var(--radius-pill); background: var(--white); color: var(--ink); cursor: pointer; transition: all var(--dur-fast) var(--ease-out); }
+	.carousel-arrow:hover:not(:disabled) { background: var(--navy); border-color: var(--navy); color: var(--white); }
+	.carousel-arrow:disabled { opacity: 0.3; cursor: default; }
+	.carousel-track-wrapper { overflow: hidden; }
+	.carousel-track { display: flex; gap: var(--space-8); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+	.carousel-slide { flex: 0 0 calc((100% - var(--space-8) * 2) / 3); min-width: 0; }
+
+	@media (max-width: 860px) { .carousel-slide { flex: 0 0 calc((100% - var(--space-8)) / 2); } }
+	@media (max-width: 560px) { .carousel-slide { flex: 0 0 100%; } }
 </style>
+
+<script>
+function setupNewsCarousel() {
+	const track = document.querySelector<HTMLElement>('#news-track');
+	const prev = document.querySelector<HTMLButtonElement>('.news-prev');
+	const next = document.querySelector<HTMLButtonElement>('.news-next');
+	if (!track || !prev || !next) return;
+
+	const slides = track.querySelectorAll<HTMLElement>('.carousel-slide');
+	if (slides.length === 0) return;
+
+	let index = 0;
+
+	function visibleCount() {
+		const w = window.innerWidth;
+		if (w <= 560) return 1;
+		if (w <= 860) return 2;
+		return 3;
+	}
+
+	function maxIndex() { return Math.max(0, slides.length - visibleCount()); }
+
+	function update() {
+		const gap = parseFloat(getComputedStyle(track!).gap) || 0;
+		const offset = index * (slides[0].offsetWidth + gap);
+		track!.style.transform = `translateX(-${offset}px)`;
+		prev!.disabled = index === 0;
+		next!.disabled = index >= maxIndex();
+	}
+
+	prev.addEventListener('click', () => { if (index > 0) { index--; update(); } });
+	next.addEventListener('click', () => { if (index < maxIndex()) { index++; update(); } });
+	window.addEventListener('resize', () => { index = Math.min(index, maxIndex()); update(); });
+	update();
+}
+
+document.addEventListener('astro:page-load', setupNewsCarousel);
+setupNewsCarousel();
+</script>
