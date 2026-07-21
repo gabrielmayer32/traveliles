@@ -62,13 +62,11 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 			</nav>
 
 			<nav class="footer-magazine">
-				<div class="footer-col-title">{locale === 'en' ? 'The magazine' : 'Le magazine'}</div>
 				<a class="footer-link" href={localizedPath('/videos', locale)}>{t('footer.videos', locale)}</a>
 				<a class="footer-link" href={localizedPath('/articles', locale)}>{t('footer.articles', locale)}</a>
 				<a class="footer-link" href={aboutHref}>{t('footer.about', locale)}</a>
 				<a class="footer-link" href={localizedPath('/contact', locale)}>{t('footer.contact', locale)}</a>
 				<a class="footer-link" href={searchHref}>{t('footer.search', locale)}</a>
-				<a class="footer-link" href={localizedPath('/archives', locale)}>{locale === 'en' ? 'Archives' : 'Archives'}</a>
 			</nav>
 		</div>
 

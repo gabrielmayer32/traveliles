@@ -84,6 +84,7 @@ export const CATEGORIES_EN: Record<string, string> = {
 	'News':                           'News',
 	'Nos adresses':                   'Our Picks',
 	'Escapades':                      'Getaways',
+	'Nos archives':                   'Archives',
 };
 
 export function t(key: keyof typeof translations, locale: Locale): string {

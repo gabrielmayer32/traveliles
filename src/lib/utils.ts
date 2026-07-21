@@ -12,6 +12,7 @@ export const CATEGORIES = [
 	'News',
 	'Nos adresses',
 	'Escapades',
+	'Nos archives',
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
@@ -22,16 +23,16 @@ export interface RubriqueGroup {
 }
 
 export const RUBRIQUES: RubriqueGroup[] = [
-	{ label: 'Rencontres',              children: ['Nos Ambassadeurs'] },
+	{ label: 'Rencontres' },
 	{ label: 'Nos régions' },
-	{ label: 'Savoir-faire',            children: ['Héritage', 'Maurice demain'] },
-	{ label: "Mémoires d'îles" },
+	{ label: 'Savoir-faire' },
+	{ label: 'Maurice demain' },
 	{ label: 'Saveurs' },
 	{ label: 'Art & Culture' },
 	{ label: 'Activités & Événements' },
-	{ label: 'News' },
 	{ label: 'Nos adresses' },
 	{ label: 'Escapades' },
+	{ label: 'Nos archives' },
 ];
 
 export function getCategoryParent(category: Category): Category | undefined {
@@ -57,6 +58,7 @@ export const CATEGORY_SLUG_MAP: Record<Category, string> = {
 	News: 'news',
 	'Nos adresses': 'nos-adresses',
 	Escapades: 'escapades',
+	'Nos archives': 'nos-archives',
 };
 
 export function slugifyCategory(category: Category | string) {
