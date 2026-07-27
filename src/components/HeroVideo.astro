@@ -29,7 +29,7 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 		<div class="hero-overlay">
 			{label && <span class="hero-label">{label}</span>}
 			{title && <h2 class="hero-title">{title}</h2>}
-			<p class="hero-tagline">Une immersion au cœur de l'océan Indien</p>
+			<p class="hero-tagline">Un nouveau regard sur l'Océan Indien</p>
 			{excerpt && <p class="hero-excerpt">{excerpt}</p>}
 		</div>
 	)}
@@ -154,11 +154,10 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 	}
 
 	.hero-tagline {
+		font-family: var(--font-display);
 		color: rgba(255, 255, 255, 0.75);
-		font-size: clamp(0.95rem, 1.4vw, 1.1rem);
-		font-weight: var(--fw-medium);
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
+		font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+		line-height: var(--leading-snug);
 	}
 
 	.hero-excerpt {
