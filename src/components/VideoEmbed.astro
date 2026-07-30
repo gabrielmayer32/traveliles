@@ -1,5 +1,6 @@
 ---
 import { t, type Locale } from '../lib/i18n';
+import { getYouTubeVideoId } from '../lib/video';
 
 interface Props {
 	videoSource: 'youtube' | 'vimeo' | 'facebook' | 'instagram' | 'r2';
@@ -13,21 +14,22 @@ interface Props {
 const { videoSource, videoId, videoFile, title = 'Vidéo Travel-Îles', thumbnail, locale = 'fr' } = Astro.props;
 
 const isR2 = videoSource === 'r2';
+const embedVideoId = videoSource === 'youtube' ? getYouTubeVideoId(videoId) : videoId;
 
 const src = isR2 ? undefined : {
-	youtube: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`,
-	vimeo: `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`,
-	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId ?? '')}&autoplay=true`,
-	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
+	youtube: `https://www.youtube.com/embed/${embedVideoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`,
+	vimeo: `https://player.vimeo.com/video/${embedVideoId}?autoplay=1&title=0&byline=0&portrait=0`,
+	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(embedVideoId ?? '')}&autoplay=true`,
+	instagram: `https://www.instagram.com/reel/${embedVideoId}/embed/`,
 }[videoSource as 'youtube' | 'vimeo' | 'facebook' | 'instagram'];
 
 const platformName = { youtube: 'YouTube', vimeo: 'Vimeo', facebook: 'Facebook', instagram: 'Instagram' }[videoSource as string] ?? videoSource;
 
 const directUrl = isR2 ? undefined : {
-	youtube: `https://www.youtube.com/watch?v=${videoId}`,
-	vimeo: `https://vimeo.com/${videoId}`,
-	facebook: videoId,
-	instagram: `https://www.instagram.com/reel/${videoId}/`,
+	youtube: `https://www.youtube.com/watch?v=${embedVideoId}`,
+	vimeo: `https://vimeo.com/${embedVideoId}`,
+	facebook: embedVideoId,
+	instagram: `https://www.instagram.com/reel/${embedVideoId}/`,
 }[videoSource as 'youtube' | 'vimeo' | 'facebook' | 'instagram'];
 ---
 
