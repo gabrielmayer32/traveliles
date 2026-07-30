@@ -1,13 +1,16 @@
 ---
+import { t, type Locale } from '../lib/i18n';
+
 interface Props {
 	videoSource: 'youtube' | 'vimeo' | 'facebook' | 'instagram' | 'r2';
 	videoId?: string;
 	videoFile?: string;
 	title?: string;
 	thumbnail?: string;
+	locale?: Locale;
 }
 
-const { videoSource, videoId, videoFile, title = 'Vidéo Travel-Îles', thumbnail } = Astro.props;
+const { videoSource, videoId, videoFile, title = 'Vidéo Travel-Îles', thumbnail, locale = 'fr' } = Astro.props;
 
 const isR2 = videoSource === 'r2';
 
@@ -38,17 +41,17 @@ const directUrl = isR2 ? undefined : {
 			poster={thumbnail}
 			style="display:block;width:100%;height:100%;background:#000"
 		>
-			<p>Votre navigateur ne supporte pas la lecture vidéo.</p>
+			<p>{locale === 'en' ? 'Your browser does not support video playback.' : 'Votre navigateur ne supporte pas la lecture vidéo.'}</p>
 		</video>
 	</div>
 ) : (
 	<div class="video-embed" data-embed-src={src} data-embed-title={title}>
 		<div class="video-embed-placeholder">
-			<p>Cette vidéo est hébergée par un service tiers ({platformName}).</p>
-			<button class="video-embed-accept" type="button">Accepter les cookies et lire la vidéo</button>
+			<p>{t('video.hosted_by', locale)} ({platformName}).</p>
+			<button class="video-embed-accept" type="button">{t('video.accept_cookies', locale)}</button>
 			{directUrl && (
 				<a class="video-embed-external" href={directUrl} target="_blank" rel="noopener">
-					Voir sur {platformName} ↗
+					{t('video.watch_on', locale)} {platformName} ↗
 				</a>
 			)}
 		</div>

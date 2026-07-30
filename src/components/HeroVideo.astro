@@ -1,12 +1,17 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../lib/i18n';
 
 interface Props {
 	hero: CollectionEntry<'hero'>;
+	locale?: Locale;
 }
 
-const { hero } = Astro.props;
+const { hero, locale = 'fr' } = Astro.props;
 const { title, label, excerpt, videoFile, poster } = hero.data;
+const tagline = locale === 'en'
+	? 'A new perspective on the Indian Ocean'
+	: "Un nouveau regard sur l'océan Indien";
 ---
 
 <section class="hero-video">
@@ -29,7 +34,7 @@ const { title, label, excerpt, videoFile, poster } = hero.data;
 		<div class="hero-overlay">
 			{label && <span class="hero-label">{label}</span>}
 			{title && <h2 class="hero-title">{title}</h2>}
-			<p class="hero-tagline">Un nouveau regard sur l'océan Indien</p>
+			<p class="hero-tagline">{tagline}</p>
 			{excerpt && <p class="hero-excerpt">{excerpt}</p>}
 		</div>
 	)}

@@ -8,7 +8,8 @@ interface Props {
 
 const { locale = 'fr' } = Astro.props;
 const partnerEntries = await getCollection('partners');
-const partners = partnerEntries[0]?.data.partners ?? [];
+const entryId = locale === 'en' ? 'partners-en' : 'partners';
+const partners = partnerEntries.find((entry) => entry.id === entryId)?.data.partners ?? [];
 const title = locale === 'en' ? 'Our Partners' : 'Nos Partenaires';
 ---
 

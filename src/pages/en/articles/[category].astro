@@ -24,7 +24,7 @@ const articles = (await getCollection('articles_en'))
 	.filter((a) => a.data.published && !!a.data.title && categoryScope.includes(a.data.category))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const videos = (await getCollection('videos'))
+const videos = (await getCollection('videos_en'))
 	.filter((video) => video.data.published && categoryScope.includes(video.data.category))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 4);
@@ -53,7 +53,7 @@ const displayCategory = localizedCategory(category, locale);
 			<h2 class="subsection-title">Latest videos</h2>
 			{videos.length > 0 ? (
 				<div class="grid-4">
-					{videos.map((video) => <VideoCard video={video} locale="fr" />)}
+					{videos.map((video) => <VideoCard video={video} locale={locale} />)}
 				</div>
 			) : (
 				<p class="empty-state empty-state--compact">No videos in this section yet.</p>

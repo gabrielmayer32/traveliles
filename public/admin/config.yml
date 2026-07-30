@@ -27,7 +27,7 @@ collections:
     label: Vidéo à la une
     files:
       - name: hero
-        label: Vidéo à la une
+        label: Vidéo à la une (FR)
         file: src/content/hero/hero.md
         fields:
           - { name: title, label: Titre, widget: string }
@@ -36,6 +36,16 @@ collections:
           - { name: videoFile, label: URL vidéo R2, widget: string, hint: "URL publique du fichier MP4 sur Cloudflare R2" }
           - { name: poster, label: Image de démarrage, widget: image, required: false, hint: "Image affichée avant que la vidéo ne démarre (évite l'écran gris)" }
           - { name: published, label: Publié, widget: boolean, default: true }
+      - name: hero-en
+        label: Featured video (EN)
+        file: src/content/hero/hero-en.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: label, label: Label, widget: string, required: false, hint: "Free text displayed above the title (e.g. Our picks, New, Exclusive…)" }
+          - { name: excerpt, label: Excerpt, widget: text, required: false }
+          - { name: videoFile, label: R2 video URL, widget: string, hint: "Public URL of the MP4 file on Cloudflare R2" }
+          - { name: poster, label: Poster image, widget: image, required: false, hint: "Image displayed before the video starts" }
+          - { name: published, label: Published, widget: boolean, default: true }
 
   - name: articles
     label: Articles
@@ -67,16 +77,12 @@ collections:
         i18n: duplicate
         options:
           - Rencontres
-          - Nos Ambassadeurs
           - Nos régions
           - Savoir-faire
-          - Héritage
           - Maurice demain
-          - Mémoires d'îles
           - Saveurs
           - Art & Culture
           - Activités & Événements
-          - News
           - Nos adresses
           - Escapades
           - Nos archives
@@ -89,11 +95,12 @@ collections:
 
   - name: videos
     label: Vidéos
-    folder: src/content/videos/fr
+    folder: src/content/videos
     create: true
     slug: "{{slug}}"
     extension: md
     format: frontmatter
+    i18n: true
     preview_path: "videos/{{slug}}"
     sortable_fields:
       - title
@@ -107,47 +114,45 @@ collections:
       - label: Publié
         field: published
     fields:
-      - { name: title, label: Titre, widget: string }
-      - { name: date, label: Date, widget: datetime }
+      - { name: title, label: Titre / Title, widget: string, required: false, i18n: true }
+      - { name: date, label: Date, widget: datetime, i18n: duplicate }
       - label: Catégorie
         name: category
         widget: select
+        i18n: duplicate
         options:
           - Rencontres
-          - Nos Ambassadeurs
           - Nos régions
           - Savoir-faire
-          - Héritage
           - Maurice demain
-          - Mémoires d'îles
           - Saveurs
           - Art & Culture
           - Activités & Événements
-          - News
           - Nos adresses
           - Escapades
           - Nos archives
       - label: Source vidéo
         name: videoSource
         widget: select
+        i18n: duplicate
         options:
           - { label: YouTube, value: youtube }
           - { label: Vimeo, value: vimeo }
           - { label: Facebook, value: facebook }
           - { label: Instagram, value: instagram }
           - { label: Cloudflare R2, value: r2 }
-      - { name: videoId, label: ID vidéo, widget: string, required: false, hint: "YouTube: ID de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post. Laisser vide pour R2." }
-      - { name: videoFile, label: URL vidéo R2, widget: string, required: false, hint: "URL publique du fichier vidéo sur Cloudflare R2. Utiliser uniquement si Source = Cloudflare R2." }
-      - { name: thumbnail, label: Vignette, widget: image, required: false }
-      - { name: excerpt, label: Extrait, widget: text, required: false }
-      - { name: published, label: Publié, widget: boolean, default: false }
-      - { name: body, label: Description, widget: markdown, required: false }
+      - { name: videoId, label: ID vidéo / Video ID, widget: string, required: false, i18n: duplicate, hint: "YouTube: ID de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post. Laisser vide pour R2." }
+      - { name: videoFile, label: URL vidéo R2 / R2 video URL, widget: string, required: false, i18n: duplicate, hint: "URL publique du fichier vidéo sur Cloudflare R2. Utiliser uniquement si Source = Cloudflare R2." }
+      - { name: thumbnail, label: Vignette / Thumbnail, widget: image, required: false, i18n: duplicate }
+      - { name: excerpt, label: Extrait / Excerpt, widget: text, required: false, i18n: true }
+      - { name: published, label: Publié / Published, widget: boolean, default: false, i18n: true }
+      - { name: body, label: Description, widget: markdown, required: false, i18n: true }
 
   - name: partners
     label: Partenaires
     files:
       - name: partners
-        label: Partenaires
+        label: Partenaires (FR)
         file: src/content/partners/partners.md
         fields:
           - name: partners
@@ -157,6 +162,17 @@ collections:
               - { name: name, label: Nom, widget: string }
               - { name: logo, label: Logo, widget: image }
               - { name: url, label: Lien, widget: string, required: false }
+      - name: partners-en
+        label: Partners (EN)
+        file: src/content/partners/partners-en.md
+        fields:
+          - name: partners
+            label: Partners
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: logo, label: Logo, widget: image }
+              - { name: url, label: Link, widget: string, required: false }
 
   - name: pages
     label: Pages

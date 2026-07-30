@@ -19,7 +19,7 @@ const videos = (await getCollection('videos'))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const heroEntries = await getCollection('hero');
-const heroEntry = heroEntries.find((h) => h.data.published);
+const heroEntry = heroEntries.find((h) => h.id === 'hero' && h.data.published);
 
 // All videos go into the video section
 const leadVideo = videos[0];
@@ -42,7 +42,7 @@ const carouselNews = newsArticles.slice(0, 6);
 	<!-- Hero -->
 	{heroEntry && (
 		<section class="container-wide hero-section">
-			<HeroVideo hero={heroEntry} />
+			<HeroVideo hero={heroEntry} locale="fr" />
 		</section>
 	)}
 

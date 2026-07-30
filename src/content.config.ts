@@ -77,6 +77,11 @@ const videos = defineCollection({
 	schema: videoSchema,
 });
 
+const videos_en = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/videos/en' }),
+	schema: videoSchema,
+});
+
 const partners = defineCollection({
 	loader: glob({ pattern: '*.md', base: './src/content/partners' }),
 	schema: partnersSchema,
@@ -97,4 +102,4 @@ const pages_en = defineCollection({
 	schema: pagesSchema,
 });
 
-export const collections = { articles, articles_en, videos, hero, partners, pages_fr, pages_en };
+export const collections = { articles, articles_en, videos, videos_en, hero, partners, pages_fr, pages_en };

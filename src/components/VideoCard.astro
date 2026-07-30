@@ -5,7 +5,7 @@ import CategoryLabel from './CategoryLabel.astro';
 import { iconSvg } from '../lib/icons';
 
 interface Props {
-	video: CollectionEntry<'videos'>;
+	video: CollectionEntry<'videos'> | CollectionEntry<'videos_en'>;
 	size?: 'sm' | 'md' | 'lg';
 	locale?: Locale;
 }
@@ -35,7 +35,7 @@ const duration = (video.data as any).duration as string | undefined;
 		)}
 	</div>
 	<div class="video-body">
-		<CategoryLabel category={video.data.category} linked={false} />
+		<CategoryLabel category={video.data.category} linked={false} locale={locale} />
 		<h3 class="video-title">{video.data.title}</h3>
 		<div class="meta">{formatDateLocale(video.data.date, locale)}</div>
 	</div>
