@@ -1,6 +1,6 @@
 ---
 title: Chroniques d'hier [Février 1995] - Beachcomber ouvre un nouveau chapitre.
-date: 2026-08-04T11:48
+date: 2026-08-04T15:55
 category: Nos archives
 cover: /images/uploads/Quoi de neuf chez Beachcomber.png
 excerpt: 'En 1995, Beachcomber engage une nouvelle phase de son histoire. Rénovations, nouvelles suites, équipements repensés et services enrichis : retour sur une période charnière où le groupe hôtelier mauricien affirme son ambition et réinvente l’expérience de ses établissements.'
