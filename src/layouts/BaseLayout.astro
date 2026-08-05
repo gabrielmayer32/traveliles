@@ -1,9 +1,11 @@
 ---
 import { Font } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import AdPlacement from '../components/AdPlacement.astro';
 import type { Locale } from '../lib/i18n';
 import '../styles/global.css';
 
@@ -27,6 +29,7 @@ const pageTitle = title ? `${title} — Travel-Îles` : 'Travel-Îles';
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const altUrl = alternateUrl ? new URL(alternateUrl, Astro.site).href : undefined;
 const xDefaultUrl = locale === 'fr' ? canonicalUrl : (altUrl ?? canonicalUrl);
+const globalAds = (await getCollection('ads')).filter((ad) => ad.data.visible && ['floating', 'popup'].includes(ad.data.placement));
 ---
 
 <html lang={locale}>
@@ -62,6 +65,7 @@ const xDefaultUrl = locale === 'fr' ? canonicalUrl : (altUrl ?? canonicalUrl);
 			<slot />
 		</main>
 		<Footer locale={locale} />
+		{globalAds.map((ad) => <AdPlacement ad={ad} locale={locale} />)}
 		<CookieBanner locale={locale} />
 	</body>
 </html>

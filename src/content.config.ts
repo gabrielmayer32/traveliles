@@ -57,6 +57,18 @@ const partnersSchema = z.object({
 	})).default([]),
 });
 
+const adSchema = z.object({
+	title: z.string(),
+	titleEn: z.string().optional(),
+	label: z.string().default('Publicité'),
+	image: z.string().optional(),
+	url: z.string().optional(),
+	cta: z.string().optional(),
+	ctaEn: z.string().optional(),
+	placement: z.enum(['sidebar', 'inline', 'floating', 'popup']),
+	visible: z.boolean().default(false),
+});
+
 const hero = defineCollection({
 	loader: glob({ pattern: '*.md', base: './src/content/hero' }),
 	schema: heroSchema,
@@ -87,6 +99,11 @@ const partners = defineCollection({
 	schema: partnersSchema,
 });
 
+const ads = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/ads' }),
+	schema: adSchema,
+});
+
 const pagesSchema = z.object({
 	title: z.string().optional(),
 	email: z.string().optional(),
@@ -102,4 +119,4 @@ const pages_en = defineCollection({
 	schema: pagesSchema,
 });
 
-export const collections = { articles, articles_en, videos, videos_en, hero, partners, pages_fr, pages_en };
+export const collections = { articles, articles_en, videos, videos_en, hero, partners, ads, pages_fr, pages_en };
