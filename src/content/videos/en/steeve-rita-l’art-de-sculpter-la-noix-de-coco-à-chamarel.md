@@ -7,7 +7,7 @@ videoId: wYFrSnE6RU8
 videoFile: https://youtu.be/wYFrSnE6RU8
 thumbnail: ''
 excerpt: Discover Steeve Rita, a coconut shell artist and sculptor at the Chamarel viewpoint, and explore his entirely handmade Mauritian craftsmanship.
-published: false
+published: true
 ---
 
 You may already have spotted him at the Chamarel viewpoint, carefully transforming a coconut shell into a one-of-a-kind creation.
