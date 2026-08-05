@@ -4,6 +4,7 @@ date: 2018-05-28T18:13
 category: Savoir-faire
 videoSource: youtube
 videoId: cDMCKLouI1g
+videoFile: ''
 thumbnail: ''
 excerpt: |-
   À Wolmar, sur la côte ouest de l’île Maurice, Michael Lafrance nous fait découvrir l’univers fascinant de l’apiculture. Apiculteur mauricien depuis près de 35 ans, il travaille au rythme des saisons, des floraisons et de la vie des colonies.

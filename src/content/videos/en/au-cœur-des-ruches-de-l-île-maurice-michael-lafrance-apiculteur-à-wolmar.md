@@ -4,6 +4,7 @@ date: 2018-05-28T18:13
 category: Savoir-faire
 videoSource: youtube
 videoId: cDMCKLouI1g
+videoFile: ''
 thumbnail: ''
 excerpt: |-
   In Wolmar, on the west coast of Mauritius, Michael Lafrance introduces us to the fascinating world of beekeeping. A Mauritian beekeeper for nearly 35 years, he works to the rhythm of the seasons, flowering cycles and life within the colonies.
