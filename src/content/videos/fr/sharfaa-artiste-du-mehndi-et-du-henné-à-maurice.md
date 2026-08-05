@@ -6,7 +6,7 @@ videoSource: youtube
 videoId: 7DMMYIERwC8
 videoFile: https://youtu.be/7DMMYIERwC8
 thumbnail: ''
-excerpt: Découvrez Sharfaa, jeune artiste mauricienne spécialisée dans le Mehndi, un art traditionnel du tatouage au henné associé aux mariages et célébrations.
+excerpt: Sharfaa, jeune artiste mauricienne spécialisée dans le Mehndi, exerce avec précision l'art traditionnel du tatouage au henné associé aux mariages et célébrations.
 published: true
 ---
 
