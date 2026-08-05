@@ -7,7 +7,7 @@ videoId: Fy58XWvjXTo
 videoFile: https://youtu.be/Fy58XWvjXTo
 thumbnail: ''
 excerpt: Découvrez Shirin Gunny, artiste mauricienne qui crée des œuvres éphémères à partir de feuilles, de fleurs sauvages et d’algues recueillies dans la nature.
-published: true
+published: false
 ---
 
 Feuilles mortes, fleurs sauvages, algues déposées sur le rivage… Autant d’éléments naturels que nous croisons chaque jour sans toujours prendre le temps de les regarder.
