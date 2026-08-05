@@ -1,15 +1,15 @@
 ---
-title: "Le rhum mauricien entre canne et collection"
+title: Le rhum mauricien entre canne et collection
 date: 2026-01-30
-category: "Saveurs"
-cover: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1800&q=80"
-excerpt: "Des distilleries aux bars d’hôtel, le rhum local gagne une place de choix dans les caves des amateurs."
-author: "Travel-Îles"
+category: Saveurs
+cover: https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1800&q=80
+excerpt: Des distilleries aux bars d’hôtel, le rhum local gagne une place de choix dans les caves des amateurs.
+author: Travel-Îles
 tags:
   - rhum
   - distilleries
   - dégustation
-published: true
+published: false
 ---
 
 Le rhum mauricien raconte d’abord une histoire de canne. Mais depuis quelques années, il raconte aussi une histoire de patience, de fûts, d’assemblages et de signatures.
