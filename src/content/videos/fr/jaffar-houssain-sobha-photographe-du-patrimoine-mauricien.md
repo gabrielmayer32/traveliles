@@ -6,7 +6,7 @@ videoSource: youtube
 videoId: i9Kub7-Ak-s
 videoFile: https://youtu.be/i9Kub7-Ak-s
 thumbnail: ''
-excerpt: Découvrez Jaffar Houssain Sobha, photographe passionné qui préserve depuis près de 50 ans la mémoire et le patrimoine de l’île Maurice.
+excerpt: Jaffar Houssain Sobha, un photographe passionné qui préserve depuis près de 50 ans la mémoire et le patrimoine de l’île Maurice.
 published: true
 ---
 
