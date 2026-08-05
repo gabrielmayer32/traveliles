@@ -15,6 +15,7 @@ const categoryEnum = z.enum([
 	'News',
 	'Nos adresses',
 	'Escapades',
+	'Nos archives',
 ]);
 
 const articleSchema = z.object({
