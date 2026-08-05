@@ -38,7 +38,6 @@ for (let i = newsArticles.length - 1; i > 0; i--) {
 }
 const carouselNews = newsArticles.slice(0, 6);
 const visibleAds = (await getCollection('ads')).filter((ad) => ad.data.visible);
-const sidebarAd = visibleAds.find((ad) => ad.data.placement === 'sidebar');
 const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline');
 ---
 
@@ -50,8 +49,7 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline');
 	)}
 
 	{allVideos.length > 0 && (
-		<div class:list={['videos-with-rail', !sidebarAd && 'videos-with-rail--single']}>
-		<section class="section videos-section">
+		<section class="container-wide section videos-section">
 			<div class="section-header">
 				<div class="section-header-left">
 					<h2 class="section-title">{t('home.latest_videos', locale)}</h2>
@@ -74,11 +72,9 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline');
 				</div>
 			)}
 		</section>
-		{sidebarAd && <div class="ad-rail"><AdPlacement ad={sidebarAd} locale={locale} /></div>}
-		</div>
 	)}
 
-	{inlineAd && <AdPlacement ad={inlineAd} locale={locale} />}
+	{inlineAd && <Fragment><AdPlacement ad={inlineAd} locale={locale} /></Fragment>}
 
 	{featureArticle && (
 		<section class="feature-band">
@@ -153,9 +149,6 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline');
 		letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
 	}
 	.videos-section { padding-bottom: var(--space-20); }
-	.videos-with-rail { width: min(100% - (2 * var(--gutter)), var(--max-width-wide)); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: var(--space-8); align-items: start; }
-	.videos-with-rail--single { grid-template-columns: minmax(0, 1fr); }
-	.ad-rail { padding-top: var(--space-24); }
 	.videos-lead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); align-items: start; }
 	.videos-lead-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
 	.feature-band { background: var(--navy-050); }
@@ -164,8 +157,6 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline');
 	.empty-en { padding-block: var(--space-20); text-align: center; color: var(--text-muted); font-size: var(--text-lg); }
 
 	@media (max-width: 860px) {
-		.videos-with-rail { grid-template-columns: 1fr; }
-		.ad-rail { padding-top: 0; padding-bottom: var(--space-8); }
 		.videos-lead { grid-template-columns: 1fr; }
 		.videos-lead-grid { grid-template-columns: 1fr 1fr; }
 	}

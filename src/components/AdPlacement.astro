@@ -52,9 +52,11 @@ const isDismissible = placement === 'floating' || placement === 'popup';
 	.ad-close { position: absolute; z-index: 2; top: var(--space-2); right: var(--space-2); display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); background: var(--surface-card); color: var(--text-heading); font-size: var(--text-xl); line-height: 1; cursor: pointer; box-shadow: var(--shadow-sm); }
 	.ad-close:hover { background: var(--navy); color: var(--white); }
 
-	.ad--sidebar { position: sticky; top: calc(var(--header-height) + var(--space-6)); }
+	.ad--sidebar { position: fixed; z-index: 80; top: calc(var(--header-height) + var(--space-8)); right: var(--space-4); width: clamp(190px, calc((100vw - var(--max-width-wide)) / 2 - (2 * var(--space-4))), 280px); max-height: calc(100dvh - var(--header-height) - (2 * var(--space-8))); }
 	.ad--sidebar .ad-link { flex-direction: column; }
 	.ad--sidebar .ad-image { width: 100%; aspect-ratio: 1 / 1; }
+	.ad--sidebar .ad-copy { padding: var(--space-4); }
+	.ad--sidebar .ad-title { font-size: var(--text-base); }
 
 	.ad--inline { width: min(100% - (2 * var(--gutter)), var(--max-width-wide)); margin: var(--space-4) auto var(--space-10); }
 	.ad--inline .ad-link { min-height: 180px; }
@@ -75,10 +77,8 @@ const isDismissible = placement === 'floating' || placement === 'popup';
 	.ad--popup .ad-copy { padding: var(--space-8); }
 	.ad--popup .ad-title { font-size: var(--text-2xl); }
 
-	@media (max-width: 1080px) {
-		.ad--sidebar { position: static; }
-		.ad--sidebar .ad-link { flex-direction: row; }
-		.ad--sidebar .ad-image { width: 38%; aspect-ratio: 16 / 9; }
+	@media (max-width: 1800px) {
+		.ad--sidebar { display: none; }
 	}
 	@media (max-width: 640px) {
 		.ad--inline .ad-link, .ad--floating .ad-link { min-height: 0; }

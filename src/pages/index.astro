@@ -29,7 +29,6 @@ const leadArticle = articles[0];
 const sideArticles = articles.slice(1, 3);
 const carouselVideos = videos.slice(0, 6);
 const visibleAds = (await getCollection('ads')).filter((ad) => ad.data.visible);
-const sidebarAd = visibleAds.find((ad) => ad.data.placement === 'sidebar');
 const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline');
 
 // News: articles in the News category, shuffled randomly at build time
@@ -51,8 +50,7 @@ const carouselNews = newsArticles.slice(0, 6);
 	)}
 
 	<!-- Videos: lead + grid -->
-	<div class:list={['videos-with-rail', !sidebarAd && 'videos-with-rail--single']}>
-	<section class="section videos-section">
+	<section class="container-wide section videos-section">
 		<div class="section-header">
 			<div class="section-header-left">
 				<h2 class="section-title">Dernières vidéos</h2>
@@ -75,10 +73,8 @@ const carouselNews = newsArticles.slice(0, 6);
 			</div>
 		)}
 	</section>
-	{sidebarAd && <div class="ad-rail"><AdPlacement ad={sidebarAd} locale="fr" /></div>}
-	</div>
 
-	{inlineAd && <AdPlacement ad={inlineAd} locale="fr" />}
+	{inlineAd && <Fragment><AdPlacement ad={inlineAd} locale="fr" /></Fragment>}
 
 	<!-- Articles: feature lead + grid -->
 	<section class="container-wide section articles-section">
@@ -275,9 +271,6 @@ setupNewsCarousel();
 	.videos-section {
 		padding-bottom: var(--space-10);
 	}
-	.videos-with-rail { width: min(100% - (2 * var(--gutter)), var(--max-width-wide)); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: var(--space-8); align-items: start; }
-	.videos-with-rail--single { grid-template-columns: minmax(0, 1fr); }
-	.ad-rail { padding-top: var(--space-24); }
 
 	.videos-lead {
 		display: grid;
@@ -332,8 +325,6 @@ setupNewsCarousel();
 	}
 
 	@media (max-width: 860px) {
-		.videos-with-rail { grid-template-columns: 1fr; }
-		.ad-rail { padding-top: 0; padding-bottom: var(--space-8); }
 		.videos-lead,
 		.articles-lead {
 			grid-template-columns: 1fr;

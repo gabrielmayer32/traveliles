@@ -29,7 +29,7 @@ const pageTitle = title ? `${title} — Travel-Îles` : 'Travel-Îles';
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const altUrl = alternateUrl ? new URL(alternateUrl, Astro.site).href : undefined;
 const xDefaultUrl = locale === 'fr' ? canonicalUrl : (altUrl ?? canonicalUrl);
-const globalAds = (await getCollection('ads')).filter((ad) => ad.data.visible && ['floating', 'popup'].includes(ad.data.placement));
+const globalAds = (await getCollection('ads')).filter((ad) => ad.data.visible && ['sidebar', 'floating', 'popup'].includes(ad.data.placement));
 ---
 
 <html lang={locale}>
