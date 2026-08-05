@@ -1,15 +1,15 @@
 ---
-title: "Port-Louis par ses comptoirs de rue"
+title: Port-Louis par ses comptoirs de rue
 date: 2026-03-26
-category: "Saveurs"
-cover: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=80"
-excerpt: "Dholl puri, mines frits et gâteaux piments composent une cartographie sensible de la capitale."
-author: "Travel-Îles"
+category: Saveurs
+cover: https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=80
+excerpt: Dholl puri, mines frits et gâteaux piments composent une cartographie sensible de la capitale.
+author: Travel-Îles
 tags:
   - Port-Louis
   - street food
   - marchés
-published: true
+published: false
 ---
 
 À Port-Louis, la gastronomie se comprend en marchant. Les files d’attente, les gestes rapides et les odeurs d’épices dessinent une carte plus exacte que bien des guides.
