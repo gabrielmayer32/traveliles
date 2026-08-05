@@ -6,6 +6,6 @@ image: /images/uploads/LUX.png
 url: https://www.luxresorts.com/
 cta: Découvrir
 ctaEn: Discover
-placement: sidebar
-visible: false
+placement: inline
+visible: true
 ---
