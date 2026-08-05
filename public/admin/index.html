@@ -7,5 +7,67 @@
 	</head>
 	<body>
 		<script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+		<script>
+			const getYouTubeId = (value = '') => {
+				const input = String(value).trim();
+
+				if (/^[A-Za-z0-9_-]{11}$/.test(input)) return input;
+
+				try {
+					const url = new URL(input);
+					const host = url.hostname.replace(/^www\./, '');
+
+					if (host === 'youtu.be') return url.pathname.split('/').filter(Boolean)[0] || '';
+					if (host.endsWith('youtube.com')) {
+						const pathId = url.pathname.match(/^\/(?:embed|shorts|live)\/([^/?]+)/)?.[1];
+						return url.searchParams.get('v') || pathId || '';
+					}
+				} catch {
+					return '';
+				}
+
+				return '';
+			};
+
+			const VideoPreview = createClass({
+				render() {
+					const { entry, getAsset, widgetFor } = this.props;
+					const source = entry.getIn(['data', 'videoSource']);
+					const videoId = getYouTubeId(entry.getIn(['data', 'videoId']));
+					const thumbnail = entry.getIn(['data', 'thumbnail']);
+					const asset = thumbnail ? getAsset(thumbnail) : null;
+					const uploadedImage = asset?.url || thumbnail || '';
+					const youtubeImage = source === 'youtube' && videoId
+						? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+						: '';
+					const image = uploadedImage || youtubeImage;
+
+					return h('main', { style: { maxWidth: '960px', margin: '0 auto', padding: '32px', fontFamily: 'Arial, sans-serif' } },
+						h('div', { style: { aspectRatio: '16 / 9', overflow: 'hidden', background: '#eef0f6', display: 'grid', placeItems: 'center' } },
+							image
+								? h('img', {
+									src: image,
+									alt: entry.getIn(['data', 'title']) || 'Vignette vidéo',
+									style: { width: '100%', height: '100%', objectFit: 'cover' },
+									onError: (event) => {
+										if (youtubeImage && event.currentTarget.src.includes('maxresdefault')) {
+											event.currentTarget.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+										}
+									},
+								})
+								: h('p', { style: { color: '#5d6375', padding: '24px', textAlign: 'center' } },
+									'Sélectionnez YouTube puis collez l’ID ou l’URL pour afficher automatiquement la vignette.'
+								),
+						),
+						h('p', { style: { color: '#2b3a8f', fontSize: '12px', letterSpacing: '0.12em', marginTop: '24px', textTransform: 'uppercase' } }, entry.getIn(['data', 'category']) || ''),
+						h('h1', { style: { fontSize: '32px', margin: '8px 0 16px' } }, entry.getIn(['data', 'title']) || 'Titre de la vidéo'),
+						h('p', { style: { color: '#555', fontSize: '17px', lineHeight: '1.6' } }, entry.getIn(['data', 'excerpt']) || ''),
+						h('section', { style: { lineHeight: '1.7', marginTop: '24px' } }, widgetFor('body')),
+					);
+				},
+			});
+
+			CMS.registerPreviewTemplate('videos', VideoPreview);
+		</script>
 	</body>
 </html>
