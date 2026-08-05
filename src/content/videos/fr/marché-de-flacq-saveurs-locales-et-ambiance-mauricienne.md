@@ -6,7 +6,7 @@ videoSource: youtube
 videoId: 00pvrnzAA64
 videoFile: https://youtu.be/00pvrnzAA64
 thumbnail: ''
-excerpt: Découvrez le marché de Flacq à Maurice, ses fruits frais, ses épices, son alouda, ses faratas et son atmosphère chaleureuse et authentique.
+excerpt: Un tour au marché de Flacq à Maurice, ses fruits frais, ses épices, son alouda, ses faratas et son atmosphère chaleureuse et authentique.
 published: true
 ---
 
