@@ -107,7 +107,7 @@ const related = allArticles.slice(0, 3);
 <style>
 	/* Back link */
 	.back-wrap {
-		width: min(100% - 2.5rem, 46rem);
+		width: min(100% - 2.5rem, var(--editorial-width));
 		margin: 0 auto;
 		padding-top: var(--space-8);
 	}
@@ -129,7 +129,7 @@ const related = allArticles.slice(0, 3);
 
 	/* Title block — left-aligned, editorial */
 	.article-header {
-		width: min(100% - 2.5rem, 46rem);
+		width: min(100% - 2.5rem, var(--editorial-width));
 		margin: 0 auto;
 		text-align: left;
 		display: flex;
@@ -151,7 +151,7 @@ const related = allArticles.slice(0, 3);
 		font-size: var(--text-lg);
 		line-height: var(--leading-normal);
 		color: var(--text-secondary);
-		max-width: 36rem;
+		max-width: none;
 		text-wrap: pretty;
 		margin: 0;
 	}
