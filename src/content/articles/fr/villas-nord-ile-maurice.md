@@ -1,15 +1,15 @@
 ---
-title: "Villas privées: le nord en résidence"
+title: 'Villas privées: le nord en résidence'
 date: 2026-02-14
-category: "Nos adresses"
-cover: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80"
-excerpt: "Jardins tropicaux, architecture traversante et services hôteliers redéfinissent le séjour en villa."
-author: "Travel-Îles"
+category: Nos adresses
+cover: https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80
+excerpt: Jardins tropicaux, architecture traversante et services hôteliers redéfinissent le séjour en villa.
+author: Travel-Îles
 tags:
   - villas
   - architecture
   - immobilier
-published: true
+published: false
 ---
 
 La villa mauricienne contemporaine ne se contente plus d’offrir de l’espace. Elle organise une façon d’habiter l’île: circulations ouvertes, cuisines vivantes, terrasses protégées et chambres pensées comme des refuges.
