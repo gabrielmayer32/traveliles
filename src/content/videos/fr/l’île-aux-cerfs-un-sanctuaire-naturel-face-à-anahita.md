@@ -6,7 +6,7 @@ videoSource: youtube
 videoId: RHCgfIbqVgA
 videoFile: https://youtu.be/RHCgfIbqVgA
 thumbnail: ''
-excerpt: Découvrez l’Île aux Cerfs face à Anahita Golf & Spa Resort, entre plage réservée, golf, accrobranche, restauration et lagon turquoise.
+excerpt: Cap sur l’Île aux Cerfs face à Anahita Golf & Spa Resort, entre plage réservée, golf, accrobranche, restauration et lagon turquoise.
 published: true
 ---
 
