@@ -143,7 +143,7 @@ collections:
           - { label: Cloudflare R2, value: r2 }
       - { name: videoId, label: ID vidéo / Video ID, widget: string, required: false, i18n: duplicate, hint: "YouTube: ID ou URL complète de la vidéo. Vimeo: ID numérique. Facebook: URL complète de la vidéo. Instagram: shortcode du reel ou post. Laisser vide pour R2." }
       - { name: videoFile, label: URL vidéo R2 / R2 video URL, widget: string, required: false, i18n: duplicate, hint: "URL publique du fichier vidéo sur Cloudflare R2. Utiliser uniquement si Source = Cloudflare R2." }
-      - { name: thumbnail, label: Vignette / Thumbnail, widget: image, required: false, i18n: duplicate }
+      - { name: thumbnail, label: Vignette / Thumbnail, widget: image, required: false, i18n: duplicate, hint: "YouTube : laisser vide pour récupérer automatiquement la vignette HD originale. Ajouter une image uniquement pour la remplacer manuellement." }
       - { name: excerpt, label: Extrait / Excerpt, widget: text, required: false, i18n: true }
       - { name: published, label: Publié / Published, widget: boolean, default: false, i18n: true }
       - { name: body, label: Description, widget: markdown, required: false, i18n: true }

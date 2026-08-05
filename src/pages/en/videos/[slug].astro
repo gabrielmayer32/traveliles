@@ -7,6 +7,7 @@ import VideoCard from '../../../components/VideoCard.astro';
 import AdPlacement from '../../../components/AdPlacement.astro';
 import { formatDateLocale } from '../../../lib/i18n';
 import { iconSvg } from '../../../lib/icons';
+import { getVideoThumbnail } from '../../../lib/video';
 
 const locale = 'en' as const;
 
@@ -22,6 +23,7 @@ export async function getStaticPaths() {
 const { video, hasFr } = Astro.props;
 const { Content } = await render(video);
 const alternateUrl = hasFr ? `/videos/${video.id}` : undefined;
+const displayThumbnail = getVideoThumbnail(video.data.videoSource, video.data.videoId, video.data.thumbnail);
 
 const videoSchema = JSON.stringify({
 	'@context': 'https://schema.org',
@@ -29,7 +31,7 @@ const videoSchema = JSON.stringify({
 	name: video.data.title,
 	description: video.data.excerpt,
 	uploadDate: video.data.date.toISOString(),
-	...(video.data.thumbnail ? { thumbnailUrl: new URL(video.data.thumbnail, Astro.site).href } : {}),
+	...(displayThumbnail ? { thumbnailUrl: displayThumbnail.startsWith('http') ? displayThumbnail : new URL(displayThumbnail, Astro.site).href } : {}),
 	url: new URL(Astro.url.pathname, Astro.site).href,
 });
 
@@ -40,7 +42,7 @@ const more = allVideos.slice(0, 3);
 const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnVideos);
 ---
 
-<BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={video.data.thumbnail} locale={locale} alternateUrl={alternateUrl}>
+<BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={displayThumbnail} locale={locale} alternateUrl={alternateUrl}>
 	<script type="application/ld+json" set:html={videoSchema} />
 	<div class="video-page">
 		<div class="back-wrap">

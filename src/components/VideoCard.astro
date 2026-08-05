@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { formatDateLocale, type Locale } from '../lib/i18n';
 import CategoryLabel from './CategoryLabel.astro';
 import { iconSvg } from '../lib/icons';
-import { getYouTubeVideoId } from '../lib/video';
+import { getVideoThumbnail, getYouTubeThumbnailFallback } from '../lib/video';
 
 interface Props {
 	video: CollectionEntry<'videos'> | CollectionEntry<'videos_en'>;
@@ -13,14 +13,10 @@ interface Props {
 
 const { video, size = 'md', locale = 'fr' } = Astro.props;
 const href = locale === 'en' ? `/en/videos/${video.id}` : `/videos/${video.id}`;
-const youtubeVideoId = video.data.videoSource === 'youtube'
-	? getYouTubeVideoId(video.data.videoId)
+const thumbnail = getVideoThumbnail(video.data.videoSource, video.data.videoId, video.data.thumbnail);
+const thumbnailFallback = !video.data.thumbnail && video.data.videoSource === 'youtube'
+	? getYouTubeThumbnailFallback(video.data.videoId)
 	: undefined;
-const thumbnail = video.data.thumbnail ?? (
-	video.data.videoSource === 'youtube'
-		? `https://img.youtube.com/vi/${youtubeVideoId}/hqdefault.jpg`
-		: undefined
-);
 const playSize = size === 'lg' ? 76 : 60;
 const iconSize = Math.round(playSize * 0.4);
 const playPaddingLeft = Math.round(playSize * 0.06);
@@ -29,7 +25,7 @@ const duration = (video.data as any).duration as string | undefined;
 
 <a class:list={['video-card', `video-card--${size}`]} href={href}>
 	<div class="video-thumbnail">
-		{thumbnail && <img src={thumbnail} alt={video.data.title} loading="lazy" />}
+		{thumbnail && <img src={thumbnail} data-thumbnail-fallback={thumbnailFallback} alt={video.data.title} loading="lazy" />}
 		<span class="video-scrim"></span>
 		<span class="play-btn" style={`width:${playSize}px;height:${playSize}px;padding-left:${playPaddingLeft}px`}>
 			<Fragment set:html={iconSvg('play', iconSize)} />
@@ -44,6 +40,21 @@ const duration = (video.data as any).duration as string | undefined;
 		<div class="meta">{formatDateLocale(video.data.date, locale)}</div>
 	</div>
 </a>
+
+<script>
+	function setupThumbnailFallbacks() {
+		document.querySelectorAll<HTMLImageElement>('img[data-thumbnail-fallback]').forEach((image) => {
+			if (image.dataset.fallbackReady) return;
+			image.dataset.fallbackReady = 'true';
+			image.addEventListener('error', () => {
+				const fallback = image.dataset.thumbnailFallback;
+				if (fallback && image.src !== fallback) image.src = fallback;
+			}, { once: true });
+		});
+	}
+	document.addEventListener('astro:page-load', setupThumbnailFallbacks);
+	setupThumbnailFallbacks();
+</script>
 
 <style>
 	.video-card {

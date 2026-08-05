@@ -30,3 +30,24 @@ export function getYouTubeVideoId(value?: string): string | undefined {
 
 	return input.split(/[?&]/)[0];
 }
+
+export function getVideoThumbnail(
+	videoSource: string,
+	videoId?: string,
+	customThumbnail?: string,
+): string | undefined {
+	if (customThumbnail?.trim()) return customThumbnail;
+	if (videoSource !== 'youtube') return undefined;
+
+	const youtubeId = getYouTubeVideoId(videoId);
+	return youtubeId
+		? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`
+		: undefined;
+}
+
+export function getYouTubeThumbnailFallback(videoId?: string): string | undefined {
+	const youtubeId = getYouTubeVideoId(videoId);
+	return youtubeId
+		? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
+		: undefined;
+}
