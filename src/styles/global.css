@@ -65,9 +65,9 @@
 	);
 
 	/* ---------- Typography ---------- */
-	--font-display: 'Isidora', 'Playfair Display', Georgia, 'Times New Roman', serif;
-	--font-logo: 'Playfair Display', Georgia, 'Times New Roman', serif;
-	--font-body: 'Isidora', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-display: 'Isidora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-logo: 'Isidora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-body: 'Isidora', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
 	--fw-normal: 400;
 	--fw-regular: 400;

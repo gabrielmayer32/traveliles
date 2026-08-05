@@ -1,5 +1,4 @@
 ---
-import { Font } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
@@ -55,8 +54,6 @@ const globalAds = (await getCollection('ads')).filter((ad) => ad.data.visible &&
 		<link rel="alternate" hreflang={locale} href={canonicalUrl} />
 		{altUrl && <link rel="alternate" hreflang={locale === 'fr' ? 'en' : 'fr'} href={altUrl} />}
 		<link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
-		<Font cssVariable="--font-display" />
-		<Font cssVariable="--font-body" />
 		<ClientRouter />
 	</head>
 	<body>
