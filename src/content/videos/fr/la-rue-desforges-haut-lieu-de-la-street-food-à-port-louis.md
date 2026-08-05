@@ -10,7 +10,7 @@ excerpt: Découvrez la rue Desforges à Plaine Verte, l’une des adresses incon
 published: true
 ---
 
-À la tombée de la nuit, la rue Desforges, à Plaine Verte, change de visage. Les étals s’installent, les parfums d’épices envahissent l’air et les passants se pressent autour des nombreuses échoppes pour partager un repas sur le pouce.
+À la tombée de la nuit, la rue Desforges, en réalité rue SSR, à Plaine Verte, change de visage. Les étals s’installent, les parfums d’épices envahissent l’air et les passants se pressent autour des nombreuses échoppes pour partager un repas sur le pouce.
 
 Cette adresse incontournable de la street food à Port-Louis se transforme chaque soir en un véritable food court à ciel ouvert. Habitants du quartier, travailleurs, familles et visiteurs s’y retrouvent pour savourer une cuisine populaire, généreuse et profondément ancrée dans le quotidien mauricien.
 
