@@ -6,7 +6,7 @@ videoSource: youtube
 videoId: https://youtu.be/8EMeuQ19Urc
 videoFile: https://youtu.be/8EMeuQ19Urc
 thumbnail: ''
-excerpt: Découvrez Kan, inventeur mauricien passionné de musique, qui crée des instruments originaux à partir d’objets et de matériaux recyclés.
+excerpt: A la rencontre de Kan, inventeur mauricien passionné de musique, qui crée des instruments originaux à partir d’objets et de matériaux recyclés.
 published: true
 ---
 
