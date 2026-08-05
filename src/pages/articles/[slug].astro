@@ -72,7 +72,7 @@ const related = allArticles.slice(0, 3);
 			</figure>
 		)}
 
-		<!-- Body — lead paragraph + prose at 40rem -->
+		<!-- Body — shared editorial reading width -->
 		<div class="article-body">
 			<div class="prose article-prose">
 				<Content />
@@ -199,7 +199,7 @@ const related = allArticles.slice(0, 3);
 
 	/* Body */
 	.article-body {
-		width: min(100% - 2.5rem, 40rem);
+		width: min(100% - 2.5rem, var(--editorial-width));
 		margin: 0 auto;
 		padding-top: var(--space-16);
 		padding-bottom: var(--space-12);
