@@ -77,7 +77,7 @@ const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad
 		</div>
 	</div>
 
-	{inlineAd && <AdPlacement ad={inlineAd} locale="fr" />}
+	{inlineAd && <AdPlacement ad={inlineAd} locale="fr" compact />}
 
 	{more.length > 0 && (
 		<section class="container-wide section">

@@ -5,9 +5,10 @@ import type { Locale } from '../lib/i18n';
 interface Props {
 	ad: CollectionEntry<'ads'>;
 	locale?: Locale;
+	compact?: boolean;
 }
 
-const { ad, locale = 'fr' } = Astro.props;
+const { ad, locale = 'fr', compact = false } = Astro.props;
 const { image, url, placement, label } = ad.data;
 const title = locale === 'en' ? (ad.data.titleEn || ad.data.title) : ad.data.title;
 const cta = locale === 'en' ? (ad.data.ctaEn || ad.data.cta) : ad.data.cta;
@@ -26,7 +27,7 @@ const isDismissible = placement === 'floating' || placement === 'popup';
 		</aside>
 	</div>
 ) : (
-	<aside class:list={['ad', `ad--${placement}`]} data-ad-id={ad.id} aria-label={`${label} : ${title}`}>
+	<aside class:list={['ad', `ad--${placement}`, compact && 'ad--compact']} data-ad-id={ad.id} aria-label={`${label} : ${title}`}>
 		{isDismissible && <button class="ad-close" type="button" aria-label={locale === 'en' ? 'Close ad' : 'Fermer la publicité'} data-ad-close>×</button>}
 		<a class="ad-link" href={url || undefined} target={url ? '_blank' : undefined} rel={url ? 'sponsored noopener' : undefined}>
 			{image && <img class="ad-image" src={image} alt="" loading="lazy" />}
@@ -63,6 +64,11 @@ const isDismissible = placement === 'floating' || placement === 'popup';
 	.ad--inline .ad-image { width: 42%; max-width: 520px; }
 	.ad--inline .ad-copy { padding-inline: clamp(var(--space-6), 5vw, var(--space-16)); }
 	.ad--inline .ad-title { font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); }
+	.ad--inline.ad--compact { width: min(100% - (2 * var(--gutter)), 62rem); margin-block: var(--space-8); }
+	.ad--inline.ad--compact .ad-link { min-height: 124px; }
+	.ad--inline.ad--compact .ad-image { width: 32%; max-width: 280px; }
+	.ad--inline.ad--compact .ad-copy { padding: var(--space-5) var(--space-8); }
+	.ad--inline.ad--compact .ad-title { font-size: clamp(var(--text-lg), 2vw, var(--text-xl)); }
 
 	.ad--floating { position: fixed; z-index: 90; left: 50%; bottom: var(--space-4); width: min(calc(100% - (2 * var(--gutter))), 760px); transform: translateX(-50%); box-shadow: var(--shadow-lg); }
 	.ad--floating .ad-link { min-height: 116px; padding-right: var(--space-10); }
@@ -86,6 +92,8 @@ const isDismissible = placement === 'floating' || placement === 'popup';
 		.ad-copy { padding: var(--space-4); }
 		.ad-title { font-size: var(--text-base); }
 		.ad--inline .ad-title { font-size: var(--text-lg); }
+		.ad--inline.ad--compact .ad-copy { padding: var(--space-4); }
+		.ad--inline.ad--compact .ad-title { font-size: var(--text-base); }
 		.ad--floating { bottom: var(--space-2); }
 		.ad--floating .ad-link { padding-right: var(--space-8); }
 		.ad--popup .ad-copy { padding: var(--space-6); }

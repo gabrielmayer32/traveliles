@@ -74,7 +74,7 @@ const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad
 			</figure>
 		)}
 
-		{inlineAd && <AdPlacement ad={inlineAd} locale="fr" />}
+		{inlineAd && <AdPlacement ad={inlineAd} locale="fr" compact />}
 
 		<!-- Body — shared editorial reading width -->
 		<div class="article-body">
