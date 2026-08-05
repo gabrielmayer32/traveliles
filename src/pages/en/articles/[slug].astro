@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../../components/CategoryLabel.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
+import AdPlacement from '../../../components/AdPlacement.astro';
 import { formatDateLocale } from '../../../lib/i18n';
 import { iconSvg } from '../../../lib/icons';
 
@@ -37,6 +38,7 @@ const allArticles = (await getCollection('articles_en'))
 	.filter((a) => a.data.published && a.id !== article.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const related = allArticles.slice(0, 3);
+const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnArticles);
 ---
 
 <BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover} locale={locale} alternateUrl={alternateUrl}>
@@ -70,6 +72,8 @@ const related = allArticles.slice(0, 3);
 				</figcaption>
 			</figure>
 		)}
+
+		{inlineAd && <AdPlacement ad={inlineAd} locale={locale} />}
 
 		<div class="article-body">
 			<div class="prose article-prose">

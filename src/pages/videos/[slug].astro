@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../components/CategoryLabel.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 import VideoCard from '../../components/VideoCard.astro';
+import AdPlacement from '../../components/AdPlacement.astro';
 import { formatDate } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 
@@ -34,6 +35,7 @@ const allVideos = (await getCollection('videos'))
 	.filter((v) => v.data.published && v.id !== video.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const more = allVideos.slice(0, 3);
+const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnVideos);
 ---
 
 <BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={video.data.thumbnail} locale="fr" alternateUrl={alternateUrl}>
@@ -74,6 +76,8 @@ const more = allVideos.slice(0, 3);
 			</div>
 		</div>
 	</div>
+
+	{inlineAd && <AdPlacement ad={inlineAd} locale="fr" />}
 
 	{more.length > 0 && (
 		<section class="container-wide section">

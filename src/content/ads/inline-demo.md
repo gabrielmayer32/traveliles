@@ -8,4 +8,8 @@ cta: Préparer votre séjour
 ctaEn: Plan your stay
 placement: inline
 visible: true
+showOnHomepage: true
+showOnArticles: true
+showOnVideos: true
+showOnListings: true
 ---

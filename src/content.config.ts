@@ -68,6 +68,10 @@ const adSchema = z.object({
 	ctaEn: z.string().optional(),
 	placement: z.enum(['sidebar', 'inline', 'floating', 'popup']),
 	visible: z.boolean().default(false),
+	showOnHomepage: z.boolean().default(false),
+	showOnArticles: z.boolean().default(false),
+	showOnVideos: z.boolean().default(false),
+	showOnListings: z.boolean().default(false),
 });
 
 const hero = defineCollection({

@@ -208,6 +208,10 @@ collections:
           - { label: Flottante en bas — refermable, value: floating }
           - { label: Pop-up à l'ouverture — refermable, value: popup }
       - { name: visible, label: Visible sur le site, widget: boolean, default: false, hint: "Désactiver pour masquer immédiatement cette publicité au prochain déploiement." }
+      - { name: showOnHomepage, label: Afficher sur l'accueil, widget: boolean, default: false, hint: "Pour le format Entre vidéos et articles." }
+      - { name: showOnArticles, label: Afficher dans les articles, widget: boolean, default: false, hint: "Une fois par page, après l'introduction." }
+      - { name: showOnVideos, label: Afficher dans les vidéos, widget: boolean, default: false, hint: "Une fois par page, sous la vidéo et sa description." }
+      - { name: showOnListings, label: Afficher dans les listes, widget: boolean, default: false, hint: "Après les six premiers articles ou vidéos." }
 
   - name: pages
     label: Pages

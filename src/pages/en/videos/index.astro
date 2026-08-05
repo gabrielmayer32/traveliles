@@ -3,12 +3,14 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CategoryNav from '../../../components/CategoryNav.astro';
 import VideoCard from '../../../components/VideoCard.astro';
+import AdPlacement from '../../../components/AdPlacement.astro';
 import { t } from '../../../lib/i18n';
 
 const locale = 'en' as const;
 const videos = (await getCollection('videos_en'))
 	.filter((video) => video.data.published && !!video.data.title)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnListings);
 ---
 
 <BaseLayout title="Videos" description="All videos from Travel-Îles." locale={locale} alternateUrl="/videos">
@@ -21,12 +23,16 @@ const videos = (await getCollection('videos_en'))
 		<CategoryNav mode="filters" locale={locale} />
 
 		<div class="grid-3 listing-grid" id="listing-grid">
-			{videos.map((video) => (
+			{videos.slice(0, 6).map((video) => (
 				<div class="listing-item" data-cat={video.data.category}>
 					<VideoCard video={video} locale={locale} />
 				</div>
 			))}
 		</div>
+		{inlineAd && <AdPlacement ad={inlineAd} locale={locale} />}
+		{videos.length > 6 && <div class="grid-3 listing-grid">
+			{videos.slice(6).map((video) => <div class="listing-item" data-cat={video.data.category}><VideoCard video={video} locale={locale} /></div>)}
+		</div>}
 
 		{videos.length === 0 && (
 			<p class="empty-state">{t('listing.empty', locale)}</p>

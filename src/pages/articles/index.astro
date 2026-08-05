@@ -3,10 +3,12 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import CategoryNav from '../../components/CategoryNav.astro';
+import AdPlacement from '../../components/AdPlacement.astro';
 
 const articles = (await getCollection('articles'))
 	.filter((a) => a.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnListings);
 ---
 
 <BaseLayout title="Articles" description="Tous les articles de Travel-Îles." locale="fr" alternateUrl="/en/articles">
@@ -19,12 +21,16 @@ const articles = (await getCollection('articles'))
 		<CategoryNav mode="filters" />
 
 		<div class="grid-3 listing-grid" id="listing-grid">
-			{articles.map((article) => (
+			{articles.slice(0, 6).map((article) => (
 				<div class="listing-item" data-cat={article.data.category}>
 					<ArticleCard article={article} />
 				</div>
 			))}
 		</div>
+		{inlineAd && <AdPlacement ad={inlineAd} locale="fr" />}
+		{articles.length > 6 && <div class="grid-3 listing-grid">
+			{articles.slice(6).map((article) => <div class="listing-item" data-cat={article.data.category}><ArticleCard article={article} /></div>)}
+		</div>}
 
 		<p class="empty-state" id="empty-state" hidden>
 			Aucun sujet dans cette rubrique pour le moment.
