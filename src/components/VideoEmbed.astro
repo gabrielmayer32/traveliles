@@ -51,12 +51,7 @@ const directUrl = isR2 ? undefined : {
 		</video>
 	</div>
 ) : (
-	<div
-		class="video-embed"
-		data-embed-src={src}
-		data-embed-title={title}
-		data-play-label={locale === 'en' ? 'Play video' : 'Lire la vidéo'}
-	>
+	<div class="video-embed" data-embed-src={src} data-embed-title={title}>
 		{displayThumbnail && (
 			<img
 				class="video-embed-poster"
@@ -115,26 +110,17 @@ const directUrl = isR2 ? undefined : {
 				el.appendChild(iframe);
 			}
 
-			const enablePlayButton = () => {
-				if (!acceptBtn) return;
-				acceptBtn.textContent = el.dataset.playLabel || 'Lire la vidéo';
-				acceptBtn.addEventListener('click', loadIframe, { once: true });
-			};
-
-			if (localStorage.getItem('ti-cookies') === 'accepted') {
-				enablePlayButton();
+			const consent = localStorage.getItem('ti-cookies');
+			if (consent === 'accepted') {
+				loadIframe();
 			} else {
-				const acceptAndLoad = () => {
+				acceptBtn?.addEventListener('click', () => {
 					localStorage.setItem('ti-cookies', 'accepted');
 					document.getElementById('cookie-banner')?.setAttribute('hidden', '');
 					loadIframe();
-				};
-				acceptBtn?.addEventListener('click', acceptAndLoad, { once: true });
+				});
 
-				document.addEventListener('ti:cookies-accepted', () => {
-					acceptBtn?.removeEventListener('click', acceptAndLoad);
-					enablePlayButton();
-				}, { once: true });
+				document.addEventListener('ti:cookies-accepted', () => loadIframe(), { once: true });
 			}
 		});
 	}
