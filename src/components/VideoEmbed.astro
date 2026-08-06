@@ -1,6 +1,6 @@
 ---
 import { t, type Locale } from '../lib/i18n';
-import { getYouTubeVideoId } from '../lib/video';
+import { getVideoThumbnail, getYouTubeThumbnailFallback, getYouTubeVideoId } from '../lib/video';
 
 interface Props {
 	videoSource: 'youtube' | 'vimeo' | 'facebook' | 'instagram' | 'r2';
@@ -15,6 +15,10 @@ const { videoSource, videoId, videoFile, title = 'Vidéo Travel-Îles', thumbnai
 
 const isR2 = videoSource === 'r2';
 const embedVideoId = videoSource === 'youtube' ? getYouTubeVideoId(videoId) : videoId;
+const displayThumbnail = getVideoThumbnail(videoSource, videoId, thumbnail);
+const thumbnailFallback = !thumbnail && videoSource === 'youtube'
+	? getYouTubeThumbnailFallback(videoId)
+	: undefined;
 
 const src = isR2 ? undefined : {
 	youtube: `https://www.youtube.com/embed/${embedVideoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`,
@@ -40,7 +44,7 @@ const directUrl = isR2 ? undefined : {
 			controls
 			playsinline
 			preload="metadata"
-			poster={thumbnail}
+			poster={displayThumbnail}
 			style="display:block;width:100%;height:100%;background:#000"
 		>
 			<p>{locale === 'en' ? 'Your browser does not support video playback.' : 'Votre navigateur ne supporte pas la lecture vidéo.'}</p>
@@ -48,6 +52,15 @@ const directUrl = isR2 ? undefined : {
 	</div>
 ) : (
 	<div class="video-embed" data-embed-src={src} data-embed-title={title}>
+		{displayThumbnail && (
+			<img
+				class="video-embed-poster"
+				src={displayThumbnail}
+				data-fallback-src={thumbnailFallback}
+				alt=""
+				aria-hidden="true"
+			/>
+		)}
 		<div class="video-embed-placeholder">
 			<p>{t('video.hosted_by', locale)} ({platformName}).</p>
 			<button class="video-embed-accept" type="button">{t('video.accept_cookies', locale)}</button>
@@ -69,17 +82,31 @@ const directUrl = isR2 ? undefined : {
 			const src = el.dataset.embedSrc;
 			const title = el.dataset.embedTitle || 'Vidéo';
 			const placeholder = el.querySelector<HTMLElement>('.video-embed-placeholder');
+			const poster = el.querySelector<HTMLImageElement>('.video-embed-poster');
 			const acceptBtn = el.querySelector<HTMLButtonElement>('.video-embed-accept');
+
+			if (poster?.dataset.fallbackSrc) {
+				poster.addEventListener('error', () => {
+					if (poster.src !== poster.dataset.fallbackSrc) {
+						poster.src = poster.dataset.fallbackSrc || '';
+					}
+				}, { once: true });
+			}
 
 			function loadIframe() {
 				if (!src || !placeholder) return;
+				placeholder.classList.add('is-loading');
 				const iframe = document.createElement('iframe');
 				iframe.src = src;
 				iframe.title = title;
 				iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
 				iframe.allowFullscreen = true;
-				iframe.style.cssText = 'display:block;width:100%;height:100%;border:0';
-				placeholder.remove();
+				iframe.style.cssText = 'position:absolute;inset:0;display:block;width:100%;height:100%;border:0;opacity:0';
+				iframe.addEventListener('load', () => {
+					iframe.style.opacity = '1';
+					placeholder.remove();
+					poster?.remove();
+				}, { once: true });
 				el.appendChild(iframe);
 			}
 
@@ -104,12 +131,24 @@ const directUrl = isR2 ? undefined : {
 
 <style>
 	.video-embed {
+		position: relative;
 		aspect-ratio: 16 / 9;
 		width: 100%;
 		background: var(--navy-950);
+		overflow: hidden;
+	}
+
+	.video-embed-poster {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	.video-embed-placeholder {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -120,6 +159,10 @@ const directUrl = isR2 ? undefined : {
 		text-align: center;
 		color: rgba(255, 255, 255, 0.7);
 		font-size: var(--text-sm);
+	}
+
+	.video-embed-placeholder.is-loading > * {
+		visibility: hidden;
 	}
 
 	.video-embed-accept {
