@@ -6,7 +6,7 @@ videoSource: youtube
 videoId: 4P_Hrs3rT0c
 videoFile: https://youtu.be/4P_Hrs3rT0c
 thumbnail: ''
-excerpt: Découvrez Grand-Gaube, un authentique village de pêcheurs du nord de Maurice, entre barques colorées, lagon, traditions et paysages pittoresques.
+excerpt: Grand-Gaube, un authentique village de pêcheurs du nord de Maurice, entre barques colorées, lagon, traditions et paysages pittoresques.
 published: true
 ---
 
