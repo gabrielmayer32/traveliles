@@ -21,7 +21,7 @@ const thumbnailFallback = !thumbnail && videoSource === 'youtube'
 	: undefined;
 
 const src = isR2 ? undefined : {
-	youtube: `https://www.youtube.com/embed/${embedVideoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`,
+	youtube: `https://www.youtube.com/embed/${embedVideoId}?rel=0&modestbranding=1&playsinline=1`,
 	vimeo: `https://player.vimeo.com/video/${embedVideoId}?autoplay=1&title=0&byline=0&portrait=0`,
 	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(embedVideoId ?? '')}&autoplay=true`,
 	instagram: `https://www.instagram.com/reel/${embedVideoId}/embed/`,
