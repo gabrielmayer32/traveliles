@@ -12,7 +12,7 @@ published: true
 
 À Bel Ombre, dans le sud de l’île Maurice, Franceska Hortense-Calotte transforme les feuilles de palmier tombées au sol en assiettes naturelles, biodégradables et respectueuses de l’environnement.
 
-À travers son initiative **Outgrowing Fey Palmis**, elle donne une seconde vie à une matière végétale disponible localement et propose une alternative durable aux assiettes jetables en plastique ou en polystyrène.
+À travers son initiative Outgrowing Fey Palmis, elle donne une seconde vie à une matière végétale disponible localement et propose une alternative durable aux assiettes jetables en plastique ou en polystyrène.
 
 Ramassées sur le domaine de Bel Ombre, les feuilles sont soigneusement sélectionnées puis façonnées pour créer des assiettes solides, pratiques et entièrement naturelles. Une démarche qui associe valorisation des ressources locales, réduction des déchets et créativité mauricienne.
 
