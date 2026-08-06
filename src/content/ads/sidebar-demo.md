@@ -7,6 +7,6 @@ url: https://www.luxresorts.com/
 cta: Découvrir
 ctaEn: Discover
 placement: inline
-visible: true
-showOnHomepage: true
+visible: false
+showOnHomepage: false
 ---
