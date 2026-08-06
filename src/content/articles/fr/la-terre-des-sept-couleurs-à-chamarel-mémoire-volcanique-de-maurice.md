@@ -1,13 +1,13 @@
 ---
 title: La Terre des Sept Couleurs à Chamarel, mémoire volcanique de Maurice
-date: 2026-08-06T18:22
+date: 2026-08-06T16:22
 category: Nos régions
 cover: /images/uploads/Travel-Iles 7 couleurs enhanced (2).png
 excerpt: À Chamarel, la Terre des Sept Couleurs révèle l’histoire volcanique de Maurice à travers un paysage minéral façonné par le temps, l’eau et l’érosion.
 author: Travel-Îles
 tags:
   - Terre des Sept Couleurs, géologie volcanique de Maurice, site naturel de Chamarel, terre colorée de Maurice, patrimoine naturel mauricien, origine volcanique de l’île Maurice
-published: false
+published: true
 ---
 
 La Terre des Sept Couleurs à Chamarel est l’un des paysages les plus singuliers de Maurice. Dans cette clairière minérale, le sol dévoile les traces anciennes de la formation volcanique de l’île, et en raconte l’origine. Au milieu d’une végétation dense, une clairière minérale déploie ses courbes et ses nuances, comme si l’île avait entrouvert l’une des pages les plus anciennes de son histoire.

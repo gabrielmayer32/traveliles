@@ -1,13 +1,13 @@
 ---
 title: The Seven Coloured Earth of Chamarel, Mauritius’ Volcanic Memory
-date: 2026-08-06T18:22
+date: 2026-08-06T16:22
 category: Nos régions
 cover: /images/uploads/Travel-Iles 7 couleurs enhanced (2).png
 excerpt: The Seven Coloured Earth of Chamarel reveals Mauritius’ volcanic history through a remarkable mineral landscape shaped by time, water and erosion.
 author: Travel-Îles
 tags:
   - Seven Coloured Earth, Chamarel, Mauritius, Volcanic Geology, Natural Heritage, Mauritian Landscapes, Geological Formation, Coloured Earth, Volcanic Origins, Indian Ocean.
-published: false
+published: true
 ---
 
 The Seven Coloured Earth of Chamarel is one of Mauritius’ most distinctive natural landscapes. In this mineral clearing, the soil reveals traces of the island’s volcanic formation and tells a story that began millions of years ago. Surrounded by dense tropical vegetation, its gently undulating surface unfolds in shifting shades, as though the island had opened one of the oldest pages of its history.
