@@ -8,4 +8,5 @@ cta: Découvrir
 ctaEn: Discover
 placement: inline
 visible: true
+showOnHomepage: true
 ---
