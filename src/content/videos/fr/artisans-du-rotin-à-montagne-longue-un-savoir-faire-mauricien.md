@@ -6,7 +6,7 @@ videoSource: youtube
 videoId: eRZCghLWH_4
 videoFile: https://youtu.be/eRZCghLWH_4
 thumbnail: ''
-excerpt: À Montagne Longue, découvrez Bruno et son équipe, des artisans soutenus par Caritas qui fabriquent et restaurent des meubles en rotin.
+excerpt: À Montagne Longue, Bruno et son équipe, des artisans soutenus par Caritas, fabriquent et restaurent des meubles en rotin.
 published: true
 ---
 
