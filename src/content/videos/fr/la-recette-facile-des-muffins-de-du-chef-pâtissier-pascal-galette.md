@@ -7,7 +7,7 @@ videoId: aNmc46Mmjos
 videoFile: https://youtu.be/aNmc46Mmjos
 thumbnail: ''
 excerpt: Réalisez facilement des muffins maison avec la recette et les conseils de Pascal Galette, Chef Exécutif Pâtissier au LUX* Belle Mare.
-published: true
+published: false
 ---
 
 Pendant le confinement, Pascal Galette, Chef Exécutif Pâtissier au _LUX Belle Mare_\*, a continué à faire vivre sa passion pour la pâtisserie tout en adaptant son quotidien à cette période particulière.
