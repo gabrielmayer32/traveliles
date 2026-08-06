@@ -1,8 +1,8 @@
 ---
-title: "Découvrez une autre façon de vivre l'île"
-titleEn: "Discover a new way to experience the island"
+title: Des expériences extraordinaires, une autre façon de voyager.
+titleEn: Extraordinary experiences. A different way to travel.
 label: Publicité
-image: /images/uploads/LUX.png
+image: /images/uploads/Logo LUX_ Resorts & Hotels.png
 url: https://www.luxresorts.com/
 cta: En savoir plus
 ctaEn: Learn more
