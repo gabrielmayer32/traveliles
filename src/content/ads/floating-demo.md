@@ -8,4 +8,5 @@ cta: En savoir plus
 ctaEn: Learn more
 placement: floating
 visible: true
+showOnHomepage: true
 ---
