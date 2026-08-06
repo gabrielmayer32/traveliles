@@ -38,7 +38,7 @@
 					const asset = thumbnail ? getAsset(thumbnail) : null;
 					const uploadedImage = asset?.url || thumbnail || '';
 					const youtubeImage = source === 'youtube' && videoId
-						? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+						? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
 						: '';
 					const image = uploadedImage || youtubeImage;
 
@@ -50,8 +50,8 @@
 									alt: entry.getIn(['data', 'title']) || 'Vignette vidéo',
 									style: { width: '100%', height: '100%', objectFit: 'cover' },
 									onError: (event) => {
-										if (youtubeImage && event.currentTarget.src.includes('maxresdefault')) {
-											event.currentTarget.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+										if (youtubeImage && event.currentTarget.src.includes('hqdefault')) {
+											event.currentTarget.src = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
 										}
 									},
 								})

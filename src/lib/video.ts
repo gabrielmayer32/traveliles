@@ -41,13 +41,13 @@ export function getVideoThumbnail(
 
 	const youtubeId = getYouTubeVideoId(videoId);
 	return youtubeId
-		? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`
+		? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`
 		: undefined;
 }
 
 export function getYouTubeThumbnailFallback(videoId?: string): string | undefined {
 	const youtubeId = getYouTubeVideoId(videoId);
 	return youtubeId
-		? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
+		? `https://i.ytimg.com/vi/${youtubeId}/mqdefault.jpg`
 		: undefined;
 }
