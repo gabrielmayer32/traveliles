@@ -12,7 +12,7 @@ import { getVideoThumbnail } from '../../../lib/video';
 const locale = 'en' as const;
 
 export async function getStaticPaths() {
-	const videos = await getCollection('videos_en');
+	const videos = (await getCollection('videos_en')).filter((video) => video.data.published && !!video.data.title);
 	const frVideos = await getCollection('videos');
 	return videos.map((video) => ({
 		params: { slug: video.id },
