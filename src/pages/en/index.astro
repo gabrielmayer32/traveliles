@@ -49,8 +49,7 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.da
 		</section>
 	)}
 
-	{allVideos.length > 0 && (
-		<section class="container-wide section videos-section">
+	<section class="container-wide section videos-section">
 			<div class="section-header">
 				<div class="section-header-left">
 					<h2 class="section-title">{t('home.latest_videos', locale)}</h2>
@@ -72,8 +71,7 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.da
 					)}
 				</div>
 			)}
-		</section>
-	)}
+	</section>
 
 	{inlineAd && <Fragment><AdPlacement ad={inlineAd} locale={locale} /></Fragment>}
 
@@ -99,12 +97,6 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.da
 				</div>
 			)}
 	</section>
-
-	{articles.length === 0 && allVideos.length === 0 && (
-		<section class="container-wide empty-en">
-			<p>English content coming soon. <a href="/">Visit the French edition →</a></p>
-		</section>
-	)}
 
 	{carouselNews.length > 0 && (
 		<section class="container-wide section carousel-section" id="news-carousel">
@@ -171,18 +163,15 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.da
 	.articles-lead-grid :global(.article-card--sm) { flex-direction: row; gap: var(--space-4); align-items: flex-start; }
 	.articles-lead-grid :global(.article-card--sm .article-image) { width: 45%; flex-shrink: 0; }
 	.articles-lead-grid :global(.article-card--sm .article-body) { flex: 1; min-width: 0; }
-	.empty-en { padding-block: var(--space-20); text-align: center; color: var(--text-muted); font-size: var(--text-lg); }
-
 	@media (max-width: 860px) {
 		.videos-lead, .articles-lead { grid-template-columns: 1fr; }
-		.videos-lead-grid { grid-template-columns: 1fr 1fr; }
-		.articles-lead-grid { aspect-ratio: auto; gap: var(--space-6); }
+		.videos-lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); aspect-ratio: auto; }
+		.articles-lead-grid { flex-direction: row; gap: var(--space-6); aspect-ratio: auto; }
 	}
 	@media (max-width: 640px) {
 		.videos-lead-grid { grid-template-columns: 1fr; }
 		.videos-lead-card :global(.video-card--lg .video-title) { font-size: var(--text-lg); }
-		.articles-lead-grid :global(.article-card--sm) { flex-direction: column; }
-		.articles-lead-grid :global(.article-card--sm .article-image) { width: 100%; }
+		.articles-lead-grid { flex-direction: column; }
 	}
 
 	.carousel-section { padding-top: var(--space-8); padding-bottom: var(--space-10); }
