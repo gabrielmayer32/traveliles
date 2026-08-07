@@ -6,6 +6,7 @@ import ArticleCard from '../../components/ArticleCard.astro';
 import AdPlacement from '../../components/AdPlacement.astro';
 import { formatDate } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
+import { normalizeTags } from '../../lib/tags';
 
 export async function getStaticPaths() {
 	const articles = (await getCollection('articles')).filter((article) => article.data.published);
@@ -19,6 +20,7 @@ export async function getStaticPaths() {
 const { article, hasEn } = Astro.props;
 const { Content } = await render(article);
 const alternateUrl = hasEn ? `/en/articles/${article.id}` : undefined;
+const tags = normalizeTags(article.data.tags);
 
 const articleSchema = JSON.stringify({
 	'@context': 'https://schema.org',
@@ -83,11 +85,11 @@ const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad
 			</div>
 
 			<!-- Tags footer — ruled -->
-			{article.data.tags.length > 0 && (
+			{tags.length > 0 && (
 				<div class="tags-footer">
 					<span class="kicker tags-kicker">Sujets</span>
 					<div class="tags">
-						{article.data.tags.map((tag) => (
+						{tags.map((tag) => (
 							<span class="tag">{tag}</span>
 						))}
 					</div>
