@@ -41,7 +41,7 @@ const translations = {
 
 	// Footer
 	'footer.tagline':  { fr: 'Océan Indien',                en: 'Indian Ocean' },
-	'footer.desc':     { fr: "Le magazine vidéo des îles de l'océan Indien : hospitalité, tables, régions et art de vivre mauricien.", en: 'The Indian Ocean islands video magazine: hospitality, dining, regions, and Mauritian art de vivre.' },
+	'footer.desc':     { fr: "L’île Maurice comme vous ne l’avez jamais vue. Un nouveau regard sur l'océan Indien", en: 'Mauritius as you have never seen it before. A new perspective on the Indian Ocean' },
 	'footer.sections': { fr: 'Rubriques',                   en: 'Sections' },
 	'footer.magazine': { fr: 'Le magazine',                 en: 'The magazine' },
 	'footer.rights':   { fr: 'Tous droits réservés.',       en: 'All rights reserved.' },
