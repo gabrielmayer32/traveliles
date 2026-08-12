@@ -96,7 +96,7 @@ const tagline = locale === 'en'
 				video!.playsInline = true;
 				try {
 					await video!.play();
-					if (!video!.paused) showPlayingVideo();
+					if (!video!.paused && video!.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) showPlayingVideo();
 				} catch {
 					playButton!.hidden = false;
 				}
@@ -109,7 +109,7 @@ const tagline = locale === 'en'
 			playButton.addEventListener('click', () => void startPlayback());
 
 			// The autoplay event can fire before this script runs on fast mobile loads.
-			if (!video.paused) {
+			if (!video.paused && video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
 				showPlayingVideo();
 			} else {
 				void startPlayback();
