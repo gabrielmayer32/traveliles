@@ -17,7 +17,7 @@ const tagline = locale === 'en'
 
 <section class="hero-video">
 	<div class="hero-media">
-		<canvas class="hero-canvas" aria-hidden="true"></canvas>
+		{poster && <img class="hero-poster" src={poster} alt="" fetchpriority="high" />}
 		<video
 			class="hero-r2"
 			src={videoFile}
@@ -56,38 +56,12 @@ const tagline = locale === 'en'
 			hero.dataset.videoReady = 'true';
 
 			const video = hero.querySelector<HTMLVideoElement>('.hero-r2');
-			const canvas = hero.querySelector<HTMLCanvasElement>('.hero-canvas');
+			const poster = hero.querySelector<HTMLImageElement>('.hero-poster');
 			const playButton = hero.querySelector<HTMLButtonElement>('.hero-play');
-			if (!video || !canvas || !playButton) return;
-
-			const cacheKey = `hero-poster-${video.currentSrc || video.src}`;
-
-			function showCachedFrame() {
-				const cached = sessionStorage.getItem(cacheKey);
-				if (!cached) return;
-				const image = new Image();
-				image.addEventListener('load', () => {
-					canvas!.width = image.naturalWidth;
-					canvas!.height = image.naturalHeight;
-					canvas!.getContext('2d')?.drawImage(image, 0, 0);
-				}, { once: true });
-				image.src = cached;
-			}
-
-			function cacheCurrentFrame() {
-				if (!video!.videoWidth || !video!.videoHeight) return;
-				canvas!.width = video!.videoWidth;
-				canvas!.height = video!.videoHeight;
-				canvas!.getContext('2d')?.drawImage(video!, 0, 0);
-				try {
-					sessionStorage.setItem(cacheKey, canvas!.toDataURL('image/jpeg', 0.85));
-				} catch {
-					// Cross-origin video frames cannot always be cached; playback still works.
-				}
-			}
+			if (!video || !playButton) return;
 
 			function showPlayingVideo() {
-				canvas!.style.opacity = '0';
+				poster?.classList.add('is-playing');
 				playButton!.hidden = true;
 			}
 
@@ -102,9 +76,7 @@ const tagline = locale === 'en'
 				}
 			}
 
-			showCachedFrame();
 			video.addEventListener('playing', showPlayingVideo);
-			video.addEventListener('loadeddata', cacheCurrentFrame, { once: true });
 			video.addEventListener('canplay', () => void startPlayback(), { once: true });
 			playButton.addEventListener('click', () => void startPlayback());
 
@@ -137,7 +109,7 @@ const tagline = locale === 'en'
 		background: var(--navy-950);
 	}
 
-	.hero-canvas {
+	.hero-poster {
 		position: absolute;
 		inset: 0;
 		width: 100%;
@@ -145,6 +117,11 @@ const tagline = locale === 'en'
 		object-fit: cover;
 		z-index: 2;
 		transition: opacity 0.4s ease;
+	}
+
+	.hero-poster.is-playing {
+		opacity: 0;
+		pointer-events: none;
 	}
 
 	.hero-r2 {
