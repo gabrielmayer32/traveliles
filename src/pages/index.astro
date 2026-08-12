@@ -145,7 +145,7 @@ const carouselNews = newsArticles.slice(0, 6);
 				</div>
 			</div>
 			<div class="carousel-track-wrapper">
-				<div class="carousel-track">
+				<div class="carousel-track" id="video-track">
 					{carouselVideos.map((v) => (
 						<div class="carousel-slide">
 							<VideoCard video={v} />
@@ -160,11 +160,10 @@ const carouselNews = newsArticles.slice(0, 6);
 
 <script>
 function setupCarousel() {
-	const wrapper = document.querySelector<HTMLElement>('.carousel-track-wrapper');
-	const track = document.querySelector<HTMLElement>('.carousel-track');
+	const track = document.querySelector<HTMLElement>('#video-track');
 	const prev = document.querySelector<HTMLButtonElement>('.carousel-prev');
 	const next = document.querySelector<HTMLButtonElement>('.carousel-next');
-	if (!wrapper || !track || !prev || !next) return;
+	if (!track || !prev || !next) return;
 
 	const slides = track.querySelectorAll<HTMLElement>('.carousel-slide');
 	if (slides.length === 0) return;

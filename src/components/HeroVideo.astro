@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '../lib/i18n';
+import { iconSvg } from '../lib/icons';
 
 interface Props {
 	hero: CollectionEntry<'hero'>;
@@ -16,9 +17,24 @@ const tagline = locale === 'en'
 
 <section class="hero-video">
 	<div class="hero-media">
-		{thumbnail && <img class="hero-poster" src={thumbnail} alt="" />}
-		<div class="hero-iframe-slot"></div>
-		<button class="hero-play" type="button" aria-label="Lire la vidéo à la une" hidden>
+		<canvas class="hero-canvas" aria-hidden="true"></canvas>
+		<video
+			class="hero-r2"
+			src={videoFile}
+			poster={poster}
+			autoplay
+			muted
+			loop
+			playsinline
+			preload="auto"
+			aria-hidden="true"
+		/>
+		<button
+			class="hero-play"
+			type="button"
+			aria-label={locale === 'en' ? 'Play the featured video' : 'Lire la vidéo à la une'}
+			hidden
+		>
 			<Fragment set:html={iconSvg('play', 28)} />
 		</button>
 	</div>
@@ -34,138 +50,78 @@ const tagline = locale === 'en'
 </section>
 
 <script>
-	const video = document.querySelector('.hero-r2') as HTMLVideoElement | null;
-	const canvas = document.querySelector('.hero-canvas') as HTMLCanvasElement | null;
+	function initHeroVideos() {
+		document.querySelectorAll<HTMLElement>('.hero-video').forEach((hero) => {
+			if (hero.dataset.videoReady === 'true') return;
+			hero.dataset.videoReady = 'true';
 
-		const slot = hero.querySelector<HTMLElement>('.hero-iframe-slot');
-		const poster = hero.querySelector<HTMLImageElement>('.hero-poster');
-		const playButton = hero.querySelector<HTMLButtonElement>('.hero-play');
-		const embedSrc = hero.dataset.embedSrc;
-		if (!slot || !embedSrc) return;
-		let youtubePlayer: any;
+			const video = hero.querySelector<HTMLVideoElement>('.hero-r2');
+			const canvas = hero.querySelector<HTMLCanvasElement>('.hero-canvas');
+			const playButton = hero.querySelector<HTMLButtonElement>('.hero-play');
+			if (!video || !canvas || !playButton) return;
 
-		function showPlayButton() {
-			if (playButton && !poster?.classList.contains('loaded')) playButton.hidden = false;
-		}
+			const cacheKey = `hero-poster-${video.currentSrc || video.src}`;
 
-		function showVideo() {
-			poster?.classList.add('loaded');
-			if (playButton) playButton.hidden = true;
-		}
-
-		function injectIframe() {
-			if (slot.querySelector('iframe')) return;
-			const iframe = document.createElement('iframe');
-			iframe.className = 'hero-iframe';
-			iframe.src = embedSrc!;
-			iframe.title = 'Vidéo Travel-Îles';
-			iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-			iframe.allowFullscreen = true;
-			slot.appendChild(iframe);
-
-			// Non-YouTube: fade poster on iframe load (no API available)
-			if (!embedSrc!.includes('youtube.com') && poster) {
-				iframe.addEventListener('load', () => {
-					setTimeout(showVideo, 800);
-				});
+			function showCachedFrame() {
+				const cached = sessionStorage.getItem(cacheKey);
+				if (!cached) return;
+				const image = new Image();
+				image.addEventListener('load', () => {
+					canvas!.width = image.naturalWidth;
+					canvas!.height = image.naturalHeight;
+					canvas!.getContext('2d')?.drawImage(image, 0, 0);
+				}, { once: true });
+				image.src = cached;
 			}
 
-			// Use YouTube IFrame API to hide poster only when playing, and loop on end
-			if (embedSrc!.includes('youtube.com')) {
-				function attachYTPlayer() {
-					youtubePlayer = new (window as any).YT.Player(iframe, {
-						events: {
-							onReady(event: any) {
-								// Mobile browsers only allow reliable inline autoplay when muted.
-								event.target.mute();
-								event.target.playVideo();
-								setTimeout(showPlayButton, 1600);
-							},
-							onStateChange(event: any) {
-								const PLAYING = 1;
-								const ENDED = 0;
-								if (event.data === PLAYING) {
-									showVideo();
-								} else if (event.data === ENDED) {
-									// Cover end screen with poster instantly, seek & replay
-									if (poster) {
-										poster.style.transition = 'none';
-										poster.style.opacity = '1';
-										poster.style.pointerEvents = 'none';
-									}
-									youtubePlayer.seekTo(0);
-									youtubePlayer.playVideo();
-									// Fade poster out again once playback resumes
-									setTimeout(() => {
-										if (poster) {
-											poster.style.transition = '';
-											poster.style.opacity = '0';
-										}
-									}, 800);
-								}
-							},
-							onAutoplayBlocked() {
-								showPlayButton();
-							}
-						}
-					});
-				}
-
-				if ((window as any).YT && (window as any).YT.Player) {
-					attachYTPlayer();
-				} else {
-					const prev = (window as any).onYouTubeIframeAPIReady;
-					(window as any).onYouTubeIframeAPIReady = function() {
-						if (prev) prev();
-						attachYTPlayer();
-					};
-					if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
-						const tag = document.createElement('script');
-						tag.src = 'https://www.youtube.com/iframe_api';
-						document.head.appendChild(tag);
-					}
+			function cacheCurrentFrame() {
+				if (!video!.videoWidth || !video!.videoHeight) return;
+				canvas!.width = video!.videoWidth;
+				canvas!.height = video!.videoHeight;
+				canvas!.getContext('2d')?.drawImage(video!, 0, 0);
+				try {
+					sessionStorage.setItem(cacheKey, canvas!.toDataURL('image/jpeg', 0.85));
+				} catch {
+					// Cross-origin video frames cannot always be cached; playback still works.
 				}
 			}
-		}
 
-		playButton?.addEventListener('click', () => {
-			if (!youtubePlayer) return;
-			youtubePlayer.mute();
-			youtubePlayer.playVideo();
+			function showPlayingVideo() {
+				canvas!.style.opacity = '0';
+				playButton!.hidden = true;
+			}
+
+			async function startPlayback() {
+				video!.muted = true;
+				video!.playsInline = true;
+				try {
+					await video!.play();
+					if (!video!.paused) showPlayingVideo();
+				} catch {
+					playButton!.hidden = false;
+				}
+			}
+
+			showCachedFrame();
+			video.addEventListener('playing', showPlayingVideo);
+			video.addEventListener('loadeddata', cacheCurrentFrame, { once: true });
+			video.addEventListener('canplay', () => void startPlayback(), { once: true });
+			playButton.addEventListener('click', () => void startPlayback());
+
+			// The autoplay event can fire before this script runs on fast mobile loads.
+			if (!video.paused) {
+				showPlayingVideo();
+			} else {
+				void startPlayback();
+				setTimeout(() => {
+					if (video.paused) playButton.hidden = false;
+				}, 2000);
+			}
 		});
-
-		const consent = localStorage.getItem('ti-cookies');
-		if (consent === 'accepted') {
-			injectIframe();
-		} else {
-			document.addEventListener('ti:cookies-accepted', () => injectIframe(), { once: true });
-		}
 	}
 
-	function captureFrame() {
-		if (!video || !canvas) return;
-		canvas.width = video.videoWidth;
-		canvas.height = video.videoHeight;
-		canvas.getContext('2d')?.drawImage(video, 0, 0);
-		try {
-			const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
-			sessionStorage.setItem(CACHE_KEY, dataUrl);
-		} catch {}
-	}
-
-	if (video && canvas) {
-		showCached();
-		video.addEventListener('seeked', () => {
-			captureFrame();
-			video.play();
-		}, { once: true });
-		video.addEventListener('loadeddata', () => {
-			video.currentTime = 0.001;
-		}, { once: true });
-		video.addEventListener('playing', () => {
-			canvas.style.opacity = '0';
-		}, { once: true });
-	}
+	document.addEventListener('astro:page-load', initHeroVideos);
+	initHeroVideos();
 </script>
 
 <style>
@@ -178,7 +134,7 @@ const tagline = locale === 'en'
 	.hero-media {
 		position: relative;
 		height: clamp(420px, 62vh, 640px);
-		background: #141a3f;
+		background: var(--navy-950);
 	}
 
 	.hero-canvas {
@@ -198,19 +154,6 @@ const tagline = locale === 'en'
 		height: 100%;
 		object-fit: cover;
 		z-index: 1;
-	}
-
-	.hero-iframe-slot :global(.hero-iframe) {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 100vw;
-		min-width: 100%;
-		height: 56.25vw;
-		min-height: 100%;
-		border: 0;
-		pointer-events: none;
-		transform: translate(-50%, -50%) scale(1.25);
 	}
 
 	.hero-play {
