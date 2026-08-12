@@ -36,8 +36,7 @@ const videoSchema = JSON.stringify({
 const allVideos = (await getCollection('videos'))
 	.filter((v) => v.data.published && v.id !== video.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const more = allVideos.slice(0, 3);
-const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnVideos);
+const more = allVideos.slice(0, 6);
 ---
 
 <BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={displayThumbnail} locale="fr" alternateUrl={alternateUrl}>
@@ -82,16 +81,65 @@ const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad
 	{inlineAd && <AdPlacement ad={inlineAd} locale="fr" compact />}
 
 	{more.length > 0 && (
-		<section class="container-wide section">
-			<div class="section-header">
+		<section class="container-wide section more-section" data-more-videos>
+			<div class="section-header more-header">
 				<h2 class="section-title more-title">À voir aussi</h2>
+				<div class="more-controls" aria-label="Navigation des vidéos">
+					<button class="more-arrow more-arrow--prev" type="button" aria-label="Vidéos précédentes" disabled>
+						<span><Fragment set:html={iconSvg('chevron-right', 22)} /></span>
+					</button>
+					<button class="more-arrow more-arrow--next" type="button" aria-label="Vidéos suivantes">
+						<Fragment set:html={iconSvg('chevron-right', 22)} />
+					</button>
+				</div>
 			</div>
-			<div class="grid-3">
-				{more.map((v) => <VideoCard video={v} />)}
+			<div class="more-carousel" tabindex="0" aria-label="Vidéos à voir aussi">
+				{more.map((v) => <div class="more-slide"><VideoCard video={v} /></div>)}
 			</div>
 		</section>
 	)}
 </BaseLayout>
+
+<script>
+	function initMoreVideos() {
+		document.querySelectorAll<HTMLElement>('[data-more-videos]').forEach((section) => {
+			if (section.dataset.carouselReady === 'true') return;
+			section.dataset.carouselReady = 'true';
+
+			const carousel = section.querySelector<HTMLElement>('.more-carousel');
+			const previous = section.querySelector<HTMLButtonElement>('.more-arrow--prev');
+			const next = section.querySelector<HTMLButtonElement>('.more-arrow--next');
+			if (!carousel || !previous || !next) return;
+
+			function updateArrows() {
+				const maxScroll = Math.max(0, carousel!.scrollWidth - carousel!.clientWidth);
+				previous!.disabled = carousel!.scrollLeft <= 2;
+				next!.disabled = carousel!.scrollLeft >= maxScroll - 2;
+			}
+
+			function scrollByCard(direction: -1 | 1) {
+				const slides = carousel!.querySelectorAll<HTMLElement>('.more-slide');
+				const distance = slides.length > 1
+					? slides[1].offsetLeft - slides[0].offsetLeft
+					: carousel!.clientWidth;
+				carousel!.scrollBy({ left: direction * distance, behavior: 'smooth' });
+			}
+
+			previous.addEventListener('click', () => scrollByCard(-1));
+			next.addEventListener('click', () => scrollByCard(1));
+			carousel.addEventListener('scroll', updateArrows, { passive: true });
+			carousel.addEventListener('keydown', (event) => {
+				if (event.key === 'ArrowLeft') scrollByCard(-1);
+				if (event.key === 'ArrowRight') scrollByCard(1);
+			});
+			window.addEventListener('resize', updateArrows);
+			requestAnimationFrame(updateArrows);
+		});
+	}
+
+	document.addEventListener('astro:page-load', initMoreVideos);
+	initMoreVideos();
+</script>
 
 <style>
 	.video-page {
@@ -199,5 +247,72 @@ const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad
 
 	.more-title {
 		font-size: var(--text-2xl);
+	}
+
+	.more-controls {
+		display: none;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.more-arrow {
+		display: grid;
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0;
+		place-items: center;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius-pill);
+		background: var(--surface-page);
+		color: var(--text-heading);
+		cursor: pointer;
+		transition: opacity var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+	}
+
+	.more-arrow--prev span {
+		display: block;
+		transform: rotate(180deg);
+	}
+
+	.more-arrow:disabled {
+		opacity: 0.3;
+		cursor: default;
+	}
+
+	.more-carousel {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: var(--space-8);
+	}
+
+	@media (max-width: 640px) {
+		.more-header {
+			display: flex;
+			align-items: center;
+		}
+
+		.more-controls {
+			display: flex;
+		}
+
+		.more-carousel {
+			grid-template-columns: none;
+			grid-auto-flow: column;
+			grid-auto-columns: 84%;
+			gap: var(--space-4);
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scrollbar-width: none;
+			overscroll-behavior-inline: contain;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.more-carousel::-webkit-scrollbar {
+			display: none;
+		}
+
+		.more-slide {
+			scroll-snap-align: start;
+		}
 	}
 </style>
