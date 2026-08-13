@@ -7,7 +7,7 @@ videoId: https://youtu.be/6HdRJ4jCiJI
 videoFile: 6HdRJ4jCiJI
 thumbnail: ''
 excerpt: ''
-published: false
+published: true
 ---
 
 At Mahébourg Market, the colours of fresh vegetables, the voices of stallholders and the constant flow of regulars reveal a Mauritius far removed from the postcard image. Here, behind every stall, there is a story. Pratimah’s is one of hard work, family and passing knowledge from one generation to the next.

@@ -7,7 +7,7 @@ videoId: https://youtu.be/6HdRJ4jCiJI
 videoFile: 6HdRJ4jCiJI
 thumbnail: ''
 excerpt: ''
-published: false
+published: true
 ---
 
 Au marché de Mahébourg, les couleurs des légumes, les voix des marchands et le va-et-vient des habitués racontent une île Maurice bien loin des cartes postales. Ici, derrière chaque étal, il y a aussi une histoire. Celle de Pratimah parle de travail, de famille et de transmission.
