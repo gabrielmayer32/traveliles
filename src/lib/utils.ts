@@ -10,8 +10,6 @@ export const CATEGORIES = [
 	'Art & Culture',
 	'Activités & Événements',
 	'News',
-	'Nos adresses',
-	'Escapades',
 	'Nos archives',
 ] as const;
 
@@ -30,8 +28,6 @@ export const RUBRIQUES: RubriqueGroup[] = [
 	{ label: 'Saveurs' },
 	{ label: 'Art & Culture' },
 	{ label: 'Activités & Événements' },
-	{ label: 'Nos adresses' },
-	{ label: 'Escapades' },
 	{ label: 'Nos archives' },
 ];
 
@@ -56,8 +52,6 @@ export const CATEGORY_SLUG_MAP: Record<Category, string> = {
 	'Art & Culture': 'art-et-culture',
 	'Activités & Événements': 'activites-et-evenements',
 	News: 'news',
-	'Nos adresses': 'nos-adresses',
-	Escapades: 'escapades',
 	'Nos archives': 'nos-archives',
 };
 

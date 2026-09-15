@@ -43,18 +43,30 @@ const videos = (await getCollection('videos'))
 
 		<CategoryNav active={category} />
 
-		<section class="listing-section">
-			<h2 class="subsection-title">Nos dernières vidéos</h2>
-			{videos.length > 0 ? (
-				<div class="grid-4">
-					{videos.map((video) => <VideoCard video={video} />)}
-				</div>
-			) : (
-				<p class="empty-state empty-state--compact">
-					Aucune vidéo dans cette rubrique pour le moment.
+		{category === 'Nos archives' ? (
+			<section class="listing-section listing-section--intro">
+				<p class="archives-intro">
+					Côte Nord existe depuis 1994. Fondé par des passionnés de l'île Maurice et de l'océan Indien,
+					le magazine a accompagné pendant trente ans les évolutions de la destination — ses hôtels,
+					ses saveurs, ses artisans, ses visages. Travel-Îles est le prolongement naturel de cette aventure
+					éditoriale : un nouveau regard, les mêmes valeurs. Retrouvez ici une sélection d'archives issues
+					de nos années de terrain.
 				</p>
-			)}
-		</section>
+			</section>
+		) : (
+			<section class="listing-section">
+				<h2 class="subsection-title">Nos dernières vidéos</h2>
+				{videos.length > 0 ? (
+					<div class="grid-4">
+						{videos.map((video) => <VideoCard video={video} />)}
+					</div>
+				) : (
+					<p class="empty-state empty-state--compact">
+						Aucune vidéo dans cette rubrique pour le moment.
+					</p>
+				)}
+			</section>
+		)}
 
 		<section class="listing-section">
 			<h2 class="subsection-title">Articles</h2>
@@ -129,5 +141,16 @@ const videos = (await getCollection('videos'))
 
 	.empty-state--compact {
 		padding: var(--space-8) 0;
+	}
+
+	.listing-section--intro {
+		padding-top: var(--space-8);
+	}
+
+	.archives-intro {
+		max-width: 72ch;
+		font-size: var(--text-lg);
+		line-height: var(--leading-relaxed);
+		color: var(--text-muted);
 	}
 </style>

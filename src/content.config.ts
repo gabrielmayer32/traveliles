@@ -13,8 +13,6 @@ const categoryEnum = z.enum([
 	'Art & Culture',
 	'Activités & Événements',
 	'News',
-	'Nos adresses',
-	'Escapades',
 	'Nos archives',
 ]);
 

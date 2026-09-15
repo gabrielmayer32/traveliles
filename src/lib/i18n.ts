@@ -82,8 +82,6 @@ export const CATEGORIES_EN: Record<string, string> = {
 	'Art & Culture':                  'Art & Culture',
 	'Activités & Événements':         'Activities & Events',
 	'News':                           'News',
-	'Nos adresses':                   'Our Picks',
-	'Escapades':                      'Getaways',
 	'Nos archives':                   'Archives',
 };
 
