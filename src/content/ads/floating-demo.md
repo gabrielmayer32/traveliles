@@ -7,6 +7,9 @@ url: https://www.luxresorts.com/
 cta: En savoir plus
 ctaEn: Learn more
 placement: floating
-visible: true
-showOnHomepage: true
+visible: false
+showOnHomepage: false
+showOnArticles: false
+showOnVideos: false
+showOnListings: false
 ---
