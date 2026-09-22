@@ -12,4 +12,7 @@ partners:
   - name: attitude
     logo: /images/uploads/4.png
     url: https://hotels-attitude.com/en
+  - name: Constance Hotels & Resorts
+    logo: /images/uploads/constance_hotels_and_resorts_logo.jpg
+    url: https://www.constancehotels.com/en/
 ---
