@@ -7,7 +7,7 @@ videoId: NofpSmvSO98
 videoFile: https://youtu.be/NofpSmvSO98
 thumbnail: /images/uploads/Thumbnail ravaene.png
 excerpt: ''
-published: false
+published: true
 ---
 
 ### Il y a des rythmes que l’on apprend, et d’autres que l’on semble porter en soi. Pour Deelan et Fabian, le séga mauricien appartient clairement à cette seconde catégorie. À travers la ravane, ils racontent moins un instrument qu’un lien : avec leurs racines, leur histoire et une culture qui continue de se transmettre de génération en génération.

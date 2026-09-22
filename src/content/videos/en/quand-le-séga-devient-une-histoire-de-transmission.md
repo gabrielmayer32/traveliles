@@ -7,7 +7,7 @@ videoId: NofpSmvSO98
 videoFile: https://youtu.be/NofpSmvSO98
 thumbnail: /images/uploads/Thumbnail ravaene.png
 excerpt: ''
-published: false
+published: true
 ---
 
 ### Some rhythms are learned. Others feel as though they have always been part of you. For Deelan and Fabian, Mauritian sega clearly belongs to the latter. Through the ravanne, they speak not simply about an instrument, but about a deeper connection, to their roots, their history and a culture that continues to be passed down from one generation to the next.
