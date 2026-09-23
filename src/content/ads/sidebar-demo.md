@@ -7,8 +7,8 @@ url: https://www.constancehotels.com/fr/
 cta: Découvrir
 ctaEn: Learn more
 placement: floating
-visible: true
-showOnHomepage: true
+visible: false
+showOnHomepage: false
 showOnArticles: false
 showOnVideos: false
 showOnListings: false
