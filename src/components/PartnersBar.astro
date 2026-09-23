@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import type { Locale } from '../lib/i18n';
+
+interface Props {
+	locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const partnerEntries = await getCollection('partners');
+const entryId = locale === 'en' ? 'partners-en' : 'partners';
+const partners = partnerEntries.find((entry) => entry.id === entryId)?.data.partners ?? [];
+const title = locale === 'en' ? 'Our Partners' : 'Nos Partenaires';
+---
+
+<section class="partners-section">
+	<div class="container-wide">
+		<div class="partners-header">
+			<h2 class="section-title">{title}</h2>
+		</div>
+		<div class="partners-grid">
+			{partners.length > 0 ? (
+				<div class={`partners-track ${partners.length > 5 ? 'partners-track--scroll' : ''}`}>
+					{partners.map((partner) => (
+						partner.url ? (
+							<a class="partner-slot" href={partner.url} target="_blank" rel="noopener noreferrer">
+								<img src={partner.logo} alt={partner.name} loading="lazy" />
+							</a>
+						) : (
+							<div class="partner-slot">
+								<img src={partner.logo} alt={partner.name} loading="lazy" />
+							</div>
+						)
+					))}
+					{partners.length > 5 && partners.map((partner) => (
+						partner.url ? (
+							<a class="partner-slot" href={partner.url} target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+								<img src={partner.logo} alt="" loading="lazy" />
+							</a>
+						) : (
+							<div class="partner-slot" aria-hidden="true">
+								<img src={partner.logo} alt="" loading="lazy" />
+							</div>
+						)
+					))}
+				</div>
+			) : (
+				<div class="partners-track">
+					{Array.from({ length: 5 }).map(() => (
+						<div class="partner-slot partner-slot--empty">
+							<span class="partner-slot-label">Logo</span>
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.partners-section {
+		padding-block: var(--space-24);
+	}
+
+	.partners-header {
+		margin-bottom: var(--space-12);
+		padding-bottom: var(--space-4);
+		border-bottom: 1px solid var(--border-strong);
+	}
+
+	.partners-track {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-12);
+		flex-wrap: wrap;
+	}
+
+	.partners-track--scroll {
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		overflow: hidden;
+		animation: partners-scroll 30s linear infinite;
+	}
+
+	.partners-track--scroll:hover {
+		animation-play-state: paused;
+	}
+
+	@keyframes partners-scroll {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(-50%); }
+	}
+
+	.partner-slot {
+		display: grid;
+		place-items: center;
+		width: 13rem;
+		height: 6.5rem;
+		flex-shrink: 0;
+	}
+
+	.partner-slot img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		transition: opacity var(--dur) var(--ease-out);
+	}
+
+	.partner-slot:hover img {
+		opacity: 0.7;
+	}
+
+	.partner-slot--empty {
+		border: 1px dashed var(--border-subtle);
+		border-radius: var(--radius);
+		background: var(--grey-050);
+	}
+
+	.partner-slot-label {
+		font-size: var(--text-xs);
+		color: var(--text-muted);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 860px) {
+		.partners-track {
+			gap: var(--space-8);
+		}
+		.partner-slot {
+			width: 10rem;
+			height: 5rem;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.partners-section {
+			padding-block: var(--space-16);
+		}
+		.partners-track {
+			gap: var(--space-6);
+		}
+		.partner-slot {
+			width: 8.5rem;
+			height: 4.25rem;
+		}
+	}
+</style>

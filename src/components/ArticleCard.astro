@@ -1,23 +1,25 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { formatDate } from '../lib/utils';
+import { formatDateLocale, type Locale } from '../lib/i18n';
 import CategoryLabel from './CategoryLabel.astro';
 
 interface Props {
-	article: CollectionEntry<'articles'>;
+	article: CollectionEntry<'articles'> | CollectionEntry<'articles_en'>;
 	orientation?: 'vertical' | 'horizontal';
 	size?: 'sm' | 'md' | 'lg';
+	locale?: Locale;
 }
 
-const { article, orientation = 'vertical', size = 'md' } = Astro.props;
-const href = `/articles/${article.id}`;
+const { article, orientation = 'vertical', size = 'md', locale = 'fr' } = Astro.props;
+const href = locale === 'en' ? `/en/articles/${article.id}` : `/articles/${article.id}`;
 const horizontal = orientation === 'horizontal';
 ---
 
 <a class:list={['article-card', { 'article-card--horizontal': horizontal }, `article-card--${size}`]} href={href}>
 	{article.data.cover && (
 		<div class="article-image">
-			<img src={article.data.cover} alt="" loading="lazy" />
+			<img src={article.data.cover} alt={article.data.title} loading="lazy" />
 		</div>
 	)}
 	<div class="article-body">
@@ -27,7 +29,7 @@ const horizontal = orientation === 'horizontal';
 		<div class="meta article-meta">
 			{article.data.author}
 			{article.data.author && article.data.date ? ' · ' : ''}
-			{formatDate(article.data.date)}
+			{formatDateLocale(article.data.date, locale)}
 		</div>
 	</div>
 </a>

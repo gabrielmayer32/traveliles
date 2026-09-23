@@ -1,26 +1,373 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { iconSvg } from '../lib/icons';
+
+const WEB3FORMS_KEY = '11317a16-f22c-45a7-8744-0d9d5b5932eb';
+const TURNSTILE_SITE_KEY = '0x4AAAAAAD6O5kEETsC9xZPD';
 ---
 
 <BaseLayout title="Contact" description="Contacter la rédaction de Travel-Îles.">
 	<section class="container-wide contact-page">
 		<header class="contact-header">
 			<span class="kicker">Contact</span>
-			<h1 class="page-title">Nous écrire</h1>
+			<h1 class="page-title">Nous contacter</h1>
+			<p class="contact-intro">Une question, un partenariat, une suggestion&nbsp;? Écrivez-nous, nous vous répondrons dans les plus brefs délais.</p>
 		</header>
 
-		<div class="prose">
-			<p>Pour une adresse à proposer, une collaboration éditoriale ou une demande de partenariat, contactez la rédaction.</p>
-			<p><a href="mailto:contact@traveliles.com">contact@traveliles.com</a></p>
+		<div class="contact-body">
+			<form id="contact-form" class="contact-form" novalidate>
+				<input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+				<input type="hidden" name="subject" value="Nouveau message – Travel-Îles" />
+				<input type="hidden" name="from_name" value="Travel-Îles Contact" />
+				<!-- Honeypot -->
+				<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+				<div class="form-row">
+					<div class="form-field">
+						<label for="prenom">Prénom <span aria-hidden="true">*</span></label>
+						<input type="text" id="prenom" name="prenom" autocomplete="given-name" required placeholder="Marie" />
+						<span class="field-error" id="prenom-error"></span>
+					</div>
+					<div class="form-field">
+						<label for="nom">Nom <span aria-hidden="true">*</span></label>
+						<input type="text" id="nom" name="nom" autocomplete="family-name" required placeholder="Dupont" />
+						<span class="field-error" id="nom-error"></span>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-field">
+						<label for="email">Email <span aria-hidden="true">*</span></label>
+						<input type="email" id="email" name="email" autocomplete="email" required placeholder="marie@exemple.com" />
+						<span class="field-error" id="email-error"></span>
+					</div>
+					<div class="form-field">
+						<label for="pays">Pays <span aria-hidden="true">*</span></label>
+						<div class="select-wrapper">
+							<select id="pays" name="pays" autocomplete="country-name" required>
+								<option value="" disabled selected>Sélectionnez votre pays</option>
+								<optgroup label="Océan Indien">
+									<option>Maurice</option>
+									<option>La Réunion</option>
+									<option>Madagascar</option>
+									<option>Seychelles</option>
+									<option>Maldives</option>
+									<option>Comores</option>
+									<option>Mayotte</option>
+								</optgroup>
+								<optgroup label="Tous les pays">
+									<option>Afghanistan</option>
+									<option>Afrique du Sud</option>
+									<option>Albanie</option>
+									<option>Algérie</option>
+									<option>Allemagne</option>
+									<option>Andorre</option>
+									<option>Angola</option>
+									<option>Antigua-et-Barbuda</option>
+									<option>Arabie Saoudite</option>
+									<option>Argentine</option>
+									<option>Arménie</option>
+									<option>Australie</option>
+									<option>Autriche</option>
+									<option>Azerbaïdjan</option>
+									<option>Bahamas</option>
+									<option>Bahreïn</option>
+									<option>Bangladesh</option>
+									<option>Barbade</option>
+									<option>Bélarus</option>
+									<option>Belgique</option>
+									<option>Belize</option>
+									<option>Bénin</option>
+									<option>Bhoutan</option>
+									<option>Bolivie</option>
+									<option>Bosnie-Herzégovine</option>
+									<option>Botswana</option>
+									<option>Brésil</option>
+									<option>Brunei</option>
+									<option>Bulgarie</option>
+									<option>Burkina Faso</option>
+									<option>Burundi</option>
+									<option>Cabo Verde</option>
+									<option>Cambodge</option>
+									<option>Cameroun</option>
+									<option>Canada</option>
+									<option>Chili</option>
+									<option>Chine</option>
+									<option>Chypre</option>
+									<option>Colombie</option>
+									<option>Congo</option>
+									<option>Corée du Nord</option>
+									<option>Corée du Sud</option>
+									<option>Costa Rica</option>
+									<option>Côte d'Ivoire</option>
+									<option>Croatie</option>
+									<option>Cuba</option>
+									<option>Danemark</option>
+									<option>Djibouti</option>
+									<option>Dominique</option>
+									<option>Égypte</option>
+									<option>Émirats arabes unis</option>
+									<option>Équateur</option>
+									<option>Érythrée</option>
+									<option>Espagne</option>
+									<option>Estonie</option>
+									<option>Eswatini</option>
+									<option>États-Unis</option>
+									<option>Éthiopie</option>
+									<option>Fidji</option>
+									<option>Finlande</option>
+									<option>France</option>
+									<option>Gabon</option>
+									<option>Gambie</option>
+									<option>Géorgie</option>
+									<option>Ghana</option>
+									<option>Grèce</option>
+									<option>Grenade</option>
+									<option>Guatemala</option>
+									<option>Guinée</option>
+									<option>Guinée-Bissau</option>
+									<option>Guinée équatoriale</option>
+									<option>Guyana</option>
+									<option>Haïti</option>
+									<option>Honduras</option>
+									<option>Hongrie</option>
+									<option>Inde</option>
+									<option>Indonésie</option>
+									<option>Irak</option>
+									<option>Iran</option>
+									<option>Irlande</option>
+									<option>Islande</option>
+									<option>Israël</option>
+									<option>Italie</option>
+									<option>Jamaïque</option>
+									<option>Japon</option>
+									<option>Jordanie</option>
+									<option>Kazakhstan</option>
+									<option>Kenya</option>
+									<option>Kirghizistan</option>
+									<option>Kiribati</option>
+									<option>Kosovo</option>
+									<option>Koweït</option>
+									<option>Laos</option>
+									<option>Lesotho</option>
+									<option>Lettonie</option>
+									<option>Liban</option>
+									<option>Libéria</option>
+									<option>Libye</option>
+									<option>Liechtenstein</option>
+									<option>Lituanie</option>
+									<option>Luxembourg</option>
+									<option>Macédoine du Nord</option>
+									<option>Malaisie</option>
+									<option>Malawi</option>
+									<option>Mali</option>
+									<option>Malte</option>
+									<option>Maroc</option>
+									<option>Marshall</option>
+									<option>Mauritanie</option>
+									<option>Mexique</option>
+									<option>Micronésie</option>
+									<option>Moldavie</option>
+									<option>Monaco</option>
+									<option>Mongolie</option>
+									<option>Monténégro</option>
+									<option>Mozambique</option>
+									<option>Myanmar</option>
+									<option>Namibie</option>
+									<option>Nauru</option>
+									<option>Népal</option>
+									<option>Nicaragua</option>
+									<option>Niger</option>
+									<option>Nigéria</option>
+									<option>Norvège</option>
+									<option>Nouvelle-Zélande</option>
+									<option>Oman</option>
+									<option>Ouganda</option>
+									<option>Ouzbékistan</option>
+									<option>Pakistan</option>
+									<option>Palaos</option>
+									<option>Palestine</option>
+									<option>Panama</option>
+									<option>Papouasie-Nouvelle-Guinée</option>
+									<option>Paraguay</option>
+									<option>Pays-Bas</option>
+									<option>Pérou</option>
+									<option>Philippines</option>
+									<option>Pologne</option>
+									<option>Portugal</option>
+									<option>Qatar</option>
+									<option>République centrafricaine</option>
+									<option>République démocratique du Congo</option>
+									<option>République dominicaine</option>
+									<option>République tchèque</option>
+									<option>Roumanie</option>
+									<option>Royaume-Uni</option>
+									<option>Russie</option>
+									<option>Rwanda</option>
+									<option>Saint-Christophe-et-Niévès</option>
+									<option>Saint-Marin</option>
+									<option>Saint-Vincent-et-les-Grenadines</option>
+									<option>Sainte-Lucie</option>
+									<option>Salvador</option>
+									<option>Samoa</option>
+									<option>São Tomé-et-Príncipe</option>
+									<option>Sénégal</option>
+									<option>Serbie</option>
+									<option>Sierra Leone</option>
+									<option>Singapour</option>
+									<option>Slovaquie</option>
+									<option>Slovénie</option>
+									<option>Somalie</option>
+									<option>Soudan</option>
+									<option>Soudan du Sud</option>
+									<option>Sri Lanka</option>
+									<option>Suède</option>
+									<option>Suisse</option>
+									<option>Suriname</option>
+									<option>Syrie</option>
+									<option>Tadjikistan</option>
+									<option>Tanzanie</option>
+									<option>Tchad</option>
+									<option>Thaïlande</option>
+									<option>Timor oriental</option>
+									<option>Togo</option>
+									<option>Tonga</option>
+									<option>Trinité-et-Tobago</option>
+									<option>Tunisie</option>
+									<option>Turkménistan</option>
+									<option>Turquie</option>
+									<option>Tuvalu</option>
+									<option>Ukraine</option>
+									<option>Uruguay</option>
+									<option>Vanuatu</option>
+									<option>Vatican</option>
+									<option>Venezuela</option>
+									<option>Vietnam</option>
+									<option>Yémen</option>
+									<option>Zambie</option>
+									<option>Zimbabwe</option>
+								</optgroup>
+							</select>
+						</div>
+						<span class="field-error" id="pays-error"></span>
+					</div>
+				</div>
+
+				<div class="form-field">
+					<label for="message">Message <span aria-hidden="true">*</span></label>
+					<textarea id="message" name="message" rows="6" required placeholder="Votre message…"></textarea>
+					<span class="field-error" id="message-error"></span>
+				</div>
+
+	
+				<div class="form-actions">
+					<button type="submit" class="btn-submit" id="submit-btn">
+						<span class="btn-label">Envoyer le message</span>
+						<span class="btn-loading" aria-hidden="true" hidden>Envoi en cours…</span>
+					</button>
+				</div>
+
+				<div id="form-success" class="form-feedback form-feedback--success" hidden role="status">
+					<strong>Message envoyé !</strong> Nous vous répondrons dans les plus brefs délais.
+				</div>
+				<div id="form-error" class="form-feedback form-feedback--error" hidden role="alert">
+					<strong>Une erreur s'est produite.</strong> Veuillez réessayer ou nous écrire directement à <a href="mailto:contact@travel-iles.com">contact@travel-iles.com</a>.
+				</div>
+			</form>
 		</div>
 	</section>
 </BaseLayout>
+
+<script>
+const form = document.getElementById('contact-form') as HTMLFormElement;
+const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+const btnLabel = submitBtn?.querySelector('.btn-label') as HTMLElement;
+const btnLoading = submitBtn?.querySelector('.btn-loading') as HTMLElement;
+const successBox = document.getElementById('form-success') as HTMLElement;
+const errorBox = document.getElementById('form-error') as HTMLElement;
+
+const REQUIRED: Array<{ id: string; errorId: string; label: string }> = [
+	{ id: 'prenom',  errorId: 'prenom-error',  label: 'Le prénom est requis' },
+	{ id: 'nom',     errorId: 'nom-error',      label: 'Le nom est requis' },
+	{ id: 'email',   errorId: 'email-error',    label: 'Un email valide est requis' },
+	{ id: 'pays',    errorId: 'pays-error',     label: 'Veuillez sélectionner un pays' },
+	{ id: 'message', errorId: 'message-error',  label: 'Le message est requis' },
+];
+
+function validateEmail(v: string) {
+	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+function validate(): boolean {
+	let ok = true;
+	for (const f of REQUIRED) {
+		const el = document.getElementById(f.id) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+		const err = document.getElementById(f.errorId) as HTMLElement;
+		const val = el?.value.trim();
+		let msg = '';
+		if (!val) {
+			msg = f.label;
+		} else if (f.id === 'email' && !validateEmail(val)) {
+			msg = 'Format d\'email invalide';
+		}
+		err.textContent = msg;
+		el?.setAttribute('aria-invalid', msg ? 'true' : 'false');
+		if (msg) ok = false;
+	}
+
+	return ok;
+}
+
+form?.addEventListener('submit', async (e) => {
+	e.preventDefault();
+	successBox.hidden = true;
+	errorBox.hidden = true;
+
+	if (!validate()) return;
+
+	submitBtn.disabled = true;
+	btnLabel.hidden = true;
+	btnLoading.hidden = false;
+
+	try {
+		const data = new FormData(form);
+		const res = await fetch('https://api.web3forms.com/submit', {
+			method: 'POST',
+			body: data,
+		});
+		const json = await res.json();
+
+		if (json.success) {
+			form.reset();
+			successBox.hidden = false;
+			successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+		} else {
+			errorBox.hidden = false;
+		}
+	} catch {
+		errorBox.hidden = false;
+	} finally {
+		submitBtn.disabled = false;
+		btnLabel.hidden = false;
+		btnLoading.hidden = true;
+	}
+});
+
+// Clear error on input
+REQUIRED.forEach(({ id, errorId }) => {
+	const el = document.getElementById(id);
+	const err = document.getElementById(errorId);
+	el?.addEventListener('input', () => {
+		if (err) err.textContent = '';
+		el.setAttribute('aria-invalid', 'false');
+	});
+});
+</script>
 
 <style>
 	.contact-page {
 		padding-top: var(--space-10);
 		padding-bottom: var(--space-20);
+		max-width: 720px;
 	}
 
 	.contact-header {
@@ -28,5 +375,180 @@ import { iconSvg } from '../lib/icons';
 		flex-direction: column;
 		gap: var(--space-3);
 		margin-bottom: var(--space-10);
+	}
+
+	.contact-intro {
+		color: var(--text-secondary);
+		font-size: var(--text-md);
+		line-height: var(--leading-relaxed);
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-6);
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-6);
+	}
+
+	.form-field {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	label {
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--text-heading);
+	}
+
+	label span {
+		color: var(--navy);
+	}
+
+	input[type="text"],
+	input[type="email"],
+	select,
+	textarea {
+		width: 100%;
+		font-family: var(--font-body);
+		font-size: var(--text-base);
+		color: var(--ink);
+		background: var(--white);
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius);
+		padding: var(--space-3) var(--space-4);
+		transition: border-color 0.15s ease, box-shadow 0.15s ease;
+		appearance: none;
+		-webkit-appearance: none;
+	}
+
+	input::placeholder,
+	textarea::placeholder {
+		color: var(--text-muted);
+	}
+
+	input:focus,
+	select:focus,
+	textarea:focus {
+		outline: none;
+		border-color: var(--navy);
+		box-shadow: 0 0 0 3px var(--navy-100);
+	}
+
+	input[aria-invalid="true"],
+	select[aria-invalid="true"],
+	textarea[aria-invalid="true"] {
+		border-color: #c0392b;
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 140px;
+	}
+
+	.select-wrapper {
+		position: relative;
+	}
+
+	.select-wrapper::after {
+		content: '';
+		position: absolute;
+		right: var(--space-4);
+		top: 50%;
+		translate: 0 -50%;
+		width: 0;
+		height: 0;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 6px solid var(--ink-400);
+		pointer-events: none;
+	}
+
+	.select-wrapper select {
+		padding-right: var(--space-10);
+		cursor: pointer;
+	}
+
+	.field-error {
+		font-size: var(--text-sm);
+		color: #c0392b;
+		min-height: 1.2em;
+	}
+
+	.turnstile-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.form-actions {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.btn-submit {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2);
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--white);
+		background: var(--navy);
+		border: none;
+		border-radius: var(--radius-pill);
+		padding: var(--space-4) var(--space-8);
+		cursor: pointer;
+		transition: background 0.15s ease, opacity 0.15s ease;
+	}
+
+	.btn-submit:hover {
+		background: var(--navy-900);
+	}
+
+	.btn-submit:disabled {
+		opacity: 0.6;
+		cursor: default;
+	}
+
+	.form-feedback {
+		padding: var(--space-4) var(--space-5);
+		border-radius: var(--radius);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+	}
+
+	.form-feedback--success {
+		background: #edfaf3;
+		border: 1px solid #27ae60;
+		color: #1a6b3c;
+	}
+
+	.form-feedback--error {
+		background: #fdf2f1;
+		border: 1px solid #e74c3c;
+		color: #922b21;
+	}
+
+	.form-feedback--error a {
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	@media (max-width: 600px) {
+		.form-row {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

@@ -5,97 +5,49 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import HeroVideo from '../components/HeroVideo.astro';
+import PartnersBar from '../components/PartnersBar.astro';
 import VideoCard from '../components/VideoCard.astro';
+import AdPlacement from '../components/AdPlacement.astro';
 import { iconSvg } from '../lib/icons';
 
-const articles = (await getCollection('articles'))
+const allPublishedArticles = (await getCollection('articles'))
 	.filter((a) => a.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Articles section excludes News
+const articles = allPublishedArticles.filter((a) => a.data.category !== 'News');
 
 const videos = (await getCollection('videos'))
 	.filter((v) => v.data.published)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const [heroVideo, ...restVideos] = videos;
-// Lead video card + up to 4 secondary cards in the grid
-const leadVideo = restVideos[0];
-const gridVideos = restVideos.slice(1, 5);
-// Feature article (horizontal, prominent) + 3-column grid below
-const [featureArticle, ...gridArticles] = articles;
-const latestArticles = gridArticles.slice(0, 3);
+const heroEntries = await getCollection('hero');
+const heroEntry = heroEntries.find((h) => h.id === 'hero' && h.data.published);
+
+// All videos go into the video section
+const leadVideo = videos[0];
+const gridVideos = videos.slice(1, 3);
+const leadArticle = articles[0];
+const sideArticles = articles.slice(1, 3);
+const carouselVideos = videos.slice(0, 6);
+const visibleAds = (await getCollection('ads')).filter((ad) => ad.data.visible);
+const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.data.showOnHomepage);
+
+// News: articles in the News category, shuffled randomly at build time
+const newsArticles = allPublishedArticles.filter((a) => a.data.category === 'News');
+for (let i = newsArticles.length - 1; i > 0; i--) {
+	const j = Math.floor(Math.random() * (i + 1));
+	[newsArticles[i], newsArticles[j]] = [newsArticles[j], newsArticles[i]];
+}
+const carouselNews = newsArticles.slice(0, 6);
 ---
 
-{comingSoon ? (
-<html lang="fr">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Travel-Îles arrive bientôt. Voyages, saveurs, cultures et adresses à Maurice et dans les îles de l'océan Indien." />
-		<meta name="robots" content="noindex, nofollow" />
-		<title>Bientôt disponible — Travel-Îles</title>
-		<style is:inline>
-			@font-face {
-				font-family: 'Isidora';
-				src: url('/fonts/isidora-medium.otf') format('opentype');
-				font-weight: 500;
-				font-style: normal;
-				font-display: swap;
-			}
-			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-			body {
-				min-height: 100dvh;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				background: #ffffff;
-				font-family: 'Isidora', system-ui, sans-serif;
-				padding: 2rem;
-				text-align: center;
-			}
-			.wordmark {
-				margin-bottom: 3rem;
-			}
-			.wordmark img {
-				height: clamp(2rem, 6vw, 3.5rem);
-				width: auto;
-			}
-			.divider {
-				width: 3rem;
-				height: 2px;
-				background: #2b3a8f;
-				margin: 0 auto 2.5rem;
-			}
-			h1 {
-				font-size: clamp(1rem, 3vw, 1.25rem);
-				font-weight: 400;
-				letter-spacing: 0.15em;
-				text-transform: uppercase;
-				color: #2b3a8f;
-				margin-bottom: 1.25rem;
-			}
-			p { font-size: 1rem; line-height: 1.7; color: #444444; max-width: 36ch; margin: 0 auto; }
-		</style>
-	</head>
-	<body>
-		<div class="wordmark"><img src="/images/logo-travel-iles.png" alt="Travel-Îles" /></div>
-		<div class="divider"></div>
-		<h1>Bientôt disponible</h1>
-		<p>L’île Maurice comme vous ne l’avez jamais vue. Un nouveau regard sur l'océan Indien</p>
-	</body>
-</html>
-) : (
-<BaseLayout>
+<BaseLayout locale="fr" alternateUrl="/en/">
+	<!-- deploy -->
 	<!-- Hero -->
-	{heroVideo && (
+	{heroEntry && (
 		<section class="container-wide hero-section">
-			<div class="hero-header">
-				<span class="kicker">À la une · Vidéo</span>
-				<span class="meta hero-tagline">Le magazine vidéo de l'océan Indien</span>
-			</div>
-			<HeroVideo video={heroVideo} />
+			<HeroVideo hero={heroEntry} locale="fr" />
 		</section>
 	)}
 
@@ -103,7 +55,6 @@ const latestArticles = gridArticles.slice(0, 3);
 	<section class="container-wide section videos-section">
 		<div class="section-header">
 			<div class="section-header-left">
-				<span class="kicker">Vidéos</span>
 				<h2 class="section-title">Dernières vidéos</h2>
 			</div>
 			<a class="section-cta" href="/videos">
@@ -118,57 +69,185 @@ const latestArticles = gridArticles.slice(0, 3);
 				</div>
 				{gridVideos.length > 0 && (
 					<div class="videos-lead-grid">
-						{gridVideos.map((v) => <VideoCard video={v} />)}
+						{gridVideos.map((v) => <VideoCard video={v} size="sm" />)}
 					</div>
 				)}
 			</div>
 		)}
 	</section>
 
-	<!-- Feature article — editorial horizontal banner -->
-	{featureArticle && (
-		<section class="feature-band">
-			<div class="container-wide section feature-section">
-				<div class="feature-label">
-					<span class="kicker">En lecture</span>
-				</div>
-				<ArticleCard article={featureArticle} orientation="horizontal" size="lg" />
-			</div>
-		</section>
-	)}
+	{inlineAd && <Fragment><AdPlacement ad={inlineAd} locale="fr" /></Fragment>}
 
-	<!-- Articles grid -->
+	<!-- Articles: feature lead + grid -->
 	<section class="container-wide section articles-section">
 		<div class="section-header">
 			<div class="section-header-left">
-				<span class="kicker">Articles</span>
-				<h2 class="section-title">À lire</h2>
+				<h2 class="section-title">Articles</h2>
 			</div>
 			<a class="section-cta" href="/articles">
 				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
 			</a>
 		</div>
-		<div class="grid-3">
-			{latestArticles.map((article) => <ArticleCard article={article} />)}
-		</div>
+		{leadArticle && (
+			<div class="articles-lead">
+				<div class="articles-lead-card">
+					<ArticleCard article={leadArticle} size="lg" />
+				</div>
+				{sideArticles.length > 0 && (
+					<div class="articles-lead-grid">
+						{sideArticles.map((article) => <ArticleCard article={article} size="sm" orientation="vertical" />)}
+					</div>
+				)}
+			</div>
+		)}
 	</section>
+
+	<!-- News carousel -->
+	{carouselNews.length > 0 && (
+		<section class="container-wide section carousel-section" id="news-carousel">
+			<div class="section-header">
+				<div class="section-header-left">
+					<h2 class="section-title">News</h2>
+				</div>
+				<div class="carousel-arrows">
+					<button class="carousel-arrow news-prev" type="button" aria-label="Précédent">
+						<Fragment set:html={iconSvg('arrow-left', 20)} />
+					</button>
+					<button class="carousel-arrow news-next" type="button" aria-label="Suivant">
+						<Fragment set:html={iconSvg('arrow-right', 20)} />
+					</button>
+				</div>
+			</div>
+			<div class="carousel-track-wrapper">
+				<div class="carousel-track" id="news-track">
+					{carouselNews.map((a) => (
+						<div class="carousel-slide">
+							<ArticleCard article={a} />
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	<!-- Video carousel -->
+	{carouselVideos.length > 0 && (
+		<section class="container-wide section carousel-section">
+			<div class="section-header">
+				<div class="section-header-left">
+					<h2 class="section-title">À voir aussi</h2>
+				</div>
+				<div class="carousel-arrows">
+					<button class="carousel-arrow carousel-prev" type="button" aria-label="Précédent" data-dir="prev">
+						<Fragment set:html={iconSvg('arrow-left', 20)} />
+					</button>
+					<button class="carousel-arrow carousel-next" type="button" aria-label="Suivant" data-dir="next">
+						<Fragment set:html={iconSvg('arrow-right', 20)} />
+					</button>
+				</div>
+			</div>
+			<div class="carousel-track-wrapper">
+				<div class="carousel-track" id="video-track">
+					{carouselVideos.map((v) => (
+						<div class="carousel-slide">
+							<VideoCard video={v} />
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	<PartnersBar />
+
+<script>
+function setupCarousel() {
+	const track = document.querySelector<HTMLElement>('#video-track');
+	const prev = document.querySelector<HTMLButtonElement>('.carousel-prev');
+	const next = document.querySelector<HTMLButtonElement>('.carousel-next');
+	if (!track || !prev || !next) return;
+
+	const slides = track.querySelectorAll<HTMLElement>('.carousel-slide');
+	if (slides.length === 0) return;
+
+	let index = 0;
+
+	function visibleCount() {
+		const w = window.innerWidth;
+		if (w <= 560) return 1;
+		if (w <= 860) return 2;
+		return 3;
+	}
+
+	function maxIndex() {
+		return Math.max(0, slides.length - visibleCount());
+	}
+
+	function update() {
+		const slide = slides[0];
+		const gap = parseFloat(getComputedStyle(track).gap) || 0;
+		const offset = index * (slide.offsetWidth + gap);
+		track.style.transform = `translateX(-${offset}px)`;
+		prev.disabled = index === 0;
+		next.disabled = index >= maxIndex();
+	}
+
+	prev.addEventListener('click', () => { if (index > 0) { index--; update(); } });
+	next.addEventListener('click', () => { if (index < maxIndex()) { index++; update(); } });
+	window.addEventListener('resize', () => { index = Math.min(index, maxIndex()); update(); });
+	update();
+}
+
+document.addEventListener('astro:page-load', setupCarousel);
+setupCarousel();
+
+function setupNewsCarousel() {
+	const wrapper = document.querySelector<HTMLElement>('#news-carousel .carousel-track-wrapper');
+	const track = document.querySelector<HTMLElement>('#news-track');
+	const prev = document.querySelector<HTMLButtonElement>('.news-prev');
+	const next = document.querySelector<HTMLButtonElement>('.news-next');
+	if (!wrapper || !track || !prev || !next) return;
+
+	const slides = track.querySelectorAll<HTMLElement>('.carousel-slide');
+	if (slides.length === 0) return;
+
+	let index = 0;
+
+	function visibleCount() {
+		const w = window.innerWidth;
+		if (w <= 560) return 1;
+		if (w <= 860) return 2;
+		return 3;
+	}
+
+	function maxIndex() {
+		return Math.max(0, slides.length - visibleCount());
+	}
+
+	function update() {
+		const slide = slides[0];
+		const gap = parseFloat(getComputedStyle(track).gap) || 0;
+		const offset = index * (slide.offsetWidth + gap);
+		track.style.transform = `translateX(-${offset}px)`;
+		prev.disabled = index === 0;
+		next.disabled = index >= maxIndex();
+	}
+
+	prev.addEventListener('click', () => { if (index > 0) { index--; update(); } });
+	next.addEventListener('click', () => { if (index < maxIndex()) { index++; update(); } });
+	window.addEventListener('resize', () => { index = Math.min(index, maxIndex()); update(); });
+	update();
+}
+
+document.addEventListener('astro:page-load', setupNewsCarousel);
+setupNewsCarousel();
+</script>
 </BaseLayout>
 )}
 
 <style>
 	.hero-section {
 		padding-top: var(--space-10);
-	}
-
-	.hero-header {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		margin-bottom: var(--space-5);
-	}
-
-	.hero-tagline {
-		letter-spacing: 0.04em;
 	}
 
 	.section-header-left {
@@ -190,56 +269,84 @@ const latestArticles = gridArticles.slice(0, 3);
 		flex-shrink: 0;
 	}
 
-	/* Videos — large lead left (58%), stacked column right (42%) */
+	/* Videos — equal columns, with the side stack matching the lead image. */
 	.videos-section {
-		padding-bottom: var(--space-20);
+		padding-bottom: var(--space-10);
 	}
 
 	.videos-lead {
 		display: grid;
-		grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		gap: var(--space-8);
-		align-items: start;
+		align-items: stretch;
 	}
 
 	.videos-lead-grid {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr);
-		gap: var(--space-6);
-	}
-
-	/* Feature band */
-	.feature-band {
-		background: var(--navy-050);
-	}
-
-	.feature-section {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-6);
+		justify-content: space-between;
+		aspect-ratio: 16 / 9;
+		align-self: start;
 	}
 
 	/* Articles section */
 	.articles-section {
-		padding-top: var(--space-20);
+		padding-top: var(--space-8);
+		padding-bottom: var(--space-10);
+	}
+
+	.articles-lead {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: var(--space-8);
+		align-items: stretch;
+	}
+
+	.articles-lead-grid {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		aspect-ratio: 3 / 2;
+		align-self: start;
+	}
+
+	.articles-lead-grid :global(.article-card--sm) {
+		flex-direction: row;
+		gap: var(--space-4);
+		align-items: flex-start;
+	}
+
+	.articles-lead-grid :global(.article-card--sm .article-image) {
+		width: 45%;
+		flex-shrink: 0;
+	}
+
+	.articles-lead-grid :global(.article-card--sm .article-body) {
+		flex: 1;
+		min-width: 0;
 	}
 
 	@media (max-width: 860px) {
-		.videos-lead {
+		.videos-lead,
+		.articles-lead {
 			grid-template-columns: 1fr;
 		}
 
 		.videos-lead-grid {
+			display: grid;
 			grid-template-columns: 1fr 1fr;
+			gap: var(--space-6);
+			aspect-ratio: auto;
+		}
+
+		.articles-lead-grid {
+			flex-direction: row;
+			gap: var(--space-6);
+			aspect-ratio: auto;
 		}
 	}
 
 	@media (max-width: 640px) {
-		.hero-header {
-			flex-direction: column;
-			gap: var(--space-2);
-		}
-
 		.videos-lead-grid {
 			grid-template-columns: 1fr;
 		}
@@ -248,8 +355,71 @@ const latestArticles = gridArticles.slice(0, 3);
 			font-size: var(--text-lg);
 		}
 
-		.feature-section {
-			gap: var(--space-4);
+		.articles-lead-grid {
+			flex-direction: column;
+		}
+	}
+
+	/* Carousel */
+	.carousel-section {
+		padding-top: var(--space-8);
+		padding-bottom: var(--space-10);
+	}
+
+	.carousel-arrows {
+		display: flex;
+		gap: var(--space-2);
+		flex-shrink: 0;
+	}
+
+	.carousel-arrow {
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius-pill);
+		background: var(--white);
+		color: var(--ink);
+		cursor: pointer;
+		transition: all var(--dur-fast) var(--ease-out);
+	}
+
+	.carousel-arrow:hover:not(:disabled) {
+		background: var(--navy);
+		border-color: var(--navy);
+		color: var(--white);
+	}
+
+	.carousel-arrow:disabled {
+		opacity: 0.3;
+		cursor: default;
+	}
+
+	.carousel-track-wrapper {
+		overflow: hidden;
+	}
+
+	.carousel-track {
+		display: flex;
+		gap: var(--space-8);
+		transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+
+	.carousel-slide {
+		flex: 0 0 calc((100% - var(--space-8) * 2) / 3);
+		min-width: 0;
+	}
+
+	@media (max-width: 860px) {
+		.carousel-slide {
+			flex: 0 0 calc((100% - var(--space-8)) / 2);
+		}
+	}
+
+	@media (max-width: 560px) {
+		.carousel-slide {
+			flex: 0 0 100%;
 		}
 	}
 </style>

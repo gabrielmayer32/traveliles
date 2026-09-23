@@ -1,21 +1,26 @@
 ---
 import { slugifyCategory } from '../lib/utils';
+import { localizedCategory, type Locale } from '../lib/i18n';
 
 interface Props {
 	category: string;
 	variant?: 'plain' | 'solid' | 'outline' | 'overlay';
 	linked?: boolean;
+	locale?: Locale;
 }
 
-const { category, variant = 'plain', linked = true } = Astro.props;
-const href = `/articles/${slugifyCategory(category)}`;
+const { category, variant = 'plain', linked = true, locale = 'fr' } = Astro.props;
+const href = locale === 'en'
+	? `/en/articles/${slugifyCategory(category)}`
+	: `/articles/${slugifyCategory(category)}`;
+const label = localizedCategory(category, locale);
 ---
 
 {
 	linked ? (
-		<a class:list={['category-label', `category-label--${variant}`]} href={href}>{category}</a>
+		<a class:list={['category-label', `category-label--${variant}`]} href={href}>{label}</a>
 	) : (
-		<span class:list={['category-label', `category-label--${variant}`]}>{category}</span>
+		<span class:list={['category-label', `category-label--${variant}`]}>{label}</span>
 	)
 }
 

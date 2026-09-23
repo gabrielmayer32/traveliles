@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content';
+import { getVideoThumbnail } from '../lib/video';
 
 export async function GET() {
 	const articles = (await getCollection('articles'))
@@ -22,7 +23,7 @@ export async function GET() {
 			date: video.data.date.toISOString(),
 			url: `/videos/${video.id}`,
 			type: 'video',
-			thumbnail: video.data.thumbnail ?? null,
+			thumbnail: getVideoThumbnail(video.data.videoSource, video.data.videoId, video.data.thumbnail) ?? null,
 		}));
 
 	return new Response(JSON.stringify([...articles, ...videos]), {

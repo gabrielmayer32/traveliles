@@ -2,6 +2,14 @@
    TRAVEL-ÎLES — Design tokens & base styles
    ============================================================ */
 
+@font-face {
+	font-family: 'Isidora';
+	src: url('/fonts/isidora-medium.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* ---------- Colors ---------- */
 :root {
 	--navy-950: #141a3f;
@@ -57,8 +65,9 @@
 	);
 
 	/* ---------- Typography ---------- */
-	--font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-	--font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-display: 'Isidora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-logo: 'Isidora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-body: 'Isidora', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
 	--fw-normal: 400;
 	--fw-regular: 400;
@@ -94,7 +103,7 @@
 	--tracking-widest: 0.24em;
 
 	--display-title: var(--fw-medium) var(--text-6xl) / var(--leading-tight) var(--font-display);
-	--kicker-size: var(--text-xs);
+	--kicker-size: var(--text-sm);
 	--kicker-tracking: var(--tracking-wider);
 
 	/* ---------- Spacing ---------- */
@@ -114,6 +123,7 @@
 	--max-width: 72rem;
 	--max-width-wide: 84rem;
 	--prose-width: 44rem;
+	--editorial-width: 62rem;
 	--gutter: 1.25rem;
 
 	--radius-none: 0;
@@ -155,7 +165,9 @@ html {
 
 body {
 	margin: 0;
-	min-height: 100vh;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
 	background: var(--surface-page);
 	color: var(--text-body);
 	font-family: var(--font-body);
@@ -213,6 +225,10 @@ textarea {
 }
 
 /* ---------- Layout ---------- */
+main {
+	flex: 1;
+}
+
 .container {
 	width: min(100% - (2 * var(--gutter)), var(--max-width));
 	margin-inline: auto;
@@ -276,7 +292,7 @@ textarea {
 
 .page-title {
 	max-width: 20ch;
-	font-size: clamp(var(--text-4xl), 9vw, var(--text-6xl));
+	font-size: clamp(2rem, 5vw, 3.5rem);
 	line-height: var(--leading-none);
 }
 

@@ -1,0 +1,32 @@
+import { getCollection } from 'astro:content';
+import { getVideoThumbnail } from '../../lib/video';
+
+export async function GET() {
+	const articles = (await getCollection('articles_en'))
+		.filter((a) => a.data.published && !!a.data.title)
+		.map((a) => ({
+			title: a.data.title,
+			excerpt: a.data.excerpt,
+			category: a.data.category,
+			date: a.data.date.toISOString(),
+			url: `/en/articles/${a.id}`,
+			type: 'article',
+			cover: a.data.cover ?? null,
+		}));
+
+	const videos = (await getCollection('videos_en'))
+		.filter((v) => v.data.published)
+		.map((v) => ({
+			title: v.data.title,
+			excerpt: v.data.excerpt,
+			category: v.data.category,
+			date: v.data.date.toISOString(),
+			url: `/en/videos/${v.id}`,
+			type: 'video',
+			thumbnail: getVideoThumbnail(v.data.videoSource, v.data.videoId, v.data.thumbnail) ?? null,
+		}));
+
+	return new Response(JSON.stringify([...articles, ...videos]), {
+		headers: { 'Content-Type': 'application/json; charset=utf-8' },
+	});
+}

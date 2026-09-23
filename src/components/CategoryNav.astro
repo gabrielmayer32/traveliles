@@ -1,0 +1,230 @@
+---
+import { RUBRIQUES, getCategoryScope, slugifyCategory, type Category } from '../lib/utils';
+import { localizedCategory, type Locale } from '../lib/i18n';
+import { iconSvg } from '../lib/icons';
+
+interface Props {
+	active?: Category;
+	locale?: Locale;
+	mode?: 'links' | 'filters';
+	ariaLabel?: string;
+}
+
+const {
+	active,
+	locale = 'fr',
+	mode = 'links',
+	ariaLabel = locale === 'en' ? 'Filter by section' : 'Filtrer par rubrique',
+} = Astro.props;
+
+const basePath = locale === 'en' ? '/en/articles' : '/articles';
+const allLabel = locale === 'en' ? 'All' : 'Toutes';
+const levelUpLabel = locale === 'en' ? 'Sections' : 'Rubriques';
+const activeBranch = active
+	? RUBRIQUES.find((group) => group.children && (group.label === active || group.children.includes(active)))
+	: undefined;
+const levelUpHref = active && activeBranch?.children?.includes(active)
+	? `${basePath}/${slugifyCategory(activeBranch.label)}`
+	: basePath;
+---
+
+<nav class="category-nav" aria-label={ariaLabel} data-category-nav>
+	<div class="category-level category-level--primary" data-primary-level hidden={!!activeBranch}>
+		{mode === 'filters' ? (
+			<button class:list={['chip', { 'chip--active': !active }]} type="button" data-categories="all">{allLabel}</button>
+		) : (
+			<a class="chip" href={basePath}>{allLabel}</a>
+		)}
+
+		{RUBRIQUES.map((group) => {
+			const parentActive = active === group.label;
+			const parentClasses = ['chip', 'chip--parent', { 'chip--active': parentActive }];
+			const parentLabel = localizedCategory(group.label, locale);
+			const parentHref = `${basePath}/${slugifyCategory(group.label)}`;
+
+			return mode === 'filters' ? (
+				<button
+					class:list={parentClasses}
+					type="button"
+					data-categories={getCategoryScope(group.label).join('|')}
+					data-branch={group.children ? group.label : undefined}
+				>
+					{parentLabel}
+				</button>
+			) : (
+				<a
+					class:list={parentClasses}
+					href={parentHref}
+					aria-current={parentActive ? 'page' : undefined}
+				>
+					{parentLabel}
+				</a>
+			);
+		})}
+	</div>
+
+	{RUBRIQUES.filter((group) => group.children).map((group) => {
+		const branchActive = activeBranch?.label === group.label;
+		const parentLabel = localizedCategory(group.label, locale);
+		return (
+			<div
+				class="category-level category-level--children"
+				data-child-level={group.label}
+				aria-label={`${parentLabel} — ${locale === 'en' ? 'subsections' : 'sous-rubriques'}`}
+				hidden={!branchActive}
+			>
+				{mode === 'filters' ? (
+					<button class="chip chip--back" type="button" data-categories="all" data-nav-back>
+						<Fragment set:html={iconSvg('arrow-left', 14)} />
+						{levelUpLabel}
+					</button>
+				) : (
+					<a class="chip chip--back" href={levelUpHref}>
+						<Fragment set:html={iconSvg('arrow-left', 14)} />
+						{levelUpLabel}
+					</a>
+				)}
+
+				{mode === 'filters' ? (
+					<button
+						class:list={['chip', 'chip--parent', { 'chip--active': active === group.label }]}
+						type="button"
+						data-categories={getCategoryScope(group.label).join('|')}
+						data-parent={group.label}
+					>
+						{parentLabel}
+					</button>
+				) : (
+					<a
+						class:list={['chip', 'chip--parent', { 'chip--active': active === group.label }]}
+						href={`${basePath}/${slugifyCategory(group.label)}`}
+						aria-current={active === group.label ? 'page' : undefined}
+					>
+						{parentLabel}
+					</a>
+				)}
+
+				{group.children!.map((child) => {
+					const childLabel = localizedCategory(child, locale);
+					const childClasses = ['chip', 'chip--child', { 'chip--active': child === active }];
+					return mode === 'filters' ? (
+						<button
+							class:list={childClasses}
+							type="button"
+							data-categories={child}
+							data-parent={group.label}
+						>
+							{childLabel}
+						</button>
+					) : (
+						<a
+							class:list={childClasses}
+							href={`${basePath}/${slugifyCategory(child)}`}
+							aria-current={child === active ? 'page' : undefined}
+						>
+							{childLabel}
+						</a>
+					);
+				})}
+			</div>
+		);
+	})}
+</nav>
+
+<script>
+	function setupCategoryNav() {
+		document.querySelectorAll<HTMLElement>('[data-category-nav]').forEach((nav) => {
+			if (nav.dataset.ready === 'true') return;
+			nav.dataset.ready = 'true';
+
+			nav.addEventListener('click', (event) => {
+				const control = (event.target as Element).closest<HTMLElement>('button.chip');
+				if (!control || !nav.contains(control)) return;
+
+				const primaryLevel = nav.querySelector<HTMLElement>('[data-primary-level]');
+				const childLevels = nav.querySelectorAll<HTMLElement>('[data-child-level]');
+
+				if (control.hasAttribute('data-nav-back')) {
+					if (primaryLevel) primaryLevel.hidden = false;
+					childLevels.forEach((level) => { level.hidden = true; });
+					nav.querySelectorAll('.chip').forEach((chip) => chip.classList.remove('chip--active'));
+					primaryLevel?.querySelector<HTMLElement>('[data-categories="all"]')?.classList.add('chip--active');
+					return;
+				}
+
+				const branch = control.dataset.branch;
+				if (!branch) return;
+				if (primaryLevel) primaryLevel.hidden = true;
+				childLevels.forEach((level) => {
+					level.hidden = level.dataset.childLevel !== branch;
+				});
+
+				const activeLevel = Array.from(childLevels).find((level) => level.dataset.childLevel === branch);
+				activeLevel?.querySelector<HTMLElement>('[data-parent]')?.classList.add('chip--active');
+			});
+		});
+	}
+
+	document.addEventListener('astro:page-load', setupCategoryNav);
+	setupCategoryNav();
+</script>
+
+<style>
+	.category-nav {
+		margin-bottom: var(--space-10);
+	}
+
+	.category-level {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.category-level[hidden] {
+		display: none;
+	}
+
+	.chip {
+		appearance: none;
+		font-family: var(--font-body);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-secondary);
+		background: transparent;
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-pill);
+		padding: 0.55em 1.05em;
+		cursor: pointer;
+		transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+		white-space: nowrap;
+		text-decoration: none;
+	}
+
+	.chip:hover {
+		color: var(--navy);
+		border-color: var(--navy);
+	}
+
+	.chip--active {
+		background: var(--navy);
+		color: var(--white);
+		border-color: var(--navy);
+	}
+
+	.chip--active:hover {
+		background: var(--navy-900);
+		border-color: var(--navy-900);
+		color: var(--white);
+	}
+
+	.chip--back {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45em;
+		color: var(--navy);
+		border-color: var(--navy-300);
+	}
+</style>

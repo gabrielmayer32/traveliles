@@ -1,139 +1,104 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from '../lib/utils';
-import CategoryLabel from './CategoryLabel.astro';
+import type { Locale } from '../lib/i18n';
 import { iconSvg } from '../lib/icons';
 
 interface Props {
-	video: CollectionEntry<'videos'>;
+	hero: CollectionEntry<'hero'>;
+	locale?: Locale;
 }
 
-const { video } = Astro.props;
-const href = `/videos/${video.id}`;
-const { videoSource, videoId, title, excerpt, category, date } = video.data;
-
-const embedSrc = {
-	youtube: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3&disablekb=1&end_screen=0`,
-	vimeo: `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&loop=1&background=1&title=0&byline=0&portrait=0`,
-	facebook: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoId)}&autoplay=true&mute=true`,
-	instagram: `https://www.instagram.com/reel/${videoId}/embed/`,
-}[videoSource];
-
-const thumbnail = video.data.thumbnail ?? (
-	videoSource === 'youtube'
-		? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-		: undefined
-);
+const { hero, locale = 'fr' } = Astro.props;
+const { title, label, excerpt, videoFile, poster } = hero.data;
+const tagline = locale === 'en'
+	? 'A new perspective on the Indian Ocean'
+	: "Un nouveau regard sur l'océan Indien";
 ---
 
-<section class="hero-video" data-embed-src={embedSrc}>
+<section class="hero-video">
 	<div class="hero-media">
-		{thumbnail && <img class="hero-poster" src={thumbnail} alt="" />}
-		<div class="hero-iframe-slot"></div>
+		{poster && <img class="hero-poster" src={poster} alt="" fetchpriority="high" />}
+		<video
+			class="hero-r2"
+			src={videoFile}
+			poster={poster}
+			autoplay
+			muted
+			loop
+			playsinline
+			preload="auto"
+			aria-hidden="true"
+		/>
+		<button
+			class="hero-play"
+			type="button"
+			aria-label={locale === 'en' ? 'Play the featured video' : 'Lire la vidéo à la une'}
+			hidden
+		>
+			<Fragment set:html={iconSvg('play', 28)} />
+		</button>
 	</div>
 	<div class="hero-scrim"></div>
-	<div class="hero-overlay container-wide">
-		<CategoryLabel category={category} variant="overlay" linked={false} />
-		<h2 class="hero-title"><a href={href}>{title}</a></h2>
-		{excerpt && <p class="hero-excerpt">{excerpt}</p>}
-		<div class="meta hero-meta">{formatDate(date)}</div>
-	</div>
+	{(title || label || excerpt) && (
+		<div class="hero-overlay">
+			{label && <span class="hero-label">{label}</span>}
+			{title && <h2 class="hero-title">{title}</h2>}
+			<p class="hero-tagline">{tagline}</p>
+			{excerpt && <p class="hero-excerpt">{excerpt}</p>}
+		</div>
+	)}
 </section>
 
 <script>
-	function initHeroVideo() {
-		const hero = document.querySelector<HTMLElement>('.hero-video');
-		if (!hero || hero.dataset.heroReady === 'true') return;
-		hero.dataset.heroReady = 'true';
+	function initHeroVideos() {
+		document.querySelectorAll<HTMLElement>('.hero-video').forEach((hero) => {
+			if (hero.dataset.videoReady === 'true') return;
+			hero.dataset.videoReady = 'true';
 
-		const slot = hero.querySelector<HTMLElement>('.hero-iframe-slot');
-		const poster = hero.querySelector<HTMLImageElement>('.hero-poster');
-		const embedSrc = hero.dataset.embedSrc;
-		if (!slot || !embedSrc) return;
+			const video = hero.querySelector<HTMLVideoElement>('.hero-r2');
+			const poster = hero.querySelector<HTMLImageElement>('.hero-poster');
+			const playButton = hero.querySelector<HTMLButtonElement>('.hero-play');
+			if (!video || !playButton) return;
 
-		function injectIframe() {
-			if (slot.querySelector('iframe')) return;
-			const iframe = document.createElement('iframe');
-			iframe.className = 'hero-iframe';
-			iframe.src = embedSrc!;
-			iframe.title = 'Vidéo Travel-Îles';
-			iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-			iframe.allowFullscreen = true;
-			slot.appendChild(iframe);
-
-			// Non-YouTube: fade poster on iframe load (no API available)
-			if (!embedSrc!.includes('youtube.com') && poster) {
-				iframe.addEventListener('load', () => {
-					setTimeout(() => poster.classList.add('loaded'), 800);
-				});
+			function showPlayingVideo() {
+				poster?.classList.add('is-playing');
+				playButton!.hidden = true;
 			}
 
-			// Use YouTube IFrame API to hide poster only when playing, and loop on end
-			if (embedSrc!.includes('youtube.com')) {
-				function attachYTPlayer() {
-					const player = new (window as any).YT.Player(iframe, {
-						events: {
-							onStateChange(event: any) {
-								const PLAYING = 1;
-								const ENDED = 0;
-								if (event.data === PLAYING) {
-									// Video is actually running — now safe to hide poster
-									if (poster) poster.classList.add('loaded');
-								} else if (event.data === ENDED) {
-									// Cover end screen with poster instantly, seek & replay
-									if (poster) {
-										poster.style.transition = 'none';
-										poster.style.opacity = '1';
-										poster.style.pointerEvents = 'none';
-									}
-									player.seekTo(0);
-									player.playVideo();
-									// Fade poster out again once playback resumes
-									setTimeout(() => {
-										if (poster) {
-											poster.style.transition = '';
-											poster.style.opacity = '0';
-										}
-									}, 800);
-								}
-							}
-						}
-					});
-				}
-
-				if ((window as any).YT && (window as any).YT.Player) {
-					attachYTPlayer();
-				} else {
-					const prev = (window as any).onYouTubeIframeAPIReady;
-					(window as any).onYouTubeIframeAPIReady = function() {
-						if (prev) prev();
-						attachYTPlayer();
-					};
-					if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
-						const tag = document.createElement('script');
-						tag.src = 'https://www.youtube.com/iframe_api';
-						document.head.appendChild(tag);
-					}
+			async function startPlayback() {
+				video!.muted = true;
+				video!.playsInline = true;
+				try {
+					await video!.play();
+					if (!video!.paused && video!.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) showPlayingVideo();
+				} catch {
+					playButton!.hidden = false;
 				}
 			}
-		}
 
-		const consent = localStorage.getItem('ti-cookies');
-		if (consent === 'accepted') {
-			injectIframe();
-		} else {
-			document.addEventListener('ti:cookies-accepted', () => injectIframe(), { once: true });
-		}
+			video.addEventListener('playing', showPlayingVideo);
+			video.addEventListener('canplay', () => void startPlayback(), { once: true });
+			playButton.addEventListener('click', () => void startPlayback());
+
+			// The autoplay event can fire before this script runs on fast mobile loads.
+			if (!video.paused && video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+				showPlayingVideo();
+			} else {
+				void startPlayback();
+				setTimeout(() => {
+					if (video.paused) playButton.hidden = false;
+				}, 2000);
+			}
+		});
 	}
 
-	document.addEventListener('astro:page-load', initHeroVideo);
-	initHeroVideo();
+	document.addEventListener('astro:page-load', initHeroVideos);
+	initHeroVideos();
 </script>
 
 <style>
 	.hero-video {
 		position: relative;
-		background: var(--navy-950);
 		overflow: hidden;
 		border-radius: var(--radius-sm);
 	}
@@ -141,6 +106,7 @@ const thumbnail = video.data.thumbnail ?? (
 	.hero-media {
 		position: relative;
 		height: clamp(420px, 62vh, 640px);
+		background: var(--navy-950);
 	}
 
 	.hero-poster {
@@ -149,32 +115,44 @@ const thumbnail = video.data.thumbnail ?? (
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		z-index: 3;
-		transition: opacity 800ms var(--ease-out);
+		z-index: 2;
+		transition: opacity 0.4s ease;
 	}
 
-	.hero-poster.loaded {
+	.hero-poster.is-playing {
 		opacity: 0;
 		pointer-events: none;
 	}
 
-	.hero-iframe-slot {
+	.hero-r2 {
 		position: absolute;
 		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 		z-index: 1;
 	}
 
-	.hero-iframe-slot :global(.hero-iframe) {
+	.hero-play {
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 100vw;
-		min-width: 100%;
-		height: 56.25vw;
-		min-height: 100%;
+		inset: 50% auto auto 50%;
+		z-index: 6;
+		display: grid;
+		width: 4rem;
+		height: 4rem;
+		padding: 0 0 0 0.2rem;
+		place-items: center;
+		transform: translate(-50%, -50%);
 		border: 0;
-		pointer-events: none;
-		transform: translate(-50%, -50%) scale(1.25);
+		border-radius: var(--radius-pill);
+		background: var(--white);
+		color: var(--navy);
+		box-shadow: var(--shadow-lg);
+		cursor: pointer;
+	}
+
+	.hero-play[hidden] {
+		display: none;
 	}
 
 	.hero-scrim {
@@ -192,30 +170,33 @@ const thumbnail = video.data.thumbnail ?? (
 
 	.hero-overlay {
 		position: absolute;
-		left: 0;
-		right: 0;
+		left: clamp(1.5rem, 4vw, 3rem);
+		right: clamp(1.5rem, 4vw, 3rem);
 		bottom: 0;
 		z-index: 5;
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-4);
+		gap: var(--space-2);
 		padding-bottom: clamp(1.5rem, 4vw, 3rem);
-		max-width: 52rem;
+		max-width: 68rem;
 	}
 
-	.hero-title {
-		font-size: clamp(2rem, 5vw, 3.75rem);
-		line-height: var(--leading-tight);
-		text-wrap: balance;
+	.hero-label {
+		display: inline-block;
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.7);
 	}
 
-	.hero-title a {
+	.hero-title,
+	.hero-tagline {
+		font-family: var(--font-display);
+		font-weight: var(--fw-medium);
+		font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+		line-height: var(--leading-snug);
 		color: var(--white);
-	}
-
-	.hero-title a:hover {
-		text-decoration: underline;
-		text-underline-offset: 0.15em;
 	}
 
 	.hero-excerpt {
@@ -223,10 +204,6 @@ const thumbnail = video.data.thumbnail ?? (
 		font-size: var(--text-lg);
 		line-height: var(--leading-normal);
 		max-width: 40rem;
-	}
-
-	.hero-meta {
-		color: rgba(255, 255, 255, 0.78);
 	}
 
 	@media (max-width: 640px) {

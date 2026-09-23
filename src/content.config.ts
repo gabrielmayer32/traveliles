@@ -2,45 +2,124 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const categoryEnum = z.enum([
-	'Un visage, une histoire',
-	'Les gardiens du Savoir Faire',
-	'24heures avec....',
-	'Maurice demain',
-	"Mémoires de l'Île",
-	'Saveurs',
+	'Rencontres',
+	'Nos Ambassadeurs',
 	'Nos régions',
-	'Art & culture',
-	'Activités & événements',
-	'Nos Ambassadeurs régionaux',
-	'Nos adresses',
+	'Savoir-faire',
+	'Héritage',
+	'Maurice demain',
+	"Mémoires d'îles",
+	'Saveurs',
+	'Art & Culture',
+	'Activités & Événements',
+	'News',
+	'Nos archives',
 ]);
 
+const articleSchema = z.object({
+	title: z.string(),
+	date: z.coerce.date(),
+	category: categoryEnum,
+	cover: z.string().optional(),
+	excerpt: z.string(),
+	author: z.string().default('Travel-Îles'),
+	tags: z.array(z.string()).default([]),
+	published: z.boolean().default(true),
+});
+
+const videoSchema = z.object({
+	title: z.string(),
+	date: z.coerce.date(),
+	category: categoryEnum,
+	videoSource: z.enum(['youtube', 'vimeo', 'facebook', 'instagram', 'r2']),
+	videoId: z.string().optional(),
+	videoFile: z.string().optional(),
+	thumbnail: z.string().optional(),
+	excerpt: z.string(),
+	published: z.boolean().default(true),
+});
+
+const heroSchema = z.object({
+	title: z.string(),
+	label: z.string().optional(),
+	excerpt: z.string().optional(),
+	videoFile: z.string(),
+	poster: z.string().optional(),
+	published: z.boolean().default(true),
+});
+
+const partnersSchema = z.object({
+	partners: z.array(z.object({
+		name: z.string(),
+		logo: z.string(),
+		url: z.string().optional(),
+	})).default([]),
+});
+
+const adSchema = z.object({
+	title: z.string(),
+	titleEn: z.string().optional(),
+	label: z.string().default('Publicité'),
+	image: z.string().optional(),
+	url: z.string().optional(),
+	cta: z.string().optional(),
+	ctaEn: z.string().optional(),
+	placement: z.enum(['sidebar', 'inline', 'floating', 'popup']),
+	visible: z.boolean().default(false),
+	showOnHomepage: z.boolean().default(false),
+	showOnArticles: z.boolean().default(false),
+	showOnVideos: z.boolean().default(false),
+	showOnListings: z.boolean().default(false),
+});
+
+const hero = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/hero' }),
+	schema: heroSchema,
+});
+
 const articles = defineCollection({
-	loader: glob({ pattern: '*.md', base: './src/content/articles' }),
-	schema: z.object({
-		title: z.string(),
-		date: z.coerce.date(),
-		category: categoryEnum,
-		cover: z.string().optional(),
-		excerpt: z.string(),
-		author: z.string().default('Travel-Îles'),
-		tags: z.array(z.string()).default([]),
-		published: z.boolean().default(true),
-	}),
+	loader: glob({ pattern: '*.md', base: './src/content/articles/fr' }),
+	schema: articleSchema,
+});
+
+const articles_en = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/articles/en' }),
+	schema: articleSchema,
 });
 
 const videos = defineCollection({
-	loader: glob({ pattern: '*.md', base: './src/content/videos' }),
-	schema: z.object({
-		title: z.string(),
-		date: z.coerce.date(),
-		category: categoryEnum,
-		videoSource: z.enum(['youtube', 'vimeo', 'facebook', 'instagram']),
-		videoId: z.string(),
-		thumbnail: z.string().optional(),
-		excerpt: z.string(),
-		published: z.boolean().default(true),
-	}),
+	loader: glob({ pattern: '*.md', base: './src/content/videos/fr' }),
+	schema: videoSchema,
 });
 
-export const collections = { articles, videos };
+const videos_en = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/videos/en' }),
+	schema: videoSchema,
+});
+
+const partners = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/partners' }),
+	schema: partnersSchema,
+});
+
+const ads = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/ads' }),
+	schema: adSchema,
+});
+
+const pagesSchema = z.object({
+	title: z.string().optional(),
+	email: z.string().optional(),
+});
+
+const pages_fr = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/pages/fr' }),
+	schema: pagesSchema,
+});
+
+const pages_en = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/pages/en' }),
+	schema: pagesSchema,
+});
+
+export const collections = { articles, articles_en, videos, videos_en, hero, partners, ads, pages_fr, pages_en };

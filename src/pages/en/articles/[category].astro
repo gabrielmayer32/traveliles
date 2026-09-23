@@ -1,0 +1,101 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import CategoryNav from '../../../components/CategoryNav.astro';
+import VideoCard from '../../../components/VideoCard.astro';
+import { CATEGORIES, getCategoryParent, getCategoryScope, slugifyCategory, type Category } from '../../../lib/utils';
+import { t, localizedCategory } from '../../../lib/i18n';
+
+const locale = 'en' as const;
+
+export function getStaticPaths() {
+	return CATEGORIES.map((category) => ({
+		params: { category: slugifyCategory(category) },
+		props: { category },
+	}));
+}
+
+const { category } = Astro.props as { category: Category };
+const parentCategory = getCategoryParent(category);
+const categoryScope = getCategoryScope(category);
+
+const articles = (await getCollection('articles_en'))
+	.filter((a) => a.data.published && !!a.data.title && categoryScope.includes(a.data.category))
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const videos = (await getCollection('videos_en'))
+	.filter((video) => video.data.published && categoryScope.includes(video.data.category))
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 4);
+
+const displayCategory = localizedCategory(category, locale);
+---
+
+<BaseLayout title={displayCategory} description={`Travel-Îles — ${displayCategory}.`} locale={locale} alternateUrl={`/articles/${slugifyCategory(category)}`}>
+	<section class="container-wide listing-page">
+		<header class="listing-header">
+			{parentCategory ? (
+				<div class="category-context">
+					<a href={`/en/articles/${slugifyCategory(parentCategory)}`}>{localizedCategory(parentCategory, locale)}</a>
+					<span aria-hidden="true">/</span>
+					<span>Subsection</span>
+				</div>
+			) : (
+				<span class="kicker">Section</span>
+			)}
+			<h1 class="page-title">{displayCategory}</h1>
+		</header>
+
+		<CategoryNav active={category} locale={locale} />
+
+		{category === 'Nos archives' ? (
+			<section class="listing-section listing-section--intro">
+				<div class="archives-intro">
+					<p>Since April 1994, Côte Nord Magazine has been telling the story of Mauritius through its places, people, initiatives and the individuals who have helped shape the island over the years. Its pages have followed the evolution of tourism, hospitality, gastronomy, culture and Mauritian society, while highlighting stories, professions and personalities that might otherwise have faded from view.</p>
+					<p>Through this section, Travel-Îles opens its archives and invites readers to rediscover a selection of articles published since the very first issue. A reflection of their time, these texts and images offer a distinctive perspective on Mauritius, its evolution, ambitions and way of life, while often looking beyond its shores to the islands and destinations of the Indian Ocean.</p>
+					<p>More than thirty years later, some stories still feel remarkably current, while others reveal just how much the island has changed. Together, they form a living record of Mauritius and of the human, cultural and tourism stories that have shaped its identity.</p>
+				</div>
+			</section>
+		) : (
+			<section class="listing-section">
+				<h2 class="subsection-title">Latest videos</h2>
+				{videos.length > 0 ? (
+					<div class="grid-4">
+						{videos.map((video) => <VideoCard video={video} locale={locale} />)}
+					</div>
+				) : (
+					<p class="empty-state empty-state--compact">No videos in this section yet.</p>
+				)}
+			</section>
+		)}
+
+		<section class="listing-section">
+			<h2 class="subsection-title">Articles</h2>
+			{articles.length > 0 ? (
+				<div class="grid-3">
+					{articles.map((article) => <ArticleCard article={article} locale={locale} />)}
+				</div>
+			) : (
+				<p class="empty-state">{t('listing.empty', locale)}</p>
+			)}
+		</section>
+	</section>
+</BaseLayout>
+
+<style>
+	.listing-page { padding-top: var(--space-12); padding-bottom: var(--space-16); }
+	.listing-header { display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-8); border-bottom: 1px solid var(--border-strong); margin-bottom: var(--space-8); }
+	.listing-header .page-title { font-size: clamp(2rem, 5vw, 3.5rem); }
+	.category-context { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--text-muted); }
+	.category-context a { color: var(--navy); }
+	.listing-section { padding-top: var(--space-12); }
+	.listing-section + .listing-section { margin-top: var(--space-12); padding-top: var(--space-12); border-top: 1px solid var(--border-subtle); }
+	.subsection-title { margin-bottom: var(--space-8); font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl)); }
+	.empty-state { text-align: center; color: var(--text-muted); font-size: var(--text-lg); padding: var(--space-16) 0; }
+	.empty-state--compact { padding: var(--space-8) 0; }
+	.listing-section--intro { padding-top: var(--space-8); }
+	.archives-intro { max-width: 72ch; }
+	.archives-intro p { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--text-muted); margin-bottom: var(--space-5); }
+	.archives-intro p:last-child { margin-bottom: 0; }
+</style>

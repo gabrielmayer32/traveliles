@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { iconSvg } from '../../lib/icons';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages_en', 'a-propos');
+const { Content } = entry ? await render(entry) : { Content: null };
+const title = entry?.data.title ?? 'About';
+---
+
+<BaseLayout title={title} description="About Travel-Îles." locale="en" alternateUrl="/a-propos">
+	<section class="container-wide about-page">
+		<header class="about-header">
+			<span class="kicker">About</span>
+			<h1 class="page-title">{title}</h1>
+		</header>
+
+		<div class="prose about-prose">
+			{Content ? <Content /> : null}
+		</div>
+
+		<div class="about-cta">
+			<a class="btn-primary" href="/en/contact">
+				Write to us <Fragment set:html={iconSvg('mail', 16)} />
+			</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.about-page { padding-top: var(--space-16); padding-bottom: var(--space-20); }
+	.about-header { display: flex; flex-direction: column; gap: var(--space-5); margin-bottom: var(--space-10); }
+	.about-prose { max-width: var(--prose-width); }
+	.about-cta { margin-top: var(--space-12); }
+	.btn-primary { display: inline-flex; align-items: center; gap: 0.5em; font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--white); background: var(--navy); border: none; border-radius: var(--radius-xs); padding: 0.85em 1.6em; transition: background var(--dur-fast) var(--ease-out); }
+	.btn-primary:hover { background: var(--navy-900); }
+</style>

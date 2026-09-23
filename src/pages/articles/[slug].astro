@@ -3,27 +3,46 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../components/CategoryLabel.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import AdPlacement from '../../components/AdPlacement.astro';
 import { formatDate } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
+import { normalizeTags } from '../../lib/tags';
 
 export async function getStaticPaths() {
-	const articles = (await getCollection('articles')).filter((a) => a.data.published);
+	const articles = (await getCollection('articles')).filter((article) => article.data.published);
+	const enArticles = await getCollection('articles_en');
 	return articles.map((article) => ({
 		params: { slug: article.id },
-		props: { article },
+		props: { article, hasEn: enArticles.some((e) => e.id === article.id && e.data.published && !!e.data.title) },
 	}));
 }
 
-const { article } = Astro.props;
+const { article, hasEn } = Astro.props;
 const { Content } = await render(article);
+const alternateUrl = hasEn ? `/en/articles/${article.id}` : undefined;
+const tags = normalizeTags(article.data.tags);
+
+const articleSchema = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: article.data.title,
+	description: article.data.excerpt,
+	datePublished: article.data.date.toISOString(),
+	author: { '@type': 'Person', name: article.data.author },
+	publisher: { '@type': 'Organization', name: 'Travel-Îles', url: Astro.site?.href },
+	...(article.data.cover ? { image: new URL(article.data.cover, Astro.site).href } : {}),
+	url: new URL(Astro.url.pathname, Astro.site).href,
+});
 
 const allArticles = (await getCollection('articles'))
 	.filter((a) => a.data.published && a.id !== article.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const related = allArticles.slice(0, 3);
+const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnArticles);
 ---
 
-<BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover}>
+<BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover} locale="fr" alternateUrl={alternateUrl}>
+	<script type="application/ld+json" set:html={articleSchema} />
 	<article>
 		<!-- Back link -->
 		<div class="back-wrap">
@@ -49,7 +68,7 @@ const related = allArticles.slice(0, 3);
 		{article.data.cover && (
 			<figure class="article-figure">
 				<div class="article-cover">
-					<img src={article.data.cover} alt="" />
+					<img src={article.data.cover} alt={article.data.title} />
 				</div>
 				<figcaption class="meta article-caption">
 					{article.data.category} · Travel-Îles
@@ -57,18 +76,20 @@ const related = allArticles.slice(0, 3);
 			</figure>
 		)}
 
-		<!-- Body — lead paragraph + prose at 40rem -->
+		{inlineAd && <AdPlacement ad={inlineAd} locale="fr" compact />}
+
+		<!-- Body — shared editorial reading width -->
 		<div class="article-body">
 			<div class="prose article-prose">
 				<Content />
 			</div>
 
 			<!-- Tags footer — ruled -->
-			{article.data.tags.length > 0 && (
+			{tags.length > 0 && (
 				<div class="tags-footer">
 					<span class="kicker tags-kicker">Sujets</span>
 					<div class="tags">
-						{article.data.tags.map((tag) => (
+						{tags.map((tag) => (
 							<span class="tag">{tag}</span>
 						))}
 					</div>
@@ -92,7 +113,7 @@ const related = allArticles.slice(0, 3);
 <style>
 	/* Back link */
 	.back-wrap {
-		width: min(100% - 2.5rem, 46rem);
+		width: min(100% - 2.5rem, var(--editorial-width));
 		margin: 0 auto;
 		padding-top: var(--space-8);
 	}
@@ -114,7 +135,7 @@ const related = allArticles.slice(0, 3);
 
 	/* Title block — left-aligned, editorial */
 	.article-header {
-		width: min(100% - 2.5rem, 46rem);
+		width: min(100% - 2.5rem, var(--editorial-width));
 		margin: 0 auto;
 		text-align: left;
 		display: flex;
@@ -136,7 +157,7 @@ const related = allArticles.slice(0, 3);
 		font-size: var(--text-lg);
 		line-height: var(--leading-normal);
 		color: var(--text-secondary);
-		max-width: 36rem;
+		max-width: none;
 		text-wrap: pretty;
 		margin: 0;
 	}
@@ -184,7 +205,7 @@ const related = allArticles.slice(0, 3);
 
 	/* Body */
 	.article-body {
-		width: min(100% - 2.5rem, 40rem);
+		width: min(100% - 2.5rem, var(--editorial-width));
 		margin: 0 auto;
 		padding-top: var(--space-16);
 		padding-bottom: var(--space-12);

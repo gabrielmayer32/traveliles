@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages_en', 'mentions-legales');
+const { Content } = entry ? await render(entry) : { Content: null };
+const title = entry?.data.title ?? 'Legal notice';
+---
+
+<BaseLayout title={title} description="Legal notice for Travel-Îles." locale="en" alternateUrl="/mentions-legales">
+	<section class="container-wide legal-page">
+		<header class="legal-header">
+			<span class="kicker">Legal information</span>
+			<h1 class="page-title">{title}</h1>
+		</header>
+
+		<div class="prose">
+			{Content ? <Content /> : null}
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.legal-page { padding-top: var(--space-12); padding-bottom: var(--space-20); }
+	.legal-header { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-10); }
+</style>

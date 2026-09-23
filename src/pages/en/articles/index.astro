@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import CategoryNav from '../../../components/CategoryNav.astro';
+import AdPlacement from '../../../components/AdPlacement.astro';
+import { t } from '../../../lib/i18n';
+
+const locale = 'en' as const;
+
+const articles = (await getCollection('articles_en'))
+	.filter((a) => a.data.published && !!a.data.title)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnListings);
+---
+
+<BaseLayout title="Articles" description="All articles from Travel-Îles." locale={locale} alternateUrl="/articles">
+	<section class="container-wide listing-page">
+		<header class="listing-header">
+			<span class="kicker">Reading</span>
+			<h1 class="page-title">Articles</h1>
+		</header>
+
+		<CategoryNav mode="filters" locale={locale} />
+
+		<div class="grid-3 listing-grid" id="listing-grid">
+			{articles.slice(0, 6).map((article) => (
+				<div class="listing-item" data-cat={article.data.category}>
+					<ArticleCard article={article} locale={locale} />
+				</div>
+			))}
+		</div>
+		{inlineAd && <AdPlacement ad={inlineAd} locale={locale} />}
+		{articles.length > 6 && <div class="grid-3 listing-grid">
+			{articles.slice(6).map((article) => <div class="listing-item" data-cat={article.data.category}><ArticleCard article={article} locale={locale} /></div>)}
+		</div>}
+
+		{articles.length === 0 && (
+			<p class="empty-state">{t('listing.empty', locale)}</p>
+		)}
+		<p class="empty-state" id="empty-state" hidden>{t('listing.empty', locale)}</p>
+	</section>
+</BaseLayout>
+
+<script>
+	const chips = document.querySelectorAll<HTMLElement>('.chip');
+	const items = document.querySelectorAll<HTMLElement>('.listing-item');
+	const emptyState = document.getElementById('empty-state');
+
+	chips.forEach((chip) => {
+		chip.addEventListener('click', (e) => {
+			e.preventDefault();
+			const categories = (chip.dataset.categories ?? '').split('|');
+			chips.forEach((c) => c.classList.remove('chip--active'));
+			chip.classList.add('chip--active');
+			let visible = 0;
+			items.forEach((item) => {
+				const show = categories.includes('all') || categories.includes(item.dataset.cat ?? '');
+				item.hidden = !show;
+				if (show) visible++;
+			});
+			if (emptyState) emptyState.hidden = visible > 0;
+		});
+	});
+</script>
+
+<style>
+	.listing-page { padding-top: var(--space-12); padding-bottom: var(--space-16); }
+	.listing-header { display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-8); border-bottom: 1px solid var(--border-strong); margin-bottom: var(--space-8); }
+	.listing-header .page-title { font-size: clamp(2rem, 5vw, 3.5rem); }
+	.listing-grid { min-height: 200px; }
+	.listing-item[hidden] { display: none; }
+	.empty-state { text-align: center; color: var(--text-muted); font-size: var(--text-lg); padding: var(--space-16) 0; }
+</style>

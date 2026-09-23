@@ -1,21 +1,22 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from '../lib/utils';
+import { formatDateLocale, type Locale } from '../lib/i18n';
 import CategoryLabel from './CategoryLabel.astro';
 import { iconSvg } from '../lib/icons';
+import { getVideoThumbnail, getYouTubeThumbnailFallback } from '../lib/video';
 
 interface Props {
-	video: CollectionEntry<'videos'>;
-	size?: 'md' | 'lg';
+	video: CollectionEntry<'videos'> | CollectionEntry<'videos_en'>;
+	size?: 'sm' | 'md' | 'lg';
+	locale?: Locale;
 }
 
-const { video, size = 'md' } = Astro.props;
-const href = `/videos/${video.id}`;
-const thumbnail = video.data.thumbnail ?? (
-	video.data.videoSource === 'youtube'
-		? `https://img.youtube.com/vi/${video.data.videoId}/hqdefault.jpg`
-		: undefined
-);
+const { video, size = 'md', locale = 'fr' } = Astro.props;
+const href = locale === 'en' ? `/en/videos/${video.id}` : `/videos/${video.id}`;
+const thumbnail = getVideoThumbnail(video.data.videoSource, video.data.videoId, video.data.thumbnail);
+const thumbnailFallback = !video.data.thumbnail && video.data.videoSource === 'youtube'
+	? getYouTubeThumbnailFallback(video.data.videoId)
+	: undefined;
 const playSize = size === 'lg' ? 76 : 60;
 const iconSize = Math.round(playSize * 0.4);
 const playPaddingLeft = Math.round(playSize * 0.06);
@@ -24,7 +25,7 @@ const duration = (video.data as any).duration as string | undefined;
 
 <a class:list={['video-card', `video-card--${size}`]} href={href}>
 	<div class="video-thumbnail">
-		{thumbnail && <img src={thumbnail} alt="" loading="lazy" />}
+		{thumbnail && <img src={thumbnail} data-thumbnail-fallback={thumbnailFallback} alt={video.data.title} loading="lazy" />}
 		<span class="video-scrim"></span>
 		<span class="play-btn" style={`width:${playSize}px;height:${playSize}px;padding-left:${playPaddingLeft}px`}>
 			<Fragment set:html={iconSvg('play', iconSize)} />
@@ -34,11 +35,26 @@ const duration = (video.data as any).duration as string | undefined;
 		)}
 	</div>
 	<div class="video-body">
-		<CategoryLabel category={video.data.category} linked={false} />
+		<CategoryLabel category={video.data.category} linked={false} locale={locale} />
 		<h3 class="video-title">{video.data.title}</h3>
-		<div class="meta">{formatDate(video.data.date)}</div>
+		<div class="meta">{formatDateLocale(video.data.date, locale)}</div>
 	</div>
 </a>
+
+<script>
+	function setupThumbnailFallbacks() {
+		document.querySelectorAll<HTMLImageElement>('img[data-thumbnail-fallback]').forEach((image) => {
+			if (image.dataset.fallbackReady) return;
+			image.dataset.fallbackReady = 'true';
+			image.addEventListener('error', () => {
+				const fallback = image.dataset.thumbnailFallback;
+				if (fallback && image.src !== fallback) image.src = fallback;
+			}, { once: true });
+		});
+	}
+	document.addEventListener('astro:page-load', setupThumbnailFallbacks);
+	setupThumbnailFallbacks();
+</script>
 
 <style>
 	.video-card {
@@ -128,5 +144,26 @@ const duration = (video.data as any).duration as string | undefined;
 
 	.video-card:hover .video-title {
 		color: var(--navy);
+	}
+
+	.video-card--sm {
+		flex-direction: row;
+		gap: var(--space-4);
+		align-items: flex-start;
+	}
+
+	.video-card--sm .video-thumbnail {
+		width: 45%;
+		flex-shrink: 0;
+	}
+
+	.video-card--sm .video-body {
+		flex: 1;
+		min-width: 0;
+		padding-top: var(--space-1);
+	}
+
+	.video-card--sm .video-title {
+		font-size: var(--text-base);
 	}
 </style>

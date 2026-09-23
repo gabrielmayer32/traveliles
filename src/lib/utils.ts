@@ -1,31 +1,58 @@
 export const CATEGORIES = [
-	'Un visage, une histoire',
-	'Les gardiens du Savoir Faire',
-	'24heures avec....',
-	'Maurice demain',
-	"Mémoires de l'Île",
-	'Saveurs',
+	'Rencontres',
+	'Nos Ambassadeurs',
 	'Nos régions',
-	'Art & culture',
-	'Activités & événements',
-	'Nos Ambassadeurs régionaux',
-	'Nos adresses',
+	'Savoir-faire',
+	'Héritage',
+	'Maurice demain',
+	"Mémoires d'îles",
+	'Saveurs',
+	'Art & Culture',
+	'Activités & Événements',
+	'News',
+	'Nos archives',
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 
+export interface RubriqueGroup {
+	label: Category;
+	children?: Category[];
+}
+
+export const RUBRIQUES: RubriqueGroup[] = [
+	{ label: 'Rencontres' },
+	{ label: 'Nos régions' },
+	{ label: 'Savoir-faire' },
+	{ label: 'Maurice demain' },
+	{ label: 'Saveurs' },
+	{ label: 'Art & Culture' },
+	{ label: 'Activités & Événements' },
+	{ label: 'Nos archives' },
+];
+
+export function getCategoryParent(category: Category): Category | undefined {
+	return RUBRIQUES.find((group) => group.children?.includes(category))?.label;
+}
+
+export function getCategoryScope(category: Category): Category[] {
+	const group = RUBRIQUES.find(({ label }) => label === category);
+	return group?.children ? [category, ...group.children] : [category];
+}
+
 export const CATEGORY_SLUG_MAP: Record<Category, string> = {
-	'Un visage, une histoire': 'un-visage-une-histoire',
-	'Les gardiens du Savoir Faire': 'les-gardiens-du-savoir-faire',
-	'24heures avec....': '24heures-avec',
-	'Maurice demain': 'maurice-demain',
-	"Mémoires de l'Île": 'memoires-de-lile',
-	Saveurs: 'saveurs',
+	Rencontres: 'rencontres',
+	'Nos Ambassadeurs': 'nos-ambassadeurs',
 	'Nos régions': 'nos-regions',
-	'Art & culture': 'art-et-culture',
-	'Activités & événements': 'activites-et-evenements',
-	'Nos Ambassadeurs régionaux': 'nos-ambassadeurs-regionaux',
-	'Nos adresses': 'nos-adresses',
+	'Savoir-faire': 'savoir-faire',
+	'Héritage': 'heritage',
+	'Maurice demain': 'maurice-demain',
+	"Mémoires d'îles": 'memoires-diles',
+	Saveurs: 'saveurs',
+	'Art & Culture': 'art-et-culture',
+	'Activités & Événements': 'activites-et-evenements',
+	News: 'news',
+	'Nos archives': 'nos-archives',
 };
 
 export function slugifyCategory(category: Category | string) {
@@ -40,6 +67,7 @@ export function slugifyCategory(category: Category | string) {
 export function categoryFromSlug(slug: string) {
 	return CATEGORIES.find((category) => CATEGORY_SLUG_MAP[category] === slug);
 }
+
 
 export function formatDate(date: Date | string) {
 	return new Intl.DateTimeFormat('fr-FR', {

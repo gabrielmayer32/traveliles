@@ -1,51 +1,83 @@
 ---
-import { CATEGORIES, slugifyCategory } from '../lib/utils';
+import { RUBRIQUES, slugifyCategory, type Category } from '../lib/utils';
 import { iconSvg } from '../lib/icons';
+import { t, localizedCategory, localizedPath, STATIC_ALTERNATES, type Locale } from '../lib/i18n';
 
-const navLinks = CATEGORIES.map((category) => ({
-	label: category,
-	href: `/articles/${slugifyCategory(category)}`,
+interface Props {
+	locale?: Locale;
+	alternateUrl?: string;
+}
+const { locale = 'fr', alternateUrl } = Astro.props;
+
+const otherLocale = locale === 'fr' ? 'en' : 'fr';
+const switchHref = alternateUrl ?? STATIC_ALTERNATES[Astro.url.pathname] ?? (locale === 'fr' ? '/en/' : '/');
+
+const navLinks = RUBRIQUES.map((group) => ({
+	label: localizedCategory(group.label, locale),
+	href: localizedPath(`/articles/${slugifyCategory(group.label as Category)}`, locale),
+	children: group.children?.map((child) => ({
+		label: localizedCategory(child, locale),
+		href: localizedPath(`/articles/${slugifyCategory(child)}`, locale),
+	})),
 }));
+
 ---
 
 <header class="site-header">
 	<div class="header-inner container-wide">
-		<a class="logo" href="/" aria-label="Travel-Îles, accueil">
-			<span class="logo-main">Travel-Îles</span>
+		<a class="logo" href={localizedPath('/', locale)} aria-label="Travel-Îles, accueil">
+			<img class="logo-img" src="/images/logo-travel-iles.png" alt="Travel-Îles" />
 		</a>
 
 		<nav class="desktop-nav" aria-label="Navigation principale">
 			<div class="rubriques-wrapper">
 				<button class="nav-link rubriques-trigger" type="button" aria-expanded="false" aria-controls="rubriques-menu" aria-haspopup="true">
-					Rubriques
+					{t('nav.sections', locale)}
 					<span class="chevron" aria-hidden="true">
 						<Fragment set:html={iconSvg('chevron-down', 16)} />
 					</span>
 				</button>
 			</div>
-			<a class="nav-link" href="/videos">Vidéos</a>
-			<a class="nav-link" href="/a-propos">À propos</a>
-			<a class="search-btn" href="/recherche" aria-label="Recherche">
+			<a class="nav-link" href={localizedPath('/a-propos', locale) === '/en/a-propos' ? '/en/about' : '/a-propos'}>{t('nav.about', locale)}</a>
+			<a class="nav-link" href={localizedPath('/contact', locale)}>{t('nav.contact', locale)}</a>
+			<a class="search-btn" href={localizedPath('/recherche', locale) === '/en/recherche' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
 				<Fragment set:html={iconSvg('search', 20)} />
+			</a>
+			<a class="lang-switch" href={switchHref} hreflang={otherLocale} aria-label={otherLocale === 'en' ? 'Switch to English' : 'Passer en français'}>
+				{otherLocale.toUpperCase()}
 			</a>
 		</nav>
 
-		<button class="mobile-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
-			<span class="mobile-trigger-icon" aria-hidden="true">
-				<Fragment set:html={iconSvg('menu', 24)} />
-			</span>
-		</button>
+		<div class="mobile-actions">
+			<a class="mobile-search" href={locale === 'en' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
+				<Fragment set:html={iconSvg('search', 20)} />
+			</a>
+			<button class="mobile-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+				<span class="mobile-trigger-icon" aria-hidden="true">
+					<Fragment set:html={iconSvg('menu', 24)} />
+				</span>
+			</button>
+		</div>
 	</div>
 
 	<!-- Rubriques mega-menu -->
 	<div id="rubriques-menu" class="rubriques-panel" hidden>
 		<div class="container-wide rubriques-panel-inner">
 			<div class="rubriques-panel-header">
-				<span class="kicker">Les rubriques</span>
+				<span class="kicker">{t('nav.sections', locale)}</span>
 			</div>
 			<ul class="rubriques-grid">
 				{navLinks.map((link) => (
-					<li><a href={link.href}>{link.label}</a></li>
+					<li class={link.children ? 'has-children' : ''}>
+						<a href={link.href}>{link.label}</a>
+						{link.children && (
+							<ul class="rubriques-children">
+								{link.children.map((child) => (
+									<li><a href={child.href}>{child.label}</a></li>
+								))}
+							</ul>
+						)}
+					</li>
 				))}
 			</ul>
 		</div>
@@ -55,14 +87,23 @@ const navLinks = CATEGORIES.map((category) => ({
 	<nav id="mobile-menu" class="mobile-nav" aria-label="Navigation mobile" hidden>
 		<div class="container mobile-nav-inner">
 			<div class="mobile-nav-top">
-				<a href="/videos">Vidéos</a>
-				<a href="/a-propos">À propos</a>
-				<a href="/recherche">Recherche</a>
+				<a href={locale === 'en' ? '/en/about' : '/a-propos'}>{t('nav.about', locale)}</a>
+				<a href={locale === 'en' ? '/en/search' : '/recherche'}>{t('nav.search', locale)}</a>
+				<a class="lang-switch-mobile" href={switchHref} hreflang={otherLocale}>{otherLocale.toUpperCase()}</a>
 			</div>
-			<span class="kicker mobile-nav-heading">Rubriques</span>
+			<span class="kicker mobile-nav-heading">{t('nav.sections', locale)}</span>
 			<ul class="mobile-nav-list">
 				{navLinks.map((link) => (
-					<li><a href={link.href}>{link.label}</a></li>
+					<li class={link.children ? 'mobile-has-children' : ''}>
+						<a href={link.href}>{link.label}</a>
+						{link.children && (
+							<ul class="mobile-nav-children">
+								{link.children.map((child) => (
+									<li><a href={child.href}>{child.label}</a></li>
+								))}
+							</ul>
+						)}
+					</li>
 				))}
 			</ul>
 		</div>
@@ -170,14 +211,10 @@ const navLinks = CATEGORIES.map((category) => ({
 		line-height: 1;
 	}
 
-	.logo-main {
-		font-family: var(--font-display);
-		font-weight: var(--fw-bold);
-		font-size: 1.2rem;
-		letter-spacing: -0.005em;
-		text-transform: uppercase;
-		line-height: 0.92;
-		white-space: nowrap;
+	.logo-img {
+		height: clamp(1.75rem, 3.1vw, 2.375rem);
+		width: auto;
+		display: block;
 	}
 
 	.desktop-nav {
@@ -191,7 +228,7 @@ const navLinks = CATEGORIES.map((category) => ({
 		align-items: center;
 		gap: 0.35em;
 		font-family: var(--font-body);
-		font-size: var(--text-sm);
+		font-size: var(--text-base);
 		font-weight: var(--fw-medium);
 		letter-spacing: var(--tracking-wide);
 		text-transform: uppercase;
@@ -202,6 +239,7 @@ const navLinks = CATEGORIES.map((category) => ({
 		background: none;
 		cursor: pointer;
 	}
+
 
 	.nav-link:hover {
 		color: var(--navy);
@@ -234,6 +272,32 @@ const navLinks = CATEGORIES.map((category) => ({
 		color: var(--navy);
 	}
 
+	.lang-switch {
+		display: inline-flex;
+		align-items: center;
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: var(--tracking-wider);
+		color: var(--text-muted);
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-pill);
+		padding: 0.3em 0.7em;
+		transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+	}
+
+	.lang-switch:hover {
+		color: var(--navy);
+		border-color: var(--navy);
+	}
+
+	.lang-switch-mobile {
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
 	.rubriques-panel {
 		position: absolute;
 		left: 0;
@@ -260,6 +324,11 @@ const navLinks = CATEGORIES.map((category) => ({
 		border-bottom: 1px solid var(--border-subtle);
 	}
 
+	.rubriques-panel-header .kicker {
+		font-size: var(--text-xl);
+		font-weight: var(--fw-bold);
+	}
+
 	.rubriques-grid {
 		list-style: none;
 		margin: 0;
@@ -269,7 +338,7 @@ const navLinks = CATEGORIES.map((category) => ({
 		gap: var(--space-3) var(--space-8);
 	}
 
-	.rubriques-grid a {
+	.rubriques-grid > li > a {
 		display: block;
 		font-family: var(--font-display);
 		font-size: var(--text-lg);
@@ -277,12 +346,48 @@ const navLinks = CATEGORIES.map((category) => ({
 		padding-block: var(--space-2);
 	}
 
-	.rubriques-grid a:hover {
+	.rubriques-grid > li > a:hover {
+		color: var(--navy);
+	}
+
+	.rubriques-children {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		padding-left: var(--space-4);
+	}
+
+	.rubriques-children a {
+		display: block;
+		font-size: var(--text-base);
+		color: var(--text-muted);
+		padding-block: 0.2em;
+	}
+
+	.rubriques-children a:hover {
+		color: var(--navy);
+	}
+
+	.mobile-actions {
+		display: none;
+		align-items: center;
+		gap: 0;
+	}
+
+	.mobile-search {
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		color: var(--ink);
+	}
+
+	.mobile-search:hover {
 		color: var(--navy);
 	}
 
 	.mobile-trigger {
-		display: none;
+		display: grid;
 		place-items: center;
 		width: 44px;
 		height: 44px;
@@ -349,13 +454,31 @@ const navLinks = CATEGORIES.map((category) => ({
 		padding-block: var(--space-3);
 	}
 
+	.mobile-nav-children {
+		list-style: none;
+		margin: 0 0 var(--space-2) var(--space-4);
+		padding: 0 0 0 var(--space-4);
+		border-left: 1px solid var(--navy-300);
+	}
+
+	.mobile-nav-children li {
+		border-top: 0;
+	}
+
+	.mobile-nav-children a {
+		font-family: var(--font-body);
+		font-size: var(--text-base);
+		color: var(--text-muted);
+		padding-block: var(--space-2);
+	}
+
 	@media (max-width: 900px) {
 		.desktop-nav {
 			display: none;
 		}
 
-		.mobile-trigger {
-			display: grid;
+		.mobile-actions {
+			display: flex;
 		}
 
 		.mobile-nav {
