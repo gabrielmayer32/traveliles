@@ -1,6 +1,6 @@
 ---
 title: Moments in Time [February 1995] – Beachcomber Opens a New Chapter
-date: 2026-08-06T19:04
+date: 2026-08-01T19:04:00
 category: Nos archives
 cover: /images/uploads/Quoi de neuf chez Beachcomber.png
 excerpt: In 1995, Beachcomber entered a new chapter in its history. Renovations, new suites, redesigned facilities and enhanced services marked a pivotal period in which the Mauritian hotel group reaffirmed its ambitions and reimagined the experience offered across its properties.
