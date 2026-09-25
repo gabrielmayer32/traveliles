@@ -1,6 +1,6 @@
 ---
 title: The Seven Coloured Earth of Chamarel, Mauritius’ Volcanic Memory
-date: 2026-08-06T16:22
+date: 2026-08-04T16:22:00
 category: Nos régions
 cover: /images/uploads/Travel-Iles 7 couleurs enhanced (2).png
 excerpt: The Seven Coloured Earth of Chamarel reveals Mauritius’ volcanic history through a remarkable mineral landscape shaped by time, water and erosion.
