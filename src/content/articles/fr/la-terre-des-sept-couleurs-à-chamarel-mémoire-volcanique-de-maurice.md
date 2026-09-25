@@ -1,6 +1,6 @@
 ---
 title: La Terre des Sept Couleurs à Chamarel, mémoire volcanique de Maurice
-date: 2026-08-06T16:22
+date: 2026-08-04T16:22:00
 category: Nos régions
 cover: /images/uploads/Travel-Iles 7 couleurs enhanced (2).png
 excerpt: À Chamarel, la Terre des Sept Couleurs révèle l’histoire volcanique de Maurice à travers un paysage minéral façonné par le temps, l’eau et l’érosion.
