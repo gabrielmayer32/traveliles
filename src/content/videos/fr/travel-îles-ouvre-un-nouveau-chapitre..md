@@ -1,5 +1,5 @@
 ---
-title: Travel-Îles ouvre un nouveau chapitre.
+title: Travel-Îles ouvre un nouveau chapitre
 date: 2026-09-25T07:37:00
 category: Activités & Événements
 videoSource: youtube
