@@ -1,6 +1,6 @@
 ---
 title: 'L’Archipel in Calodyne: Another Side of the North'
-date: 2026-09-03T13:56:00
+date: 2026-08-03T13:56:00
 category: Nos archives
 cover: /images/uploads/CN No 1 1994 L'Archipel Calodyne.jpg
 excerpt: ''
