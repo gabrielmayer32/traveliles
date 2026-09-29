@@ -1,6 +1,6 @@
 ---
 title: 'Tea in Mauritius: From the Fields to the Cup, a Living Tradition'
-date: 2026-08-06T18:57
+date: 2026-08-04T18:57:00
 category: Savoir-faire
 cover: /images/uploads/Tea 4.jpg
 excerpt: From tea fields to the cup, explore tea in Mauritius through its harvesting, factory production, distinctive flavours and enduring local craftsmanship.
