@@ -5,7 +5,7 @@ category: Rencontres
 videoSource: youtube
 videoId: https://youtu.be/6HdRJ4jCiJI
 videoFile: 6HdRJ4jCiJI
-thumbnail: ''
+thumbnail: /images/uploads/Thumbnail Pratimah Mahebourg.png
 excerpt: ''
 published: true
 ---
