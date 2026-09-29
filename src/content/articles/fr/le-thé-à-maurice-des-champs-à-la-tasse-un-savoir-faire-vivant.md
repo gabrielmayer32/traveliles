@@ -1,6 +1,6 @@
 ---
 title: 'Le thé à Maurice : des champs à la tasse, un savoir-faire vivant'
-date: 2026-08-04T18:57:00
+date: 2026-08-03T18:57:00
 category: Savoir-faire
 cover: /images/uploads/Tea 4.jpg
 excerpt: Des champs à la tasse, découvrez le thé à Maurice, sa cueillette, sa transformation en usine, ses saveurs et le savoir-faire qui perpétue cette tradition.
