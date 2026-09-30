@@ -7,7 +7,7 @@ excerpt: Des champs à la tasse, découvrez le thé à Maurice, sa cueillette, s
 author: Travel-Îles
 tags:
   - Thé à Maurice, thé mauricien, champs de thé, cueillette du thé, fabrication du thé, usine de thé, savoir-faire mauricien, patrimoine agricole, thé à la vanille, culture mauricienne.
-published: true
+published: false
 ---
 
 Sur les hauteurs humides de Maurice, les champs de thé dessinent une autre géographie de l’île. Leurs rangées d’un vert profond épousent les pentes, disparaissent dans la brume et réapparaissent au détour d’un chemin. Loin des paysages côtiers, elles racontent une terre intérieure, façonnée par la pluie, l’altitude et le travail des femmes et des hommes qui la cultivent.

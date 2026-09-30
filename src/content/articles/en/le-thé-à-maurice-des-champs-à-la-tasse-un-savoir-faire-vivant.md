@@ -7,7 +7,7 @@ excerpt: From tea fields to the cup, explore tea in Mauritius through its harves
 author: Travel-Îles
 tags:
   - Tea in Mauritius, Mauritian tea, tea fields, tea picking, tea production, tea factory, Mauritian craftsmanship, agricultural heritage, vanilla tea, Mauritian culture
-published: true
+published: false
 ---
 
 Across the cool, humid highlands of Mauritius, tea fields reveal another side of the island. Their deep-green rows follow the contours of the hills, disappearing into the mist before emerging again along winding country roads. Far from the coast, these landscapes speak of an inland Mauritius shaped by rainfall, altitude and the work of the people who cultivate the land.
