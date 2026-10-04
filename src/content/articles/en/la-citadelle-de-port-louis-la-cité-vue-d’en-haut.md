@@ -11,7 +11,7 @@ tags:
   - Mauritian history
   - Mauritian Heritage
   - Historical sites Mauritius
-published: true
+published: false
 ---
 
 Rising above the bustle of Port Louis, its markets, busy streets and harbour, an imposing stone silhouette keeps watch over the capital. Perched on Petite Montagne, the Citadelle, or Fort Adelaide, offers a different perspective on the city, and on an important chapter in Mauritian history.

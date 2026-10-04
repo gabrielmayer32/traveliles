@@ -12,7 +12,7 @@ tags:
   - patrimoine mauricien
   - histoire de Maurice
   - lieux historiques Maurice.
-published: true
+published: false
 ---
 
 Au-dessus de l’agitation de Port-Louis, ses marchés, ses rues commerçantes et son port, une imposante silhouette de pierre veille sur la capitale. Posée sur la Petite Montagne, la Citadelle, ou Fort Adélaïde, offre un autre regard sur la ville, et sur une page charnière de l’histoire mauricienne.
