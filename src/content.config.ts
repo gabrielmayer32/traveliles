@@ -56,6 +56,27 @@ const partnersSchema = z.object({
 	})).default([]),
 });
 
+const etablissementSchema = z.object({
+	nom: z.string(),
+	categorie: z.string().optional(),
+	description: z.string().optional(),
+	adresse: z.string().optional(),
+	telephone: z.string().optional(),
+	email: z.string().optional(),
+	siteWeb: z.string().optional(),
+	image: z.string().optional(),
+});
+
+const partenaireSchema = z.object({
+	name: z.string(),
+	slug: z.string().optional(),
+	logo: z.string().optional(),
+	description: z.string().optional(),
+	website: z.string().optional(),
+	published: z.boolean().default(false),
+	etablissements: z.array(etablissementSchema).default([]),
+});
+
 const adSchema = z.object({
 	title: z.string(),
 	titleEn: z.string().optional(),
@@ -102,6 +123,11 @@ const partners = defineCollection({
 	schema: partnersSchema,
 });
 
+const partenaires = defineCollection({
+	loader: glob({ pattern: '*.md', base: './src/content/partenaires' }),
+	schema: partenaireSchema,
+});
+
 const ads = defineCollection({
 	loader: glob({ pattern: '*.md', base: './src/content/ads' }),
 	schema: adSchema,
@@ -122,4 +148,4 @@ const pages_en = defineCollection({
 	schema: pagesSchema,
 });
 
-export const collections = { articles, articles_en, videos, videos_en, hero, partners, ads, pages_fr, pages_en };
+export const collections = { articles, articles_en, videos, videos_en, hero, partners, partenaires, ads, pages_fr, pages_en };

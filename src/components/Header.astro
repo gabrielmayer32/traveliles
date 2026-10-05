@@ -38,6 +38,7 @@ const navLinks = RUBRIQUES.map((group) => ({
 					</span>
 				</button>
 			</div>
+			{locale === 'fr' && <a class="nav-link" href="/partenaires">Partenaires</a>}
 			<a class="nav-link" href={localizedPath('/a-propos', locale) === '/en/a-propos' ? '/en/about' : '/a-propos'}>{t('nav.about', locale)}</a>
 			<a class="nav-link" href={localizedPath('/contact', locale)}>{t('nav.contact', locale)}</a>
 			<a class="search-btn" href={localizedPath('/recherche', locale) === '/en/recherche' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
@@ -105,6 +106,7 @@ const navLinks = RUBRIQUES.map((group) => ({
 						)}
 					</li>
 				))}
+				{locale === 'fr' && <li><a href="/partenaires">Partenaires</a></li>}
 			</ul>
 		</div>
 	</nav>

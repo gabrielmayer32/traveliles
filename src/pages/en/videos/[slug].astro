@@ -1,4 +1,5 @@
 ---
+import { isLive } from '../../../lib/utils';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../../components/CategoryLabel.astro';
@@ -12,11 +13,11 @@ import { getVideoThumbnail } from '../../../lib/video';
 const locale = 'en' as const;
 
 export async function getStaticPaths() {
-	const videos = (await getCollection('videos_en')).filter((video) => video.data.published && !!video.data.title);
+	const videos = (await getCollection('videos_en')).filter((video) => isLive(video) && !!video.data.title);
 	const frVideos = await getCollection('videos');
 	return videos.map((video) => ({
 		params: { slug: video.id },
-		props: { video, hasFr: frVideos.some((entry) => entry.id === video.id && entry.data.published) },
+		props: { video, hasFr: frVideos.some((entry) => entry.id === video.id && isLive(entry)) },
 	}));
 }
 
@@ -36,7 +37,7 @@ const videoSchema = JSON.stringify({
 });
 
 const allVideos = (await getCollection('videos_en'))
-	.filter((entry) => entry.data.published && entry.id !== video.id)
+	.filter((entry) => isLive(entry) && entry.id !== video.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const more = allVideos.slice(0, 3);
 const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnVideos);

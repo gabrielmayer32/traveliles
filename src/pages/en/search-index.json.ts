@@ -1,9 +1,10 @@
+import { isLive } from '../../lib/utils';
 import { getCollection } from 'astro:content';
 import { getVideoThumbnail } from '../../lib/video';
 
 export async function GET() {
 	const articles = (await getCollection('articles_en'))
-		.filter((a) => a.data.published && !!a.data.title)
+		.filter((a) => isLive(a) && !!a.data.title)
 		.map((a) => ({
 			title: a.data.title,
 			excerpt: a.data.excerpt,
@@ -15,7 +16,7 @@ export async function GET() {
 		}));
 
 	const videos = (await getCollection('videos_en'))
-		.filter((v) => v.data.published)
+		.filter((v) => isLive(v))
 		.map((v) => ({
 			title: v.data.title,
 			excerpt: v.data.excerpt,

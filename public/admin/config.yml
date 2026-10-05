@@ -176,6 +176,40 @@ collections:
               - { name: logo, label: Logo, widget: image }
               - { name: url, label: Link, widget: string, required: false }
 
+  - name: partenaires
+    label: Partenaires
+    label_singular: Partenaire
+    folder: src/content/partenaires
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    sortable_fields:
+      - name
+    view_groups:
+      - label: Publié
+        field: published
+    fields:
+      - { name: name, label: Nom du partenaire, widget: string }
+      - { name: slug, label: Identifiant URL, widget: string, hint: "Utilisé dans l'URL : /partenaires/beachcomber. Minuscules, tirets, pas d'accents." }
+      - { name: logo, label: Logo, widget: image, required: false }
+      - { name: description, label: Description, widget: text, required: false, hint: "Texte de présentation affiché sur la page du partenaire." }
+      - { name: website, label: Site web, widget: string, required: false, hint: "Adresse complète, ex : https://www.beachcomber-hotels.com" }
+      - { name: published, label: Publié, widget: boolean, default: true }
+      - label: Établissements
+        name: etablissements
+        widget: list
+        summary: "{{fields.nom}}"
+        fields:
+          - { name: nom, label: Nom, widget: string }
+          - { name: categorie, label: Catégorie, widget: string, required: false, hint: "Ex : Hôtel, Resort, Restaurant, Spa…" }
+          - { name: description, label: Description, widget: text, required: false }
+          - { name: adresse, label: Adresse, widget: string, required: false }
+          - { name: telephone, label: Téléphone, widget: string, required: false }
+          - { name: email, label: Email, widget: string, required: false }
+          - { name: siteWeb, label: Site web, widget: string, required: false }
+          - { name: image, label: Photo, widget: image, required: false }
+
   - name: ads
     label: Publicités (démo)
     label_singular: Publicité

@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import CategoryNav from '../../components/CategoryNav.astro';
 import VideoCard from '../../components/VideoCard.astro';
-import { CATEGORIES, getCategoryParent, getCategoryScope, slugifyCategory, type Category } from '../../lib/utils';
+import { CATEGORIES, getCategoryParent, getCategoryScope, slugifyCategory, type Category, isLive } from '../../lib/utils';
 
 export function getStaticPaths() {
 	return CATEGORIES.map((category) => ({
@@ -17,11 +17,11 @@ const { category } = Astro.props as { category: Category };
 const parentCategory = getCategoryParent(category);
 const categoryScope = getCategoryScope(category);
 const articles = (await getCollection('articles'))
-	.filter((article) => article.data.published && categoryScope.includes(article.data.category))
+	.filter((article) => isLive(article) && categoryScope.includes(article.data.category))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const videos = (await getCollection('videos'))
-	.filter((video) => video.data.published && categoryScope.includes(video.data.category))
+	.filter((video) => isLive(video) && categoryScope.includes(video.data.category))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 4);
 ---

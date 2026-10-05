@@ -1,4 +1,5 @@
 ---
+import { isLive } from '../lib/utils';
 const comingSoon = import.meta.env.COMING_SOON === 'true';
 
 import { getCollection } from 'astro:content';
@@ -11,14 +12,14 @@ import AdPlacement from '../components/AdPlacement.astro';
 import { iconSvg } from '../lib/icons';
 
 const allPublishedArticles = (await getCollection('articles'))
-	.filter((a) => a.data.published)
+	.filter((a) => isLive(a))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // Articles section excludes News
 const articles = allPublishedArticles.filter((a) => a.data.category !== 'News');
 
 const videos = (await getCollection('videos'))
-	.filter((v) => v.data.published)
+	.filter((v) => isLive(v))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const heroEntries = await getCollection('hero');

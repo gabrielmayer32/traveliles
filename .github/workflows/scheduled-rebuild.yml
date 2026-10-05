@@ -1,0 +1,15 @@
+# Reconstruit le site toutes les heures pour publier les articles/vidéos programmés
+# (date dans le futur dans le CMS). Nécessite le secret CF_DEPLOY_HOOK (URL du Deploy Hook Cloudflare Pages).
+name: Rebuild programmé
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Déclencher le build Cloudflare Pages
+        run: curl -fsS -X POST "${{ secrets.CF_DEPLOY_HOOK }}"

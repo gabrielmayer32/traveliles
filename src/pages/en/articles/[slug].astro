@@ -1,4 +1,5 @@
 ---
+import { isLive } from '../../../lib/utils';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../../components/CategoryLabel.astro';
@@ -11,11 +12,11 @@ import { normalizeTags } from '../../../lib/tags';
 const locale = 'en' as const;
 
 export async function getStaticPaths() {
-	const articles = (await getCollection('articles_en')).filter((a) => a.data.published && !!a.data.title);
+	const articles = (await getCollection('articles_en')).filter((a) => isLive(a) && !!a.data.title);
 	const frArticles = await getCollection('articles');
 	return articles.map((article) => ({
 		params: { slug: article.id },
-		props: { article, hasFr: frArticles.some((f) => f.id === article.id && f.data.published) },
+		props: { article, hasFr: frArticles.some((f) => f.id === article.id && isLive(f)) },
 	}));
 }
 
@@ -37,7 +38,7 @@ const articleSchema = JSON.stringify({
 });
 
 const allArticles = (await getCollection('articles_en'))
-	.filter((a) => a.data.published && a.id !== article.id)
+	.filter((a) => isLive(a) && a.id !== article.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const related = allArticles.slice(0, 3);
 const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnArticles);

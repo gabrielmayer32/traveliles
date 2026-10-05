@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const partenaires = (await getCollection('partenaires'))
+	.filter((p) => p.data.published)
+	.sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+
+<BaseLayout title="Partenaires" description="Nos partenaires — hôtels, restaurants et adresses de référence à l'île Maurice." locale="fr">
+	<section class="container-wide listing-page">
+		<header class="listing-header">
+			<span class="kicker">Découvrir</span>
+			<h1 class="page-title">Partenaires</h1>
+		</header>
+
+		{partenaires.length === 0 && (
+			<p class="empty-state">Bientôt disponible.</p>
+		)}
+
+		<div class="partenaires-grid">
+			{partenaires.map((p) => (
+				<a href={`/partenaires/${p.data.slug ?? p.id}`} class="partenaire-card">
+					{p.data.logo ? (
+						<div class="partenaire-card__logo">
+							<img src={p.data.logo} alt={p.data.name} loading="lazy" />
+						</div>
+					) : (
+						<div class="partenaire-card__logo partenaire-card__logo--placeholder">
+							<span>{p.data.name.charAt(0)}</span>
+						</div>
+					)}
+					<div class="partenaire-card__body">
+						<h2 class="partenaire-card__name">{p.data.name}</h2>
+						{p.data.description && <p class="partenaire-card__desc">{p.data.description}</p>}
+						{p.data.etablissements.length > 0 && (
+							<span class="partenaire-card__count">
+								{p.data.etablissements.length} établissement{p.data.etablissements.length > 1 ? 's' : ''}
+							</span>
+						)}
+					</div>
+				</a>
+			))}
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.partenaires-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: var(--space-6);
+		margin-top: var(--space-8);
+	}
+
+	.partenaire-card {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--color-border);
+		text-decoration: none;
+		color: inherit;
+		transition: box-shadow 0.2s;
+	}
+
+	.partenaire-card:hover {
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+	}
+
+	.partenaire-card__logo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 140px;
+		background: var(--color-surface);
+		padding: var(--space-4);
+	}
+
+	.partenaire-card__logo img {
+		max-height: 80px;
+		max-width: 180px;
+		object-fit: contain;
+	}
+
+	.partenaire-card__logo--placeholder {
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: var(--color-primary);
+		letter-spacing: 0.05em;
+	}
+
+	.partenaire-card__body {
+		padding: var(--space-4);
+	}
+
+	.partenaire-card__name {
+		font-size: 1.125rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		margin: 0 0 var(--space-2);
+	}
+
+	.partenaire-card__desc {
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+		margin: 0 0 var(--space-3);
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.partenaire-card__count {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-primary);
+	}
+</style>

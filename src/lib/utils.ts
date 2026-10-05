@@ -76,3 +76,12 @@ export function formatDate(date: Date | string) {
 		year: 'numeric',
 	}).format(new Date(date));
 }
+
+// Les dates saisies dans le CMS n'ont pas de fuseau : on les lit comme l'heure de Maurice (UTC+4),
+// alors que le build Cloudflare tourne en UTC.
+const MAURITIUS_OFFSET_MS = 4 * 60 * 60 * 1000;
+
+// Publié = case « Publié » cochée ET date/heure atteinte (publication programmée).
+export function isLive(entry: { data: { published: boolean; date: Date } }) {
+	return entry.data.published && entry.data.date.getTime() - MAURITIUS_OFFSET_MS <= Date.now();
+}

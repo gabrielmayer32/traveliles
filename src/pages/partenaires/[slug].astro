@@ -1,0 +1,250 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+	const partenaires = (await getCollection('partenaires')).filter((p) => p.data.published);
+	return partenaires.map((p) => ({
+		params: { slug: p.data.slug ?? p.id },
+		props: { partenaire: p },
+	}));
+}
+
+const { partenaire } = Astro.props;
+const { name, logo, description, website, etablissements } = partenaire.data;
+---
+
+<BaseLayout title={name} description={description ?? `Découvrez ${name} sur Travel-Îles.`} locale="fr">
+	<section class="container-wide partenaire-page">
+		<a href="/partenaires" class="back-link">← Partenaires</a>
+
+		<header class="partenaire-header">
+			{logo ? (
+				<div class="partenaire-header__logo">
+					<img src={logo} alt={name} />
+				</div>
+			) : null}
+			<div class="partenaire-header__text">
+				<h1 class="partenaire-header__name">{name}</h1>
+				{description && <p class="partenaire-header__desc">{description}</p>}
+				{website && (
+					<a href={website} target="_blank" rel="noopener noreferrer" class="partenaire-header__site">
+						Visiter le site →
+					</a>
+				)}
+			</div>
+		</header>
+
+		{etablissements.length > 0 && (
+			<div class="etablissements-section">
+				<h2 class="etablissements-title">Nos établissements</h2>
+				<div class="etablissements-grid">
+					{etablissements.map((e) => (
+						<div class="etablissement-card">
+							{e.image && (
+								<div class="etablissement-card__img">
+									<img src={e.image} alt={e.nom} loading="lazy" />
+								</div>
+							)}
+							<div class="etablissement-card__body">
+								{e.categorie && <span class="etablissement-card__cat">{e.categorie}</span>}
+								<h3 class="etablissement-card__name">{e.nom}</h3>
+								{e.description && <p class="etablissement-card__desc">{e.description}</p>}
+								<ul class="etablissement-card__contacts">
+									{e.adresse && (
+										<li>
+											<span class="contact-label">Adresse</span>
+											<span>{e.adresse}</span>
+										</li>
+									)}
+									{e.telephone && (
+										<li>
+											<span class="contact-label">Tél.</span>
+											<a href={`tel:${e.telephone}`}>{e.telephone}</a>
+										</li>
+									)}
+									{e.email && (
+										<li>
+											<span class="contact-label">Email</span>
+											<a href={`mailto:${e.email}`}>{e.email}</a>
+										</li>
+									)}
+									{e.siteWeb && (
+										<li>
+											<span class="contact-label">Site</span>
+											<a href={e.siteWeb} target="_blank" rel="noopener noreferrer">{e.siteWeb.replace(/^https?:\/\//, '')}</a>
+										</li>
+									)}
+								</ul>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		)}
+	</section>
+</BaseLayout>
+
+<style>
+	.partenaire-page {
+		padding-top: var(--space-6);
+	}
+
+	.back-link {
+		display: inline-block;
+		font-size: 0.875rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+		text-decoration: none;
+		margin-bottom: var(--space-6);
+	}
+
+	.back-link:hover {
+		color: var(--color-primary);
+	}
+
+	.partenaire-header {
+		display: flex;
+		gap: var(--space-8);
+		align-items: flex-start;
+		margin-bottom: var(--space-10);
+		padding-bottom: var(--space-8);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.partenaire-header__logo {
+		flex-shrink: 0;
+		width: 160px;
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.partenaire-header__logo img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+	}
+
+	.partenaire-header__name {
+		font-size: 2rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		margin: 0 0 var(--space-3);
+	}
+
+	.partenaire-header__desc {
+		color: var(--color-text-muted);
+		max-width: 60ch;
+		margin: 0 0 var(--space-4);
+		line-height: 1.6;
+	}
+
+	.partenaire-header__site {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--color-primary);
+		text-decoration: none;
+		letter-spacing: 0.04em;
+	}
+
+	.etablissements-title {
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		margin: 0 0 var(--space-6);
+	}
+
+	.etablissements-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: var(--space-6);
+	}
+
+	.etablissement-card {
+		border: 1px solid var(--color-border);
+		overflow: hidden;
+	}
+
+	.etablissement-card__img {
+		height: 180px;
+		overflow: hidden;
+	}
+
+	.etablissement-card__img img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.etablissement-card__body {
+		padding: var(--space-4);
+	}
+
+	.etablissement-card__cat {
+		display: inline-block;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-primary);
+		margin-bottom: var(--space-2);
+	}
+
+	.etablissement-card__name {
+		font-size: 1.1rem;
+		font-weight: 700;
+		letter-spacing: 0.03em;
+		margin: 0 0 var(--space-2);
+	}
+
+	.etablissement-card__desc {
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+		margin: 0 0 var(--space-4);
+		line-height: 1.5;
+	}
+
+	.etablissement-card__contacts {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		font-size: 0.8rem;
+	}
+
+	.etablissement-card__contacts li {
+		display: flex;
+		gap: var(--space-2);
+	}
+
+	.contact-label {
+		font-weight: 600;
+		min-width: 48px;
+		color: var(--color-text-muted);
+	}
+
+	.etablissement-card__contacts a {
+		color: inherit;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	@media (max-width: 640px) {
+		.partenaire-header {
+			flex-direction: column;
+		}
+
+		.partenaire-header__logo {
+			width: 120px;
+			height: 70px;
+		}
+	}
+</style>
