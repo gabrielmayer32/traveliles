@@ -1,7 +1,7 @@
 ---
 title: 'The Citadelle in Port Louis: The City from Above'
 date: 2026-10-05T10:30:00
-category: Nos régions
+category: Art & Culture
 cover: /images/uploads/La Citadelle TI - 2026 (1).png
 excerpt: ''
 author: Travel-Îles
