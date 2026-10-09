@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../components/CategoryLabel.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import AdPlacement from '../../components/AdPlacement.astro';
-import { formatDate, isLive } from '../../lib/utils';
+import { formatDate, isLive, isAdLive } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 import { normalizeTags } from '../../lib/tags';
 
@@ -38,7 +38,7 @@ const allArticles = (await getCollection('articles'))
 	.filter((a) => isLive(a) && a.id !== article.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const related = allArticles.slice(0, 3);
-const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnArticles);
+const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.data.placement === 'inline' && ad.data.showOnArticles);
 ---
 
 <BaseLayout title={article.data.title} description={article.data.excerpt} ogImage={article.data.cover} locale="fr" alternateUrl={alternateUrl}>

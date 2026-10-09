@@ -1,5 +1,5 @@
 ---
-import { isLive } from '../../../lib/utils';
+import { isLive, isAdLive } from '../../../lib/utils';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CategoryNav from '../../../components/CategoryNav.astro';
@@ -11,7 +11,7 @@ const locale = 'en' as const;
 const videos = (await getCollection('videos_en'))
 	.filter((video) => isLive(video) && !!video.data.title)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnListings);
+const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.data.placement === 'inline' && ad.data.showOnListings);
 ---
 
 <BaseLayout title="Videos" description="All videos from Travel-Îles." locale={locale} alternateUrl="/videos">

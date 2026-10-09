@@ -1,5 +1,5 @@
 ---
-import { isLive } from '../../lib/utils';
+import { isLive, isAdLive } from '../../lib/utils';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
@@ -9,7 +9,7 @@ import AdPlacement from '../../components/AdPlacement.astro';
 const articles = (await getCollection('articles'))
 	.filter((a) => isLive(a))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnListings);
+const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.data.placement === 'inline' && ad.data.showOnListings);
 ---
 
 <BaseLayout title="Articles" description="Tous les articles de Travel-Îles." locale="fr" alternateUrl="/en/articles">

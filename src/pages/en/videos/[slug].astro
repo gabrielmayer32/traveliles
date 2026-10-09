@@ -1,5 +1,5 @@
 ---
-import { isLive } from '../../../lib/utils';
+import { isLive, isAdLive } from '../../../lib/utils';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../../components/CategoryLabel.astro';
@@ -40,7 +40,9 @@ const allVideos = (await getCollection('videos_en'))
 	.filter((entry) => isLive(entry) && entry.id !== video.id)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const more = allVideos.slice(0, 3);
-const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnVideos);
+const allAds = await getCollection('ads');
+const inlineAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'inline' && ad.data.showOnVideos);
+const prerollAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'preroll' && ad.data.showOnVideos);
 ---
 
 <BaseLayout title={video.data.title} description={video.data.excerpt} ogImage={displayThumbnail} locale={locale} alternateUrl={alternateUrl}>
@@ -62,6 +64,7 @@ const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad
 		</header>
 
 		<div class="video-player">
+			{prerollAd && <AdPlacement ad={prerollAd} locale="en" />}
 			<VideoEmbed
 				videoSource={video.data.videoSource}
 				videoId={video.data.videoId}

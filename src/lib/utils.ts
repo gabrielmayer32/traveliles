@@ -85,3 +85,12 @@ const MAURITIUS_OFFSET_MS = 4 * 60 * 60 * 1000;
 export function isLive(entry: { data: { published: boolean; date: Date } }) {
 	return entry.data.published && entry.data.date.getTime() - MAURITIUS_OFFSET_MS <= Date.now();
 }
+
+// Pub active = visible ET dans la fenêtre de contrat (dateStart..dateEnd).
+export function isAdLive(entry: { data: { visible: boolean; dateStart?: Date; dateEnd?: Date } }) {
+	if (!entry.data.visible) return false;
+	const now = Date.now();
+	if (entry.data.dateStart && entry.data.dateStart.getTime() - MAURITIUS_OFFSET_MS > now) return false;
+	if (entry.data.dateEnd && entry.data.dateEnd.getTime() - MAURITIUS_OFFSET_MS < now) return false;
+	return true;
+}

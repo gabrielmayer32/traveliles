@@ -1,5 +1,5 @@
 ---
-import { isLive } from '../lib/utils';
+import { isLive, isAdLive } from '../lib/utils';
 const comingSoon = import.meta.env.COMING_SOON === 'true';
 
 import { getCollection } from 'astro:content';
@@ -31,7 +31,7 @@ const gridVideos = videos.slice(1, 3);
 const leadArticle = articles[0];
 const sideArticles = articles.slice(1, 3);
 const carouselVideos = videos.slice(0, 6);
-const visibleAds = (await getCollection('ads')).filter((ad) => ad.data.visible);
+const visibleAds = (await getCollection('ads')).filter((ad) => isAdLive(ad));
 const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.data.showOnHomepage);
 
 // News: articles in the News category, shuffled randomly at build time

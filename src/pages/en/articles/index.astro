@@ -1,5 +1,5 @@
 ---
-import { isLive } from '../../../lib/utils';
+import { isLive, isAdLive } from '../../../lib/utils';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
@@ -12,7 +12,7 @@ const locale = 'en' as const;
 const articles = (await getCollection('articles_en'))
 	.filter((a) => isLive(a) && !!a.data.title)
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const inlineAd = (await getCollection('ads')).find((ad) => ad.data.visible && ad.data.placement === 'inline' && ad.data.showOnListings);
+const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.data.placement === 'inline' && ad.data.showOnListings);
 ---
 
 <BaseLayout title="Articles" description="All articles from Travel-Îles." locale={locale} alternateUrl="/articles">
