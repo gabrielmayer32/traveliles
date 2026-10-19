@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { RUBRIQUES, slugifyCategory, type Category } from '../lib/utils';
 import { iconSvg } from '../lib/icons';
 import { t, localizedCategory, localizedPath, type Locale } from '../lib/i18n';
@@ -16,6 +17,7 @@ const aboutHref  = locale === 'en' ? '/en/about'   : '/a-propos';
 const searchHref = locale === 'en' ? '/en/search'  : '/recherche';
 const legalHref  = locale === 'en' ? '/en/legal-notice' : '/mentions-legales';
 const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
+const hasPartenaires = (await getCollection('partenaires')).some((p) => p.data.published);
 ---
 
 <footer class="site-footer">
@@ -64,7 +66,7 @@ const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
 			<nav class="footer-magazine">
 				<a class="footer-link" href={localizedPath('/videos', locale)}>{t('footer.videos', locale)}</a>
 				<a class="footer-link" href={localizedPath('/articles', locale)}>{t('footer.articles', locale)}</a>
-				{locale === 'fr' && <a class="footer-link" href="/partenaires">Partenaires</a>}
+				{locale === 'fr' && hasPartenaires && <a class="footer-link" href="/partenaires">Partenaires</a>}
 				<a class="footer-link" href={aboutHref}>{t('footer.about', locale)}</a>
 				<a class="footer-link" href={localizedPath('/contact', locale)}>{t('footer.contact', locale)}</a>
 				<a class="footer-link" href={searchHref}>{t('footer.search', locale)}</a>

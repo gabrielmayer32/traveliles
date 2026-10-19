@@ -5,7 +5,7 @@ logo: /images/uploads/beachcomber-logo.png
 description: >
   Pionniers de l'hôtellerie de luxe à Maurice depuis 1952, les hôtels Beachcomber offrent des expériences uniques alliant authenticité mauricienne et excellence du service.
 website: https://www.beachcomber-hotels.com
-published: true
+published: false
 etablissements:
   - nom: Royal Palm Beachcomber Luxury
     categorie: Hôtel

@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { RUBRIQUES, slugifyCategory, type Category } from '../lib/utils';
 import { iconSvg } from '../lib/icons';
 import { t, localizedCategory, localizedPath, STATIC_ALTERNATES, type Locale } from '../lib/i18n';
@@ -21,6 +22,7 @@ const navLinks = RUBRIQUES.map((group) => ({
 	})),
 }));
 
+const hasPartenaires = (await getCollection('partenaires')).some((p) => p.data.published);
 ---
 
 <header class="site-header">
@@ -38,7 +40,7 @@ const navLinks = RUBRIQUES.map((group) => ({
 					</span>
 				</button>
 			</div>
-			{locale === 'fr' && <a class="nav-link" href="/partenaires">Partenaires</a>}
+			{locale === 'fr' && hasPartenaires && <a class="nav-link" href="/partenaires">Partenaires</a>}
 			<a class="nav-link" href={localizedPath('/a-propos', locale) === '/en/a-propos' ? '/en/about' : '/a-propos'}>{t('nav.about', locale)}</a>
 			<a class="nav-link" href={localizedPath('/contact', locale)}>{t('nav.contact', locale)}</a>
 			<a class="search-btn" href={localizedPath('/recherche', locale) === '/en/recherche' ? '/en/search' : '/recherche'} aria-label={t('nav.search', locale)}>
@@ -106,7 +108,7 @@ const navLinks = RUBRIQUES.map((group) => ({
 						)}
 					</li>
 				))}
-				{locale === 'fr' && <li><a href="/partenaires">Partenaires</a></li>}
+				{locale === 'fr' && hasPartenaires && <li><a href="/partenaires">Partenaires</a></li>}
 			</ul>
 		</div>
 	</nav>
