@@ -14,6 +14,17 @@ show_preview_links: false
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
+# Full-size phone photos time out on GitHub's upload (~10 s limit) over slow connections.
+media_libraries:
+  default:
+    config:
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2048
+          height: 2048
+
 i18n:
   structure: multiple_folders
   locales:
