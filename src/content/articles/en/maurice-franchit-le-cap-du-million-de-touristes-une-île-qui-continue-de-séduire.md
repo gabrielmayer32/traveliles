@@ -10,7 +10,7 @@ tags:
   - Indian Ocean
   - Tourist  arrivals
   - Holidays destination
-published: false
+published: true
 ---
 
 More than one million travellers have visited Mauritius since the beginning of 2026. Reaching this milestone as early as September highlights the enduring appeal of this Indian Ocean destination, celebrated not only for its natural beauty but also for its rich cultural heritage and warm hospitality.

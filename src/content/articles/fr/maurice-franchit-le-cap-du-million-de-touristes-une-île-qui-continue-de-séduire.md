@@ -10,7 +10,7 @@ tags:
   - Destination Vacances
   - Ocean Indien
   - Arrivees  touristiques
-published: false
+published: true
 ---
 
 Plus d’un million de voyageurs ont choisi l’île Maurice depuis le début de l’année 2026. Un cap symbolique franchi dès septembre, qui témoigne de l’attrait toujours aussi fort de cette destination de l’océan Indien, appréciée autant pour ses paysages que pour sa richesse humaine et culturelle.
