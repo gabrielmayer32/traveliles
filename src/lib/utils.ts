@@ -1,3 +1,6 @@
+// Mailchimp: Audience → Signup forms → Embedded forms → the form's `action` URL. Empty hides the signup.
+export const MAILCHIMP_FORM_URL = 'https://traveliles.us15.list-manage.com/subscribe/post?u=3f46b70be8d938c8a2c1867ad&id=7c81def552&f_id=00b6c2e1f0';
+
 export const CATEGORIES = [
 	'Rencontres',
 	'Nos Ambassadeurs',

@@ -1,0 +1,224 @@
+---
+import { t, type Locale } from '../lib/i18n';
+import { MAILCHIMP_FORM_URL } from '../lib/utils';
+
+interface Props { locale?: Locale; }
+const { locale = 'fr' } = Astro.props;
+
+const action = MAILCHIMP_FORM_URL ? new URL(MAILCHIMP_FORM_URL) : null;
+const honeypot = action ? `b_${action.searchParams.get('u')}_${action.searchParams.get('id')}` : '';
+const privacyHref = locale === 'en' ? '/en/privacy' : '/confidentialite';
+const messages = {
+	sending: t('newsletter.sending', locale),
+	success: t('newsletter.success', locale),
+	already: t('newsletter.already', locale),
+	error: t('newsletter.error', locale),
+};
+---
+
+{action && (
+	<section class="newsletter" aria-labelledby="newsletter-title">
+		<div class="newsletter-intro">
+			<h2 id="newsletter-title" class="newsletter-title">{t('newsletter.title', locale)}</h2>
+			<p class="newsletter-text">{t('newsletter.text', locale)}</p>
+		</div>
+		<form
+			class="newsletter-form"
+			action={action.href}
+			method="post"
+			target="_blank"
+			data-messages={JSON.stringify(messages)}
+		>
+			<div class="newsletter-row">
+				<label class="sr-only" for="newsletter-email">{t('newsletter.label', locale)}</label>
+				<input
+					id="newsletter-email"
+					class="newsletter-input"
+					type="email"
+					name="EMAIL"
+					autocomplete="email"
+					placeholder={t('newsletter.placeholder', locale)}
+					required
+				/>
+				<div class="newsletter-honeypot" aria-hidden="true">
+					<input type="text" name={honeypot} tabindex="-1" value="" />
+				</div>
+				<button class="newsletter-button" type="submit">{t('newsletter.submit', locale)}</button>
+			</div>
+			<p class="newsletter-status" role="status" aria-live="polite"></p>
+			<p class="newsletter-consent">
+				{t('newsletter.consent', locale)} <a href={privacyHref}>{t('footer.privacy', locale)}</a>
+			</p>
+		</form>
+	</section>
+)}
+
+<script>
+	type Messages = Record<'sending' | 'success' | 'already' | 'error', string>;
+
+	document.querySelectorAll<HTMLFormElement>('.newsletter-form').forEach((form) => {
+		const status = form.querySelector<HTMLElement>('.newsletter-status')!;
+		const button = form.querySelector<HTMLButtonElement>('button')!;
+		const messages: Messages = JSON.parse(form.dataset.messages || '{}');
+
+		// Mailchimp's embed endpoint has no CORS, so its JSONP variant is used to stay on the page.
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const callback = `mcNewsletter${Date.now()}`;
+			const url = new URL(form.action.replace('/post?', '/post-json?'));
+			new FormData(form).forEach((value, key) => url.searchParams.set(key, String(value)));
+			url.searchParams.set('c', callback);
+
+			const script = document.createElement('script');
+			const done = (state: keyof Messages) => {
+				status.textContent = messages[state];
+				status.dataset.state = state;
+				button.disabled = false;
+				script.remove();
+				delete (window as any)[callback];
+			};
+
+			(window as any)[callback] = (res: { result: string; msg?: string }) => {
+				if (res.result === 'success') {
+					form.reset();
+					done('success');
+				} else {
+					done(/already subscribed/i.test(res.msg || '') ? 'already' : 'error');
+				}
+			};
+			script.onerror = () => done('error');
+			script.src = url.href;
+
+			button.disabled = true;
+			status.textContent = messages.sending;
+			status.dataset.state = 'sending';
+			document.body.append(script);
+		});
+	});
+</script>
+
+<style>
+	.newsletter {
+		display: grid;
+		grid-template-columns: 1fr 1.2fr;
+		gap: var(--space-8);
+		align-items: center;
+		padding-bottom: var(--space-12);
+		margin-bottom: var(--space-12);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+	}
+
+	.newsletter-title {
+		font-family: var(--font-body);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: var(--tracking-wider);
+		text-transform: uppercase;
+		color: var(--white);
+	}
+
+	.newsletter-text {
+		margin-top: var(--space-3);
+		max-width: 40ch;
+		color: rgba(255, 255, 255, 0.72);
+		font-size: var(--text-sm);
+		line-height: var(--leading-normal);
+	}
+
+	.newsletter-row {
+		display: flex;
+		gap: var(--space-2);
+	}
+
+	.newsletter-input {
+		flex: 1;
+		min-width: 0;
+		padding: var(--space-3) var(--space-4);
+		font: inherit;
+		font-size: var(--text-sm);
+		color: var(--white);
+		background: transparent;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: var(--radius);
+	}
+
+	.newsletter-input::placeholder {
+		color: rgba(255, 255, 255, 0.45);
+	}
+
+	.newsletter-input:focus {
+		outline: none;
+		border-color: var(--white);
+	}
+
+	.newsletter-button {
+		padding: var(--space-3) var(--space-6);
+		font: inherit;
+		font-size: var(--text-xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+		color: var(--navy-950);
+		background: var(--white);
+		border: 1px solid var(--white);
+		border-radius: var(--radius);
+		cursor: pointer;
+		transition: opacity var(--dur-fast) var(--ease-out);
+	}
+
+	.newsletter-button:hover {
+		opacity: 0.88;
+	}
+
+	.newsletter-button:disabled {
+		opacity: 0.6;
+		cursor: wait;
+	}
+
+	.newsletter-honeypot {
+		position: absolute;
+		left: -5000px;
+	}
+
+	.newsletter-status:empty {
+		display: none;
+	}
+
+	.newsletter-status {
+		margin-top: var(--space-3);
+		font-size: var(--text-sm);
+		color: var(--white);
+	}
+
+	.newsletter-status[data-state='error'] {
+		color: var(--navy-300);
+	}
+
+	.newsletter-consent {
+		margin-top: var(--space-3);
+		font-size: var(--text-xs);
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	.newsletter-consent a {
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	.newsletter-consent a:hover {
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	@media (max-width: 900px) {
+		.newsletter {
+			grid-template-columns: 1fr;
+			gap: var(--space-5);
+		}
+	}
+
+	@media (max-width: 420px) {
+		.newsletter-row {
+			flex-direction: column;
+		}
+	}
+</style>

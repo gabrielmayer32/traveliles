@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { RUBRIQUES, slugifyCategory, type Category } from '../lib/utils';
 import { iconSvg } from '../lib/icons';
+import NewsletterSignup from './NewsletterSignup.astro';
 import { t, localizedCategory, localizedPath, type Locale } from '../lib/i18n';
 
 interface Props { locale?: Locale; }
@@ -22,6 +23,7 @@ const hasPartenaires = (await getCollection('partenaires')).some((p) => p.data.p
 
 <footer class="site-footer">
 	<div class="container-wide footer-main">
+		<NewsletterSignup locale={locale} />
 		<div class="footer-grid">
 			<!-- Brand column -->
 			<div class="footer-brand">

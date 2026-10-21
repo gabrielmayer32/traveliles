@@ -53,6 +53,18 @@ const translations = {
 	'footer.contact':  { fr: 'Contact',                     en: 'Contact' },
 	'footer.search':   { fr: 'Recherche',                   en: 'Search' },
 
+	// Newsletter
+	'newsletter.title':       { fr: 'La newsletter',                                   en: 'The newsletter' },
+	'newsletter.text':        { fr: 'Nos derniers reportages, vidéos et adresses, directement dans votre boîte mail.', en: 'Our latest stories, videos and places, straight to your inbox.' },
+	'newsletter.label':       { fr: 'Adresse e-mail',                                  en: 'Email address' },
+	'newsletter.placeholder': { fr: 'votre@email.com',                                 en: 'your@email.com' },
+	'newsletter.submit':      { fr: "S'inscrire",                                      en: 'Subscribe' },
+	'newsletter.sending':     { fr: 'Inscription…',                                    en: 'Subscribing…' },
+	'newsletter.success':     { fr: 'Merci ! Confirmez votre inscription via le lien reçu par e-mail.', en: 'Thank you! Please confirm your subscription using the link in your inbox.' },
+	'newsletter.already':     { fr: 'Cette adresse est déjà inscrite.',                en: 'This address is already subscribed.' },
+	'newsletter.error':       { fr: "L'inscription n'a pas abouti. Vérifiez l'adresse et réessayez.", en: 'Subscription failed. Please check the address and try again.' },
+	'newsletter.consent':     { fr: 'Désinscription possible à tout moment.',          en: 'You can unsubscribe at any time.' },
+
 	// Cookies
 	'cookies.text':   { fr: 'Ce site utilise des cookies tiers (YouTube, Vimeo) pour la lecture des vidéos.', en: 'This site uses third-party cookies (YouTube, Vimeo) for video playback.' },
 	'cookies.accept': { fr: 'Accepter', en: 'Accept' },
