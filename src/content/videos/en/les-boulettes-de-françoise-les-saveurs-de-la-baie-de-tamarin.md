@@ -7,7 +7,7 @@ videoId: https://youtu.be/0y_EtCC6jJw
 videoFile: 0y_EtCC6jJw
 thumbnail: /images/uploads/Thumbnail Boulettes Francoise.webp
 excerpt: ''
-published: false
+published: true
 ---
 
 At Tamarin Bay, enjoying a bowl of boulettes comes with more than just a sea view. There’s a special atmosphere here, one that Françoise Ricot has been part of for nearly twenty years. Her small food business has become much more than a place to grab a bite: it’s a familiar meeting spot where locals and visitors come together.

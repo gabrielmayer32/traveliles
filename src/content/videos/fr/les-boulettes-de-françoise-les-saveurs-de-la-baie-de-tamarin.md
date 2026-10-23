@@ -7,7 +7,7 @@ videoId: https://youtu.be/0y_EtCC6jJw
 videoFile: 0y_EtCC6jJw
 thumbnail: /images/uploads/Thumbnail Boulettes Francoise.webp
 excerpt: ''
-published: false
+published: true
 ---
 
 ### À la baie de Tamarin, les boulettes se dégustent avec une vue sur la mer, mais aussi dans une ambiance bien particulière. Depuis près de vingt ans, Françoise Ricot y régale habitués et visiteurs, faisant de son petit commerce bien plus qu'une simple adresse où manger : un lieu de rencontre et de convivialité.
