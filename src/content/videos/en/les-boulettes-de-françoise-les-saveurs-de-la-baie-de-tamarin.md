@@ -1,6 +1,6 @@
 ---
 title: 'Françoise’s Boulettes: A Taste of Tamarin Bay'
-date: 2026-10-23T18:30:00
+date: 2026-10-23T18:00:00
 category: Saveurs
 videoSource: youtube
 videoId: https://youtu.be/0y_EtCC6jJw
