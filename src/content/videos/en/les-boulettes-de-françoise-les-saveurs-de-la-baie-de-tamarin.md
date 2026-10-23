@@ -5,7 +5,7 @@ category: Saveurs
 videoSource: youtube
 videoId: https://youtu.be/0y_EtCC6jJw
 videoFile: 0y_EtCC6jJw
-thumbnail: ''
+thumbnail: /images/uploads/Thumbnail Boulettes Francoise.webp
 excerpt: ''
 published: false
 ---
