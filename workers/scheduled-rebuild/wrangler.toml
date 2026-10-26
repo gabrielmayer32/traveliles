@@ -1,0 +1,7 @@
+name = "traveliles-scheduled-rebuild"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+# UTC. Toutes les 2 h de 06h à 20h heure de Maurice (UTC+4) : publication programmée.
+[triggers]
+crons = ["0 2,4,6,8,10,12,14,16 * * *"]
