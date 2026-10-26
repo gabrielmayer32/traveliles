@@ -2,7 +2,7 @@
 title: 'Sunset Boulevard: When Grand Baie Was Imagining Its Future'
 date: 2026-10-26T15:19:00
 category: Nos archives
-cover: /images/uploads/Le projet Sunset Boulevard cropped.webp
+cover: /images/uploads/Le projet Sunset Boulevard.webp
 excerpt: ''
 author: Travel-Îles
 tags:
