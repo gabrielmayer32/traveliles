@@ -1,6 +1,6 @@
 ---
 title: 'L’île de la Passe, scène de la bataille du Vieux Grand Port'
-date: 2027-11-23T08:00:00
+date: 2027-11-19T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2018/12/IMG_5129.jpg
 excerpt: 'Dans le lagon du sud-est de Maurice, un îlot sur lequel on retrouve des fortifications anciennes semble veiller sur la baie de Grand Port : l’île de la Passe, qui jouit d’un emplacement hautement…'

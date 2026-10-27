@@ -1,6 +1,6 @@
 ---
 title: 'Ilot Bernache, petit joyau au nord de Maurice'
-date: 2028-02-04T08:00:00
+date: 2028-01-25T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/10/EDI_Bernaches1.jpg
 excerpt: 'Tout autour de Maurice, on retrouve de nombreux ilots, les uns plus paradisiaques que les autres, avec des plages de sable blanc et des eaux turquoise. Si certains sont devenus très touristiques,…'

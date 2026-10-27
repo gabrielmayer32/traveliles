@@ -1,6 +1,6 @@
 ---
 title: '185 ans depuis l’abolition de l’esclavage…'
-date: 2028-03-03T08:00:00
+date: 2028-02-22T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2020/01/Le-Morne-esclavage-2.jpg
 excerpt: 'Maurice fête cette année le 185e anniversaire de l’abolition de l’esclavage dans l’île, proclamée le 1er février 1835 par les Britanniques.'

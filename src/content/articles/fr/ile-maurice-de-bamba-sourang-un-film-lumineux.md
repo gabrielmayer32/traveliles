@@ -1,6 +1,6 @@
 ---
 title: 'L’île Maurice de Bamba Sourang : un film lumineux'
-date: 2028-03-17T08:00:00
+date: 2028-03-07T08:00:00
 category: Art & Culture
 cover: /images/uploads/archives/2020/04/Film-Bamba-Sourang-1.png
 excerpt: 'Photographe au talent mondialement reconnu et grand amoureux de l’île Maurice où il revient régulièrement depuis plus dix ans, Bamba Sourang propose aux abonnés de Travel-îles by Côte Nord et à tous…'

@@ -1,6 +1,6 @@
 ---
 title: 'Des plats savoureux à base de fruit à pain'
-date: 2028-03-24T08:00:00
+date: 2028-03-14T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2020/04/fruit-%C3%A0-pain-1.jpg
 excerpt: 'On connait tous le fruit à pain dans les îles de la région, mais saviez-vous qu’il y a une multitude de façons de le consommer ? Le confinement actuel est l’occasion parfaite pour vous mettre aux…'

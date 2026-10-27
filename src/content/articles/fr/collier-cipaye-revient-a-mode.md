@@ -1,6 +1,6 @@
 ---
 title: 'Le « collier cipaye » revient à la mode'
-date: 2028-03-31T08:00:00
+date: 2028-03-21T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2020/03/IMG_20200326_143326.jpg
 excerpt: 'cipayeLe « collier cipaye », ça vous dit quelque chose ? A l’époque, jusque dans les années 80, les Mauriciens utilisaient cette graine, la larme de job, appelée « la grain cipaye » ou « collier…'

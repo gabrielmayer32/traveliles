@@ -1,6 +1,6 @@
 ---
 title: 'Le letchi, la star des fruits d’été est là'
-date: 2027-11-12T08:00:00
+date: 2027-11-09T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2019/11/Letchi.jpg
 excerpt: 'Ils sont enfin de sortie ! Juteux, sucrés, agréablement parfumés, le letchi fait partie de ces fruits tant attendus pendant la période estivale, dont raffolent aussi bien les locaux que les touristes.'

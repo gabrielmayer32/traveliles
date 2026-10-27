@@ -1,6 +1,6 @@
 ---
 title: 'Rodrigues : Une île propice aux activités de plein air'
-date: 2027-12-10T08:00:00
+date: 2027-12-07T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/09/RodriguesActivites.jpg
 excerpt: 'Entièrement entourée par un lagon de 220 km2, l’île Rodrigues est à l’abri des aléas de Mère Nature; ce qui rend possible toutes sortes d’activités de plein air tout au long de l’année : du simple…'

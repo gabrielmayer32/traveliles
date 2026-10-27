@@ -1,6 +1,6 @@
 ---
 title: 'Saveurs locales : le Chana Puri à l’honneur'
-date: 2027-11-30T08:00:00
+date: 2027-11-26T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2019/11/Chana-puri.jpg
 excerpt: 'Plages paradisiaques, montagnes, Port Louis, ses marchands ambulants et ses « marsan gato », les sourires des autochtones, c’est l’image que nous avons de l’île Maurice. Au-delà des belles plages…'

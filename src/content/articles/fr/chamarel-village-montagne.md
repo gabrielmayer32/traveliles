@@ -1,6 +1,6 @@
 ---
 title: 'Chamarel : Un village de montagne sous les tropiques'
-date: 2027-11-16T08:00:00
+date: 2027-11-12T08:00:00
 category: Nos régions
 excerpt: 'Petit village pittoresque niché au creux des montagnes qui dominent la côte sud-ouest de Maurice, Chamarel est un sanctuaire unique, où la nature est prédominante. Réputé pour sa terre des sept…'
 author: 'Fabrice David'

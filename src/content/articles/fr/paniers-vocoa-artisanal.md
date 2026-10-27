@@ -1,6 +1,6 @@
 ---
 title: 'Les paniers de Mme Bulleeram'
-date: 2027-12-17T08:00:00
+date: 2027-12-14T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2019/11/Bulleeram.jpg
 excerpt: 'Depuis l’âge de seize ans, les mains agiles de Reotee Bulleeram s’activent pour fabriquer ces paniers de vacoa typiques de Maurice. À Brisée Verdière, sa boutique, où sont suspendus des paniers…'

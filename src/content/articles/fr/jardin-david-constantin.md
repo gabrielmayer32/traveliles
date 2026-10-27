@@ -1,6 +1,6 @@
 ---
 title: 'Dans le jardin secret de David Constantin'
-date: 2028-03-07T08:00:00
+date: 2028-02-25T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2019/07/JardinDavid1.jpg
 excerpt: 'Si David Constantin s’est fait un nom en tant que cinéaste et réalisateur, il a plus d’une corde à son arc : c’est également un artiste talentueux. Son exposition « In Construction » qui s’est tenue…'

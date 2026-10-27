@@ -1,6 +1,6 @@
 ---
 title: 'Plaisirs culinaires : Macatias Coco, chaud chaud!'
-date: 2028-03-10T08:00:00
+date: 2028-02-29T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2020/04/Macatias-coco-Copy.jpg
 excerpt: 'En ce temps de confinement, nous recherchons des recettes faciles et qui, surtout, nous offrent du réconfort et nous ramènent à l’enfance et aujourd’hui, nous nous attaquons à la recette des…'

@@ -1,6 +1,6 @@
 ---
 title: 'Au coeur de l''île: Balfour, petit havre de paix urbain'
-date: 2028-04-07T08:00:00
+date: 2028-03-28T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2018/12/jardinbalfour1.jpg
 excerpt: 'Balfour - Une nature verdoyante, de magnifiques palmiers, des petits ruisseaux, une aire de jeux pour les enfants, un enclos à tortues géantes et au loin une cascade… On a du mal à croire qu''on est…'

@@ -1,6 +1,6 @@
 ---
 title: 'Au coeur de l''île: les sentiers du parc de Bras-d’Eau'
-date: 2028-03-14T08:00:00
+date: 2028-03-03T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2016/11/bd1.jpg
 excerpt: 'A la croisée des villages de Poste-Lafayette, Roches-Noires et Belle-Mare, le parc national de Bras-d’Eau étend ses arbres sur les derniers kilomètres de côtes sauvages préservées de l''île Maurice.…'

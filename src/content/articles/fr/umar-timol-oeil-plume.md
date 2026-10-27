@@ -1,6 +1,6 @@
 ---
 title: 'Umar Timol - L’œil et la plume'
-date: 2028-01-14T08:00:00
+date: 2028-01-11T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2019/05/Umar-Timol-1.jpg
 excerpt: 'Pour le mois de la poésie mauricienne célébré en avril, le Blue Penny Museum a organisé une exposition réunissant les œuvres de trois poètes mauriciens avec en parallèle 25 portraits photographiques…'

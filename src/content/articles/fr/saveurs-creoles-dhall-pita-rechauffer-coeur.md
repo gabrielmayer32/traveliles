@@ -1,6 +1,6 @@
 ---
 title: 'Saveurs créoles : un bon Dhall Pita pour vous réchauffer le cœur'
-date: 2028-01-25T08:00:00
+date: 2028-01-18T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2020/03/Dhall-Pita-3.jpg
 excerpt: 'Quand nous pensons aux « comfort food », ce qui nous vient à l’esprit, c’est évidemment les plats bien de chez nous, typiquement mauriciens et surtout faits maison ! Le dhall pita est sans doute ce…'

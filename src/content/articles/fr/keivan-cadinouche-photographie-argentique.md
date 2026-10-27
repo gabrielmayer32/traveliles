@@ -1,6 +1,6 @@
 ---
 title: 'Photographie by Keivan Cadinouche : Maurice d’aujourd’hui version vintage'
-date: 2028-01-28T08:00:00
+date: 2028-01-21T08:00:00
 category: Art & Culture
 excerpt: 'Avec l’explosion du numérique, la photographie argentique est devenue de l’histoire ancienne pour beaucoup, voire inconnue pour les plus jeunes. Mais Keivan Cadinouche lui reste fidèle et propose de…'
 author: 'Fabrice David'

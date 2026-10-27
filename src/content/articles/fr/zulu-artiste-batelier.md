@@ -1,6 +1,6 @@
 ---
 title: 'ZULU - Derrière l''artiste, le batelier'
-date: 2028-02-08T08:00:00
+date: 2028-01-28T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2019/07/ZuluArtistebAtelier.jpg
 excerpt: 'Depuis cinq ans maintenant, Zulu s’est imposé sur la scène musicale mauricienne. Derrière l’artiste à la voix rauque et prenante, se cache un vrai combatif et un acharné du travail.'

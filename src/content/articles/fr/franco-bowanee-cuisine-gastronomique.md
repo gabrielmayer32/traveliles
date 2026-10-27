@@ -1,6 +1,6 @@
 ---
 title: 'Franco Bowanee : une cuisine gastronomique au parfum mauricien'
-date: 2027-11-19T08:00:00
+date: 2027-11-16T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2019/05/FrancoBowanee.jpg
 excerpt: 'Après Antoine Heerah (2003), Gilles Bosquet (2011), Franco Bowanee est entré cette année dans le cercle très fermé des chefs mauriciens étoilés au guide Michelin. Un sacre qui récompense son…'

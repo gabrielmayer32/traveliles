@@ -1,6 +1,6 @@
 ---
 title: 'Des pistes d''agriculture alternative pour une alimentation saine'
-date: 2028-02-15T08:00:00
+date: 2028-02-04T08:00:00
 category: Maurice demain
 cover: /images/uploads/archives/2020/03/agriculturealternative.jpg
 excerpt: 'La vie humaine sur Terre n’a jamais été aussi menacée si l’on croit les phénomènes climatiques et sanitaires qui nous assaillent : réchauffement, tempêtes, cancer, virus… Alors que beaucoup d’États…'

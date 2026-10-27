@@ -1,6 +1,6 @@
 ---
 title: 'Plaisirs culinaires : Des « mines frais » maison [Recette]'
-date: 2028-04-14T08:00:00
+date: 2028-04-04T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2020/04/94404573_254949085891228_5322234520135532544_n.jpg
 excerpt: 'Qui ne connait pas les « mines frais», aliments très prisés des Mauriciens ? Les « mines » sont en réalité des nouilles chinoises et sont la base d’un succulent « mine bwi » ou encore d’un délicieux…'

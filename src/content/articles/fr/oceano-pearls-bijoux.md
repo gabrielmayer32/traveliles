@@ -1,6 +1,6 @@
 ---
 title: 'Oceano Pearls : Des bijoux inspirés de l’univers marin'
-date: 2028-02-22T08:00:00
+date: 2028-02-11T08:00:00
 category: Savoir-faire
 excerpt: 'Colliers longs ou courts, sautoirs, bagues ou bracelets, ces bijoux font partie des accessoires incontournables de la garde-robe féminine. Pour une collection personnalisée inspirée de la mer,…'
 author: 'Fabrice David'

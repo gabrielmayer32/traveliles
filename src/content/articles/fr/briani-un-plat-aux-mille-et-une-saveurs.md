@@ -1,6 +1,6 @@
 ---
 title: 'Le briani, un plat aux mille et une saveurs'
-date: 2027-12-14T08:00:00
+date: 2027-12-10T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2020/01/Biryani.jpeg
 excerpt: 'La gastronomie mauricienne ne se résume pas qu’au curry. Difficile d’évoquer la cuisine locale sans parler de notre fameux briani. Le briani, ou biryani, est un plat savoureux qui nous vient tout…'

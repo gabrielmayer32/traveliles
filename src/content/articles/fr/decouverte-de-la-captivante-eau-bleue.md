@@ -1,6 +1,6 @@
 ---
 title: 'Eau Bleue, une découverte captivante'
-date: 2028-02-29T08:00:00
+date: 2028-02-18T08:00:00
 category: Nos régions
 excerpt: 'Maurice est réputée pour ses plages de sable fin et les eaux turquoise de ses lagons mais à l’intérieur des terres, se trouve un lieu qui est longtemps resté un secret bien gardé : Eau Bleue, un…'
 author: 'Côte Nord'

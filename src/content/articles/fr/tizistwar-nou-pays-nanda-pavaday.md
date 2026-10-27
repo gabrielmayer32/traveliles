@@ -1,6 +1,6 @@
 ---
 title: 'Tizistwar nou pays : L''île Maurice d''antan en 24 récits'
-date: 2028-03-21T08:00:00
+date: 2028-03-10T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2020/03/Tizistwarnoupei.jpg
 excerpt: '« Tizistwar nou pays » c’est l’histoire de Nanda Pavaday mais c’est aussi celle de bon nombre de Mauriciens qui, à travers son livre et ses histoires racontées avec force détails, voyagent dans le…'

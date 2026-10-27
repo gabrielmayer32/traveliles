@@ -1,6 +1,6 @@
 ---
 title: 'Plages mythiques de l’océan Indien : Le Bouchon'
-date: 2027-12-31T08:00:00
+date: 2027-12-28T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/09/20190801_111927.jpg
 excerpt: 'Le Bouchon Si le Nord de Maurice est réputé pour ses belles plages, le Sud de l’île n’est pas en reste avec de magnifiques petits coins de paradis, loin de la foule. La plage du Bouchon est de…'

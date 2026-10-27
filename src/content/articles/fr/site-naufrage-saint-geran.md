@@ -1,6 +1,6 @@
 ---
 title: 'Le site du naufrage du Saint Géran'
-date: 2027-12-24T08:00:00
+date: 2027-12-21T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2019/03/NaufrageStGeran1.jpg
 excerpt: 'Après l’Aapravasi Ghat et Le Morne, l’île Maurice pourrait-elle avoir un troisième site classé au patrimoine mondial de l’humanité ? La question a été posée par le Dr Jean-Yves Blot lors d’une…'

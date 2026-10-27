@@ -1,6 +1,6 @@
 ---
 title: 'Alan Payen : ambassadeur de la cuisine mauricienne'
-date: 2027-12-21T08:00:00
+date: 2027-12-17T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2019/05/alanpayen1.jpg
 excerpt: '50 chefs fêtent les 50 ans de Maurice, c’est l’ouvrage qu’a réalisé Alan Payen, en hommage à la cuisine mauricienne à l’occasion des 50 ans de l’indépendance de l’île. Ce livre est la consécration de…'
