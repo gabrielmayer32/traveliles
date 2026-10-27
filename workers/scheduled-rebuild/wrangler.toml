@@ -3,5 +3,15 @@ main = "index.js"
 compatibility_date = "2026-10-01"
 
 # UTC. Toutes les 2 h de 06h à 20h heure de Maurice (UTC+4) : publication programmée.
+# La 2e ligne publie sur Facebook les articles devenus visibles, 20 min après chaque reconstruction.
 [triggers]
-crons = ["0 2,4,6,8,10,12,14,16 * * *"]
+crons = ["0 2,4,6,8,10,12,14,16 * * *", "20 2,4,6,8,10,12,14,16 * * *"]
+
+# Identifiant de la Page Facebook Travel-Îles (pas secret). Le jeton est un secret : FB_PAGE_TOKEN.
+[vars]
+FB_PAGE_ID = "157900804345729"
+
+# Liste des articles déjà publiés sur Facebook, pour ne jamais publier deux fois.
+[[kv_namespaces]]
+binding = "FB_POSTED"
+id = "9d84bcfb8434492fa49ad8cb404bb409"
