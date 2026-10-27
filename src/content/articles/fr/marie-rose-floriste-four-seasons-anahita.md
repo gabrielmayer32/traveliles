@@ -17,8 +17,6 @@ published: true
 
 *Publié pour la première fois dans Travel-Îles by Côte Nord en novembre 2019.*
 
-##### [[Extrait de l'Edition 142](https://mag.travel-iles.com/magazine-detail/31)]
-
 #### Quand vous entrez au Four Seasons Mauritius at Anahita, outre la beauté du site, le regard est attiré par les compositions florales. C’est Marie Rose Jenny Soupe qui s’en occupe depuis maintenant douze ans avec amour, délicatesse et passion.
 
 Après ses études secondaires, Marie Rose caressait le rêve de devenir coiffeuse. Le centre du Woman Empowerment Council de sa localité n’ayant pas de cours dans ce secteur, on lui propose alors d’opter pour l’art floral. Elle fut agréablement surprise de constater que cela correspondait à sa personnalité et lui permettait de donner libre cours à sa créativité. « Je me retrouvais vite à faire des bouquets à longueur de journée. Cela dure depuis maintenant 25 ans. »
@@ -28,6 +26,4 @@ Après ses études secondaires, Marie Rose caressait le rêve de devenir coiffeu
 Ce que Marie Rose apprécie surtout au Four Seasons, c’est sa philosophie de privilégier « un esprit tropical avec l’usage des fleurs de tous les jours comme l’hibiscus ou le frangipanier». « On essaye de garder le tout chic et simple. Nous avons recours le plus possible à des fournisseurs locaux pour nos fleurs et particulièrement des fleurs indigènes. On utilise également un maximum de fleurs et de verdures que nos jardiniers font pousser dans nos jardins. »
 
 Cette utilisation des éléments locaux demande encore plus de créativité, une des qualités requises pour devenir un bon fleuriste. « Il faut aussi de la passion, de la patience, être à l’écoute du client, avoir le sens du partage et l’envie d’acquérir de nouvelles connaissances en matière florale. C’est la passion qui nous fait faire des bouquets avec amour. Quand on monte un centre de table compliqué qui requiert un travail minutieux et un certain doigté, il nous faut de la patience. Il faut être à l’écoute du client pour répondre aux attentes et aussi une ouverture d’esprit par rapport aux nouvelles tendances. » À la clé, c’est la joie des clients, en particulier des mariés, assure Jenny qui ne se lasse pas de voir leur bonheur devant la beauté de son travail.
-
-### Découvrez l'intégralité de l'Edition 142 en vous abonnant gratuitement sur [mag.travel-iles.com](https://mag.travel-iles.com/)
 

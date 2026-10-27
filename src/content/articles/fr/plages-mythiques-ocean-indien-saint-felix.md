@@ -16,8 +16,6 @@ published: true
 
 *Publié pour la première fois dans Travel-Îles by Côte Nord en avril 2019.*
 
-#### [Travel-Iles by Cote Nord abonnement digital](http://mag.travel-iles.com)
-
 #### **Située dans le Sud de l’île, entre Bel Ombre et Riambel, la plage de Saint-Félix est très probablement la plus belle de cette côte sauvage. Toutefois, malgré sa longue étendue de sable fin et ses eaux turquoise, la baignade n’est pas conseillée à cause des forts courants marins.**
 
 !Saint-Félix

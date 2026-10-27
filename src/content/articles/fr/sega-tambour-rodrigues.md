@@ -25,5 +25,3 @@ Le tambour est battu énergiquement, tandis qu’un ‘triyang’(instrument en 
 
 Véritable institution à Rodrigues, le Sega Tambour est depuis 2017, inscrit au patrimoine immatériel de l’UNESCO au même titre que le Sega Tipik et le Geet Gawai. L’élément est également présenté dans des installations touristiques, contribuant à la création de revenus pour les artistes interprètes en immergeant les touristes dans la tradition rodriguaise. Les connaissances et les compétences liées à la pratique sont transmises des aînés aux jeunes par l’imitation et l’observation. Les compétences en fabrication d’instruments sont acquises par le biais d’un apprentissage avec des artisans expérimentés. La musique traditionnelle de Rodrigues est accompagnée de plusieurs danseurs qui constituent une troupe traditionnelle d’environ une dizaine de personnes. Les danses telles que la polka, polka ris, polka bébé, kotis, kotis croisé, mazok croisé complètent l’univers du Séga Tambour rodriguais.
 
-### **Découvrez l'intégralité de l'Edition Spéciale 2019 en vous abonnant gratuitement sur [mag.travel-iles.com](https://mag.travel-iles.com/)**
-

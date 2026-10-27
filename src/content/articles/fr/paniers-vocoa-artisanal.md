@@ -19,8 +19,6 @@ published: true
 
 *Publié pour la première fois dans Travel-Îles by Côte Nord en novembre 2019.*
 
-##### [[Extrait de l'Edition 142](https://mag.travel-iles.com/magazine-detail/31)]
-
 #### Depuis l’âge de seize ans, les mains agiles de Reotee Bulleeram s’activent pour fabriquer ces paniers de vacoa typiques de Maurice. À Brisée Verdière, sa boutique, où sont suspendus des paniers colorés de toutes dimensions, est un arrêt obligatoire.
 
 Mme Bulleeram a découvert cet art auprès de sa belle-mère après son mariage. « Mon mari travaillait aux champs et ce qu’il gagnait ne suffisait pas pour faire bouillir la marmite. J’ai dû apporter ma contribution. On élevait des vaches, j’ai aussi travaillé aux champs et je me suis mise à la vannerie. C’est ma belle-mère qui m’a initiée à cet art. A cette époque, les paniers valaient entre 20 et 25 sous ».
@@ -32,6 +30,4 @@ Mme Bulleeram fabrique différents types de paniers, aussi appelés « tentes »
 Une fois les paniers terminés, la vannière les entrepose chez elle s’il s’agit de commandes, mais en général, elle les expose pour la vente. « Auparavant, on les suspendait au bord de la route sur des rondins. C’était pénible car, dès qu’il commençait à pleuvoir, il fallait courir ramasser les tentes. Puis on les ressortait après la pluie. Quand il pleuvait pendant des jours, il n’y avait aucune vente. Après des années de labeur, nous avons pu construire une petite boutique en tôle ».
 
 Avec le temps, le raphia est venu étoffer la production de la famille Bulleeram. « Il est un peu plus solide et durable et surtout étanche. D’autre part, il permet de faire des tentes colorées. ». Alors, si vous passez par Brisée Verdière, n’hésitez pas à vous arrêter à la boutique des Bulleeram pour un produit artisanal authentique qui vous aidera pour vos courses ou pour transporter votre déjeuner.
-
-### Découvrez l'intégralité de l'Edition 142 en vous abonnant gratuitement sur [mag.travel-iles.com](https://mag.travel-iles.com/)
 

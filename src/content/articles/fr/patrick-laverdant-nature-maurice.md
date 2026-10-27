@@ -17,8 +17,6 @@ published: true
 
 *Publié pour la première fois dans Travel-Îles by Côte Nord en janvier 2020.*
 
-#### [[Extrait de l'édition 143](https://mag.travel-iles.com/magazine-detail/33)]
-
 #### Photographe autodidacte et passionné de surf, Patrick Laverdant est aussi un grand amoureux de son île et sa nature. Il vient de publier aux éditions Vizavi, un album qui montre la diversité de la nature de Maurice sous un regard introspectif.
 
 Si Patrick Laverdant a toujours eu son appareil photo à portée de main, c’est dans le surf wear qu’il va s’investir en créant sa propre entreprise à l’âge de 23 ans. En 2008, il quitte son île pour la Suisse. Il y restera cinq ans. À son retour, il délaisse son entreprise pour se consacrer à la photographie. « Cela a été un moyen de découvrir mon île sous un autre regard. Ce n’était pas pour le paysage mais plus pour les gens. La proximité avec eux, leur environnement, leurs conditions sociales. C’est un exercice qui devient de plus en plus difficile avec les réseaux sociaux. C’est là que j’ai compris mon île, la symbiose et les difficultés de coexister ».

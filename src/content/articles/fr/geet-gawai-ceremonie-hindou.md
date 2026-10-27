@@ -20,8 +20,6 @@ published: true
 
 *Publié pour la première fois dans Travel-Îles by Côte Nord en septembre 2019.*
 
-##### [Extrait de [l'Edition Spéciale 2019](https://mag.travel-iles.com/view-magazine-cover/magazine_cover/30)]
-
 #### Parmi les traditions amenées par les immigrants indiens à Maurice, le Geet Gawai tient une place de choix dans le paysage culturel de l’île. Cette cérémonie se déroule avant le mariage et combine rituels, prières, chants, musique et danse. Interprété par les communautés de langue bhojpuri, originaires du nord de l’Inde, et particulièrement de l’État du Bihar, il est désormais inscrit au Patrimoine immatériel de l’humanité par l’Unesco.
 
 La pratique traditionnelle du Geet Gawai a lieu au domicile de la mariée ou du marié et implique en général, les membres féminins de la famille et des voisins. Toutefois, de nos jours, le Geet Gawai inclut les hommes et se joue lors de fêtes diverses. Dans la pure tradition, la cérémonie se tient deux jours avant le mariage, souvent le vendredi soir. Elle débute par une série de rituels bien précis. D’abord, il y a le lagan kholna : cinq femmes mariées trient des ingrédients (curcuma, riz, herbe et argent) dans un carré de tissu tandis que d’autres participantes entonnent des chansons, lagan, suhaag et sumeran, qui honorent les dieux et les déesses du panthéon hindou, les invoquant pour qu’ils bénissent le mariage et le futur couple. Ces ingrédients seront plus tard utilisés lors de la cérémonie de safran, la veille du mariage.
@@ -39,6 +37,4 @@ Des chansons typiques sont ensuite interprétées et l’audience se joint à la
 Les connaissances sur la pratique et les compétences associées sont transmises des générations les plus anciennes aux plus jeunes de manière informelle et formelle. Cela se fait à travers l’observation et la participation des familles, des maisons d’enseignement semi-formelles, des centres communautaires et des académies. De nos jours, la pratique de Geet Gawai s’étend aux représentations publiques et les hommes y participent également.
 
 ##### ***Photos : Dave Lutchmadoo*** ***Source : National Heritage Fund***
-
-#### Découvrez l'intégralité de l'Edition Spéciale 2019 en vous abonnant gratuitement sur [mag.travel-iles.com](https://mag.travel-iles.com/)
 

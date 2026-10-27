@@ -17,8 +17,6 @@ published: true
 
 *Publié pour la première fois dans Travel-Îles by Côte Nord en septembre 2019.*
 
-##### [Extrait de [l'Edition Spéciale 2019](https://mag.travel-iles.com/view-magazine-cover/magazine_cover/30)]
-
 #### Entièrement entourée par un lagon de 220 km2, l’île Rodrigues est à l’abri des aléas de Mère Nature; ce qui rend possible toutes sortes d’activités de plein air tout au long de l’année : du simple farniente sur les plages aux randonnées, en passant par les tyroliennes, Rodrigues possède bien des atouts insoupçonnés.
 
 C’est sur la côte est de l’île que l’on retrouve les plus belles plages de Rodrigues. Des plages qui s’étendent de Pointe Coton en passant par Graviers jusqu’à la côte sud-est de l’île à Mourouk. Haut lieu d’activités pendant les week-ends avec des campeurs, des sorties familiales et des barbecues, les plages sont quasi désertes en semaine et font le bonheur des touristes pour le calme et la tranquillité des lieux.
@@ -30,6 +28,4 @@ La plus connue de ces plages est certainement Trou d’Argent, une petite crique
 Une des meilleures façons de découvrir Rodrigues c’est à travers la randonnée. Des sentiers facilement praticables pour tous promettent la rencontre de la population en étant immergé dans une nature verdoyante baignée par le bleu turquoise du lagon omniprésent.
 
 Ainsi, équipés de chaussures de marche, de bouteilles d’eau et de crème solaire, Rodrigues se livre à vous en toute simplicité. Plusieurs sentiers de randonnée existent dont certains plus techniques qui requièrent l’aide d’un guide chevronné. Les plus réputés sont le Rando Miel, Rando Trou d’Argent et Rando Mont Limon.
-
-#### Lisez la suite de cet article et découvrez l'intégralité de l'Edition Spéciale 2019 en vous abonnant gratuitement sur [mag.travel-iles.com](https://mag.travel-iles.com/)
 
