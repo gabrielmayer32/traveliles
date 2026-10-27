@@ -1,5 +1,5 @@
 ---
-import { isLive, isAdLive } from '../lib/utils';
+import { isLive, isAdLive, freshFirst } from '../lib/utils';
 const comingSoon = import.meta.env.COMING_SOON === 'true';
 
 import { getCollection } from 'astro:content';
@@ -28,8 +28,10 @@ const heroEntry = heroEntries.find((h) => h.id === 'hero' && h.data.published);
 // All videos go into the video section
 const leadVideo = videos[0];
 const gridVideos = videos.slice(1, 3);
-const leadArticle = articles[0];
-const sideArticles = articles.slice(1, 3);
+// Archive reprints never take the lead slots unless nothing newer exists
+const leadArticles = freshFirst(articles);
+const leadArticle = leadArticles[0];
+const sideArticles = leadArticles.slice(1, 3);
 const carouselVideos = videos.slice(0, 6);
 const visibleAds = (await getCollection('ads')).filter((ad) => isAdLive(ad));
 const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.data.showOnHomepage);

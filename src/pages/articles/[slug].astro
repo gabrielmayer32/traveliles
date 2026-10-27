@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../components/CategoryLabel.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import AdPlacement from '../../components/AdPlacement.astro';
-import { formatDate, isLive, isAdLive } from '../../lib/utils';
+import { formatDate, isLive, isAdLive, isArchive } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 import { normalizeTags } from '../../lib/tags';
 
@@ -66,7 +66,7 @@ const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.da
 
 		<!-- Hero image — 3:2, contained at 62rem, with caption -->
 		{article.data.cover && (
-			<figure class="article-figure">
+			<figure class:list={['article-figure', { 'article-figure--archive': isArchive(article) }]}>
 				<div class="article-cover">
 					<img src={article.data.cover} alt={article.data.title} />
 				</div>
@@ -181,6 +181,11 @@ const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.da
 	.article-figure {
 		margin: var(--space-12) auto 0;
 		width: min(100% - 2.5rem, 62rem);
+	}
+
+	/* Archive photos are low-res: keep them at text width instead of stretching */
+	.article-figure--archive {
+		width: min(100% - 2.5rem, var(--prose-width));
 	}
 
 	.article-cover {

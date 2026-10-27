@@ -13,6 +13,8 @@ export const CATEGORIES = [
 	'Art & Culture',
 	'Activités & Événements',
 	'News',
+	'Nos adresses',
+	'Escapades',
 	'Nos archives',
 ] as const;
 
@@ -55,6 +57,8 @@ export const CATEGORY_SLUG_MAP: Record<Category, string> = {
 	'Art & Culture': 'art-et-culture',
 	'Activités & Événements': 'activites-et-evenements',
 	News: 'news',
+	'Nos adresses': 'nos-adresses',
+	Escapades: 'escapades',
 	'Nos archives': 'nos-archives',
 };
 
@@ -87,6 +91,18 @@ const MAURITIUS_OFFSET_MS = 4 * 60 * 60 * 1000;
 // Publié = case « Publié » cochée ET date/heure atteinte (publication programmée).
 export function isLive(entry: { data: { published: boolean; date: Date } }) {
 	return entry.data.published && entry.data.date.getTime() - MAURITIUS_OFFSET_MS <= Date.now();
+}
+
+// Articles repris des archives Côte Nord : photos d'époque en basse résolution.
+export const ARCHIVE_TAG = 'Archives Côte Nord';
+
+export function isArchive(entry: { data: { tags?: string[] } }) {
+	return (entry.data.tags ?? []).includes(ARCHIVE_TAG);
+}
+
+// Ordre pour la une de l'accueil : contenus récents d'abord, archives en dernier recours.
+export function freshFirst<T extends { data: { tags?: string[] } }>(entries: T[]) {
+	return [...entries.filter((e) => !isArchive(e)), ...entries.filter(isArchive)];
 }
 
 // Pub active = visible ET dans la fenêtre de contrat (dateStart..dateEnd).

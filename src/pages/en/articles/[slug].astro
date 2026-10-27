@@ -1,5 +1,5 @@
 ---
-import { isLive, isAdLive } from '../../../lib/utils';
+import { isLive, isAdLive, isArchive } from '../../../lib/utils';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CategoryLabel from '../../../components/CategoryLabel.astro';
@@ -66,7 +66,7 @@ const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.da
 		</header>
 
 		{article.data.cover && (
-			<figure class="article-figure">
+			<figure class:list={['article-figure', { 'article-figure--archive': isArchive(article) }]}>
 				<div class="article-cover">
 					<img src={article.data.cover} alt={article.data.title} />
 				</div>
@@ -118,6 +118,7 @@ const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.da
 	.article-meta { display: flex; gap: var(--space-3); align-items: center; padding-top: var(--space-4); border-top: 1px solid var(--border-subtle); width: 100%; }
 	.article-author { color: var(--ink); font-weight: var(--fw-medium); letter-spacing: 0.02em; }
 	.article-figure { margin: var(--space-12) auto 0; width: min(100% - 2.5rem, 62rem); }
+	.article-figure--archive { width: min(100% - 2.5rem, var(--prose-width)); }
 	.article-cover { aspect-ratio: 3 / 2; overflow: hidden; border-radius: var(--radius-sm); background: var(--surface-sunken); }
 	.article-cover img { width: 100%; height: 100%; object-fit: cover; }
 	.article-caption { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--text-muted); font-style: italic; }
