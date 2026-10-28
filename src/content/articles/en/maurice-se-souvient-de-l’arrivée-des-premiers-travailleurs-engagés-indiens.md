@@ -5,8 +5,14 @@ category: News
 cover: /images/uploads/TI Aapravasi Ghat (4).webp
 excerpt: ''
 author: Travel-Îles
-tags: []
-published: false
+tags:
+  - Indentured Labourers
+  - Tourism Mauritius
+  - Remembrance
+  - UNESCO World Heritage Site
+  - Aapravasi Ghat
+  - Atlas
+published: true
 ---
 
 Just a short walk from the bustling streets of Port Louis, overlooking the harbour, a few weathered stone steps tell a story that has shaped Mauritius for generations. As the island prepares to mark the arrival of indentured labourers on 2 November, Aapravasi Ghat stands as a powerful reminder of the people and journeys that helped define the nation.

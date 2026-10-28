@@ -11,7 +11,9 @@ tags:
   - Aapravasi Ghat
   - Devoir de mémoire
   - Histoire de Maurice
-published: false
+  - Commémoration
+  - UNESCO Patrimoine mondial
+published: true
 ---
 
 À quelques pas de l’agitation de Port-Louis, face au port, quelques marches de pierre témoignent d’une page essentielle de l’histoire de Maurice. À l’approche du 2 novembre, journée de commémoration de l’arrivée des travailleurs engagés, l’Aapravasi Ghat nous rappelle les origines d’une partie de notre héritage culturel.
