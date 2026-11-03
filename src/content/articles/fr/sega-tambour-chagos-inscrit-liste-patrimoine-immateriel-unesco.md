@@ -1,10 +1,10 @@
 ---
 title: 'Le Sega Tambour Chagos inscrit sur la liste du patrimoine immatériel de l’UNESCO'
-date: 2027-10-12T08:00:00
+date: 2019-12-11T08:00:00
 category: Art & Culture
 cover: /images/uploads/archives/2019/12/12772-BIG.jpg
 excerpt: 'La nouvelle est tombée ce mercredi matin : le Sega Tambour Chagos a été inscrit sur la liste du patrimoine immatériel culturel de l’UNESCO, plus précisément sur la liste de sauvegarde urgente. Après…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Chagos'
   - 'Geet Gawai'

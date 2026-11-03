@@ -1,9 +1,9 @@
 ---
 title: 'La Maiden Cup : une course mythique'
-date: 2027-10-01T08:00:00
+date: 2018-08-30T08:00:00
 category: Nos archives
 excerpt: 'Le Champ de Mars fait partie intégrante du paysage de la capitale port-louisienne. Le plus ancien hippodrome dans l’hémisphère sud accueillera certainement des milliers de turfistes ce dimanche 2…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Champ de Mars'
   - 'courses hippiques'

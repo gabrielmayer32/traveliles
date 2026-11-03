@@ -1,9 +1,9 @@
 ---
 title: 'Arnaud Mayer et Jean-François Merven réalisent la première traversée en ULM'
-date: 2027-02-02T08:00:00
+date: 2014-05-08T08:00:00
 category: Rencontres
 excerpt: 'D’Icare aux frères Wright, en passant par Leonardo da Vinci, voler a toujours fasciné l’homme. De nos jours encore, des passionnés veulent repousser les limites et découvrir de nouveaux horizons.…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Arnaud Mayer'
   - 'François Merven'

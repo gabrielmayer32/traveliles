@@ -1,9 +1,9 @@
 ---
 title: 'Arthur Tallat, héros des Chagos'
-date: 2026-11-06T08:00:00
+date: 2016-01-29T08:00:00
 category: Nos archives
 excerpt: 'Bravant d’énormes vagues, Arthur Tallat sauva les 81 passagers du navire Le Diego, au large de l’île d’Aigle aux Chagos, le 20 juin 1935. Voici son histoire.'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Arthur Tallat'
   - 'Chagos'

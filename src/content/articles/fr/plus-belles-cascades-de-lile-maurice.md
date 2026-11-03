@@ -1,10 +1,10 @@
 ---
 title: 'Les plus belles cascades de l’île Maurice'
-date: 2027-03-09T08:00:00
+date: 2018-01-25T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2018/01/rochester.jpg
 excerpt: 'Les plages de Maurice sont certes magnifiques, mais l''intérieur de l’île contient également de magnifiques forêts et points de vue, ainsi que de très belles cascades. Voici une petite sélection de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'cascades'
   - 'Chamarel'

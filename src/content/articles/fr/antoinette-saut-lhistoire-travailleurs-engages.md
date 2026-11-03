@@ -1,10 +1,10 @@
 ---
 title: 'Antoinette: un saut dans l’histoire des travailleurs engagés'
-date: 2028-02-08T08:00:00
+date: 2019-10-30T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2019/10/IMG_20191011_105537.jpg
 excerpt: 'Nous connaissons tous l’Aapravasi Ghat, lieu où ont débarqué les premiers travailleurs engagés indiens à Maurice il y a 185 ans, mais avez-vous déjà entendu parler de la sucrerie d’Antoinette ? Au…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Antoinette'
   - 'Atlas'

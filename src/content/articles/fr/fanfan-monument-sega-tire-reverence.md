@@ -1,9 +1,9 @@
 ---
 title: 'Fanfan - Un monument du sega tire sa révérence'
-date: 2027-09-07T08:00:00
+date: 2018-08-21T08:00:00
 category: Rencontres
 excerpt: 'Il était un des défenseurs du sega tipik. Louis Gabriel Joseph, dit Fanfan, était connu comme le conteur du sega mauricien. Celui qui a composé de nombreuses chansons, qui font aujourd’hui partie du…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Bellina'
   - 'Fanfan'

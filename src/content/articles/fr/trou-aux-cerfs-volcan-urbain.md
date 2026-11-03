@@ -1,9 +1,9 @@
 ---
 title: 'Trou-aux-Cerfs, le volcan urbain'
-date: 2027-01-12T08:00:00
+date: 2017-01-25T08:00:00
 category: Nos régions
 excerpt: 'Pouvoir admirer un volcan éteint en plein coeur d’une ville est une chose peu commune. Les habitants de Curepipe ont pourtant cette chance avec le Trou-aux-Cerfs, l’un des 23 cratères volcaniques de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'cratère'
   - 'Curepipe'

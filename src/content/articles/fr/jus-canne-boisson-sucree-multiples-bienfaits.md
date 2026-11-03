@@ -1,10 +1,10 @@
 ---
 title: 'Le jus de canne, la boisson sucrée aux multiples bienfaits'
-date: 2027-07-02T08:00:00
+date: 2019-03-18T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2019/03/SUCRE-PIC-6-Copy-3.jpg
 excerpt: 'Quoi de mieux que de se rafraîchir avec un bon jus de canne à sucre frais à Port-Louis en cette période d’intense chaleur? Du Soleil aux Sucres, qui s’est installée au Caudan Waterfront, propose du…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'canne'
   - 'Fangourin'

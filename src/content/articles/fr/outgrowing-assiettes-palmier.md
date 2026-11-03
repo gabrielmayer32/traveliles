@@ -1,10 +1,10 @@
 ---
 title: 'Outgrowing : Des assiettes en feuilles de palmier pour éliminer le plastique'
-date: 2027-07-30T08:00:00
+date: 2019-10-29T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2019/10/OutgrowingFeyPalmis.jpg
 excerpt: 'Dans le Sud de l’île, sur le domaine sucrier de Bel Ombre, une petite entreprise , Outgrowing, fabrique des assiettes en feuilles de palmier. Biodégradable et 100 % compostable, c’est une alternative…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'assiettes'
   - 'Biodégradable'

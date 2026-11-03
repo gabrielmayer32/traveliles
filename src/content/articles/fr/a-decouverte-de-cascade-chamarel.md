@@ -1,10 +1,10 @@
 ---
 title: 'A la découverte de la Cascade Chamarel'
-date: 2027-06-15T08:00:00
+date: 2019-01-24T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/01/received_2176288626033489.jpeg
 excerpt: 'On connait tous la Cascade Chamarel, la plus haute et la plus impressionnante de l’île, mais la plupart d’entre nous l’avons vue du haut du promontoire. Bien qu’elle soit spectaculaire vue d’en haut,…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'cascade'
   - 'Cascade Chamarel'

@@ -1,9 +1,9 @@
 ---
 title: 'Plages mythiques de l''océan Indien: Albion, île Maurice'
-date: 2026-12-04T08:00:00
+date: 2016-07-29T08:00:00
 category: Nos régions
 excerpt: 'Contrairement à l’expression consacrée, Albion n’a rien de perfide. Albion la mauricienne, tout du moins! Ce petit village de l’Ouest de l''île Maurice est doté d’une magnifique plage peu fréquentée.…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Albion'
   - 'baignade'

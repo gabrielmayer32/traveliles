@@ -1,9 +1,9 @@
 ---
 title: '« Gâteau Marie », l’incontournable de la fête de l’Assomption'
-date: 2027-08-31T08:00:00
+date: 2019-08-15T08:00:00
 category: Saveurs
 excerpt: 'On connait tous le « gâteau Marie », ce gâteau bleu et blanc à la crème qui apparait dans les vitrines des pâtisseries et supermarchés à la mi-août à l’occasion de la fête de l’Assomption.'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Assomption'
   - 'gâteau belu et blanc'

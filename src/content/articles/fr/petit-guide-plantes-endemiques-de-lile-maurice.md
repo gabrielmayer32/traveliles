@@ -1,9 +1,9 @@
 ---
 title: 'Petit guide des plantes endémiques de l''île Maurice'
-date: 2027-04-30T08:00:00
+date: 2018-05-28T08:00:00
 category: Maurice demain
 excerpt: 'La forêt primaire mauricienne, aujourd’hui quasiment disparue, contenait de nombreuses plantes endémiques remarquables. Certaines existent encore aujourd’hui, dont plusieurs sont en voie…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'arbres'
   - 'bois d''ébène'

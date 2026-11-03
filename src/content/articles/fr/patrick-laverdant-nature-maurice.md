@@ -1,10 +1,10 @@
 ---
 title: 'Patrick Laverdant dévoile la NATURE de Maurice'
-date: 2027-11-30T08:00:00
+date: 2020-01-20T08:00:00
 category: Art & Culture
 cover: /images/uploads/archives/2020/01/PatrickLaverdant.jpg
 excerpt: 'Photographe autodidacte et passionné de surf, Patrick Laverdant est aussi un grand amoureux de son île et sa nature. Il vient de publier aux éditions Vizavi, un album qui montre la diversité de la…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'Editions Vizavi'
   - 'Maurice'

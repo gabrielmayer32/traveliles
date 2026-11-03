@@ -1,10 +1,10 @@
 ---
 title: 'Rajesh Balkaramsingh redonne vie aux appareils cassés'
-date: 2027-05-14T08:00:00
+date: 2019-04-26T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2019/04/EngineeringWorkshop1.jpg
 excerpt: 'Difficile de ne pas remarquer ce petit coin ancré dans un bâtiment en pierre situé à la rue Bourbon à Port-Louis. Il s’agit d’Engineering Works Shop qui depuis les années 1800, était le spécialiste…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'electric'
   - 'Engineering Works Shop'

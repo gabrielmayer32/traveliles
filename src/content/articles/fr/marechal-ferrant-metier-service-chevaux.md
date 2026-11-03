@@ -1,9 +1,9 @@
 ---
 title: 'Maréchal-ferrant : un métier au service des chevaux'
-date: 2026-12-25T08:00:00
+date: 2018-07-13T08:00:00
 category: Savoir-faire
 excerpt: 'C’est un métier passion qui fait travailler la tête et les mains. Ils sont peu nombreux à Maurice à l’exercer, pas plus d’une dizaine pour être précis. Pourtant le maréchal-ferrant est indispensable…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Denis Grégoire'
   - 'ferrage'

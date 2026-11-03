@@ -1,10 +1,10 @@
 ---
 title: 'Hommage à Kaya, musicien et personnage hors du commun'
-date: 2027-09-24T08:00:00
+date: 2019-02-07T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2019/02/20190207_144253.jpg
 excerpt: 'Célébrer Kaya, l’un des plus grands musiciens mauriciens, qui nous a quittés dans des circonstances tragiques il y a 20 ans, et donner un coup de projecteur à la culture rastafari à laquelle il…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Blue Peny Museum'
   - 'Kaya'

@@ -1,10 +1,10 @@
 ---
 title: 'Plages mythiques de l’océan Indien : La Cuvette'
-date: 2027-05-11T08:00:00
+date: 2018-12-14T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2018/12/20181212_110226-2.jpg
 excerpt: 'Dans le nord de l’île, nichée entre les grandes plages publiques de Grand-Baie et Péreybère, se trouve une petite plage paradisiaque : La Cuvette. Avec ses eaux turquoise et sa petite plage intime,…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'La Cuvette'
   - 'Pereybere'

@@ -1,9 +1,9 @@
 ---
 title: 'Saveurs créoles: le camaron'
-date: 2026-11-24T08:00:00
+date: 2016-09-07T08:00:00
 category: Saveurs
 excerpt: 'Sorte de crevette géante d’eau douce, le camaron est un met savoureux qui se fait malheureusement de plus en plus rare dans les assiettes des Mauriciens. On le pêchait autrefois dans les rivières…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'camaron'
   - 'cours d’eau'

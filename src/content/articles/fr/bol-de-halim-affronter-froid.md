@@ -1,10 +1,10 @@
 ---
 title: 'Un bol de halim pour affronter le froid'
-date: 2027-03-05T08:00:00
+date: 2018-07-21T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2018/07/travelileshalim1.jpg
 excerpt: 'A Maurice, le « comfort food » par excellence lorsqu’il fait froid, qu’il pleut et qu’on a passé une dure journée au boulot, c’est sans conteste le halim. Ça tombe bien, cette soupe épaisse et épicée…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'culture'
   - 'halim'

@@ -1,9 +1,9 @@
 ---
 title: 'L’éléphant mauricien de Darwin'
-date: 2027-08-24T08:00:00
+date: 2018-05-25T08:00:00
 category: Nos archives
 excerpt: 'Bien avant Casela, au moins un éléphant a vécu à Maurice. Propriété du capitaine Lloyd, arpenteur général de la colonie au milieu du 19e siècle, le pachyderme est entré dans l’histoire pour avoir…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'anecdote'
   - 'Capitaine John Augustus Lloyd'

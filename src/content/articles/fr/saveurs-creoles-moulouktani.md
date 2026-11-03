@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles: le moulouktani'
-date: 2027-02-09T08:00:00
+date: 2018-04-13T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2018/04/moulouktani.jpg
 excerpt: 'Délicieuse recette originaire d’Inde, le moulouktani est un plat idéal pour pimenter un peu son repas. Il peut etre servi comme potage, ou dégusté avec du riz ou des chapatis (crêpes salées…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'épices'
   - 'gastronomie'

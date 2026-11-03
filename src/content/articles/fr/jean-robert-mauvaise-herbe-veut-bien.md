@@ -1,10 +1,10 @@
 ---
 title: 'Le Jean Robert, la mauvaise herbe qui vous veut du bien'
-date: 2027-02-12T08:00:00
+date: 2017-09-04T08:00:00
 category: Maurice demain
 cover: /images/uploads/archives/2017/09/jrobert1.jpg
 excerpt: 'Surtout, ne l’arrachez pas! L’herbe Jean Robert, une plante considérée comme envahissante et qui pousse dans tous les jardins, possède d’immenses vertus médicinales. Zoom sur une herbe miracle!'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'botanique'
   - 'flore'

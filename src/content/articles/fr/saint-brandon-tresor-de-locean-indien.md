@@ -1,9 +1,9 @@
 ---
 title: 'Saint-Brandon, trésor de l’océan Indien'
-date: 2027-01-26T08:00:00
+date: 2017-06-29T08:00:00
 category: Nos régions
 excerpt: 'Petit archipel perdu au milieu de l''océan Indien, Saint-Brandon est l’incarnation parfaite de l’atoll désert renfermant un lagon turquoise aux eaux claires et pures. Petite promenade le long des…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'archipel'
   - 'bateaux'

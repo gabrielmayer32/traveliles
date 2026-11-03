@@ -1,10 +1,10 @@
 ---
 title: 'Patrimoine: le plus grand temple hindou, lieu de culte riche en histoire'
-date: 2027-11-05T08:00:00
+date: 2018-11-30T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2018/11/20181129_112906.jpg
 excerpt: 'Dans notre île Maurice arc-en-ciel, où l’on vit tant bien que mal en harmonie, la religion a une place importante et les lieux de culte sont nombreux : mosquées, temples, églises, pagodes… A Triolet,…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Grand-Bassin'
   - 'histoire'

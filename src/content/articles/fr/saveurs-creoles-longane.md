@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles: le longane'
-date: 2026-12-08T08:00:00
+date: 2017-04-18T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2017/04/longan1.jpg
 excerpt: 'Délicieux fruit tropical, le longane est parfait pour se rafraîchir lors de la saison chaude. Avec le letchi, il est l’un des deux grands cadeaux du botaniste Jean-François Charpentier de Cossigny de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'arbre'
   - 'botanique'

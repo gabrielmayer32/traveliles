@@ -1,10 +1,10 @@
 ---
 title: 'Carlos, le chanteur qui portait un nom de cyclone'
-date: 2027-06-11T08:00:00
+date: 2017-02-08T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2017/02/carlos.jpg
 excerpt: 'Il aurait certainement beaucoup ri en apprenant qu’un cyclone porte son nom. Alors que Carlos, le cyclone, s''éloigne des côtes mauriciennes, voici un petit hommage à Carlos, chanteur festif et gros…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Carlos'
   - 'chanteur'

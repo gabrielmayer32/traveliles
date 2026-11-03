@@ -1,9 +1,9 @@
 ---
 title: 'Le débarquement des pêcheurs à Albion'
-date: 2027-04-16T08:00:00
+date: 2018-08-28T08:00:00
 category: Nos régions
 excerpt: 'Le métier de pêcheur fait partie du paysage mauricien. On trouve encore aujourd’hui, dans pratiquement toutes les régions côtières, des pêcheurs qui exercent ce métier de manière traditionnelle, soit…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Albion'
   - 'métier'

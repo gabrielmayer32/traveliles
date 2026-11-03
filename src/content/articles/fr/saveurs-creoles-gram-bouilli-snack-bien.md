@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles : le « gram bouilli », un snack qui fait du bien'
-date: 2027-06-18T08:00:00
+date: 2019-03-06T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2019/03/Gram-bouilli-20181122_122113.jpg
 excerpt: 'Si à Maurice on adore grignoter, nos « bajas », « gato pima » et autres « caca pigeon » ne sont pas toujours les options les plus saines, encore moins quand on essaie de garder la ligne. Mais un…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'bajas'
   - 'caca pigeon'

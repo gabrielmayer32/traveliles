@@ -1,10 +1,10 @@
 ---
 title: 'Les huitres se font une place à Maurice'
-date: 2027-04-06T08:00:00
+date: 2018-08-16T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2018/08/Culture-dhuitres02.jpg
 excerpt: 'Les huitres ont mis du temps à trouver leur place sur les tables mauriciennes. Déjà, il faut les apprécier et, pour certains, elles ont un goût iodé trop fort et une texture visqueuse qui peut être…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'élevage d''huitre'
   - 'huitres'

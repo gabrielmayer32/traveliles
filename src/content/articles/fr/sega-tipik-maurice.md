@@ -1,10 +1,10 @@
 ---
 title: 'Sega Tipik'
-date: 2027-08-20T08:00:00
+date: 2019-09-30T08:00:00
 category: Art & Culture
 cover: /images/uploads/archives/2019/09/SegaTipik.jpg
 excerpt: 'C’est sur des plantations sucrières au XVIIIe siècle qu’est né le Sega Tipik à Maurice, cette première expression musicale profonde de la population des esclaves. Évoluant au fil du temps, le Sega…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'culture'
   - 'histoire'

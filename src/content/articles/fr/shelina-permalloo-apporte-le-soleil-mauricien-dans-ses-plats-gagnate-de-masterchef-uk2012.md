@@ -1,10 +1,10 @@
 ---
 title: 'Shelina Permalloo apporte  le soleil mauricien dans ses plats - Gagnante de MasterChef UK2012'
-date: 2027-01-05T08:00:00
+date: 2014-05-08T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2014/05/IMG_49922.jpg
 excerpt: 'Dans la lumière tamisée du lobby du Sofitel L’Impérial, une silhouette se détache. Une femme avenante dans une belle robe à fleurs et arborant un sourire radieux nous attend. C’est Shelina Permalloo…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Shelina Permalloo'
   - 'There’s Sunshine on your plate'

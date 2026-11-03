@@ -1,10 +1,10 @@
 ---
 title: 'Vallée des Prêtres : l’oasis bucolique de la capitale'
-date: 2027-09-03T08:00:00
+date: 2019-05-17T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/05/valleedespretres.jpg
 excerpt: 'Cadre campagnard, vue pittoresque sur la capitale… Il est parfois difficile de croire qu’on est à Port-Louis lorsqu’on arrive à Vallée des Prêtres. Et pourtant….'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'Capitale'
   - 'découverte'

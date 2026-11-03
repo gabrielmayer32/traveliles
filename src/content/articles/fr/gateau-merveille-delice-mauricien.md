@@ -1,10 +1,10 @@
 ---
 title: 'Le gâteau Merveille, un délice mauricien !'
-date: 2027-02-19T08:00:00
+date: 2018-07-06T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2018/07/Merveille.jpg
 excerpt: 'C’est un gâteau qui nous replonge dans l’enfance. On revoit nos parents, nos grands-parents qui s’attelaient dans la cuisine pour nous préparer ces fameux « Merveilles » qui, une fois en bouche, il…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'gateau merveille'
   - 'recette'

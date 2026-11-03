@@ -1,10 +1,10 @@
 ---
 title: 'Plages mythiques de l''océan Indien: St-François, île Rodrigues'
-date: 2026-12-18T08:00:00
+date: 2016-11-21T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2016/11/St-Fran%C3%A7ois-3-BM.jpg
 excerpt: 'Des kilomètres de sable fin, une eau chaude et transparente, des filaos à perte de vue… St-François a tous les atouts d’une plage paradisiaque. Cerise sur le gâteau, cette localité accueille trois…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Chez Madame Larose'
   - 'Chez Solange et Robert'

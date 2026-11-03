@@ -1,9 +1,9 @@
 ---
 title: 'Histoire: le grand cyclone de 1892'
-date: 2027-06-04T08:00:00
+date: 2018-01-17T08:00:00
 category: Nos archives
 excerpt: 'En avril 1892, l’île Maurice se remettait difficilement d’une terrible épidémie de variole, lorsqu’elle fut frappée de plein fouet par le cyclone le plus dévastateur qu’elle n’ait jamais connu.…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - '1892'
   - 'cataclysme'

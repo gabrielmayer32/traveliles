@@ -1,10 +1,10 @@
 ---
 title: 'Geet Gawai : Cérémonie incontournable du mariage hindou'
-date: 2027-06-29T08:00:00
+date: 2019-09-23T08:00:00
 category: Art & Culture
 cover: /images/uploads/archives/2019/09/GeetGawai.jpg
 excerpt: 'Parmi les traditions amenées par les immigrants indiens à Maurice, le Geet Gawai tient une place de choix dans le paysage culturel de l’île. Cette cérémonie se déroule avant le mariage et combine…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'cérémonie'
   - 'culture'

@@ -1,10 +1,10 @@
 ---
 title: 'Sydney Amédée - un monument de l’Ile aux Cerfs'
-date: 2027-08-06T08:00:00
+date: 2018-04-17T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2018/04/langer_1.jpg
 excerpt: 'Cela fait 30 ans cette année que le sourire chaleureux de Sydney Amédée illumine les journées des visiteurs de l’île aux Cerfs. Rencontre avec une légende vivante de la perle de nos lagons…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'Bernhard Langer'
   - 'histoire'

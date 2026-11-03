@@ -1,10 +1,10 @@
 ---
 title: 'Délices mauriciennes : le « catless » [Recette]'
-date: 2028-02-15T08:00:00
+date: 2020-04-09T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2020/04/20200406_214054.png
 excerpt: '« Catless »,«dhal puri»,«gato pima so so»...Qui ne rêve pas en cette période de confinement de notre délicieuse street-food adulée par tous les Mauriciens ? A défaut de pouvoir se faire plaisir dans…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'catless'
   - 'Delices'

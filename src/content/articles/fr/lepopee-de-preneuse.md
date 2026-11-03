@@ -1,9 +1,9 @@
 ---
 title: 'L''épopée de La Preneuse'
-date: 2027-02-23T08:00:00
+date: 2017-02-17T08:00:00
 category: Nos archives
 excerpt: 'Durant les guerres napoléoniennes, les batailles navales entre navires anglais et francais étaient monnaie courante dans l''océan Indien. Quelques-uns de ces vaisseaux de guerre se distinguèrent lors…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'batailles navales'
   - 'frégate'

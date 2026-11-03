@@ -1,10 +1,10 @@
 ---
 title: 'Kotpiale : Des vêtements à l’ADN mauricien'
-date: 2027-06-22T08:00:00
+date: 2019-10-07T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2019/10/Kotpiale1.jpg
 excerpt: 'Forte de son succès depuis qu’elle a été lancée en 2015, « Kotpiale », la marque 100 % mauricienne de vêtements, a désormais son magasin à Rose-Hill.'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'Karuna Veerapen'
   - 'kotpiale'

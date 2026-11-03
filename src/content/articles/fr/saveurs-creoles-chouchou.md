@@ -1,9 +1,9 @@
 ---
 title: 'Saveurs créoles: le chouchou'
-date: 2027-09-17T08:00:00
+date: 2019-08-28T08:00:00
 category: Saveurs
 excerpt: 'Farci, fricassé, en boulettes, en salade, en sauce blanche ou dans les jardinières, le chouchou est un légume qui a la cote dans les Mascareignes. On retrouve la plante du chouchou surtout dans les…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'brèdes chouchou'
   - 'chayote'

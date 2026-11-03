@@ -1,10 +1,10 @@
 ---
 title: 'Ras Tilang, le petit prince du seggae'
-date: 2027-07-13T08:00:00
+date: 2017-02-10T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2017/02/rastilang1.jpg
 excerpt: 'Sa voix, qui ressemblait étonnamment à celle de son modèle Kaya, donnait la chair de poule. Ras Tilang, chanteur de seggae disparu tragiquement en 2004, n’aura jamais récolté les fruits de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Berger Agathe'
   - 'biographie'

@@ -1,10 +1,10 @@
 ---
 title: '50 ans d’indépendance et de tourisme - Des « rondavelles » aux palaces'
-date: 2027-12-03T08:00:00
+date: 2018-12-18T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2018/12/rondavelles1.jpg
 excerpt: 'Il y a 50 ans, alors que l’Empire britannique arrivait à son crépuscule, Londres se délestait d’une île perdue dans l’océan Indien, tout en gardant une partie de son territoire, l’archipel des…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - '50ans'
   - 'histoire'

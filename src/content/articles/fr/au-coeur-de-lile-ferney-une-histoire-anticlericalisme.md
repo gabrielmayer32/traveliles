@@ -1,10 +1,10 @@
 ---
 title: 'Au cœur de l’île : Ferney, une histoire d’anticléricalisme'
-date: 2028-03-31T08:00:00
+date: 2020-04-29T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2020/04/vall%C3%A9e-de-Ferney.jpg
 excerpt: 'Ferney - Le confinement nous empêche d’aller nous promener dans notre belle île Maurice. Profitons alors pour la découvrir autrement à travers ses lieux aux noms chargés d’histoire et d’anecdotes.…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Abbé CHarlot'
   - 'Antoine Bestel'

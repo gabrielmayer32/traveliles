@@ -1,10 +1,10 @@
 ---
 title: 'Biscuiterie de manioc H. Rault - Comme un goût d’antan'
-date: 2027-07-16T08:00:00
+date: 2019-03-25T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2019/03/BiscuiterieManioc1.jpg
 excerpt: 'À Mahébourg, le parfum de l’histoire est omniprésent : dans les rues tirées au cordeau, dans la mer, au bord de la rivière La Chaux et même dans l’assiette. En effet, c’est dans cette ancienne…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'biscuit'
   - 'Hilarion Rault'

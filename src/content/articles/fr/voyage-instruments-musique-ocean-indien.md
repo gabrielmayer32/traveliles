@@ -1,10 +1,10 @@
 ---
 title: 'Voyage au cœur des instruments de musique de l''océan Indien'
-date: 2027-03-16T08:00:00
+date: 2019-04-12T08:00:00
 category: Art & Culture
 cover: /images/uploads/archives/2019/04/VoyageInstruments1.jpg
 excerpt: 'Voyage au cœur des instruments de musique de l''océan IndienC’est en février dernier que le premier musée national de musique a vu le jour au Conservatoire de Musique François Mitterrand. Ouvert six…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'conservatoire'
   - 'culture'

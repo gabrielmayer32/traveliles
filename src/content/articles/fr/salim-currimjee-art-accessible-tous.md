@@ -1,10 +1,10 @@
 ---
 title: 'Salim Currimjee - Pour que l''art soit accessible à tous'
-date: 2028-03-24T08:00:00
+date: 2019-11-11T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2019/11/salim_currimjee.jpg
 excerpt: 'Il y a quatre ans était lancé un ambitieux projet d’art, la fondation Institute of Contemporay Art Indian Ocean, par Salim Currimjee, architecte et peintre mauricien. Depuis, des artistes de la…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'Art'
   - 'Institute of Contemporay Art Indian Ocean'

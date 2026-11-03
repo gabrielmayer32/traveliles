@@ -1,10 +1,10 @@
 ---
 title: 'Plages mythiques de l’océan Indien : Saint-Félix'
-date: 2027-07-27T08:00:00
+date: 2019-04-03T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/04/IMG-20190403-WA0010.jpg
 excerpt: 'Située dans le Sud de l’île, entre Bel Ombre et Riambel, la plage de Saint-Félix est très probablement la plus belle de cette côte sauvage. Toutefois, malgré sa longue étendue de sable fin et ses…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'océan Indien'
   - 'pique-nique'

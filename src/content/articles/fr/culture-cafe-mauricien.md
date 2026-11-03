@@ -1,9 +1,9 @@
 ---
 title: 'La culture du café mauricien'
-date: 2027-08-17T08:00:00
+date: 2019-08-01T08:00:00
 category: Saveurs
 excerpt: 'Si le thé est sans conteste la boisson chaude préférée des Mauriciens, le café n’est pas en reste et gagne en popularité. Bien que la grosse majorité du café que l’on boit ici soit importée, une…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Arabica'
   - 'Café'

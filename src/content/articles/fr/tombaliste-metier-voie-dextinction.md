@@ -1,9 +1,9 @@
 ---
 title: 'Tombaliste : Un métier en voie d’extinction ?'
-date: 2027-01-29T08:00:00
+date: 2018-11-21T08:00:00
 category: Savoir-faire
 excerpt: 'Pour les rencontrer, nous avons longé les cimetières St Georges et Gébert à Port-Louis et suivi les grincements de la disqueuse sur la pierre. Le métier de « tombaliste », tailleur de pierre tombale,…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'artisan'
   - 'métier'

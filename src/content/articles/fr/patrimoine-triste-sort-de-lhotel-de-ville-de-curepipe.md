@@ -1,9 +1,9 @@
 ---
 title: 'Patrimoine: le triste sort de l’hôtel de ville de Curepipe'
-date: 2027-08-10T08:00:00
+date: 2018-05-02T08:00:00
 category: Nos archives
 excerpt: 'Il fit autrefois la fierté de la Ville Lumière. Dans un état déplorable de nos jours, l’hôtel de ville de Curepipe n’est plus que l’ombre du bâtiment resplendissant qu’il fut jadis. Retour sur la…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'bâtiment'
   - 'Curepipe'

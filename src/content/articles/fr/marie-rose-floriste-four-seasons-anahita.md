@@ -1,10 +1,10 @@
 ---
 title: 'Marie Rose Soupe : dites-le avec des fleurs'
-date: 2027-10-05T08:00:00
+date: 2019-11-12T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2019/11/marierosesoupe1.jpg
 excerpt: 'Quand vous entrez au Four Seasons Mauritius at Anahita, outre la beauté du site, le regard est attiré par les compositions florales. C’est Marie Rose Jenny Soupe qui s’en occupe depuis maintenant…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'Anahita'
   - 'floral'

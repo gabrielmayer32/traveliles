@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles: les olives “locales”'
-date: 2026-12-22T08:00:00
+date: 2017-08-24T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2017/08/olives1.jpg
 excerpt: 'Certains visiteurs de Maurice ont certainement déjà eu la surprise de se voir proposer d''énormes olives dans les marchés et les bazars de l''île. Appelées “olives locales”, ces olives géantes,…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Archives Côte Nord'
 published: true

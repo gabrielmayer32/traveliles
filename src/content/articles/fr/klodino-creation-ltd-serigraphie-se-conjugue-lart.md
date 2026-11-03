@@ -1,10 +1,10 @@
 ---
 title: 'Klodino Creation Ltd - Quand la sérigraphie se conjugue avec l’art'
-date: 2026-11-17T08:00:00
+date: 2018-03-19T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2018/03/Klodino-Creation-Ltd-1.jpg
 excerpt: 'Klodino sérigraphieVous avez sans doute chez vous une bouteille d’alcool givrée, un flacon de parfum ou un verre avec une inscription artisanale. Saviez-vous que tous sortent d’un seul et même…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'Art'
   - 'Artisanal'

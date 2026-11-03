@@ -1,10 +1,10 @@
 ---
 title: 'Ile Maurice de... Benjamin Moutou'
-date: 2026-12-11T08:00:00
+date: 2013-12-01T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2014/03/benjamin_moutou2.jpg
 excerpt: 'Je suis un enfant de l’île Maurice plurielle, né entre les champs de canne, les flancs de la colline Candos et le quartier de Paillotte. Mon père était haut cadre des hôpitaux de Candos et notre…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Benjamin Moutou'
   - 'Archives Côte Nord'

@@ -1,10 +1,10 @@
 ---
 title: 'Environnement : Un Marine Discovery Centre lancé à Anse la Raie'
-date: 2027-12-31T08:00:00
+date: 2020-02-26T08:00:00
 category: Maurice demain
 cover: /images/uploads/archives/2020/02/Marine-Discovery-DSC_0365.jpg
 excerpt: 'Face au constat alarmant d’une dégradation de nos lagons et de nos zones côtières, le groupe hôtelier Attitude s’est depuis longtemps lancé dans des programmes d’éducation et de préservation de ces…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Anse-La-Raie'
   - 'Attitude'

@@ -1,10 +1,10 @@
 ---
 title: 'Idrice Goomany, héros méconnu de la médecine'
-date: 2027-07-23T08:00:00
+date: 2018-04-12T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2018/04/goom1.jpg
 excerpt: 'Le Dr Idrice Goomany fut un personnage hors du commun. Faisant partie des premiers médecins non-blancs de l''île Maurice à l''époque coloniale, il se dévoua corps et âme à ses malades, jusqu''à en…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'biographie'
   - 'docteur'

@@ -1,9 +1,9 @@
 ---
 title: 'Les cachalots de Maurice, ces résidents permanents'
-date: 2027-09-10T08:00:00
+date: 2019-09-18T08:00:00
 category: Maurice demain
 excerpt: 'Avec une énorme tête, de forme carrée, qui occupe un tiers de la longueur du corps, pouvant atteindre les 18 mètres et pesant jusqu’à 57 tonnes, le cachalot est, sans conteste, l’un des animaux les…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'animaux marins'
   - 'cachalot'

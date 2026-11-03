@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles: crevettes sauce rouge'
-date: 2027-01-22T08:00:00
+date: 2017-11-24T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2017/11/crevettes-sauce-rouge.jpg
 excerpt: 'La crevette à la sauce rouge est un plat mauricien commun durant la période de fin d''année. Sa sauce à base de tomate diffère légèrement du rougaille traditionnel, avec l’ajout d’un ingrédient…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'camarons'
   - 'crevettes sauce rouge'

@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles : les « gajacks soular » ou l’apéro à la mauricienne'
-date: 2027-03-19T08:00:00
+date: 2018-08-10T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2018/08/IMG-20180721-WA0002.jpg
 excerpt: 'S’il y a bien une chose que les Mauriciens ont en commun, peu importe leur âge, leur genre, ou leur culture, c’est bien l’amour de la bonne cuisine. Même entre les repas, nous aimons toujours avoir…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'apéro'
   - 'gajacks soular'

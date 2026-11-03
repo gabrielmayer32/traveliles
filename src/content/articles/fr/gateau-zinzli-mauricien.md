@@ -1,10 +1,10 @@
 ---
 title: 'Le « gâteau zinzli » mauricien [ Recette ]'
-date: 2028-02-01T08:00:00
+date: 2020-04-02T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2020/04/gateau-zinzli.jpg
 excerpt: 'Le gâteau zinzli est une de ces friandises au goût d’enfance que l’on mange avec délectation. On en trouve deux variantes, l’une à base de riz gluant (Jian dui), surtout servie lors du Nouvel An…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'enfance'
   - 'gateau zinzli'

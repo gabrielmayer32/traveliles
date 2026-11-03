@@ -1,10 +1,10 @@
 ---
 title: 'Le veloutier, ombrelle parfumée des plages mauriciennes'
-date: 2027-01-01T08:00:00
+date: 2017-03-27T08:00:00
 category: Maurice demain
 cover: /images/uploads/archives/2017/03/veloutier1.jpg
 excerpt: 'Plante caractéristique des bords de mer, le veloutier est incontournable à Maurice. Tout comme le filao, il apporte une ombre bienfaisante sur les plages, tandis que ses feuilles argentées et douces…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'arbre'
   - 'botanique'

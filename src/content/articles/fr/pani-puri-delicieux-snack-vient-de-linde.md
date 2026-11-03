@@ -1,9 +1,9 @@
 ---
 title: 'Pani puri, ce délicieux snack qui nous vient de l’Inde'
-date: 2027-10-15T08:00:00
+date: 2019-09-25T08:00:00
 category: Saveurs
 excerpt: 'Ashvin Bahar préparant des pani puri dans une échoppe du centre commercial de Trianon'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'beignets'
   - 'pani puri'

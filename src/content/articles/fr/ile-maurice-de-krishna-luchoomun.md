@@ -1,10 +1,10 @@
 ---
 title: 'Ile Maurice de... Krishna Luchoomun'
-date: 2027-04-23T08:00:00
+date: 2015-01-19T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2015/01/kris-henri1.jpg
 excerpt: 'Je regarde jouer mon fils. À cinq ans, il pratique le roller, la natation, il joue à des jeux vidéo, regarde les dessins animés etc. Et devant moi défile mon enfance et mes jeux. Ils n’étaient…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Archives Côte Nord'
 published: true

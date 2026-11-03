@@ -1,9 +1,9 @@
 ---
 title: 'Plages mythiques de l''océan Indien: Trou aux Biches'
-date: 2027-02-16T08:00:00
+date: 2017-10-07T08:00:00
 category: Nos régions
 excerpt: 'Les longues plages de sable blanc de Trou aux Biches en ont fait l’une des destinations balnéaires préférées des Mauriciens et vacanciers, et ce, malgré l’urbanisation grandissante de la localité.…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'ambiance'
   - 'baignade'

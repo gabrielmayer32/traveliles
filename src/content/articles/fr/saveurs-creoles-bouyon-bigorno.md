@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles: le “bouyon bigorno”'
-date: 2027-05-25T08:00:00
+date: 2019-01-07T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2019/01/20190101_201645.jpg
 excerpt: 'Friands des délices de la mer, les Mauriciens ont un petit penchant pour certains gastéropodes aquatiques solidement arrimés aux rochers au bord de l''océan: les bigorneaux. Ces savoureux hors-d’œuvre…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'bigorneaux'
   - 'bouillon'

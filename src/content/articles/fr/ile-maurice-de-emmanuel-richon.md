@@ -1,10 +1,10 @@
 ---
 title: 'Ile Maurice de... Emmanuel Richon'
-date: 2026-11-13T08:00:00
+date: 2013-10-01T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2014/03/Emman-Richon2.jpg
 excerpt: '[blocktext align="left"]« En me mariant à une Mauricienne, c’était un peu comme épouser toute l’île à jamais... »[/blocktext]J’ai connu Maurice très jeune, à l’âge de 19 ans, c’est tellement loin…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Emmanuel Richon'
   - 'Archives Côte Nord'

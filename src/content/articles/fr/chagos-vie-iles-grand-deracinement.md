@@ -1,9 +1,9 @@
 ---
 title: 'Chagos: la vie dans les îles avant le grand déracinement'
-date: 2027-07-09T08:00:00
+date: 2018-03-30T08:00:00
 category: Nos archives
 excerpt: 'Alors que Maurice vient tout juste de célébrer le cinquantenaire de son indépendance, il est bon de se souvenir que la nation paya un lourd tribut pour se libérer du joug colonial. Ce furent…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'archipel'
   - 'atolls'

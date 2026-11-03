@@ -1,10 +1,10 @@
 ---
 title: 'Le terrible destin de Pieter Both et le trésor du Banda'
-date: 2026-11-27T08:00:00
+date: 2016-03-25T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2016/03/banda1.jpg
 excerpt: 'Il y a 400 ans périssait au large de l’île Maurice Pieter Both, premier gouverneur général des Indes hollandaises. En 1979, une expédition archéologique permit de retrouver les restes de l’épave du…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'archéologie sous-marine'
   - 'Banda'

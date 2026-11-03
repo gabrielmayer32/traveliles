@@ -1,9 +1,9 @@
 ---
 title: 'L’île Maurice est un peuple cinq étoiles - Bamba Sourang, photographe'
-date: 2026-12-01T08:00:00
+date: 2014-09-10T08:00:00
 category: Art & Culture
 excerpt: 'Bamba Sourang est né à Thiés au Sénégal au sein d’une grande famille africaine avant de rejoindre la France pour poursuivre ses études et s’y installer. Sa passion pour la photo l’a amené à visiter…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Bamba Sourang'
   - 'Archives Côte Nord'

@@ -1,10 +1,10 @@
 ---
 title: 'Bam Cuttayen, le chantre oublié des laissés pour compte'
-date: 2027-01-15T08:00:00
+date: 2016-12-28T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2016/12/bam2.jpg
 excerpt: 'Bien avant Kaya, Bam Cuttayen représentait un idéal musical fortement engagé politiquement et profondément ancré dans la réalité sociale mauricienne. Son militantisme et sa proximité avec les plus…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'artiste'
   - 'Bam Cuttayen'

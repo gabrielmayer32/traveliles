@@ -1,10 +1,10 @@
 ---
 title: 'Dans le berceau de l’île Maurice'
-date: 2026-11-10T08:00:00
+date: 2015-05-27T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2015/05/IMG_38671.jpg
 excerpt: 'Poursuivant notre parcours culturel dans le sud-est de l’île, nous arrivons, à la sortie nord de Mahébourg, devant le Pont Cavendish, aussi connu comme le Pont Ville Noire. Il enjambe la rivière La…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Archives Côte Nord'
 published: true

@@ -1,10 +1,10 @@
 ---
 title: 'Ile Maurice de... Adeet Thannoo'
-date: 2027-02-26T08:00:00
+date: 2014-09-11T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2014/09/Untitled-12.jpg
 excerpt: 'Demain. C’est demain mon île Maurice. Oh ! Mes souvenirs d’hier me sont chers et tendres et douloureux ; mon enfance à Belle Rose, le royaume de mon père. J’ai connu le Belle Rose des coupeurs de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Adeet Thannoo'
   - 'Archives Côte Nord'

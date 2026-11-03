@@ -1,9 +1,9 @@
 ---
 title: 'Saveurs créoles : la chevrette de rivière'
-date: 2027-10-29T08:00:00
+date: 2019-10-03T08:00:00
 category: Saveurs
 excerpt: 'En chatini, en piment ou en rougaille, la « chevrette » de rivière est toujours appréciée, surtout par les amateurs de « manzer lontan ». Mais ce petit crustacé, qui est aussi appelé crevette de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'chevrettes'
   - 'crevettes'

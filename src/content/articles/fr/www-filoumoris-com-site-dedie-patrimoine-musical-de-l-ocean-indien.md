@@ -1,10 +1,10 @@
 ---
 title: 'www.filoumoris.com - Un site dédié au patrimoine musical de l’ océan Indien'
-date: 2027-01-19T08:00:00
+date: 2018-03-12T08:00:00
 category: Art & Culture
 cover: /images/uploads/archives/2018/03/filoumoris.jpg
 excerpt: 'Certains trésors du patrimoine musical de l’océan Indien ont toujours souffert d’une absence de collection et d’archivage. Ce manque est maintenant réparé grâce à un amoureux de l’île Maurice mais…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'créole'
   - 'culture'

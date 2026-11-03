@@ -1,9 +1,9 @@
 ---
 title: 'Ces plantes qui nous font du bien'
-date: 2027-06-08T08:00:00
+date: 2018-09-10T08:00:00
 category: Maurice demain
 excerpt: 'Les plantes médicinales ont été utilisées pendant des siècles pour soigner divers maux avant l’arrivée de l’industrie pharmaceutique moderne. Depuis quelques années, on remarque un retour aux sources…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'aloe vera'
   - 'Ayapana'

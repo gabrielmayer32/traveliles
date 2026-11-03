@@ -1,9 +1,9 @@
 ---
 title: 'Jeux des Iles 1985: la “naissance d’une nation” mauricienne'
-date: 2027-05-18T08:00:00
+date: 2017-12-19T08:00:00
 category: Nos archives
 excerpt: 'Tous les observateurs vous le diront: les Jeux des Iles de 1985 à Maurice ont permis de cimenter l’union nationale du pays, 17 ans après l''Indépendance. La victoire à l’arraché de Maurice au football…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - '1985'
   - 'Club M'

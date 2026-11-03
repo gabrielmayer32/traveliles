@@ -1,9 +1,9 @@
 ---
 title: 'Les Amis de la Cuisine Mauricienne - Les recettes traditionnelles remises au goût du jour'
-date: 2027-04-20T08:00:00
+date: 2018-10-22T08:00:00
 category: Saveurs
 excerpt: 'Soupe de patate douce et palmiste, Salade d’arouille et jambon, Dry Curry de cerf, Cari de poulet et crevettes, Daube d’ourite, Pudding de giraumon, Patates douces au sirop : êtes-vous familier avec…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'cuisine traditionnelle locale'
   - 'gastronomie'

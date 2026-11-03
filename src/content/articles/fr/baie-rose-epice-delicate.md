@@ -1,9 +1,9 @@
 ---
 title: 'La baie rose, une épice si délicate'
-date: 2027-09-28T08:00:00
+date: 2019-09-06T08:00:00
 category: Saveurs
 excerpt: 'Elles sont originaires d’Amérique du Sud mais on les retrouve aujourd’hui principalement à la Réunion, Maurice, Madagascar et au Brésil. C’est d’ailleurs à la Réunion que débute le commerce des baies…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'baies roses'
   - 'Carpaccio'

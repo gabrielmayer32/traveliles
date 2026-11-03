@@ -1,9 +1,9 @@
 ---
 title: 'L’incroyable odyssée des rescapés du SS Trevessa'
-date: 2027-03-26T08:00:00
+date: 2017-07-11T08:00:00
 category: Nos archives
 excerpt: 'Près de cent ans après les faits, le naufrage du SS Trevessa et l''étonnante odyssée de ses membres d''équipage sont relativement tombe dans l’oubli. Cette courageuse aventure humaine fut pourtant…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'Aventure'
   - 'bateau'

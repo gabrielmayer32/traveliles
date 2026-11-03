@@ -1,10 +1,10 @@
 ---
 title: 'Les « canots raphia », une tradition qui refait surface'
-date: 2028-01-14T08:00:00
+date: 2019-11-25T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2019/11/Canots-Raphia-1.jpg
 excerpt: 'Quand il était enfant, Shoueb Mamjee passait des heures à fabriquer des « canots raphia », sorte de petites pirogues en bois qu’il fait naviguer sur le lagon de son village natal, Mahébourg. Cette…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'canot'
   - 'Mahébourg'

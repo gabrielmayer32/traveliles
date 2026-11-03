@@ -1,9 +1,9 @@
 ---
 title: 'Tradition perdue: le “tifine créole” et ses “moutoucs” de “mouches jaunes”'
-date: 2027-01-08T08:00:00
+date: 2017-08-30T08:00:00
 category: Saveurs
 excerpt: 'Vieille habitude oubliée de l''île Maurice, le “tifine créole” est un pique-nique qui se mange en milieu d''après-midi. Parmi les spécialités proposées aux invités: du riz, des brèdes et un rougail de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'chevrettes'
   - 'cuisine'

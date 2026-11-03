@@ -1,9 +1,9 @@
 ---
 title: 'Saveurs créoles: le tamarin'
-date: 2026-11-03T08:00:00
+date: 2016-06-09T08:00:00
 category: Saveurs
 excerpt: 'Fruit savoureux et acidulé originaire du continent africain, le tamarin est un ingrédient indispensable à la composition de nombreux plats des îles de l''océan Indien et d’ailleurs. Gros plan.'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'arbre fruitier'
   - 'fruit'

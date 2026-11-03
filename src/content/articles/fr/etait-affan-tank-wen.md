@@ -1,10 +1,10 @@
 ---
 title: 'Qui était Affan Tank Wen ?'
-date: 2027-09-14T08:00:00
+date: 2018-08-02T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2018/08/Travel-Iles_AffanTankWen.jpg
 excerpt: 'Affan Tank Wen ! Ce nom vous dit quelque chose ? Il devrait, car ce simple immigré qui débarqua à Maurice le 31 août 1861 est un exemple de courage et de persévérance. Arrivé sur le sol mauricien…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - '19e siècle'
   - 'Affan Tank Wen'

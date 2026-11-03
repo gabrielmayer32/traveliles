@@ -1,9 +1,9 @@
 ---
 title: 'Patrimoine: les barachois'
-date: 2027-04-27T08:00:00
+date: 2017-11-15T08:00:00
 category: Nos archives
 excerpt: 'Terme géographique très peu utilisé, hormis au Québec et à Maurice, le barachois désigne une lagune d’eau saumâtre séparée de la mer par une “barre” de sable ou de rochers. Le barachois mauricien…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'aquaculture'
   - 'barachois'

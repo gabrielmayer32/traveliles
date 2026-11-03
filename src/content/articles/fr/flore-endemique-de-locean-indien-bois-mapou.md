@@ -1,10 +1,10 @@
 ---
 title: 'Flore endémique de l''océan Indien: Le bois mapou'
-date: 2026-11-20T08:00:00
+date: 2016-07-25T08:00:00
 category: Maurice demain
 cover: /images/uploads/archives/2016/07/mapou3.jpg
 excerpt: 'Le bois mapou, qui a donné son nom à un village de l''île Maurice, est l’une des espèces végétales endémiques les plus remarquables de l''océan Indien. Il s’agit d’une sorte de vigne géante autrefois…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'bois de mapou'
   - 'botanique'

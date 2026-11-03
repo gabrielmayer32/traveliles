@@ -1,9 +1,9 @@
 ---
 title: 'Patrimoine: le phare d’Albion'
-date: 2027-02-05T08:00:00
+date: 2017-02-02T08:00:00
 category: Nos archives
 excerpt: 'Érigé sur les falaises de Pointe-aux-Caves, le phare d’Albion est le dernier phare encore en activité à Maurice. Depuis 1910, il guide sans relâche les navigateurs dans cette zone périlleuse qui a vu…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Albion'
   - 'Banda. Pieter Both'

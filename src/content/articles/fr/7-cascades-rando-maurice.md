@@ -1,10 +1,10 @@
 ---
 title: 'Les Sept Cascades, rando incontournable à Maurice'
-date: 2027-10-08T08:00:00
+date: 2019-07-12T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/07/7C1.jpg
 excerpt: 'Réputée pour ses plages au sable fin et ses lagons cristallins, l’île Maurice est également connue pour sa végétation luxuriante et ses belles randonnées pour le plus grand plaisir des amoureux de la…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - '7'
   - 'cascade'

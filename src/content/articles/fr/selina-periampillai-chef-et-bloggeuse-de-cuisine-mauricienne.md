@@ -1,10 +1,10 @@
 ---
 title: 'Selina Periampillai,  chef et bloggeuse de cuisine mauricienne'
-date: 2027-03-30T08:00:00
+date: 2014-09-13T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2014/09/Selina-Periampillai2.jpg
 excerpt: 'Selina Periampillai est une Anglaise née de parents mauriciens. Chef autodidacte et bloggeuse culinaire, elle fait partie des pionniers de la cuisine mauricienne en Grande-Bretagne au même titre que…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Selina Periampillai'
   - 'Archives Côte Nord'

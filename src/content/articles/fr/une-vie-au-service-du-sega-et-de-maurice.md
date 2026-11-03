@@ -1,10 +1,10 @@
 ---
 title: 'Une vie au service du séga et de Maurice'
-date: 2027-05-21T08:00:00
+date: 2015-05-15T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2015/05/IMG_45001.jpg
 excerpt: 'Il aurait pu devenir médecin, avocat ou autre professionnel. Il aurait pu émigrer au Canada mais trop amoureux de son île, il a préféré revenir. La vie n’a jamais été facile pour lui mais avec…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Quatre-Bornes'
   - 'Rose-Hill'

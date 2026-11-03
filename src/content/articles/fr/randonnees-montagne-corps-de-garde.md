@@ -1,10 +1,10 @@
 ---
 title: 'Randonnées : la montagne du Corps de Garde'
-date: 2027-08-13T08:00:00
+date: 2019-04-30T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/04/Corps-de-Garde-BM.jpg
 excerpt: 'Située entre les Plaines Wilhems et Rivière-Noire, la montagne du Corps de Garde domine les villes de Quatre-Bornes et Rose-Hill et le réservoir de La Ferme. Parmi les montagnes les plus hautes de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Corps de Garde'
   - 'La Ferme'

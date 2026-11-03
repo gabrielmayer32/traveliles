@@ -1,10 +1,10 @@
 ---
 title: 'Olivia, petit village hors du temps'
-date: 2027-05-28T08:00:00
+date: 2018-12-18T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2018/12/20181217_143317.jpg
 excerpt: 'L’est de l’île est pour beaucoup la côte la plus authentique de Maurice… On y trouve de tout : de magnifiques plages mais aussi des paysages plus sauvages, des montagnes, des champs de canne à perte…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Arthur Blandin de Chalain'
   - 'Bel Air'

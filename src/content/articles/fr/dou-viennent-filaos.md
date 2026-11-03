@@ -1,10 +1,10 @@
 ---
 title: 'D''où viennent les filaos?'
-date: 2027-03-23T08:00:00
+date: 2017-10-09T08:00:00
 category: Maurice demain
 cover: /images/uploads/archives/2017/10/filao2.jpg
 excerpt: 'Contrairement à ce que l’on pourrait croire, le filaos n’est pas natif de l''île Maurice. Cet arbre côtier, présent sur toutes les plages mauriciennes, a tout de même une histoire fascinante...'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'abbé Ronchon'
   - 'arbre'

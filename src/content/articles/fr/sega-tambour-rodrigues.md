@@ -1,10 +1,10 @@
 ---
 title: 'Au rythme du Sega Tambour'
-date: 2027-05-07T08:00:00
+date: 2019-08-22T08:00:00
 category: Art & Culture
 cover: /images/uploads/archives/2019/08/SegaTambour1.jpg
 excerpt: 'L’île Rodrigues est réputée pour son authenticité, ce qui fait d’elle une île anti-stress par excellence. La vitalité d’une culture locale authentiquement créole s’incarne au travers de la cuisine,…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'culture'
   - 'locale'

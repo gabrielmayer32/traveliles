@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles: la « grenadine cari »'
-date: 2028-01-04T08:00:00
+date: 2020-02-05T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2020/02/Grenadine-cari.jpg
 excerpt: 'Connaissez-vous la « grenadine cari » ? Vous l’avez sans doute vu dans l’arrière cours de vos grands-parents ou chez vos voisins sans y prêter attention !  La grenadine cari est une liane tropicale…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'achard'
   - 'chatini'

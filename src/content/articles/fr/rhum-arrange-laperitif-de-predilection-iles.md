@@ -1,10 +1,10 @@
 ---
 title: 'Le rhum arrangé, l’apéritif de prédilection dans les îles'
-date: 2027-05-04T08:00:00
+date: 2018-11-26T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2018/11/IMG-20181125-WA0006.jpg
 excerpt: 'Le rhum est intimement lié à l’histoire de Maurice et de la Réunion, les deux îles étant productrices de canne à sucre. Pas étonnant donc que le rhum arrangé y soit un apéritif de choix. On retrouve…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - '44'
   - 'canne à sucre'

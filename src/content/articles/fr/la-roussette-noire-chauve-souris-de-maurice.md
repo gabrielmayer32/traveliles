@@ -1,9 +1,9 @@
 ---
 title: 'La roussette noire, chauve-souris de Maurice'
-date: 2027-10-19T08:00:00
+date: 2019-11-21T08:00:00
 category: Maurice demain
 excerpt: 'Souvent considérée comme une nuisance en raison des dégâts causés dans les vergers, la roussette noire, grande chauve-souris frugivore et endémique de Maurice, joue pourtant un rôle très important…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'chauve-souris'
   - 'endémique'

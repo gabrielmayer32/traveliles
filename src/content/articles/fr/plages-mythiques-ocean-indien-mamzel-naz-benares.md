@@ -1,9 +1,9 @@
 ---
 title: 'Plages mythiques de l’océan Indien : Mamzel Naz, à Bénarès'
-date: 2027-11-02T08:00:00
+date: 2019-07-17T08:00:00
 category: Nos régions
 excerpt: 'S’il existe plus d’une centaine de plages à Maurice, une poignée d’entre elles sont encore très peu fréquentées étant difficiles d’accès en voiture. La plage de Bénarès, connue comme Mamzel Naz, est…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Bénarès'
   - 'falaises'

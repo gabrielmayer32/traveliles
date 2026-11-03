@@ -1,10 +1,10 @@
 ---
 title: 'Le scinque de Telfair, lézard endémique vulnérable'
-date: 2027-07-20T08:00:00
+date: 2019-05-08T08:00:00
 category: Maurice demain
 cover: /images/uploads/archives/2019/05/Scinque-Telfair-Credit-Karl-Ahnee.jpg
 excerpt: 'Il aime se dorer la pilule tranquillement au soleil, se faufiler entre les feuilles mortes en mode camouflage et il se nourrit de tout ce qu’il trouve sur son passage. Lui, c’est le scinque de…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'extinction'
   - 'Ile aux Aigrettes'

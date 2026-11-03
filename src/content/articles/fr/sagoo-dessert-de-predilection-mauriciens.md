@@ -1,10 +1,10 @@
 ---
 title: 'Le sagoo, dessert de prédilection des Mauriciens'
-date: 2027-08-03T08:00:00
+date: 2019-05-15T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2019/05/Sagoo-1.jpg
 excerpt: 'Dans les mariages tamouls, les restaurants chinois, quand on est invité à dîner, le sagoo fait souvent office de dessert. Frais et léger, il existe différentes variantes de la recette et divers…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'dessert'
   - 'perles'

@@ -1,9 +1,9 @@
 ---
 title: 'La rue Pagoda à Plaine Verte, la référence pour les robes de mariage à Maurice'
-date: 2027-03-02T08:00:00
+date: 2018-12-07T08:00:00
 category: Savoir-faire
 excerpt: 'Le quartier musulman de Maurice, Plaine Verte, attire les habitants des quatre coins de l’île voulant faire de bonnes affaires. En effet, on y trouve de tout : vêtements, matériel de…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'mariages'
   - 'Maurice'

@@ -1,10 +1,10 @@
 ---
 title: 'Plages mythiques de l’océan Indien : Bain Boeuf'
-date: 2027-07-06T08:00:00
+date: 2019-03-11T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/03/BAIN-BOEUF-PIC-6.jpg
 excerpt: 'Si vous êtes à  la recherche d’un coin tranquille pour vous détendre dans le Nord de l’île, la plage publique de Bain Bœuf répond à cette envie. Idéale pour une trempette, celle-ci qui est située…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Anse-La-Raie'
   - 'Bain Bœuf'

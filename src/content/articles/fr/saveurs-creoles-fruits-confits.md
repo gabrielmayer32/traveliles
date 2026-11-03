@@ -1,10 +1,10 @@
 ---
 title: 'Saveurs créoles: les fruits confits'
-date: 2027-06-01T08:00:00
+date: 2019-01-16T08:00:00
 category: Saveurs
 cover: /images/uploads/archives/2019/01/20190116_110650.jpg
 excerpt: 'Si on vous dit salade de fruits, vous pensez probablement à un bol de fruits mûrs, frais et coupés en morceaux dans un jus un peu sucré, mais ce n’est pas le cas des Mauriciens. Pour eux, une salade…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'ananas'
   - 'chaleur'

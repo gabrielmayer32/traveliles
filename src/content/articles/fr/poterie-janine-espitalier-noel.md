@@ -1,10 +1,10 @@
 ---
 title: 'Les doigts de fée de Janine [Poterie]'
-date: 2027-08-27T08:00:00
+date: 2019-11-04T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2019/11/PoterieJanine.jpg
 excerpt: 'Une boule d’argile, un tour et des mains habiles : c’est tout ce qu’il faut à Janine Espitalier-Noël pour faire naître de magnifiques objets qui iront personnaliser les tables de restaurants d’hôtels…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'argile'
   - 'Art'

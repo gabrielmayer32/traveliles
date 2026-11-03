@@ -1,10 +1,10 @@
 ---
 title: 'Patrimoine: le Musée Naval de Mahébourg'
-date: 2026-12-29T08:00:00
+date: 2016-11-11T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2016/11/Musee_1.jpg
 excerpt: 'Le National History Museum de l’ile Maurice, plus connu sous le nom de Musée Naval de Mahébourg, n’est pas seulement un musée. Le bâtiment qui l’abrite, vieille bâtisse coloniale datant de l''époque…'
-author: 'Fabrice David'
+author: 'Travel-Îles'
 tags:
   - 'bataille'
   - 'colonisation'

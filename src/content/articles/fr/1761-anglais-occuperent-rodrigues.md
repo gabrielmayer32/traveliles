@@ -1,10 +1,10 @@
 ---
 title: '1761: Quand les Anglais occupèrent Rodrigues'
-date: 2027-06-25T08:00:00
+date: 2018-03-21T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2018/03/rodrigues-1761.jpg
 excerpt: 'Nous nous intéressons ici à un événement peu connu de l’histoire de Rodrigues. De septembre à décembre 1761, l''île Rodrigues fut brièvement anglaise. Mais d''étranges raisons poussèrent les tuniques…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - '1761'
   - 'Angleterre'

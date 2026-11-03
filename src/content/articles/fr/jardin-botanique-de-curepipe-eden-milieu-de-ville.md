@@ -1,9 +1,9 @@
 ---
 title: 'Le jardin botanique de Curepipe, un éden au milieu de la ville'
-date: 2027-04-02T08:00:00
+date: 2018-06-25T08:00:00
 category: Nos régions
 excerpt: 'Abritant 17 espèces uniques à Maurice, un palmier unique au monde, un étang et une rivière, le jardin botanique de Curepipe vaut le détour. Par une belle journée ensoleillée, la balade y est agréable…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Curepipe'
   - 'endémique'

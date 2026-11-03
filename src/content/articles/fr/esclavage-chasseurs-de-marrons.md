@@ -1,10 +1,10 @@
 ---
 title: 'Esclavage: les chasseurs de marrons'
-date: 2027-04-13T08:00:00
+date: 2017-08-23T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2017/08/ch.marrons1.jpg
 excerpt: 'Durant l''époque coloniale dans les îles des Mascareignes, les esclaves en fuite étaient pourchassés sans pitié par des personnages terribles: les chasseurs de marrons. Voici leur histoire.'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'Bourbon'
   - 'chasseurs de marrons'

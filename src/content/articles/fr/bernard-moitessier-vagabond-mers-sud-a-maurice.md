@@ -1,9 +1,9 @@
 ---
 title: 'Bernard Moitessier: le vagabond des mers du Sud à Maurice'
-date: 2027-03-12T08:00:00
+date: 2017-03-07T08:00:00
 category: Nos archives
 excerpt: 'Bernard Moitessier fait sans aucun doute partie des plus grands aventuriers en mer que le monde ait connus. Navigateur solitaire épris de liberté, il fit naufrage à Diego Garcia et vécut durant trois…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'aventurier'
   - 'Bernard Moitessier'

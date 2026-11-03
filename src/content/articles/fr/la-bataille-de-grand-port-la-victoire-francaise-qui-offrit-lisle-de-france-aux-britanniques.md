@@ -1,10 +1,10 @@
 ---
 title: 'La bataille de Grand-Port: La victoire française qui offrit l’Isle de France aux Britanniques'
-date: 2026-12-15T08:00:00
+date: 2016-04-18T08:00:00
 category: Nos archives
 cover: /images/uploads/archives/2016/04/gport1.jpg
 excerpt: 'La bataille navale de Grand-Port fut la plus grande victoire de la marine française contre les Anglais durant les guerres napoléoniennes. Pourtant,  l’issue de ce combat titanesque précipita la prise…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - '1810'
   - 'bataille'

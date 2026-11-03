@@ -1,10 +1,10 @@
 ---
 title: 'Plages mythiques de l’océan Indien : Le Morne'
-date: 2027-09-21T08:00:00
+date: 2019-06-06T08:00:00
 category: Nos régions
 cover: /images/uploads/archives/2019/06/DSC_0755.jpg
 excerpt: 'Ce ne sont pas les belles plages qui manquent à Maurice, mais il faut dire que celle du Morne figure parmi les plus remarquables de l’île. Sur la côte sud-ouest, au pied de la majestueuse montagne du…'
-author: 'Côte Nord'
+author: 'Travel-Îles'
 tags:
   - 'kite'
   - 'Le Morne'

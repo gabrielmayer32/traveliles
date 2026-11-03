@@ -1,10 +1,10 @@
 ---
 title: 'Roger Julien forgeron depuis l’âge de 12 ans'
-date: 2027-04-09T08:00:00
+date: 2019-04-19T08:00:00
 category: Savoir-faire
 cover: /images/uploads/archives/2019/04/ForgeronJulien1.jpg
 excerpt: 'Le métier de forgeron se pratique très peu de nos jours. Roger Julien est l’un des rares artisans qui continue à pratiquer ce métier qui date du Moyen Age et qui évolue constamment. Rencontre avec un…'
-author: 'Gabriel'
+author: 'Travel-Îles'
 tags:
   - 'forgeron'
   - 'Port-Louis'
