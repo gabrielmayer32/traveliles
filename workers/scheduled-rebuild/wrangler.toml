@@ -10,6 +10,8 @@ crons = ["0 2,4,6,8,10,12,14,16 * * *", "20 2,4,6,8,10,12,14,16 * * *"]
 # Identifiant de la Page Facebook Travel-Îles (pas secret). Le jeton est un secret : FB_PAGE_TOKEN.
 [vars]
 FB_PAGE_ID = "157900804345729"
+# Publication automatique sur Facebook : "on" pour activer, "off" pour suspendre.
+FB_AUTOPOST = "off"
 
 # Liste des articles déjà publiés sur Facebook, pour ne jamais publier deux fois.
 [[kv_namespaces]]

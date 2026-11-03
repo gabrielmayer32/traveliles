@@ -22,8 +22,6 @@ published: true
 
 Un éléphant dans une île aussi petite que Maurice, ça ne court pas les rues. On ne peut donc qu’imaginer la surprise de Charles Darwin, le 5 mai 1836, lorsqu’on lui proposa une balade à dos d'éléphant, à mi-chemin entre Rivière-Noire et les Plaines Wilhems…
 
-!Darwin
-
 Charles Darwin
 
 L'éminent naturaliste se trouvait à Maurice dans le cadre du voyage du Beagle, une longue traversée du globe de cinq ans, lors de laquelle il visita de nombreuses contrées. Maurice était la dernière destination du voyageur lors de ce périple, qu’il relata dans son livre “*Le Voyage du Beagle*” (1839).
@@ -36,13 +34,9 @@ En bon gentleman anglais, le capitaine avait soigneusement préparé sa surprise
 
 Cet éléphant, précisa Lloyd à Darwin, était le seul de l'île. Il fut également le tout premier jamais importé à Maurice, et aussi sans doute l’unique représentant de son espèce à y avoir mis les pieds. Du moins, jusqu'à ce que le parc Casela ne fasse venir tout récemment quelques spécimens... D'après le livre de Darwin, “*on dit que d’autres* [éléphants] *seront bientôt envoyés*”, mais nous n’avons trouvé aucune autre trace d’autres éléphants importés par les Britanniques.
 
-!Darwin
-
 Le Beagle.
 
 Malheureusement, on n’en sait pas plus sur l'éléphant du capitaine Lloyd. L’animal provoqua sûrement une grande surprise chez ceux qui le virent déambuler dans les Plaines Wilhems. Il vécut sans doute encore quelques années, avant de mourir seul et loin de son pays natal. L'éléphant était certainement accompagné d’un cornac, un dresseur d'éléphants, puisque personne à Maurice n’avait les compétences pour commander et diriger une créature aussi imposante.
-
-!Darwin
 
 Capitaine John Augustus Lloyd.
 

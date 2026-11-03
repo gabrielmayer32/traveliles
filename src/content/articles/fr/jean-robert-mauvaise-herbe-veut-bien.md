@@ -27,8 +27,6 @@ On en trouve dans presque tous les jardins. L’*Euphorbia hirta*, ou herbe Jean
 
 Cette petite plante apparemment si banale est pourtant un trésor de la médecine traditionnelle des îles des Mascareignes. Véritable herbe miracle, elle peut être utilisée contre un nombre incroyable de maux, qu’il s’agisse de troubles gastriques, de problèmes de peau, d’insuffisances respiratoires, de soucis pendant la grossesse… Elle possède en effet de précieuses vertus pharmaceutiques, notamment des propriétés anti-inflammatoires, antiseptiques et antipyrétiques.
 
-!Herbe Jean Robert
-
 Tout d’abord, le latex blanc produit par la plante lorsqu’on la casse est un excellent remède pour presque tous les types de problèmes de peau. On l’utilise contre les verrues, l'eczéma, la gale, les aphtes, les mycoses, mais aussi pour soigner les plaies purulentes ou la conjonctivite. Il suffit généralement d’appliquer le latex sur la zone concernée. Jadis, nos grand-mères s’en servaient également pour aider à enlever des épines plantées dans la peau.
 
 Cette panacée est encore meilleure en tisane. Les partisans du Jean Robert affirment en effet qu’elle est extrêmement efficace en décoction contre la grippe, la toux, l’asthme, la bronchite, le rhume des foins… Elle soigne aussi la diarrhée, la dysenterie, les ulcères, les remontées gastriques et bien d’autres troubles intestinaux. Lors des règles, cette plante miraculeuse est connue pour diminuer le flux des pertes.

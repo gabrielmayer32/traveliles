@@ -24,15 +24,11 @@ published: true
 
 Situé à environ un kilomètre du centre-ville de Curepipe, dans les hautes plaines du centre de l'île Maurice, le Trou-aux-Cerfs est l’un des sites de promenade préférés des habitants des alentours. Il s’agit également d’un lieu très fréquenté par les touristes. Ce cratère d’un volcan éteint il y a environ 700 000 ans, culmine à 605 mètres au-dessus du niveau de la mer, surplombant la ville environnante et le quartier de Floréal, dans lequel il se trouve.
 
-!La vue sur les montagnes depuis le sommet
-
 La vue sur les montagnes depuis le sommet
 
 Le cratère présente un diamètre d’environ 300 mètres et une profondeur de 80 mètres. Le sommet offre un panorama spectaculaire sur les plaines du milieu de l'île, ainsi que sur les montagnes de la chaîne du Rempart et le Corps de Garde. Malgré sa situation urbaine, la végétation au sommet et à l'intérieur du cratère est luxuriante, grâce au climat tropical humide typique du plateau central.
 
 On peut descendre au fond via quelques sentiers, dont certains peuvent être glissants s’il pleut (ce qui n’est pas chose rare à Curepipe). Au fond, une petite forêt de pins et quelques plantes, dont certaines sont endémiques, entourent un petit lac pittoresque où l’on peut apercevoir avec un peu de chance quelques “poules d’eau” patauger.
-
-!La végétation est luxuriante au fond du cratère. 
 
 La végétation est luxuriante au fond du cratère.
 

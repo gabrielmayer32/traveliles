@@ -28,8 +28,6 @@ Nous sommes le 31 août 1985, au Stade Georges V, à Curepipe. Le stade, d’une
 
 Il faut souligner que tout au long de la compétition, les sportifs locaux ont fait rêver les Mauriciens. Des performances impressionnantes comme celle de Christine Béchard, qui remporte l’or en heptathlon, au disque et au saut en hauteur, ou encore celle de l'équipe de badminton, qui rafle toutes les médailles. Mais ces efforts ne seront pas suffisants face aux redoutables Réunionnais, qui remportent les Jeux avec le même nombre de médailles que Maurice (126), mais davantage de médailles d’or (49 contre 36).
 
-!JIOI 1985-2
-
 Michael Glover, alors ministre des Sports, félicite le gardien de but Désiré L’Enclume lors d’une cérémonie après la victoire du Club M.
 
 Lorsqu’il reprend sa place dans la cage, quelques secondes plus tard, il a l’occasion d’envoyer l’île Maurice au septième ciel… Le tireur frappe vers la gauche, L’Enclume plonge, s'étire de tout son long… Et dévie le ballon! Cet exploit provoqua une véritable explosion de joie dans toute l'île: les gens sortent dans la rue, déploient leurs drapeaux quadricolores, dansent le séga, chantent... Durant plusieurs semaines, le pays sera dans un état de béatitude total. Le jeune pays n’avait encore jamais connu pareille joie, partagée par tous… Dès le lendemain de la victoire du Club M, les journaux locaux parlent de la “naissance d’une nation”, tant le peuple mauricien semblait uni et soudé dans la victoire.

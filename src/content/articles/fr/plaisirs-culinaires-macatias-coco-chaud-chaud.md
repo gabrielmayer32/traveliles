@@ -51,12 +51,8 @@ Allez hop, on y va pour la recette pour 15 macatias coco:
 
 * Divisez la pâte en petites 15 boules
 
-!Macatias coco
-
 * Faites une dépression dans chaque boule et remplissez-la d’une cuillère de la farce.
 * Remodelez légèrement les boules et mettez-les sur les plaques beurrées.
-
-!Macatias coco
 
 * Laissez reposer pendant 1 heure, badigeonnez d'un peu de lait liquide ou d'un jaune d'oeuf pour obtenir une belle couleur dorée à la cuisson. Enfournez pendant 20 minutes à 180 degrés celsius
 

@@ -26,15 +26,11 @@ Quiconque pose les yeux aujourd’hui sur l’hôtel de ville de Curepipe ne res
 
 C’est en février 1902 que démarra la construction de l’hôtel de ville de Curepipe, avec la pose de la première pierre par le gouverneur d’alors, Sir Charles Bruce. Mais, en réalité, le bâtiment était déjà fort âgé à ce moment. Connu jadis sous le nom de “*La Malmaison*”, l’hôtel de ville trônait autrefois au pied des montagnes de Moka. Cette maison coloniale typique de l'époque française, avec ses superbes toits en bardeaux, ses magnifiques murs de bois peints et ses fenêtres finement détaillées, était déjà réputée à l'époque des Français pour être l’une des plus belles demeures de l'île.
 
-!patrimoine
-
 L’hotel de ville de Curepipe, au temps de sa splendeur.
 
 Retour à Curepipe. A la fin du 19e siècle, l’emplacement actuel de l’hôtel de ville était occupé par un vieux casino qui tombait en ruine. Les habitants demandèrent au Board de Curepipe, qui gérait la ville à l'époque (il n’y avait pas encore de Conseil Municipal), de leur construire un bâtiment où ils pourraient organiser des mariages, des fêtes et divers événements.
 
 Par coïncidence, la Malmaison était justement en vente à cette période. Le Board en fit l’acquisition pour une somme de Rs 25 000. L’objectif était, à ce moment, d’utiliser les matériaux de la Malmaison pour reconstruire un bâtiment similaire, mais beaucoup plus vaste, à Curepipe. Fort heureusement, l’architecte en charge des travaux, un certain monsieur Manuel, préféra reconstruire la demeure à l’identique.
-
-!Patrimoine
 
 Le bâtiment photographié en 2007. On peut déjà remarquer des bâches sur le toit.
 

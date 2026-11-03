@@ -28,8 +28,6 @@ Bam Cuttayen fut l'archétype du poète militant et du chanteur engagé. Le chan
 
 Durant ces années de combats naquit le *Mouvement Militant Mauricien* (MMM), qui fait aujourd’hui encore partie des partis politiques les plus importants de l'île. S’il a changé de discours politique de nos jours, le MMM se réclamait à l'époque du communisme et du socialisme. Bam Cuttayen, couturier de profession, fut lui-même un fervent admirateur de la révolution prolétaire chinoise et de Mao, et fit partie des premiers partisans du MMM dès la création du parti en 1969.
 
-!bam1
-
 Issu d’une famille modeste originaire de Quatre-Bornes, Bam Cuttayen découvre dès son plus jeune âge, les affres de la pauvreté et les injustices sociales. Il cultivera ainsi toute sa vie une philosophie profondément humaniste et une grande compassion pour les plus démunis. Le jeune homme développe parallèlement un intérêt particulier pour la musique, celle de l’Inde mystique de ses ancêtres, mais aussi celle que l’on joue le soir autour du feu sur son île, le fameux séga.
 
 De cet amour pour la musique et de cet engagement politique naîtra le groupe *Soley Rouz*, qui marquera fortement les années de braise. Le groupe est composé de Bam Cuttayen, des frères Nitish et Ram Joganah, de Rosemay Nelson ou encore Lélou Menwar. Leur musique est jouée durant les rassemblements, les grèves et les manifestations de la jeunesse militante, qui chante les refrains du groupe tout en combattants les forces de répression.

@@ -21,13 +21,9 @@ published: true
 
 **Les huitres ont mis du temps à trouver leur place sur les tables mauriciennes. Déjà, il faut les apprécier et, pour certains, elles ont un goût iodé trop fort et une texture visqueuse qui peut être déplaisante. Ceux qui en sont amateurs par contre, en raffolent. Mais, pendant longtemps, l’huitre était considérée comme un produit de luxe qui n’était pas accessible à tous. En effet, elles étaient importées et étaient de ce fait onéreuses.**
 
-!huitre
-
 Le site d'ostréiculture situé à Poudre d'Or
 
 Aujourd’hui, on trouve des huitres plus facilement, notamment grâce aux élevages locaux. Leur prix est bien entendu plus abordable - environ Rs 30 l’unité, contre environ Rs.70 à l’époque ! Ce n’est pas cher payé quand on sait que ce mollusque demande énormément d’attention et de savoir-faire. Les huitres doivent être brossées et nettoyées tous les deux à trois jours afin d’enlever les sédiments et les algues qui les empêchent de filtrer l’eau, et qui pourrait leur être fatal. Il faut attendre 3 à 4 ans avant que l’huitre n’atteigne sa taille commercialisable, ce qui est quand même long quand on sait que quelques secondes suffisent à la déguster…
-
-!huitres
 
 Khemraj Persand nous présente une de ses savoureuses huitres
 

@@ -16,15 +16,11 @@ published: true
 
 Dans quelques jardins et forêts de l’île Maurice poussent de superbes arbres au tronc noueux et aux feuilles vertes et rouges, portant en saison de lourdes grappes de fruits ovales. Il s’agit de plants d’oliviers de Ceylan, *Eleocarpus Serratus* de leur nom scientifique. A Maurice ou à la Réunion, ces fruits ressemblant à d'énormes olives méditerranéennes sont surnommés “*olives locales*” ou “*olives pays*”.
 
-!Les fruits ressemblent aux olives européennes, mais sont beaucoup plus gros. 
-
 Les fruits ressemblent aux olives européennes, mais sont beaucoup plus gros.
 
 On les consomme sous diverses formes: achards, confits, pâte pimentée… Cet ingrédient, très acide lorsqu’il est vert, se marie étonnamment bien avec le piment. L’achard d’olives locales, par exemple, relève fabuleusement les plats locaux typiques à base de riz. Dans les marchés de l'île, les olives confites dans du vinaigre sont très appréciées par la population en tant que met de rue que l’on savoure à la va-vite.
 
 On peut également les déguster nature lorsqu’elles sont vertes. Certains les préfèrent accompagnées d’un peu de sel et de piment, tandis que d’autres les mangent avec du sucre pour atténuer leur extrême acidité. Lorsqu’ils consomment trop de ces olives vertes, les plus gourmands peuvent parfois noter un curieux ramollissement de leurs dents, qui deviennent aussi très sensibles...
-
-!Le veralu achcharu, un mets de rue populaire au Sri Lanka
 
 Le veralu achcharu, un mets de rue populaire au Sri Lanka
 

@@ -30,4 +30,3 @@ Depuis un an, Claudino s’est même mis à la décoration d’ornements funéra
 
 * [Facebook : klodinocreationltd](https://www.facebook.com/klodinocreationltd/)
 
-!Klodino sérigraphie

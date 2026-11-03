@@ -20,8 +20,6 @@ published: true
 
 #### **C’est un métier passion qui fait travailler la tête et les mains. Ils sont peu nombreux à Maurice à l’exercer, pas plus d’une dizaine pour être précis. Pourtant le maréchal-ferrant est indispensable au bien-être des équidés. Nous avons été à la rencontre de Denis Grégoire, un de ces hommes qui exercent ce métier méticuleux et qui requiert de nombreuses qualités.**
 
-!Maréchal-ferrant
-
 Denis Grégoire, l'un des rares maréchaux-ferrants en activité à maurice
 
 Si on ne côtoie pas le milieu équestre, on pourrait croire que les maréchaux-ferrants n’existent plus que dans les livres d´histoire et les contes pour enfants. Erreur. On continue d´avoir besoin de ces artisans qui officiaient déjà sous l´Antiquité.
@@ -29,8 +27,6 @@ Si on ne côtoie pas le milieu équestre, on pourrait croire que les maréchaux-
 Denis Grégoire est l´un d´eux. Il ne ressemble pas au costaud et moustachu maréchal-ferrant d´Astérix. Tablier style cow-boy autour de la taille, ce maréchal-ferrant ne manque pas de métier. La quarantaine, Denis a déjà 22 ans d´expérience derrière lui. Fils de palefrenier, la messe était dite. Ce serait au contact des chevaux que Denis travaillerait. S’il a débuté comme palefrenier, son parcours prendra une toute autre tournure trois ans plus tard. L’ancien « *Master Farrier* » Jean-Marc Halbwachs décèle en lui des qualités nécessaires pour faire ce métier. Sans broncher, il se lance dans cette belle aventure qui sera révélatrice. « J’ai été apprenti. On m’a laissé deux mois pour m’acclimater à ce nouvel environnement. J’avais déjà une bonne connaissance des chevaux, que j’ai par la suite enrichie. » Comme le cheval, une fois ferré il est impossible de revenir en arrière, il était inconcevable pour Denis Grégoire d’en faire de même. Etre maréchal-ferrant, l’immunise contre la monotonie. « On n’arrête jamais d’apprendre. »
 
 En quoi consiste le métier de maréchal-ferrant ? Pour mieux comprendre, nous avons suivi Denis dans un de ses nombreux déplacements autour de l’île. Il ne s’occupe pas que des chevaux de courses, mais également des chevaux de loisirs, d’équitation, des poneys et des ânes.
-
-!Maréchal ferrant
 
 Denis en plein parage
 

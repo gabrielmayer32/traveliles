@@ -25,15 +25,11 @@ published: true
 
 Souvent confondu avec le baobab à cause de nombreuses similarités, le bois mapou (qu’on surnomme d’ailleurs le baobab de Maurice) n’a pourtant rien à voir avec le célèbre arbre africain. Cette plante endémique de l'île Maurice est en réalité une espèce de vigne qui a évolué vers le gigantisme comme beaucoup d'espèces animales ou végétales originaires d’îles dénuées de prédateurs.
 
-!Détail du feuillage.
-
 Détail du feuillage.
 
 Le bois mapou était autrefois l’une des plantes endémiques les plus communes de l'île Maurice. On en trouvait énormément dans les zones peu boisées et sur les versants des montagnes. La plante a par exemple donné son nom au village de Mapou, dans le Nord de l'île, ou elle poussait en abondance.
 
 Les grandes déforestations qui ont suivi l'arrivée de l’homme ont toutefois causé la quasi disparition de l'espèce. Mais le bois mapou a survécu dans certains sanctuaires. On en trouve encore aujourd’hui quelques spécimens à l'état sauvage, sur certains versants de montagnes comme les Trois Mamelles, Le Pouce, Le Morne, ou encore dans les forêts de l’Ouest.
-
-!De nos jours, on trouve le mapou un peu partout à Maurice: dans les jardins, sur les ronds-points, au milieu des parcs ou, comme ici, dans des centres commerciaux.
 
 De nos jours, on trouve le mapou un peu partout à Maurice: dans les jardins, sur les ronds-points, au milieu des parcs ou, comme ici, dans des centres commerciaux.
 

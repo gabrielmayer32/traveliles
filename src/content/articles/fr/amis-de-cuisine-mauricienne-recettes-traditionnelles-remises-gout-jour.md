@@ -21,8 +21,6 @@ published: true
 
 Les Amis de la Cuisine Mauricienne est une initiative à mettre au compte de Jean-Claude Hein, chimiste et passionné de longue date par la cuisine mauricienne. Cette passion, il en a toujours fait son combat, qui a débuté avec un ouvrage intitulé Île Maurice, Deux siècles de cuisine, préfacé par Paul Bocuse et qui a obtenu en France le Grand Prix de l’académie nationale de cuisine.
 
-!Les Amis de la Cuisine Mauricienne
-
 Chatini de coco et de bringelles
 
 Ce livre de référence informe avec précision de tout ce qui concerne la cuisine mauricienne depuis ses origines et son développement influencé par l’histoire et surtout l’apport gastronomique si riche dérivé de l’immigration.

@@ -25,15 +25,11 @@ Crustacé d’eau douce à la chair délicieuse, le camaron fait partie des plat
 
 L'île Maurice compte deux espèces de camarons autochtones: le Macrobrachium lar et le Macrobrachium austral. Le Macrobrachium rosenbergii, une autre espèce, a été introduit dans les années 70 pour l'élevage. Plus agressives et territoriales, les deux premières espèces sont en effet beaucoup  plus difficiles à élever en captivité.
 
-!Petit cours d’eau idéal pour la pêche au camaron. Le courant n’est pas très fort et les brèdes songes offrent de l’ombre ainsi que de belles cachettes à l’animal. 
-
 Petit cours d’eau idéal pour la pêche au camaron. Le courant n’est pas très fort et les brèdes songes offrent de l’ombre ainsi que de belles cachettes à l’animal.
 
 Jadis, enfants et adultes se postaient sur les berges des ruisseaux et des rivières pour pêcher à vue ce délicieux crustacé. Il fallait pour cela se munir d’un brin d’herbe qu’on attachait en forme de lasso. Une fois l’animal entré dans le cercle du lasso, il suffisait de tirer d’un coup sec pour le capturer. Parfois, certains utilisaient également un bâton sur lequel ils avaient collé un peu de mie de pain pour appâter les camarons.
 
 Cette pêche demandait énormément de patience et de dextérité. Le camaron, qui aime se cacher, est plutôt difficile à repérer sur les fonds vaseux, dans les crevasses ou dans les herbiers qu’il fréquente généralement. De plus, c’est un animal plutôt méfiant de nature, qui disparaît en un clin d’œil au moindre faux mouvement. D'où l’expression créole “camarade camaron”...
-
-!La chair du camaron est tendre et délicate, un vrai régal pour les gourmets. 
 
 La chair du camaron est tendre et délicate, un vrai régal pour les gourmets.
 

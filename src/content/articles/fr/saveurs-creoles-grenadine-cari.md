@@ -18,15 +18,11 @@ published: true
 
 *Publié pour la première fois dans Travel-Îles by Côte Nord en février 2020.*
 
-!grenadine cari
-
 La fleur de la grenadine cari
 
 #### Connaissez-vous la « grenadine cari » ? Vous l’avez sans doute vu dans l’arrière cours de vos grands-parents ou chez vos voisins sans y prêter attention !  La grenadine cari est une liane tropicale de la famille des passifloracées.
 
 Ce légume aujourd’hui presque oublié, était très cultivé jadis dans le jardin de nos aînés. Ce membre de la famille des passifloracées est une plante grimpante qui donne une variété de fruit de la passion géant, qui mesure environ 20 cm à 30 cm de long. Ce qui fait de la grenadine cari le plus gros des fruits de la passion.  Elle est d’origine d’Amérique et a été par la suite cultivée dans de nombreux pays africains et asiatique. Cet énorme fruit tropical est utilisé comme légume à l'île Maurice et supporte très bien la chaleur. Au jardin, réservez-lui une place ombragée et un support où la liane pourra grimper.
-
-!grenadine cari
 
 Prévoyer un tuteur ou un support mural pour le plant
 

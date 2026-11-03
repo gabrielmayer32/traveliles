@@ -24,8 +24,6 @@ Mais des hommes et des femmes habités par l’amour de leur île ont fait un pi
 
 Les débuts du tourisme à Maurice sont timides. C’est dans les années 50 que l’on voit apparaître quelques hôtels à Curepipe, dans le centre du pays. « *Il n’y avait que le Park Hotel, quatre blocs en béton pour accueillir les passagers en transit de Qantas et South African Airways, où se trouve aujourd’hui le siège de Beachcomber et aussi Vatel, à côté du Collège Royal de Curepipe, aujourd’hui Arcades Currimjee* », se rappelle Guy Hugnin, ancien directeur du Mauritius Tourism and Travel Board (MTTB). Puis viendront les rondavelles du Morne Plage, une idée d’Amédée Maingard, héros de la Seconde Guerre, « *saisi par la beauté sauvage des lieux, de la pauvreté, des conditions sanitaires déplorables ; il rêve de faire connaître ce coin, une route majestueuse mais pas carrossable* », raconte Michel Vuillermet, cinéaste qui a réalisé un film sur lui. Le Morne Plage était constitué d’un ancien bungalow rénové et qui comptait une grande salle pour le restaurant, deux grands salons, une belle terrasse et bar. Autour, il y avait six rondavelles qui pouvaient accueillir un couple et aussi un enfant. Suivra ensuite Le Chaland près de l’aéroport, les deux appartenant à Mauritius Hotels, qui deviendra Beachcomber bien après.
 
-!indépendance
-
 L'hôtel Le Chaland qui a aujourd'hui cédé la place au Beachcomber Shandrani
 
 #### Messageries Maritimes
@@ -44,8 +42,6 @@ Les premières agences de voyages à vendre Maurice, principalement pour les pas
 
 Personne à ce moment ne pense que le tourisme va devenir un secteur économique porteur. Il faudra attendre l’accession du pays à l’indépendance en 1968 et un gouvernement avide de sortir le pays de sa monoculture de la canne à sucre pour que le textile d’abord, puis le tourisme, se posent en secteurs économiques pour ce pays largement rural. C’est durant cette période qu’Amédée Maingard, toujours visionnaire, va lancer l’idée d’une compagnie d’aviation nationale. Avec pour actionnaires, le gouvernement mauricien, Rogers, Air France, British Airways et Air India, Air Mauritius était née. Débutant avec un Piper Navajo, la compagnie allait petit à petit augmenter sa flotte en acquérant des Twin Otters, des Boeing et des Airbus. Un développement qui va permettre de connecter l’île plus facilement avec le monde et qui va encore s’accroître avec l’ouverture de l’espace aérien ces dernières années.
 
-!indépendance
-
 Le Park Hotel
 
 #### Chaleur humaine
@@ -59,8 +55,6 @@ C’est ce qui fait les gens revenir, assure Paul Jones, qui révèle qu’il a 
 Andrew Slome, qui a travaillé avec Paul Jones de longues années porte un regard très clinique sur l’industrie hôtelière qui, à son arrivée à Maurice, était à ses balbutiements. « *À l’époque le secteur était perçu comme une industrie du plaisir type Club Med, même au Saint Géran. Mais bien vite on a compris que, mis à part l’environnement et les infrastructures physiques qui en font une destination de plage magique, le pays offrait aussi un service et un capital humain que beaucoup de destinations similaires ne possédaient pas. Ce qui est un élément essentiel pour la réussite dans ce secteur. À partir de là, les investisseurs ont compris qu’il était rentable de développer l’industrie hospitalière* ». Ce capital humain reste le socle de cette industrie et ce n’est pas Jacqueline Dalais, chef émérite et propriétaire du célèbre restaurant La Clef des Champs qui dira le contraire. Si son nom est aujourd’hui associé à la gastronomie mauricienne, c’est aussi parce qu’elle a tenu une table célèbre qui allait ensuite devenir une enseigne iconique de l’hôtellerie mauricienne, le Touessrok.
 
 L’histoire du Touessrok débute en fait en 1915. Henri Wiehé, dit Père Coco, grand-père maternelle de Jacqueline découvre, lors d’une tournée dans ses champs de cannes, un petit bijou posé sur le lagon cristallin près de Trou d’Eau douce. Il décide de l’offrir à sa femme, Hilda, moyennant un bail d‘une roupie par mois. Alors appelée l’île aux Lièvres, elle fut rebaptisée Touessrok par Mme Wiehé, en souvenir de leur Bretagne natale où se trouvait une autre île, Tuerocs.
-
-!indépendance
 
 Le Touessrok à l'époque de Jacqueline Dalais.
 

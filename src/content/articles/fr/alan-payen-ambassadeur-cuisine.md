@@ -23,8 +23,6 @@ published: true
 
 #### 50 chefs fêtent les 50 ans de Maurice, c’est l’ouvrage qu’a réalisé Alan Payen, en hommage à la cuisine mauricienne à l’occasion des 50 ans de l’indépendance de l’île. Ce livre est la consécration de la carrière de ce chef qui est un vrai ambassadeur du pays auprès de la World Association Chefs Societies.
 
-!Alan Payen : ambassadeur de la cuisine mauricienne
-
 *Le livre est disponible auprès de l’auteur (T : 5728 6670)*.
 
 Cet hommage était nécessaire, explique Alan Payen qui a fait de la promotion et de la valorisation de la cuisine mauricienne son cheval de bataille. « *Les touristes ne viennent plus seulement pour la plage et le soleil mais aussi pour la cuisine. Il faut saluer les chefs qui ont imposé ce concept dans les hôtels. Mon seul regret : celui de ne pas avoir un plat national. Il faut mettre de côté notre ego et arriver à un consensus là-dessus* », souhaite-t-il.

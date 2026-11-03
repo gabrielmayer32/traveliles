@@ -32,15 +32,13 @@ Cette plante a des propriétés antiseptiques, cicatrisantes, anti-inflammatoire
 
 **L’aloe vera**
 
-**!plantes**L’aloe vera, aussi appelée Mazenbron à Maurice, est une plante que l’on retrouve dans la cour de beaucoup de Mauriciens. Très connue dans le monde du traitement naturel, le gel de cette plante a de multiples bienfaits, dont des propriétés cicatrisantes, bactéricides, antifongiques, anti-inflammatoires, antiseptiques et a un effet laxatif qui agit efficacement contre les problèmes de transit intestinal. De plus, elle aurait un effet hypoglycémiant qui la convertirait en allié précieux dans la lutte contre le diabète. A Maurice, on l’utilise pour soigner et protéger le visage, pour traiter l’acné et pour soulager la peau en cas de brulure ou de coups de soleil, entre autres.
+****L’aloe vera, aussi appelée Mazenbron à Maurice, est une plante que l’on retrouve dans la cour de beaucoup de Mauriciens. Très connue dans le monde du traitement naturel, le gel de cette plante a de multiples bienfaits, dont des propriétés cicatrisantes, bactéricides, antifongiques, anti-inflammatoires, antiseptiques et a un effet laxatif qui agit efficacement contre les problèmes de transit intestinal. De plus, elle aurait un effet hypoglycémiant qui la convertirait en allié précieux dans la lutte contre le diabète. A Maurice, on l’utilise pour soigner et protéger le visage, pour traiter l’acné et pour soulager la peau en cas de brulure ou de coups de soleil, entre autres.
 
-**!plantesL’ayapana**
+**L’ayapana**
 
 Sur notre île, cette plante est souvent considérée comme une tisane miracle contre tous les maux : troubles digestifs ou gastriques, colique, fièvre, grippe. Quelques feuilles en infusion suffisent après le repas ou lorsqu’on a une indigestion. Elle est astringente, diurétique et purgative.
 
 **.**
-
-!plantes
 
 **La Citronnelle**
 
@@ -52,4 +50,4 @@ Réputée pour repousser les moustiques, la citronnelle est aussi une plante mé
 
 **Le plantain**
 
-!plantesLes feuilles et les graines de cette plante, à ne pas confondre avec la banane plantain, sont souvent utilisées dans la médecine naturelle grâce à leurs propriétés antibactériennes, anti-inflammatoires, diurétiques, antiseptiques et astringentes, entre autres. On peut les consommer sous forme d’infusion pour soigner la grippe, la toux, la sinusite ou encore la bronchite chronique et on peut aussi l’appliquer en cataplasme directement sur les zones du corps touchées par des irritations, telles que des piqures de moustiques ou même des plaies, ou des infections comme la conjonctivite ou encore les infections urinaires. Il permet aussi de soulager les problèmes digestifs.
+Les feuilles et les graines de cette plante, à ne pas confondre avec la banane plantain, sont souvent utilisées dans la médecine naturelle grâce à leurs propriétés antibactériennes, anti-inflammatoires, diurétiques, antiseptiques et astringentes, entre autres. On peut les consommer sous forme d’infusion pour soigner la grippe, la toux, la sinusite ou encore la bronchite chronique et on peut aussi l’appliquer en cataplasme directement sur les zones du corps touchées par des irritations, telles que des piqures de moustiques ou même des plaies, ou des infections comme la conjonctivite ou encore les infections urinaires. Il permet aussi de soulager les problèmes digestifs.

@@ -25,7 +25,7 @@ published: true
 
 “*Bigorno lor ros*”, dit la vieille chanson populaire mauricienne... Effectivement, les bigorneaux, on les ramasse sur les “*roches*”, ces gros rochers noirs basaltiques que l’on trouve sur certaines côtes de l'île. Aussi sombres que l’est leur demeure, les bigorneaux se camouflent parfaitement dans cet environnement côtier.
 
-!BigorneauxLes bigorneaux sont assez difficiles à dénicher, car ils sont de plus en plus rares. En effet, les Mauriciens en raffolent, et la plupart des coins ont déjà été complètement vidés. Il existe toutefois encore quelques endroits où pullulent les bigorneaux, qui sont souvent bien gardés par des armées de soldats (autres coquillages, mais immangeables).
+Les bigorneaux sont assez difficiles à dénicher, car ils sont de plus en plus rares. En effet, les Mauriciens en raffolent, et la plupart des coins ont déjà été complètement vidés. Il existe toutefois encore quelques endroits où pullulent les bigorneaux, qui sont souvent bien gardés par des armées de soldats (autres coquillages, mais immangeables).
 
 Durant la journée, les bigorneaux se terrent dans les crevasses des rochers. La nuit, ils sortent pour brouter les algues dans les petits bassins engendrés par la marée basse, entre les rochers. Ces bassins sont de véritables petits écosystèmes indépendants les uns des autres, avec leur faune et leur flore propres. Les amateurs attendent généralement les “*grandes marées*” de pleine lune pour partir en quête d’un bon “*gajak lor ros*”, arpentant les rochers et les bassins à la recherche de bigorneaux, d’autres coquillages, d’une ourite (poulpe) ou d’un petit poisson qui traine par là.
 

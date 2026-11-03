@@ -27,8 +27,6 @@ Sa bravoure sauva les 81 passagers du Diego, un trois-mâts ravitailleur qui éc
 
 Après plusieurs tentatives infructueuses, l’équipage parvint à attirer l’attention des habitants de l’île avec une fusée éclairante. Un brave occupant du Diego tenta de rejoindre la terre avec un câble, mais il échoua face aux terribles rouleaux.
 
-!Piroguier, Diego Garcia.
-
 Piroguier, Diego Garcia.
 
 Soudain, l’un des pêcheurs à terre mit à l’eau une petite barque et s’élança contre les déferlantes. «*Il essaya plus de vingt fois, mais, à chaque tentative, les vagues remplissaient sa petite barque*», relate l’apprenti officier du Diego, Malcolm Thomson, tel que retranscrit dans « *Les Ziles Là-Haut* », de Jean Marie Chelin (2012).
@@ -37,15 +35,11 @@ Soudain, l’un des pêcheurs à terre mit à l’eau une petite barque et s’�
 
 Non content d’avoir sauvé tant de personnes, Arthur Tallat fit également partie des volontaires qui, quelques jours plus tard, quittèrent l’île d’Aigle en direction de Peros Banhos dans une embarcation de fortune pour y chercher du secours. Les provisions de l’île ne suffisaient pas pour nourrir naufragés et habitants, et il n’y avait aucun moyen de communication avec le reste de l’archipel. Après cinq jours en mer, durant lesquels ils ne mangèrent  que quelques biscuits, ils regagnèrent l’île d’Aigle.
 
-!Le Diego au large de Diego Garcia, 1932
-
 Le Diego au large de Diego Garcia, 1932
 
 Une autre tentative fut couronnée de succès, et les naufragés rentrèrent à Port-Louis le 13 octobre, trois mois après le naufrage du *Diego*. Arthur Tallat se vit remettre la Lloyd Silver Medal pour bravoure et sauvetage en mer l’année suivante.
 
 Arthur n’est pas le seul Chagossien de la famille Tallat à s’être illustré. Lisette Tallat fut l’une des grandes figures de la lutte des Chagossiens contre leur exil forcé. Elle s’est éteinte à l’âge de 70 ans, en 2012, à Maurice. Elle n’a jamais revu ses îles natales.
-
-!Les pirogues des Chagos étaient parfois creusées dans des arbres. Celle-ci provient du tronc d’un Tatamaka. 
 
 Les pirogues des Chagos étaient parfois creusées dans des arbres. Celle-ci provient du tronc d’un Tatamaka.
 

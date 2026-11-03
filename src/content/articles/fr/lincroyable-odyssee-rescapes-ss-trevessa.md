@@ -27,8 +27,6 @@ Nous sommes le 4 juin 1923. Le navire marchand SS Trevessa, un bateau à vapeur 
 
 Le navire se trouve alors en pleine mer, à mi-chemin entre l’Australie et l'île Maurice, à environ 1700 milles nautiques (3 850 km) des côtes mauriciennes. Ballotée par d’énormes vagues, la coque finit par se fendre, et le SS Trevessa prend l’eau. Incapables de pomper les tonnes d’écume qui envahissent la partie avant du navire, les membres d'équipage comprennent rapidement qu’il n’y a rien à faire.
 
-!Capitaine Cecil Foster
-
 Capitaine Cecil Foster
 
 Le SS Trevessa était alors sous les ordres du capitaine Cecil Foster, un marin d'expérience qui avait déjà connu deux naufrages lors de la guerre de 14-18. Pilote d’un bateau d’approvisionnement dans l'armée anglaise, il avait été torpillé par un U-Boat allemand. Les survivants furent recueillis par un autre navire anglais, qui fut également torpillé. Seuls 31 hommes en réchappèrent. Foster fit une seconde fois partie des chanceux. Ils dérivèrent durant 10 jours dans une chaloupe avant d’atteindre l’Espagne, avec seulement 16 rescapés à bord.
@@ -37,8 +35,6 @@ Cette aventure fut une immense leçon de survie pour Cecil Foster, qui naviguait
 
 Une décision qui  sauva la vie à presque tout l'équipage du Trevessa, mais aussi à des milliers de naufragés depuis 1923. Mais revenons à notre histoire… Après avoir vainement tenté de sauver le bateau et lancé un SOS, les 44 membres d'équipage montèrent à bord de deux canots de sauvetage. Le premier était commandé par Foster en personne, et l’autre par son second, l’officier Stewart. Ils prirent la décision de se diriger vers les côtes de Maurice, étant donné qu’ils auraient à affronter des vents contraires et des températures infernales s’ils rebroussaient chemin vers l’Australie.
 
-!Le SS Trevessa 3
-
 La plaque commémorant l'arrivée des survivants du naufrage du Trevessa, à Bel-Ombre
 
 Les canots de sauvetage étaient des chaloupes de 26 pieds chacune, munis d’un mât, d’une voile et de rames. Ils contenaient suffisamment d’eau pour des rations de 7 litres par personne, 550 biscuits, ainsi qu’une caisse de lait condensé et une autre de cigarettes. Dès le début du périple, Foster prit en charge le rationnement. Chaque homme avait droit à trois cuillerées d’eau par jour, un biscuit et cinq cuillerées de lait condensé. La chaloupe du capitaine comptait 20 hommes, et celle du second 24. Malgré le rationnement, chacun des naufragés devait ramer un certain nombre d’heures par jour. Foster avait en outre formellement interdit à quiconque de boire de l’eau de mer, un geste invariablement fatal. Malgré cette interdiction, plusieurs hommes périrent en succombant à la tentation.
@@ -46,8 +42,6 @@ Les canots de sauvetage étaient des chaloupes de 26 pieds chacune, munis d’un
 Après avoir navigué deux jours côte à côte, les canots se perdirent de vue. Pas moins de 23 jours après le naufrage du Trevessa, la chaloupe du capitaine fut en vue des côtes de Rodrigues. Ravis d’enfin apercevoir la terre, les survivants redoublèrent d’efforts et manquèrent de s'échouer sur les récifs. Fort heureusement, ils furent aperçus par un pêcheur local, qui leur fit de grands signes et embarqua à bord pour les conduire à bon port. Une fois à Port Mathurin, ils racontèrent leur odyssée à la station de police et furent pris en charge par les habitants, hormis trois marins très faibles qui furent hospitalisés. Seuls deux hommes moururent lors de la traversée.
 
 Le canot de l’officier Stewart eut moins de chance. Les pauvres naufragés manquèrent Rodrigues et finirent par atteindre les côtes de Maurice deux jours après. Des 24 naufragés, seuls 16 retrouvèrent la terre ferme. Le canot fut trouvé par un bateau à vapeur qui croisait au large de la côte Sud. Après 25 jours de privations et d'épreuves terribles, les marins mirent pied à terre à Bel-Ombre et furent accueillis par l’administrateur de la compagnie sucrière du même nom. Ils furent soignés au Château de Bel-Ombre, où l’un d’entre eux périt le lendemain de leur arrivée.
-
-!Le SS Trevessa 2
 
 Détail de la plaque commémorative.
 

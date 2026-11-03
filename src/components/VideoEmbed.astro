@@ -103,9 +103,9 @@ const directUrl = isR2 ? undefined : {
 				iframe.title = title;
 				iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
 				iframe.allowFullscreen = true;
-				iframe.style.cssText = 'position:absolute;inset:0;display:block;width:100%;height:100%;border:0;opacity:0';
+				// Visible immediately: iOS Safari doesn't always fire `load` on embeds, which left the poster stuck.
+				iframe.style.cssText = 'position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;border:0';
 				iframe.addEventListener('load', () => {
-					iframe.style.opacity = '1';
 					placeholder.remove();
 					poster?.remove();
 				}, { once: true });

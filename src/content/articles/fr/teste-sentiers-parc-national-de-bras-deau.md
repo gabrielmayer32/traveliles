@@ -26,8 +26,6 @@ published: true
 
 Les forêts sèches indigènes de l'île Maurice ont quasiment disparu, remplacées par des jungles de béton ou de plantes exotiques. Résistant encore et toujours à l’envahisseur, le parc national de Bras-d’Eau est l’une des dernières zones de ce type sur l'île. Couvrant une superficie totale de 497 hectares, il comprend une partie forestière et une partie côtière abritant encore quelques espèces endémiques.
 
-!Les ruines de l’ancienne sucrerie, juste à côté du centre d’accueil
-
 Les ruines de l’ancienne sucrerie, juste à côté du centre d’accueil
 
 La plus connue d’entre elles est sans doute le coq des bois, petit insectivore qui fait partie de la famille des passereaux. Surnommé le gobe-mouche ou le tchitrec, on peut l’attirer en sifflant, quoiqu’il reste très difficile à photographier de par son agitation incessante. Bras-d’Eau est l’une des dernières zones où l’on peut encore l’admirer en pleine nature. On peut également y croiser le zostérops gris de Maurice (Mauritius Grey White Eye), autre membre des neuf dernières espèces d’oiseaux endémiques de l'île.
@@ -35,8 +33,6 @@ La plus connue d’entre elles est sans doute le coq des bois, petit insectivore
 ![Sur la seconde partie de la randonnée, le sol est sablonneux](/images/uploads/archives/2016/11/bd3.jpg)
 
 Sur la seconde partie de la randonnée, le sol est sablonneux
-
-!La forêt accueille plusieurs vieux arbres, dont certaines espèces endémiques
 
 La forêt accueille plusieurs vieux arbres, dont certaines espèces endémiques
 
@@ -57,7 +53,5 @@ A l’orée du parc, l’observatoire du Mauritius Radio Telescope bénéficie d
 .
 
 Le parc national de Bras-d’Eau offre de belles balades, avec des sentiers très accessibles hormis quelques passages rocheux. Une randonnée idéale à faire en famille. Prévoir de bonnes chaussures et de l’eau, il fait vite soif dans les sous-bois de cette magnifique réserve forestière...
-
-!Après une longue randonnée sous un soleil ardent, l’eau cristalline du lagon est particulièrement attirante...
 
 Après une longue randonnée sous un soleil ardent, l’eau cristalline du lagon est particulièrement attirante...

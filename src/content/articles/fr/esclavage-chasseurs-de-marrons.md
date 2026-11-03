@@ -24,8 +24,6 @@ published: true
 
 L'époque de l’esclavage est source de légendes dans les îles des Mascareignes. Par voie orale, les descendants des peuples asservis au joug des colons européens, se sont transmis les exploits de leurs ancêtres et des grands chefs “*marrons*”, ces esclaves en fuite dans les hautes montagnes et les forêts profondes de nos îles: Mafate, Ratsitatane, Cimendef, Takamaka, Sans-Souci, Madame François…
 
-!Chasseur de marrons posant à côté de sa “proie”. Gravure de John Gabriel Stedman, 1799.  
-
 Chasseur de marrons posant à côté de sa “proie”. Gravure de John Gabriel Stedman, 1799.
 
 Des histoires héroïques d’hommes et de femmes fiers et avides de liberté, qui ont souvent préféré la mort à la capture, ou dont la vie s’est malheureusement achevée dans un bain de sang. Car ces fugitifs étaient la proie de chasseurs d’hommes sans pitié, les chasseurs de marrons.
@@ -37,8 +35,6 @@ C’est ainsi que sont nés les chasseurs de marrons. Ces hommes, habiles traque
 Voilà de l’argent facilement gagné qui intéressa au plus haut point quelques hommes aventureux et sans scrupules. Il faut savoir que ce combat était dès le départ inégal: les esclaves en fuite n’avaient souvent pour tout moyen de défense, que des bâtons taillés, des pierres et autres armes primitives, tandis que les chasseurs emportaient dans leurs expéditions tout un arsenal (fusils, cartouchières, coutelas, mousquets, chiens de chasse…).
 
 Dès qu’un esclave en fuite était dénoncé, les chasseurs parcouraient sans relâche bois et forêts aux alentours des plantations. Le pauvre n’avait, le plus souvent, guère le temps d’aller bien loin. Mieux valait alors choisir la mort plutôt que de tomber entre les mains des chasseurs. Les punitions pour les esclaves en fuite étaient en effet la plupart du temps d’une affreuse cruauté: poignets sectionnés, pluies de coups de fouet, et pour les plus récalcitrants, la mort par pendaison ou sur le bûcher.
-
-!Illustration tirée du livre “Les marrons” de Louis Timagène Houat
 
 Illustration tirée du livre “Les marrons” de Louis Timagène Houat
 

@@ -17,8 +17,6 @@ published: true
 
 #### Tout autour de Maurice, on retrouve de nombreux ilots, les uns plus paradisiaques que les autres, avec des plages de sable blanc et des eaux turquoise. Si certains sont devenus très touristiques, d’autres, à l’instar de l’ilot Bernache dans le nord du pays, sont moins connus.
 
-!Ilot Bernache : petit joyau au nord de Maurice - Travel-Iles
-
 Une beauté naturelle avec le sable blanc, de la mangrove, des rochers volcaniques tout autour, un lagon aux différents dégradés de bleu… et surtout une tranquillité sans pareil. Ce n’est pas étonnant que l’ilot Bernache, situé dans le nord-est du pays, à une vingtaine de minutes en bateau du village de Grand Gaube et juste à côté de l’île d’Ambre, plait autant aux visiteurs qui trouvent en cette île préservée un petit bout de paradis perdu. En effet, loin du tourisme de masse que subissent d’autres îles telles que l’île aux Cerfs, l’ilot Bernache n’est fréquenté que par quelques bateaux dans la journée. Et c’est tant mieux car l’île de formation corallienne est toute petite – on fait le tour de ses quelque deux arpents en moins d’une demi-heure.
 
 Entourée de rochers volcaniques et de mangroves, il offre un superbe spectacle du panorama vers le large avec vue sur le Coin de Mire et les îles du Nord, et bien entendu sur l’îlot voisin et du côté terre sur les montagnes de Maurice qui se dessinent au loin. Sous les filaos courbés par les vents, il fait bon s’asseoir et profiter du moment en famille ou entre amis avec un pique-nique. Le bain aussi y est très agréable car l’eau est calme et chaude. Si on a de la chance, on peut apercevoir quelques oiseaux peu communs.

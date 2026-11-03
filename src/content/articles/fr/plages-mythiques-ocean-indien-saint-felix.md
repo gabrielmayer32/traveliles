@@ -18,17 +18,11 @@ published: true
 
 #### **Située dans le Sud de l’île, entre Bel Ombre et Riambel, la plage de Saint-Félix est très probablement la plus belle de cette côte sauvage. Toutefois, malgré sa longue étendue de sable fin et ses eaux turquoise, la baignade n’est pas conseillée à cause des forts courants marins.**
 
-!Saint-Félix
-
 La piste spécialement aménagée pour les vélos et les joggeurs
 
 Cela n’empêche que la plage de Saint-Félix est très populaire, surtout pendant le week-end. En effet, on voit souvent des autobus débarquer avec, à leur bord, des groupes de jeunes ou de personnes âgées venus profiter de cette magnifique plage calme. Ci et là, des familles se livrent à l’activité favorite du dimanche : le pique-nique à la plage, à l’ombre d’un arbre.
 
 Il faut dire que le cadre est extrêmement agréable et que, contrairement à d’autres plages de l’île, mêmes plus fréquentées et plus touristiques, celle-là est vraiment bien équipée : grand parking asphalté, rampe pour que les personnes à mobilité réduite puissent accéder à la plage en chaise roulante, piste cyclable, espaces pour le beach soccer et la pétanque ou encore petit food court avec des bancs et des tables.
-
-!Saint-Félix
-
-!Saint-Félix
 
 Le petit food court à l'ombre des filaos
 

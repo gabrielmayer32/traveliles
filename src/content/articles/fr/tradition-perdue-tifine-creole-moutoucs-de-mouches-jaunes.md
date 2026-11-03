@@ -27,8 +27,6 @@ published: true
 
 De nos jours à Maurice, l'appellation “*tifine*” est encore utilisée, bien qu’assez rarement, pour désigner le petit-déjeuner. Cependant, le “*tifine*” est à l’origine un repas fait maison à emporter. Ainsi, les écoliers d’autrefois transportaient des “*tentes* *tifine*”, petits cabas de vacoa tressé, tandis que les adultes ne partaient pas au travail sans leur “*katora*” (récipient de fer blanc d’origine indienne) pour leur “*tifine*”.
 
-!Généralement, on dégustait le tifine créole au bord d’une rivière ou à l’ombre de grands arbres. 
-
 Généralement, on dégustait le tifine créole au bord d’une rivière ou à l’ombre de grands arbres.
 
 Le “*tifine* *créole*”, selon l’ancienne coutume désormais révolue, se mange vers 3 heures de l'après-midi. Les participants se retrouvaient dans un petit coin de nature, sur les berges d’une rivière ou à l’ombre rafraîchissante des manguiers, pour partager un repas plutôt léger.

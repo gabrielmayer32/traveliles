@@ -26,15 +26,11 @@ L'île Maurice se situe peut-être aux antipodes du Québec canadien, il n’en 
 
 Le mot “barachois”, par exemple, est utilisé aussi bien à Maurice qu’au Québec, alors qu’en France il est inexistant. Le terme fait en effet partie de ces expressions oubliées du français d’autrefois. Chez nos amis québécois, un barachois est une étendue d’eau saumâtre, souvent située à l’embouchure d’un cours d’eau, et séparée de la mer par une langue de sable. Celle-ci est normalement pourvue d’une petite ouverture qui laisse entrer l’eau de mer à marée haute.
 
-!barachois3
-
 Il s’agit donc d’un phénomène naturel, tandis qu’un barachois tel qu’on l’entend à Maurice, bien qu’il ressemble beaucoup au barachois québécois, est fabriqué par l’homme. La langue de sable est ici remplacée par un mur de gros rochers basaltiques, qui forment une petite baie séparée, abritée de la mer. Le mur de pierre est le plus souvent doté d’une ouverture grillagée pour laisser passer l’eau et les jeunes poissons, crabes ou crevettes à marée haute. Les juvéniles élisent ensuite domicile à l'intérieur du barachois, qui est souvent doté de mangroves, de véritables viviers pour les juvéniles. Ils y grandissent à l’abri, jusqu'à ne plus pouvoir regagner le large par l’ouverture. Une idée ingénieuse et écologique...
 
 Difficile de savoir quand et comment fut introduit ce concept très particulier à Maurice, bien qu’il soit certain que l'idée provient de l’époque coloniale française. Plusieurs anciens domaines sucriers possédaient un barachois. On s’en servait essentiellement pour l’aquaculture, et l’on peut encore trouver dans ces sanctuaires artificiels une profusion de poissons, crabes, crevettes et autres mollusques. Les produits des barachois étant sans doute en partie commercialisés, mais la grande majorité d’entre eux étaient probablement la chasse gardée des “gran missiés”, les directeurs des sucreries. Tout comme les belles écrevisses des célèbres “bassins camarons”, d’ailleurs.
 
 Parfois, certains de ces barachois abritent également de gros prédateurs, barracudas ou requins, qui y ont sans doute élu domicile étant jeunes, arrivant dans l’estuaire avec la marée. A Maurice, on peut encore voir des barachois à Roches-Noires, à Poste-de-Flacq (barachois de Constance), à Calodyne, à Saint-Antoine, à l'îlot Brocus… Petite exception à la règle: le barachois de Tamarin est plus proche du sens québécois du terme, car il s’agit bien ici d’un phénomène naturel dû à l’accumulation de sable.
-
-!barachois2
 
 Pêche à la mouche au barachois du Constance Prince Maurice.
 

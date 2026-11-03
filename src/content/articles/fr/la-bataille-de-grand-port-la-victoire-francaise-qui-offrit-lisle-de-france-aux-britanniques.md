@@ -32,13 +32,9 @@ Nous sommes en 1810, et l’océan Indien est le théâtre d’une guerre totale
 
 Début août, le capitaine anglais Samuel Pym est envoyé vers l’Isle de France à la tête d’une escadre de trois frégates lourdement armées : Le *HMS Sirius* (36 canons), le *HMS Iphigenia* (36 canons), et le *HMS Nereide* (32 canons). L’objectif est d’imposer un blocus de l’île, mais aussi de capturer l’île de la Passe, position stratégique permettant de contrôler la passe de Grand-Port, au Sud-Est de l’Isle de France. Le lagon de Grand-Port étant truffé de hauts fonds et de récifs, les Anglais prennent à leur bord un pilote local, un certain John Johnson, qui aura pour tâche de guider les navires anglais dans ces eaux dangereuses.
 
-!grand port tableau
-
 Détail de la bataille de Grand-Port par le peintre Pierre-Julien Gilbert. Au premier plan, le Sirius, échoué, est incendié par l’équipage
 
 Après une première tentative infructueuse le 10 août, les Anglais parviennent à débarquer sur l’île de la Passe durant la nuit du 13 août. Suite à une furieuse bataille, ils prirent possession du fort, des canons et des codes secrets qui permettaient aux soldats français de communiquer avec leurs navires. Laissant le *HMS Nereide* sur place, le *HMS Sirius* et le *HMS Iphigenia* se dirigent vers Port Napoléon (Port-Louis) pour harceler les bateaux français. Laissé seul, le capitaine Nesbit Willoughby, commandant de bord du *Nereide*, lance une série de raids sur la côte sud de l’île, détruisant notamment un fort à la Pointe du Diable.
-
-!Guy-Victor_Duperre (2)
 
 Guy-Victor Duperré
 
@@ -47,8 +43,6 @@ Une semaine plus tard, le 20 août, une escadre française composée des frégat
 Voyant là une belle occasion d’infliger d’importants dégâts à la flotte française, Willoughby décide de tendre un piège à l’escadre de Duperré. Utilisant les codes secrets français et arborant pavillon tricolore, il envoie le message « *L’ennemi croise au large du Coin de Mire* », leurrant ainsi Duperré qui ordonne à son escouade de traverser la passe. Aussitôt le Victor engagé, Willoughby, qui a placé le *HMS Nereide* à côté de l’île en position de tir, engage les hostilités.
 
 Le *Victor*, en difficulté face à un feu nourri, abaisse ses couleurs, signifiant ainsi son intention de se rendre. Willoughby envoie des canots prendre possession de la corvette française, mais *La Minerve* et *Le Ceylan* parviennent à forcer le barrage anglais et à sauver *Le Victor*. Une importante explosion dans le fort permet également à *La Bellone* d’entrer dans le chenal, tandis que le *Windham* rebrousse chemin. Il sera capturé le lendemain par le *HMS Sirius* au large de Rivière-Noire. Les quatre navires français restants prennent une position défensive dans le lagon, en formant un croissant de lune.
-
-!Nesbit Willoughby
 
 Nesbit Willoughby
 
@@ -63,8 +57,6 @@ Le capitaine Duperré fut atteint à la joue par un éclat de canon, et le bouil
 Cette défaite est la plus terrible subie par la marine anglaise durant les guerres napoléoniennes. Elle est d’ailleurs la seule bataille navale à être mentionnée sur l’Arc de Triomphe, à Paris. Cette débâcle suscita une immense colère des autorités britanniques. Une flotte impressionnante ne tarda pas à être envoyée dans l’océan Indien pour prendre l’Isle de France coûte que coute. Pas moins de 7 000 soldats britanniques débarquèrent fin novembre, et l’île tomba en décembre 1810, quatre mois à peine après la bataille de Grand-Port.
 
 En 1814, suite au traité de Paris, la France céda l’Isle de France (rebaptisée île Maurice) au Royaume-Uni. L’île Bourbon restera anglaise jusqu’en 1848.
-
-!Un monument fut érigé en 1899 à Grand-Port en mémoire des 268 hommes qui perdirent la vie durant la bataille
 
 Un monument fut érigé en 1899 à Grand-Port en mémoire des 268 hommes qui perdirent la vie durant la bataille
 

@@ -20,8 +20,6 @@ published: true
 
 #### **Pour les rencontrer, nous avons longé les cimetières St Georges et Gébert à Port-Louis et suivi les grincements de la disqueuse sur la pierre. Le métier de « tombaliste », tailleur de pierre tombale, n’est pas des plus simples à exercer. Il suffit de prendre son temps et de s’asseoir aux côtés de ces hommes pour mieux comprendre leur quotidien.**
 
-!Tombaliste
-
 Roland Botte dans son atelier
 
 Le bruit assourdissant de la disqueuse sur la pierre indique que Roland Botte est affairé à travailler sur une commande à finir dans les jours qui suivent. A cette période de l’année, les commandes sont rares, la journée des défunts, qui comme tous les ans génère un lot de travail important, est loin derrière. « *Aujourd’hui le vent pousse en direction du cimetière, c’est un jour idéal pour travailler. Notre métier est comme celui du pêcheur qui surveille la météo pour aller en mer. Nous, on guette le vent à cause de la poussière. Elle ne doit aucunement aller en direction des habitations* », explique Roland Botte.
@@ -31,8 +29,6 @@ Son atelier est recouvert de poussière qui émane de la pierre. Ses jambes, ses
 Si aujourd’hui ils travaillent essentiellement avec la disqueuse, qui facilite leur travail, ils utilisent aussi les outils qui faisaient auparavant partie de leur quotidien, « ciseau, machette, chasse, têtu… » Ce métier requiert de la patience, il faut analyser la pierre avant de la tailler, et surtout être imaginatif.
 
 Mais pourquoi ont-ils choisi cette voie ? A cette question, ils ont tous la même réponse. Pour certains leur père était tombaliste, d’autres des oncles. Ils avaient tous développé une allergie à l’école et se sont retrouvés un jour à suivre le même chemin que leur père ou un membre de leur famille.
-
-!Tombaliste
 
 Ciseau, machette, chasse, têtu ou encore la disqueuse, sont autant d'outils nécessaires pour la taille de pierre
 

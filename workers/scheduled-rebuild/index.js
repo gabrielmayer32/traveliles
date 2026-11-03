@@ -17,13 +17,12 @@ export default {
 
 // Runs 20 min after each rebuild, once the new build is live.
 async function postNewArticles(env) {
-	if (!env.FB_PAGE_ID || !env.FB_PAGE_TOKEN) return;
+	if (env.FB_AUTOPOST !== 'on' || !env.FB_PAGE_ID || !env.FB_PAGE_TOKEN) return;
 
-	const res = await fetch(`${SITE}/search-index.json?t=${Date.now()}`);
-	if (!res.ok) throw new Error(`Search index fetch failed: ${res.status}`);
-	const articles = (await res.json())
-		.filter((item) => item.type === 'article')
-		.sort((a, b) => a.date.localeCompare(b.date));
+	// Captions are composed at build time (src/lib/facebook.ts) in the Page's house style
+	const res = await fetch(`${SITE}/facebook-feed.json?t=${Date.now()}`);
+	if (!res.ok) throw new Error(`Facebook feed fetch failed: ${res.status}`);
+	const articles = (await res.json()).sort((a, b) => a.date.localeCompare(b.date));
 
 	const stored = await env.FB_POSTED.get('posted', 'json');
 	// First run: everything already online counts as posted, so old articles are never shared
@@ -36,7 +35,7 @@ async function postNewArticles(env) {
 	const pending = articles.filter((a) => !posted.has(a.url)).slice(0, MAX_POSTS_PER_RUN);
 	for (const article of pending) {
 		const body = new URLSearchParams({
-			message: article.excerpt || article.title,
+			message: article.message,
 			link: SITE + encodeURI(article.url),
 			access_token: env.FB_PAGE_TOKEN,
 		});

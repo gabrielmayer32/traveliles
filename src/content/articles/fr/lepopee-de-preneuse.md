@@ -24,8 +24,6 @@ La Preneuse est un nom familier pour bon nombre de Mauriciens. Il évoque une be
 
 Une histoire de vieux loups de mer, faite de combats épiques, de fracas, de tempêtes ravageuses, de terribles coups de canons et d‘abordages sans pitié. La Preneuse fut en effet l’un des navires de guerre français les plus redoutables de l'époque, et sans doute aussi de tous les temps. A une époque où la marine anglaise dominait les sept mers, le vaisseau francais fit de véritables carnages dans les rangs des tuniques rouges.
 
-!800px-Jean_marthe_adrien_lhermitte-antoine_maurin
-
 Jean-Marthe-Adrien Lhermitte, portrait réalisé par Langlois de Sézanne en 1793.
 
 La Preneuse, en tant que navire de guerre, n’avait pourtant rien d’exceptionnel. Il s’agissait d’une frégate lourde qui n’avait aucune chance à la course contre les rapides vaisseaux anglais. Pourtant, sous le commandement d’un homme au caractère bien trempé, Jean-Marthe-Adrien Lhermitte, La Preneuse deviendra synonyme de cauchemar pour les Anglais.

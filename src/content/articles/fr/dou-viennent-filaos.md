@@ -29,8 +29,6 @@ Impossible de se balader sur les plages de l'île Maurice sans apercevoir un fil
 
 Les plus observateurs auront en effet certainement noté que les forêts de filaos présentes sur les côtes mauriciennes n’ont rien de naturel. En de nombreux endroits, comme par exemple à Mont-Choisy, l’on remarque que les arbres se dressent en de parfaits alignements, résultats de plantations massives.
 
-!filao3
-
 L'abbé Ronchon, introducteur du filao dans les Mascareignes
 
 En réalité, le filao est originaire des côtes nord de l’Australie, ainsi que de certaines îles polynésiennes et des Vanuatus. Nous devons son introduction à Maurice et à La Réunion à Alexis-Marie de Ronchon, surnommé l'abbé Ronchon, astronome de marine et explorateur francais qui le rapporta de Madagascar vers 1768.

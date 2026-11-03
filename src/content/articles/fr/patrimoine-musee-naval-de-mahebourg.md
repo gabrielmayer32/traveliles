@@ -29,8 +29,6 @@ Le bâtiment est typique de l'époque française, avec son immense varangue, ses
 
 La maison joua un rôle historique important suite à la sanglante bataille de Grand-Port, qui eu lieu à quelques kilomètres de Mahébourg en 1810. Jean de Robillard, le propriétaire de la demeure, à l'époque commandant du district de Grand-Port, fit transformer sa maison en hôpital militaire après la bataille pour soigner les blessés des deux camps. C’est ainsi que les capitaines Nesbit Willoughby et Guy-Victor Duperré furent soignés côte à côte dans cette maison qui abrite aujourd’hui, ironie de l’histoire, de nombreux artefacts de la terrifiante bataille dont ils furent les plus importants protagonistes.
 
-!musee_2
-
 Un canon remonté de l'épave du Sirius, bateau coulé durant la bataille de Grand-Port.
 
 Le musée renferme en effet une importante collection d’objets remontés des épaves des navires qui ont coulé durant cette fameuse bataille navale, mais aussi d’autres bateaux célèbres tels que le *Saint-Géran*, le *Banda* (sur lequel périt Pieter Both) ou le *Speaker*, vaisseau échoué du pirate John Bowen. Mousquets, épées, canons, munitions, mais aussi d’autres pièces telles que des couteaux, boutons, ceintures, pipes et pièces de monnaie sont visibles. Les célèbres porcelaines chinoises du navire hollandais le *Banda* sont exposées dans une vitrine face à la porte d'entrée principale.  

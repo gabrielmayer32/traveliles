@@ -27,8 +27,6 @@ published: true
 
 Idrice Goomany dut affronter bien des préjugés pour atteindre son rêve. A la fin du 19e siècle, la société coloniale mauricienne dans laquelle il vivait ne voyait pas d’un bon œil la réussite des personnes dites “de couleur”. Pourtant, malgré les difficultés et grâce aux sacrifices consentis par ses parents, le jeune Idrice réussit à devenir médecin.
 
-!Idrice Goomany
-
 L’une des rares photographies d’Idrice Goomany.
 
 Idrice Amir Goomany est né le 4 mai 1859, au “Camp des Lascars”, à Port-Louis. Son père, Ameer Goomany, était ce que l’on appelle un “*lascar*” de la deuxième génération. Ce terme, souvent utilisé aujourd’hui de manière péjorative, désignait des musulmans originaires d’Inde qui travaillaient pour la plupart sur des bateaux. Sa mère, Rosie Marguerite César, était une descendante d’esclaves originaires d’Afrique. Idrice était donc un métis.
@@ -43,7 +41,7 @@ Parmi eux, les travailleurs immigrés, venant principalement d’Inde, faisaient
 
 Malheureusement, le responsable du centre, le docteur Beaugeard, succomba à l'épidémie. Les autorités firent alors des appels désespérés aux médecins pratiquants de l'île pour lui trouver un remplaçant. Tous refusèrent de prendre un tel risque. Tous, sauf un jeune “*lascar*” tout juste rentré de ses études… Le courage du Dr Goomany fut applaudi dans la colonie, toutes communautés confondues. Peu arrivaient à croire qu’un médecin aussi jeune puisse être prêt à se sacrifier pour sauver ces pauvres gens.
 
-!Idrice GoomanyTrès vite, le jeune trentenaire fit des merveilles au centre. Grâce aux soins qu’il prodiguait quotidiennement aux malades, un grand nombre d’entre eux furent sauvés d’une mort certaine, et ce, dès les premières semaines de son office. Mais ce qui devait arriver arriva… A la mi-juillet, alors que l'épidémie était presque enrayée, on annonça que le Dr Goomany avait lui aussi contracté la maladie. Il mourut le 28 juillet, et fut enterré à côté du centre de quarantaine de Pointe aux Canonniers avec tous les honneurs.
+Très vite, le jeune trentenaire fit des merveilles au centre. Grâce aux soins qu’il prodiguait quotidiennement aux malades, un grand nombre d’entre eux furent sauvés d’une mort certaine, et ce, dès les premières semaines de son office. Mais ce qui devait arriver arriva… A la mi-juillet, alors que l'épidémie était presque enrayée, on annonça que le Dr Goomany avait lui aussi contracté la maladie. Il mourut le 28 juillet, et fut enterré à côté du centre de quarantaine de Pointe aux Canonniers avec tous les honneurs.
 
 De nos jours, peu de Mauriciens connaissent le Dr Idrice Goomany. Pourtant, le sacrifice consenti par ce médecin dévoué, au seuil de sa vie, est l’une des plus belles pages de l’histoire de la médecine mauricienne. Idrice Goomany a légué son nom à un centre de désintoxication pour alcooliques et toxicomanes. Sa tombe est toujours visible dans les jardins du Club Med de Pointe aux Canonniers.
 

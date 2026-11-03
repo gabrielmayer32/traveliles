@@ -3,7 +3,7 @@ title: 'Ras Tilang, le petit prince du seggae'
 date: 2027-07-13T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2017/02/rastilang1.jpg
-excerpt: '!rastilang2Sa voix, qui ressemblait étonnamment à celle de son modèle Kaya, donnait la chair de poule. Ras Tilang, chanteur de seggae disparu tragiquement en 2004, n’aura jamais récolté les fruits de…'
+excerpt: 'Sa voix, qui ressemblait étonnamment à celle de son modèle Kaya, donnait la chair de poule. Ras Tilang, chanteur de seggae disparu tragiquement en 2004, n’aura jamais récolté les fruits de…'
 author: 'Côte Nord'
 tags:
   - 'Berger Agathe'
@@ -21,7 +21,7 @@ published: true
 
 *Publié pour la première fois dans Côte Nord en février 2017.*
 
-**!rastilang2Sa voix, qui ressemblait étonnamment à celle de son modèle Kaya, donnait la chair de poule. Ras Tilang, chanteur de seggae disparu tragiquement en 2004, n’aura jamais récolté les fruits de son succès, malgré deux albums lumineux sortis au début des années 2000. Retour sur une vie de souffrances et de misère.**
+**Sa voix, qui ressemblait étonnamment à celle de son modèle Kaya, donnait la chair de poule. Ras Tilang, chanteur de seggae disparu tragiquement en 2004, n’aura jamais récolté les fruits de son succès, malgré deux albums lumineux sortis au début des années 2000. Retour sur une vie de souffrances et de misère.**
 
 Tout comme Kaya, il chantait la paix, l’amour et l'unité des peuples, mais aussi la misère, la souffrance et les conditions de vie difficiles des habitants des bidonvilles de l’île Maurice. Ras Tilang, de son vrai nom Jason Webb Brigitte, s’en est allé un jour de juillet 2004 après 30 années d’existence en marge de la société mauricienne.
 

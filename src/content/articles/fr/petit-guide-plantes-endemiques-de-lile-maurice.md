@@ -24,8 +24,6 @@ published: true
 
 Combien d'espèces de plantes endémiques mauriciennes connaissez-vous? Quelques-unes, sans doute, mais vous connaissez probablement beaucoup plus d'espèces d’animaux endémiques. Comme la plupart des Mauriciens, d’ailleurs.
 
-!Plantes endémiques
-
 Bois d'ébène
 
 Afin de vous éclairer un peu, nous vous proposons cette petite liste non-exhaustive de quelques-unes des espèces de plantes endémiques les plus remarquables de l'île Maurice. Si vous souhaitez décorer votre jardin de certaines de ces belles plantes, sachez que de jeunes pousses de plusieurs d’entre elles sont commercialisées dans la plupart des pépinières de l'île.
@@ -34,15 +32,11 @@ Fait intéressant: un grand nombre des plantes et arbres endémiques de Maurice 
 
 Pour dissuader ces mastodontes de dévorer les jeunes plantes, les feuilles juvéniles sont devenues au fil des générations grasses, très sombres, de forme très allongée, et souvent zébrées de motifs rouges. L’objectif est de faire croire aux tortues que ces feuilles sont toxiques. Lorsque l’arbre devient adulte, les feuilles s’arrondissent et prennent une teinte de vert plus pâle. On observe ce phénomène chez le bois mapou, le bois d’olive, le bois de rat, et de nombreuses autres espèces indigènes.
 
-!Plantes endémiques
-
 Bois de reinette
 
 Une remarquable adaptation à un milieu très particulier, qui a fait la joie du grand naturaliste Charles Darwin lors de ses passages chez nous, lors du voyage du Beagle (1836) et ses efforts plus tard pour la sauvegarde d'espèces endémiques locales. Le célèbre naturaliste mentionne d’ailleurs le phénomène dans *L’origine des espèces*, le livre qui popularisa la théorie de l’évolution.
 
 Nous avons choisi de conserver les noms donnés à ces plantes par les habitants de la région. On notera que ces noms, très imagés, sont tout à fait typiques de la langue créole.
-
-!Plantes endémiques
 
 Bois de chandelle
 
@@ -58,15 +52,11 @@ Peut-être moins connu que d’autres espèces présentées ici, le bois de bœu
 
 Sans le vouloir, le bois d'ébène a été probablement à l’origine des premières grandes déforestations qu’a connues l'île Maurice. Le cœur de son tronc, à la fois dense, lisse, très résistant et extrêmement sombre, est l’une des essences de bois les plus recherchées au monde. Des forêts entières de bois d'ébène, autrefois présent en grand nombre partout à travers l'île, ont précipité son déclin en provoquant l'avidité des premiers colons. Cet arbre aussi tortueux que majestueux, est cependant encore présent dans plusieurs forêts de l'île. Il est également l’une des espèces endémiques les plus communes dans les pépinières.
 
-!Plantes endémiques
-
 Bois mapou
 
 **Bois mapou**
 
 Très bel arbre souvent désigné comme étant une “*vigne géante*”, le mapou tapissait autrefois les vallées de l'île d’une belle litière de verdure. La localité de Mapou, au nord du pays, doit d’ailleurs son nom à l’immense forêt de mapous qui s’y trouvait jadis. L'espèce, qui peut atteindre douze mètres de haut, présente un tronc boursoufle et tortueux de couleur grisâtre. Les jeunes feuilles sont bicolores: vert sur la face du haut et pourpre sur celle du bas (rappelez-vous des tortues). Cette plante est très appréciée pour ses qualités décoratives. On en trouve un partout sur l'île, mais rarement dans leur habitat naturel.
-
-!Plantes endémiques
 
 Latanier bleu
 
@@ -77,8 +67,6 @@ Ce petit arbuste qui ne paye pas de mine cache un secret étonnant. Si l’on ar
 **Latanier bleu**
 
 Superbe palmier aux feuilles larges et imposantes, le latanier bleu est l’un des plus beaux représentants des espèces endémiques mauriciennes. Sa couleur très pâle, qui tire vers l'émeraude, fait qu’il est très difficile de ne pas le voir, même dans les bosquets les plus épais. On en trouve un certain nombre dans différents jardins de l'île, notamment au Jardin Botanique de Pamplemousses, mais l'espèce est gravement menacée dans la nature.
-
-!Plantes endémiques
 
 Tambalacoque
 

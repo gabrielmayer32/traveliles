@@ -27,8 +27,6 @@ Personne ne sait exactement d'où vient le veloutier. Cet arbuste côtier, qui p
 
 A Maurice, on le trouve principalement à l'état sauvage sur les côtes nord, est et sud. Il orne également les jardins de nombreuses maisons au bord de la mer. Nous distinguons deux types de veloutiers dans l'île: le veloutier blanc aux feuilles duveteuses et argentées, et le veloutier vert dont les feuilles sont lisses et vertes.
 
-!Détails des feuilles
-
 Détails des feuilles
 
 Battus par les vents marins, les veloutiers blancs présentent souvent des troncs tortueux. Cela donne à certains plants un aspect extraordinaire; on a parfois l’impression qu’ils “*dansent*”. La forme de l’arbre, en ombrelle, offre un abri salutaire contre la morsure de l’astre solaire pour les hommes mais aussi pour les animaux. Les veloutiers verts restent plus proches du sol et se développent parfois en de larges massifs buissonneux.

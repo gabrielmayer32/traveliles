@@ -20,19 +20,13 @@ published: true
 
 **Contrairement à l’expression consacrée, Albion n’a rien de perfide. Albion la mauricienne, tout du moins! Ce petit village de l’Ouest de l'île Maurice est doté d’une magnifique plage peu fréquentée. En route!**
 
-!Le Nord de la baie vu depuis la plage publique.
-
 Le Nord de la baie vu depuis la plage publique.
 
 Le temps s’écoule au ralenti à Albion. Contrairement à Flic-en-Flac, village touristique situé à quelques encablures de là, la plage d’Albion est en effet en temps normal évitée par les hordes de touristes et de baigneurs. Pourtant, cette plage superbe agrémentée d’un lagon très protégé n’a rien à envier à sa voisine…
 
-!Les pirogues barbotent tranquillement dans une eau d’une rare pureté. 
-
 Les pirogues barbotent tranquillement dans une eau d’une rare pureté.
 
 Le lagon d’Albion est en effet doté d’une des eaux les plus pures de l'île. Ce n’est d’ailleurs pas pour rien que la *Mauritius Oceanographic Institute* y a installé son quartier général.
-
-!La plage d’Albion est l’une des quelques plages mauriciennes à être dotées d’un poste d’observation pour les secouristes. 
 
 La plage d’Albion est l’une des quelques plages mauriciennes à être dotées d’un poste d’observation pour les secouristes.
 
@@ -43,7 +37,5 @@ Au Nord de la baie, quelques campements de bord de mer surplombent la pointe de 
 La plage publique a conservé son âme mauricienne, avec les quelques pirogues de pêche en bois ancrées au premier plan et ses filaos qui offrent une ombre bienvenue aux pique-niqueurs. Quelques abris rudimentaires abritent des vendeurs de mine ou de boulettes, plats locaux dont raffolent les Mauriciens.
 
 Un endroit vert, serein et agréable, loin des circuits touristiques, qui conviendra parfaitement à ceux qui souhaitent profiter des joies des côtes mauriciennes en toute tranquillité.
-
-!Autre vue de l’embouchure de la rivière, où l’eau douce se mêle doucement à l’eau salée du large.
 
 Autre vue de l’embouchure de la rivière, où l’eau douce se mêle doucement à l’eau salée du large.
