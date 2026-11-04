@@ -7,7 +7,7 @@ videoId: 9Fv8BsYj8zY
 videoFile: https://youtu.be/9Fv8BsYj8zY
 thumbnail: ''
 excerpt: Let's dive into the Domaine de Labourdonnais in Mapou, with its beautifully restored colonial château, tropical gardens, orchards and rich Mauritian heritage.
-published: false
+published: true
 ---
 
 In Mapou, in the north of Mauritius, the Domaine de Labourdonnais invites visitors to step back in time and experience the refined lifestyle of 19th-century Mauritius.
