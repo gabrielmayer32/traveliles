@@ -1,0 +1,116 @@
+---
+interface Props {
+	url: string;
+	title: string;
+}
+const { url, title } = Astro.props;
+---
+
+<div class="share-bar">
+	<span class="share-label kicker">Partager</span>
+	<div class="share-links">
+		<a
+			class="share-btn share-facebook"
+			href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="Partager sur Facebook"
+		>
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex:none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+			Facebook
+		</a>
+		<a
+			class="share-btn share-whatsapp"
+			href={`https://wa.me/?text=${encodeURIComponent(title + ' — ' + url)}`}
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="Partager sur WhatsApp"
+		>
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.4 20.4A11.5 11.5 0 1 0 2 12a11.46 11.46 0 0 0 1.4 5.4L2 22z"/></svg>
+			WhatsApp
+		</a>
+		<button
+			class="share-btn share-copy"
+			type="button"
+			data-url={url}
+			aria-label="Copier le lien"
+		>
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex:none"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+			<span class="copy-label">Copier</span>
+		</button>
+	</div>
+</div>
+
+<script>
+	document.querySelectorAll<HTMLButtonElement>('.share-copy').forEach((btn) => {
+		btn.addEventListener('click', async () => {
+			const url = btn.dataset.url || window.location.href;
+			const label = btn.querySelector<HTMLElement>('.copy-label');
+			try {
+				await navigator.clipboard.writeText(url);
+				if (label) {
+					label.textContent = 'Copié !';
+					setTimeout(() => { label.textContent = 'Copier'; }, 2000);
+				}
+			} catch {
+				// Fallback: select a temporary input
+				const input = document.createElement('input');
+				input.value = url;
+				document.body.appendChild(input);
+				input.select();
+				document.execCommand('copy');
+				document.body.removeChild(input);
+				if (label) {
+					label.textContent = 'Copié !';
+					setTimeout(() => { label.textContent = 'Copier'; }, 2000);
+				}
+			}
+		});
+	});
+</script>
+
+<style>
+	.share-bar {
+		display: flex;
+		align-items: center;
+		gap: var(--space-4);
+		flex-wrap: wrap;
+	}
+
+	.share-label {
+		color: var(--text-muted);
+		white-space: nowrap;
+	}
+
+	.share-links {
+		display: flex;
+		gap: var(--space-2);
+		flex-wrap: wrap;
+	}
+
+	.share-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4em;
+		font-size: var(--text-xs);
+		font-weight: var(--fw-medium);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--text-secondary);
+		background: var(--surface-sunken);
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-pill);
+		padding: 0.4em 0.9em;
+		line-height: 1.3;
+		cursor: pointer;
+		text-decoration: none;
+		transition: color 0.15s, border-color 0.15s, background 0.15s;
+		font-family: inherit;
+	}
+
+	.share-btn:hover {
+		color: var(--ink);
+		border-color: var(--border);
+		background: var(--surface);
+	}
+</style>
