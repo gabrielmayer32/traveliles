@@ -15,8 +15,8 @@ export const SHARE_LABELS = {
 		copied: 'Lien copié',
 		email: 'E-mail',
 		shareOn: 'Partager sur',
-		featureTitle: 'Cette histoire vous a plu ?',
-		featureText: 'Partagez-la avec ceux qui rêvent de Maurice.',
+		featureTitle: { article: 'Cet article vous a plu ?', video: 'Cette vidéo vous a plu ?' },
+		featureText: { article: 'Partagez-le avec ceux qui rêvent de Maurice.', video: 'Partagez-la avec ceux qui rêvent de Maurice.' },
 		emailBody: 'Je pense que ceci va te plaire :',
 	},
 	en: {
@@ -25,8 +25,8 @@ export const SHARE_LABELS = {
 		copied: 'Link copied',
 		email: 'Email',
 		shareOn: 'Share on',
-		featureTitle: 'Enjoyed this story?',
-		featureText: 'Share it with someone who dreams of Mauritius.',
+		featureTitle: { article: 'Enjoyed this article?', video: 'Enjoyed this video?' },
+		featureText: { article: 'Share it with someone who dreams of Mauritius.', video: 'Share it with someone who dreams of Mauritius.' },
 		emailBody: 'I thought you would enjoy this:',
 	},
 } as const;

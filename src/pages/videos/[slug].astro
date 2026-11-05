@@ -90,7 +90,7 @@ const prerollAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'pre
 				<span aria-hidden="true">·</span>
 				<span>{formatDate(video.data.date)}</span>
 			</div>
-			<ShareBar url={shareUrl} title={video.data.title} image={shareImage} locale="fr" variant="feature" />
+			<ShareBar url={shareUrl} title={video.data.title} image={shareImage} locale="fr" variant="feature" kind="video" />
 		</div>
 	</div>
 

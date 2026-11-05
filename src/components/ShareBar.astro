@@ -9,9 +9,10 @@ interface Props {
 	image?: string;
 	locale?: Locale;
 	variant?: 'inline' | 'feature';
+	kind?: 'article' | 'video';
 }
 
-const { url, title, image, locale = 'fr', variant = 'inline' } = Astro.props;
+const { url, title, image, locale = 'fr', variant = 'inline', kind = 'article' } = Astro.props;
 const l = SHARE_LABELS[locale];
 const targets = getShareTargets(url, title, locale, image);
 const iconSize = variant === 'feature' ? 20 : 18;
@@ -27,8 +28,8 @@ const iconSize = variant === 'feature' ? 20 : 18;
 	{variant === 'feature' ? (
 		<div class="share-intro">
 			<span class="share-eyebrow">{l.share}</span>
-			<p class="share-title">{l.featureTitle}</p>
-			<p class="share-text">{l.featureText}</p>
+			<p class="share-title">{l.featureTitle[kind]}</p>
+			<p class="share-text">{l.featureText[kind]}</p>
 		</div>
 	) : (
 		<span class="share-eyebrow">{l.share}</span>
