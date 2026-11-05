@@ -31,7 +31,34 @@ const ogImageUrl = new URL(ogImage || '/images/uploads/cote-nord-og.jpg', Astro.
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const altUrl = alternateUrl ? new URL(alternateUrl, Astro.site).href : undefined;
 const xDefaultUrl = locale === 'fr' ? canonicalUrl : (altUrl ?? canonicalUrl);
-const globalAds = (await getCollection('ads')).filter((ad) => isAdLive(ad) && ['sidebar', 'floating', 'popup'].includes(ad.data.placement));
+const siteUrl = new URL('/', Astro.site).href;
+const orgSchema = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'NewsMediaOrganization',
+			'@id': `${siteUrl}#organization`,
+			name: 'Travel-Îles',
+			alternateName: ['Travel Iles', 'Travel-Iles', 'TravelIles', 'Côte Nord Magazine'],
+			url: siteUrl,
+			logo: new URL('/images/logo-travel-iles.png', Astro.site).href,
+			description:
+				"Travel-Îles est un magazine éditorial indépendant de l'île Maurice, héritier du magazine Côte Nord. Il raconte en vidéos et en articles les voyages, la gastronomie, la culture, les régions et l'art de vivre de Maurice et de l'océan Indien. Ce n'est pas une agence de voyages.",
+			areaServed: { '@type': 'Country', name: 'Mauritius' },
+			knowsLanguage: ['fr', 'en'],
+			sameAs: ['https://www.youtube.com/@TravelIles', 'https://www.facebook.com/traveliles'],
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${siteUrl}#website`,
+			name: 'Travel-Îles',
+			url: siteUrl,
+			inLanguage: ['fr', 'en'],
+			publisher: { '@id': `${siteUrl}#organization` },
+		},
+	],
+});
+const globalAds =(await getCollection('ads')).filter((ad) => isAdLive(ad) && ['sidebar', 'floating', 'popup'].includes(ad.data.placement));
 ---
 
 <html lang={locale}>
@@ -59,6 +86,8 @@ const globalAds = (await getCollection('ads')).filter((ad) => isAdLive(ad) && ['
 		{altUrl && <link rel="alternate" hreflang={locale === 'fr' ? 'en' : 'fr'} href={altUrl} />}
 		<link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 		{ogImage && <link rel="preload" as="image" href={ogImageUrl} />}
+		<link rel="alternate" type="application/rss+xml" title="Travel-Îles" href={new URL(locale === 'en' ? '/en/rss.xml' : '/rss.xml', Astro.site).href} />
+		<script type="application/ld+json" set:html={orgSchema} />
 		<ClientRouter />
 		<!-- Google tag (gtag.js) -->
 		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-F00X8JTGKK"></script>

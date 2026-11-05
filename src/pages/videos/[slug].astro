@@ -7,7 +7,7 @@ import VideoCard from '../../components/VideoCard.astro';
 import AdPlacement from '../../components/AdPlacement.astro';
 import { formatDate, isLive, isAdLive } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
-import { getVideoThumbnail } from '../../lib/video';
+import { getVideoThumbnail, getVideoSchemaUrls } from '../../lib/video';
 
 export async function getStaticPaths() {
 	const videos = (await getCollection('videos')).filter((video) => isLive(video));
@@ -30,7 +30,10 @@ const videoSchema = JSON.stringify({
 	description: video.data.excerpt,
 	uploadDate: video.data.date.toISOString(),
 	...(displayThumbnail ? { thumbnailUrl: displayThumbnail.startsWith('http') ? displayThumbnail : new URL(displayThumbnail, Astro.site).href } : {}),
+	...getVideoSchemaUrls(video.data.videoSource, video.data.videoId, video.data.videoFile),
 	url: new URL(Astro.url.pathname, Astro.site).href,
+	inLanguage: 'fr',
+	publisher: { '@id': new URL('/#organization', Astro.site).href },
 });
 
 const allVideos = (await getCollection('videos'))
