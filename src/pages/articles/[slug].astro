@@ -8,6 +8,7 @@ import { formatDate, isLive, isAdLive, isArchive } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 import { normalizeTags } from '../../lib/tags';
 import ShareBar from '../../components/ShareBar.astro';
+import ShareFloat from '../../components/ShareFloat.astro';
 
 export async function getStaticPaths() {
 	const articles = (await getCollection('articles')).filter((article) => isLive(article));
@@ -22,6 +23,8 @@ const { article, hasEn } = Astro.props;
 const { Content } = await render(article);
 const alternateUrl = hasEn ? `/en/articles/${article.id}` : undefined;
 const tags = normalizeTags(article.data.tags);
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
+const shareImage = article.data.cover ? new URL(article.data.cover, Astro.site).href : undefined;
 
 const articleSchema = JSON.stringify({
 	'@context': 'https://schema.org',
@@ -63,7 +66,7 @@ const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.da
 				<span aria-hidden="true">·</span>
 				<span>{formatDate(article.data.date)}</span>
 			</div>
-			<ShareBar url={new URL(Astro.url.pathname, Astro.site).href} title={article.data.title} />
+			<ShareBar url={shareUrl} title={article.data.title} image={shareImage} locale="fr" />
 		</header>
 
 		<!-- Hero image — 3:2, contained at 62rem, with caption -->
@@ -97,8 +100,12 @@ const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.da
 					</div>
 				</div>
 			)}
+
+			<ShareBar url={shareUrl} title={article.data.title} image={shareImage} locale="fr" variant="feature" />
 		</div>
 	</article>
+
+	<ShareFloat url={shareUrl} title={article.data.title} image={shareImage} locale="fr" />
 
 	{related.length > 0 && (
 		<section class="container-wide section">

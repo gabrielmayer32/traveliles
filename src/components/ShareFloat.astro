@@ -1,0 +1,216 @@
+---
+import type { Locale } from '../lib/i18n';
+import { iconSvg } from '../lib/icons';
+import { getShareTargets, SHARE_LABELS } from '../lib/share';
+
+interface Props {
+	url: string;
+	title: string;
+	image?: string;
+	locale?: Locale;
+}
+
+const { url, title, image, locale = 'fr' } = Astro.props;
+const l = SHARE_LABELS[locale];
+const targets = getShareTargets(url, title, locale, image).filter((t) => t.id !== 'email');
+---
+
+<aside class="share-float" data-share-float data-share-url={url} data-share-title={title} aria-label={l.share}>
+	<div class="rail">
+		<span class="rail-label">{l.share}</span>
+		{targets.map((target) => (
+			<a
+				class="rail-btn"
+				href={target.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				data-share-popup={target.popup ? '' : undefined}
+				aria-label={`${l.shareOn} ${target.label}`}
+				title={target.label}
+			>
+				<Fragment set:html={iconSvg(target.icon, 17)} />
+			</a>
+		))}
+		<button class="rail-btn" type="button" data-share-copy data-copied-label={l.copied} aria-label={l.copy} title={l.copy}>
+			<span class="icon-default"><Fragment set:html={iconSvg('link', 17)} /></span>
+			<span class="icon-done"><Fragment set:html={iconSvg('check', 17, 2.25)} /></span>
+			<span class="rail-toast" data-share-status role="status" aria-live="polite"></span>
+		</button>
+	</div>
+
+	<button class="pill" type="button" data-share-trigger>
+		<Fragment set:html={iconSvg('share', 18)} />
+		<span>{l.share}</span>
+	</button>
+</aside>
+
+<script>
+	import { initShare } from '../lib/share-client';
+	initShare();
+</script>
+
+<style>
+	.share-float {
+		position: fixed;
+		z-index: 40;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition:
+			opacity 0.3s var(--ease-out),
+			transform 0.3s var(--ease-out),
+			visibility 0s linear 0.3s;
+	}
+
+	.share-float[data-visible] {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transform: none;
+		transition:
+			opacity 0.3s var(--ease-out),
+			transform 0.3s var(--ease-out);
+	}
+
+	/* Desktop: vertical rail in the left margin of the 62rem column */
+	.rail {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-2);
+		background: var(--surface-card);
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-pill);
+		box-shadow: var(--shadow-card);
+	}
+
+	.rail-label {
+		writing-mode: vertical-rl;
+		transform: rotate(180deg);
+		font-size: var(--text-2xs);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--navy);
+		padding: var(--space-2) 0 var(--space-3);
+	}
+
+	.rail-btn {
+		position: relative;
+		display: grid;
+		place-items: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		border: 0;
+		background: transparent;
+		color: var(--navy);
+		cursor: pointer;
+		transition: color 0.2s var(--ease-out), background 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+	}
+
+	.rail-btn:hover,
+	.rail-btn:focus-visible,
+	.rail-btn[data-copied] {
+		color: var(--white);
+		background: var(--navy);
+		transform: scale(1.06);
+	}
+
+	.rail-btn:focus-visible,
+	.pill:focus-visible {
+		outline: 2px solid var(--navy-500);
+		outline-offset: 3px;
+	}
+
+	.icon-done {
+		display: none;
+	}
+
+	.rail-btn[data-copied] .icon-default {
+		display: none;
+	}
+
+	.rail-btn[data-copied] .icon-done {
+		display: block;
+	}
+
+	.rail-toast {
+		position: absolute;
+		left: calc(100% + 0.75rem);
+		top: 50%;
+		translate: 0 -50%;
+		white-space: nowrap;
+		padding: 0.4em 0.8em;
+		border-radius: var(--radius-pill);
+		background: var(--navy-950);
+		color: var(--white);
+		font-size: var(--text-xs);
+		font-weight: var(--fw-medium);
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.2s var(--ease-out);
+	}
+
+	.rail-toast:not(:empty) {
+		opacity: 1;
+	}
+
+	.pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6em;
+		height: 3.25rem;
+		padding: 0 1.5em;
+		border: 0;
+		border-radius: var(--radius-pill);
+		background: var(--navy);
+		color: var(--white);
+		font: inherit;
+		font-size: var(--text-sm);
+		font-weight: var(--fw-semibold);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		box-shadow: var(--shadow-lg);
+		cursor: pointer;
+	}
+
+	.pill:active {
+		transform: scale(0.97);
+	}
+
+	@media (min-width: 75rem) {
+		.share-float {
+			top: 50%;
+			left: max(var(--space-4), calc(50% - 31rem - 5.5rem));
+			translate: 0 -50%;
+			transform: translateX(-0.75rem);
+		}
+
+		.pill {
+			display: none;
+		}
+	}
+
+	@media (max-width: 74.99rem) {
+		.share-float {
+			right: var(--space-4);
+			bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+			transform: translateY(1rem);
+		}
+
+		.rail {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.share-float,
+		.share-float[data-visible],
+		.rail-btn {
+			transition: none;
+			transform: none;
+		}
+	}
+</style>

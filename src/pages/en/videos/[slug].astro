@@ -10,6 +10,7 @@ import { formatDateLocale } from '../../../lib/i18n';
 import { iconSvg } from '../../../lib/icons';
 import { getVideoThumbnail, getVideoSchemaUrls } from '../../../lib/video';
 import ShareBar from '../../../components/ShareBar.astro';
+import ShareFloat from '../../../components/ShareFloat.astro';
 
 const locale = 'en' as const;
 
@@ -26,6 +27,8 @@ const { video, hasFr } = Astro.props;
 const { Content } = await render(video);
 const alternateUrl = hasFr ? `/videos/${video.id}` : undefined;
 const displayThumbnail = getVideoThumbnail(video.data.videoSource, video.data.videoId, video.data.thumbnail);
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
+const shareImage = displayThumbnail ? new URL(displayThumbnail, Astro.site).href : undefined;
 
 const videoSchema = JSON.stringify({
 	'@context': 'https://schema.org',
@@ -79,6 +82,10 @@ const prerollAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'pre
 			/>
 		</div>
 
+		<div class="video-share-top">
+			<ShareBar url={shareUrl} title={video.data.title} image={shareImage} locale={locale} />
+		</div>
+
 		<div class="video-desc">
 			<p class="video-excerpt">{video.data.excerpt}</p>
 			<div class="prose video-body">
@@ -89,11 +96,11 @@ const prerollAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'pre
 				<span aria-hidden="true">·</span>
 				<span>{formatDateLocale(video.data.date, locale)}</span>
 			</div>
-			<div class="video-share">
-				<ShareBar url={new URL(Astro.url.pathname, Astro.site).href} title={video.data.title} />
-			</div>
+			<ShareBar url={shareUrl} title={video.data.title} image={shareImage} locale={locale} variant="feature" />
 		</div>
 	</div>
+
+	<ShareFloat url={shareUrl} title={video.data.title} image={shareImage} locale={locale} />
 
 	{inlineAd && <AdPlacement ad={inlineAd} locale={locale} compact />}
 
@@ -214,9 +221,8 @@ const prerollAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'pre
 		font-size: var(--text-2xl);
 	}
 
-	.video-share {
-		margin-top: var(--space-6);
-		padding-top: var(--space-5);
-		border-top: 1px solid var(--border-subtle);
+	.video-share-top {
+		padding: var(--space-5) 0;
+		border-bottom: 1px solid var(--border-subtle);
 	}
 </style>

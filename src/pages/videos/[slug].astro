@@ -9,6 +9,7 @@ import { formatDate, isLive, isAdLive } from '../../lib/utils';
 import { iconSvg } from '../../lib/icons';
 import { getVideoThumbnail, getVideoSchemaUrls } from '../../lib/video';
 import ShareBar from '../../components/ShareBar.astro';
+import ShareFloat from '../../components/ShareFloat.astro';
 
 export async function getStaticPaths() {
 	const videos = (await getCollection('videos')).filter((video) => isLive(video));
@@ -23,6 +24,8 @@ const { video, hasEn } = Astro.props;
 const { Content } = await render(video);
 const alternateUrl = hasEn ? `/en/videos/${video.id}` : undefined;
 const displayThumbnail = getVideoThumbnail(video.data.videoSource, video.data.videoId, video.data.thumbnail);
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
+const shareImage = displayThumbnail ? new URL(displayThumbnail, Astro.site).href : undefined;
 
 const videoSchema = JSON.stringify({
 	'@context': 'https://schema.org',
@@ -72,6 +75,10 @@ const prerollAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'pre
 			<VideoEmbed videoSource={video.data.videoSource} videoId={video.data.videoId} videoFile={video.data.videoFile} thumbnail={video.data.thumbnail} title={video.data.title} />
 		</div>
 
+		<div class="video-share-top">
+			<ShareBar url={shareUrl} title={video.data.title} image={shareImage} locale="fr" />
+		</div>
+
 		<!-- Description — centered reading measure -->
 		<div class="video-desc">
 			<p class="video-excerpt">{video.data.excerpt}</p>
@@ -83,11 +90,11 @@ const prerollAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'pre
 				<span aria-hidden="true">·</span>
 				<span>{formatDate(video.data.date)}</span>
 			</div>
-			<div class="video-share">
-				<ShareBar url={new URL(Astro.url.pathname, Astro.site).href} title={video.data.title} />
-			</div>
+			<ShareBar url={shareUrl} title={video.data.title} image={shareImage} locale="fr" variant="feature" />
 		</div>
 	</div>
+
+	<ShareFloat url={shareUrl} title={video.data.title} image={shareImage} locale="fr" />
 
 	{inlineAd && <AdPlacement ad={inlineAd} locale="fr" compact />}
 
@@ -211,9 +218,8 @@ const prerollAd = allAds.find((ad) => isAdLive(ad) && ad.data.placement === 'pre
 		font-size: var(--text-2xl);
 	}
 
-	.video-share {
-		margin-top: var(--space-6);
-		padding-top: var(--space-5);
-		border-top: 1px solid var(--border-subtle);
+	.video-share-top {
+		padding: var(--space-5) 0;
+		border-bottom: 1px solid var(--border-subtle);
 	}
 </style>
