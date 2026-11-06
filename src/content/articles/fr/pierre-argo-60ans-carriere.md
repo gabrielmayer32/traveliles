@@ -1,19 +1,19 @@
 ---
 title: 'Pierre Argo : « J’aurais aimé être un gentil écureuil »'
-date: 2019-04-26T08:00:00
+date: 2019-04-28T08:00:00
 category: Rencontres
 cover: /images/uploads/archives/2019/04/PierreArgo.jpg
-excerpt: 'Pierre ArgoIl avait commencé à peindre à l’âge de quatre ans. L’artiste-peintre-photographe Pierre Argo est revenu sur sa carrière cette année à travers une exposition retraçant ses 60 ans de…'
-author: 'Travel-Îles'
+excerpt: Pierre ArgoIl avait commencé à peindre à l’âge de quatre ans. L’artiste-peintre-photographe Pierre Argo est revenu sur sa carrière cette année à travers une exposition retraçant ses 60 ans de…
+author: Travel-Îles
 tags:
-  - 'Art'
-  - 'artiste'
-  - 'Caudan Arts Centre'
-  - 'culture'
-  - 'Maurice'
-  - 'peintre'
-  - 'Pierre Argo'
-  - 'Archives Côte Nord'
+  - Art
+  - artiste
+  - Caudan Arts Centre
+  - culture
+  - Maurice
+  - peintre
+  - Pierre Argo
+  - Archives Côte Nord
 published: true
 ---
 
