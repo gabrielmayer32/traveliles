@@ -1,10 +1,10 @@
 ---
 title: Test news
-date: 2026-07-21T13:17
+date: 2026-11-06T15:00:00
 category: News
 cover: /images/uploads/Mont-Choisy-Le-Golf-fairway.jpg
 excerpt: ''
 author: Travel-Îles
 tags: []
-published: false
+published: true
 ---
