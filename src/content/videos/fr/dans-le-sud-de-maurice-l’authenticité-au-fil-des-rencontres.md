@@ -1,6 +1,6 @@
 ---
 title: Dans le Sud de Maurice, l’authenticité au fil des rencontres
-date: 2026-11-10T18:47:00
+date: 2026-11-10T18:30:00
 category: Nos régions
 videoSource: youtube
 videoId: https://youtu.be/8wfmvzcLhcY
