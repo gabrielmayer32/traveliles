@@ -19,8 +19,6 @@ Published in August, the novel takes readers to Le Bouchon, on the island’s so
 
 Blending reality with elements of the supernatural, Ananda Devi creates a world shaped by legends, mysteries and memories. Nature plays a central role, as does the island’s rich cultural heritage, influenced by African, Indian and European traditions.
 
-**A Story Forty Years in the Making**
-
 Ananda Devi has revealed that this novel had been taking shape in her mind for nearly four decades. She describes it as a love letter to Mauritius, its stories and its multicultural identity.
 
 Born in Trois-Boutiques in 1957, the author has spent decades exploring the many layers of Mauritian society, its complexities, struggles and humanity. Her work has been translated into numerous languages and has earned her international recognition, including the prestigious Neustadt International Prize for Literature in 2024.

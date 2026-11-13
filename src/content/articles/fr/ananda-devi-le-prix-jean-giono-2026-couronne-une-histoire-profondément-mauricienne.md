@@ -21,8 +21,6 @@ Dans ce roman paru en août dernier, Ananda Devi nous entraîne au Bouchon, dans
 
 Entre réalité et fantastique, les personnages évoluent dans un univers peuplé de légendes, de mystères et de souvenirs. La nature y occupe une place essentielle, tout comme cette mémoire collective façonnée par les influences africaines, indiennes et européennes qui ont marqué l'histoire de notre île.
 
-**Un roman porté par quarante années de réflexion**
-
 Ananda Devi a confié avoir porté cette histoire en elle pendant près de quarante ans. Elle décrit ce roman comme un véritable hommage à Maurice, à ses récits et à la richesse de son héritage multiculturel.
 
 Née à Trois-Boutiques en 1957, l’écrivaine explore depuis plusieurs décennies les multiples facettes de la société mauricienne, ses contradictions, ses blessures et son humanité. Son œuvre, traduite dans de nombreuses langues, lui a valu plusieurs distinctions internationales, dont le prestigieux prix Neustadt en 2024.
