@@ -182,75 +182,17 @@ const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.da
 	.carousel-arrow { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--border-strong); border-radius: var(--radius-pill); background: var(--white); color: var(--ink); cursor: pointer; transition: all var(--dur-fast) var(--ease-out); }
 	.carousel-arrow:hover:not(:disabled) { background: var(--navy); border-color: var(--navy); color: var(--white); }
 	.carousel-arrow:disabled { opacity: 0.3; cursor: default; }
-	.carousel-track-wrapper { overflow: hidden; }
-	.carousel-track { display: flex; gap: var(--space-8); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-	.carousel-slide { flex: 0 0 calc((100% - var(--space-8) * 2) / 3); min-width: 0; }
+	.carousel-track-wrapper { overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; }
+	.carousel-track-wrapper::-webkit-scrollbar { display: none; }
+	.carousel-track { display: flex; gap: var(--space-8); }
+	.carousel-slide { flex: 0 0 calc((100% - var(--space-8) * 2) / 3); min-width: 0; scroll-snap-align: start; }
 
 	@media (max-width: 860px) { .carousel-slide { flex: 0 0 calc((100% - var(--space-8)) / 2); } }
-	@media (max-width: 560px) { .carousel-slide { flex: 0 0 100%; } }
+	@media (max-width: 560px) { .carousel-track { gap: var(--space-4); } .carousel-slide { flex: 0 0 85%; } }
 </style>
 
 <script>
-function setupNewsCarousel() {
-	const track = document.querySelector<HTMLElement>('#news-track');
-	const prev = document.querySelector<HTMLButtonElement>('.news-prev');
-	const next = document.querySelector<HTMLButtonElement>('.news-next');
-	if (!track || !prev || !next) return;
-
-	const slides = track.querySelectorAll<HTMLElement>('.carousel-slide');
-	if (slides.length === 0) return;
-
-	let index = 0;
-
-	function visibleCount() {
-		const w = window.innerWidth;
-		if (w <= 560) return 1;
-		if (w <= 860) return 2;
-		return 3;
-	}
-
-	function maxIndex() { return Math.max(0, slides.length - visibleCount()); }
-
-	function update() {
-		const gap = parseFloat(getComputedStyle(track!).gap) || 0;
-		const offset = index * (slides[0].offsetWidth + gap);
-		track!.style.transform = `translateX(-${offset}px)`;
-		prev!.disabled = index === 0;
-		next!.disabled = index >= maxIndex();
-	}
-
-	prev.addEventListener('click', () => { if (index > 0) { index--; update(); } });
-	next.addEventListener('click', () => { if (index < maxIndex()) { index++; update(); } });
-	window.addEventListener('resize', () => { index = Math.min(index, maxIndex()); update(); });
-	update();
-}
-
-document.addEventListener('astro:page-load', setupNewsCarousel);
-setupNewsCarousel();
-
-function setupVideoCarousel() {
-	const track = document.querySelector<HTMLElement>('#video-track');
-	const prev = document.querySelector<HTMLButtonElement>('.carousel-prev');
-	const next = document.querySelector<HTMLButtonElement>('.carousel-next');
-	if (!track || !prev || !next) return;
-
-	const slides = track.querySelectorAll<HTMLElement>('.carousel-slide');
-	if (slides.length === 0) return;
-	let index = 0;
-	const visibleCount = () => window.innerWidth <= 560 ? 1 : window.innerWidth <= 860 ? 2 : 3;
-	const maxIndex = () => Math.max(0, slides.length - visibleCount());
-	const update = () => {
-		const gap = parseFloat(getComputedStyle(track).gap) || 0;
-		track.style.transform = `translateX(-${index * (slides[0].offsetWidth + gap)}px)`;
-		prev.disabled = index === 0;
-		next.disabled = index >= maxIndex();
-	};
-	prev.addEventListener('click', () => { if (index > 0) { index--; update(); } });
-	next.addEventListener('click', () => { if (index < maxIndex()) { index++; update(); } });
-	window.addEventListener('resize', () => { index = Math.min(index, maxIndex()); update(); });
-	update();
-}
-
-document.addEventListener('astro:page-load', setupVideoCarousel);
-setupVideoCarousel();
+import { setupCarousels } from '../../lib/carousel';
+document.addEventListener('astro:page-load', setupCarousels);
+setupCarousels();
 </script>

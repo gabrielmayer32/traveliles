@@ -189,6 +189,7 @@ h4 {
 	font-weight: var(--fw-medium);
 	line-height: var(--leading-tight);
 	letter-spacing: var(--tracking-tight);
+	overflow-wrap: break-word;
 }
 
 p {

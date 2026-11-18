@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { formatDate } from '../lib/utils';
 import { formatDateLocale, type Locale } from '../lib/i18n';
 import CategoryLabel from './CategoryLabel.astro';
+import { responsiveImage } from '../lib/images';
 
 interface Props {
 	article: CollectionEntry<'articles'> | CollectionEntry<'articles_en'>;
@@ -14,12 +15,18 @@ interface Props {
 const { article, orientation = 'vertical', size = 'md', locale = 'fr' } = Astro.props;
 const href = locale === 'en' ? `/en/articles/${article.id}` : `/articles/${article.id}`;
 const horizontal = orientation === 'horizontal';
+const cover = article.data.cover ? await responsiveImage(article.data.cover) : undefined;
+const sizes = {
+	sm: '(max-width: 640px) 45vw, 20rem',
+	md: '(max-width: 640px) 100vw, (max-width: 860px) 50vw, 28rem',
+	lg: '(max-width: 860px) 100vw, 42rem',
+}[size];
 ---
 
 <a class:list={['article-card', { 'article-card--horizontal': horizontal }, `article-card--${size}`]} href={href}>
-	{article.data.cover && (
+	{cover && (
 		<div class="article-image">
-			<img src={article.data.cover} alt={article.data.title} loading="lazy" />
+			<img src={cover.src} srcset={cover.srcset} sizes={cover.srcset && sizes} alt={article.data.title} loading="lazy" />
 		</div>
 	)}
 	<div class="article-body">

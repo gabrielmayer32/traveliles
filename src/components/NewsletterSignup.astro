@@ -221,4 +221,11 @@ const messages = {
 			flex-direction: column;
 		}
 	}
+
+	/* iOS Safari zooms the page when a focused field is under 16px */
+	@media (hover: none) and (pointer: coarse) {
+		.newsletter-input {
+			font-size: max(16px, var(--text-base));
+		}
+	}
 </style>

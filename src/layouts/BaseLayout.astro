@@ -66,7 +66,7 @@ const globalAds =(await getCollection('ads')).filter((ad) => isAdLive(ad) && ['s
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta property="og:title" content={pageTitle} />
@@ -85,17 +85,32 @@ const globalAds =(await getCollection('ads')).filter((ad) => isAdLive(ad) && ['s
 		<link rel="alternate" hreflang={locale} href={canonicalUrl} />
 		{altUrl && <link rel="alternate" hreflang={locale === 'fr' ? 'en' : 'fr'} href={altUrl} />}
 		<link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
-		{ogImage && <link rel="preload" as="image" href={ogImageUrl} />}
 		<link rel="alternate" type="application/rss+xml" title="Travel-Îles" href={new URL(locale === 'en' ? '/en/rss.xml' : '/rss.xml', Astro.site).href} />
 		<script type="application/ld+json" set:html={orgSchema} />
 		<ClientRouter />
-		<!-- Google tag (gtag.js) -->
-		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-F00X8JTGKK"></script>
+		<!-- Google Analytics, loaded only after consent (see CookieBanner) -->
 		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-F00X8JTGKK');
+			(function () {
+				var GA_ID = 'G-F00X8JTGKK';
+				function loadAnalytics() {
+					if (window.__tiAnalyticsLoaded) return;
+					window.__tiAnalyticsLoaded = true;
+					window['ga-disable-' + GA_ID] = false;
+					var s = document.createElement('script');
+					s.async = true;
+					s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+					document.head.appendChild(s);
+					window.dataLayer = window.dataLayer || [];
+					window.gtag = function () { window.dataLayer.push(arguments); };
+					window.gtag('js', new Date());
+					window.gtag('config', GA_ID, { anonymize_ip: true });
+				}
+				try {
+					var date = Number(localStorage.getItem('ti-cookies-date'));
+					if (localStorage.getItem('ti-cookies') === 'accepted' && date && Date.now() - date < 182 * 864e5) loadAnalytics();
+				} catch (e) {}
+				document.addEventListener('ti:cookies-accepted', loadAnalytics);
+			})();
 		</script>
 	</head>
 	<body>

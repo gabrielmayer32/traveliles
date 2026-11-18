@@ -4,6 +4,7 @@ import { formatDateLocale, type Locale } from '../lib/i18n';
 import CategoryLabel from './CategoryLabel.astro';
 import { iconSvg } from '../lib/icons';
 import { getVideoThumbnail, getYouTubeThumbnailFallback } from '../lib/video';
+import { responsiveImage } from '../lib/images';
 
 interface Props {
 	video: CollectionEntry<'videos'> | CollectionEntry<'videos_en'>;
@@ -21,11 +22,17 @@ const playSize = size === 'lg' ? 76 : 60;
 const iconSize = Math.round(playSize * 0.4);
 const playPaddingLeft = Math.round(playSize * 0.06);
 const duration = (video.data as any).duration as string | undefined;
+const image = thumbnail ? await responsiveImage(thumbnail) : undefined;
+const sizes = {
+	sm: '(max-width: 640px) 45vw, 20rem',
+	md: '(max-width: 640px) 100vw, (max-width: 860px) 50vw, 28rem',
+	lg: '(max-width: 860px) 100vw, 42rem',
+}[size];
 ---
 
 <a class:list={['video-card', `video-card--${size}`]} href={href}>
 	<div class="video-thumbnail">
-		{thumbnail && <img src={thumbnail} data-thumbnail-fallback={thumbnailFallback} alt={video.data.title} loading="lazy" />}
+		{image && <img src={image.src} srcset={image.srcset} sizes={image.srcset && sizes} data-thumbnail-fallback={thumbnailFallback} alt={video.data.title} loading="lazy" />}
 		<span class="video-scrim"></span>
 		<span class="play-btn" style={`width:${playSize}px;height:${playSize}px;padding-left:${playPaddingLeft}px`}>
 			<Fragment set:html={iconSvg('play', iconSize)} />

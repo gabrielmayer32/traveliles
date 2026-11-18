@@ -1,6 +1,6 @@
 const SITE = 'https://www.traveliles.com';
 const GRAPH = 'https://graph.facebook.com/v26.0';
-const REBUILD_CRON = '0 2,4,6,8,10,12,14,16 * * *';
+const REBUILD_CRON = '0 3-16 * * *';
 // Never flood the Page if many articles go live at once (e.g. after an outage)
 const MAX_POSTS_PER_RUN = 2;
 

@@ -1,6 +1,7 @@
 ---
 import { t, type Locale } from '../lib/i18n';
 import { getVideoThumbnail, getYouTubeThumbnailFallback, getYouTubeVideoId } from '../lib/video';
+import { responsiveImage } from '../lib/images';
 
 interface Props {
 	videoSource: 'youtube' | 'vimeo' | 'facebook' | 'instagram' | 'r2';
@@ -16,6 +17,7 @@ const { videoSource, videoId, videoFile, title = 'Vidéo Travel-Îles', thumbnai
 const isR2 = videoSource === 'r2';
 const embedVideoId = videoSource === 'youtube' ? getYouTubeVideoId(videoId) : videoId;
 const displayThumbnail = getVideoThumbnail(videoSource, videoId, thumbnail);
+const posterImage = displayThumbnail ? await responsiveImage(displayThumbnail) : undefined;
 const thumbnailFallback = !thumbnail && videoSource === 'youtube'
 	? getYouTubeThumbnailFallback(videoId)
 	: undefined;
@@ -44,7 +46,7 @@ const directUrl = isR2 ? undefined : {
 			controls
 			playsinline
 			preload="metadata"
-			poster={displayThumbnail}
+			poster={posterImage?.src}
 			style="display:block;width:100%;height:100%;background:#000"
 		>
 			<p>{locale === 'en' ? 'Your browser does not support video playback.' : 'Votre navigateur ne supporte pas la lecture vidéo.'}</p>
@@ -52,10 +54,12 @@ const directUrl = isR2 ? undefined : {
 	</div>
 ) : (
 	<div class="video-embed" data-embed-src={src} data-embed-title={title}>
-		{displayThumbnail && (
+		{posterImage && (
 			<img
 				class="video-embed-poster"
-				src={displayThumbnail}
+				src={posterImage.src}
+				srcset={posterImage.srcset}
+				sizes={posterImage.srcset && '(max-width: 1032px) 100vw, 62rem'}
 				data-fallback-src={thumbnailFallback}
 				alt=""
 				aria-hidden="true"
@@ -112,13 +116,15 @@ const directUrl = isR2 ? undefined : {
 				el.appendChild(iframe);
 			}
 
-			const consent = localStorage.getItem('ti-cookies');
-			if (consent === 'accepted') {
+			let allowed = false;
+			try {
+				allowed = localStorage.getItem('ti-cookies') === 'accepted' || localStorage.getItem('ti-video') === 'accepted';
+			} catch {}
+			if (allowed) {
 				loadIframe();
 			} else {
 				acceptBtn?.addEventListener('click', () => {
-					localStorage.setItem('ti-cookies', 'accepted');
-					document.getElementById('cookie-banner')?.setAttribute('hidden', '');
+					try { localStorage.setItem('ti-video', 'accepted'); } catch {}
 					loadIframe();
 				});
 

@@ -259,6 +259,8 @@ const TURNSTILE_SITE_KEY = '0x4AAAAAAD6O5kEETsC9xZPD';
 				</div>
 
 	
+				<p class="form-privacy">Your data is used only to reply to your message. It is sent through our provider Web3Forms and kept for 12&nbsp;months at most. You can access, correct or ask us to delete it by writing to <a href="mailto:contact@traveliles.com">contact@traveliles.com</a>. <a href="/en/privacy">Privacy policy</a></p>
+
 				<div class="form-actions">
 					<button type="submit" class="btn-submit" id="submit-btn">
 						<span class="btn-label">Send message</span>
@@ -270,7 +272,7 @@ const TURNSTILE_SITE_KEY = '0x4AAAAAAD6O5kEETsC9xZPD';
 					<strong>Message sent!</strong> We'll get back to you as soon as possible.
 				</div>
 				<div id="form-error" class="form-feedback form-feedback--error" hidden role="alert">
-					<strong>Something went wrong.</strong> Please try again or email us directly at <a href="mailto:contact@travel-iles.com">contact@travel-iles.com</a>.
+					<strong>Something went wrong.</strong> Please try again or email us directly at <a href="mailto:contact@traveliles.com">contact@traveliles.com</a>.
 				</div>
 			</form>
 		</div>
@@ -486,6 +488,17 @@ REQUIRED.forEach(({ id, errorId }) => {
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-2);
+	}
+
+	.form-privacy {
+		font-size: var(--text-sm);
+		color: var(--text-muted);
+		line-height: var(--leading-relaxed);
+	}
+
+	.form-privacy a {
+		color: inherit;
+		text-decoration: underline;
 	}
 
 	.form-actions {

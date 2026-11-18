@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '../lib/i18n';
 import { iconSvg } from '../lib/icons';
+import { responsiveImage } from '../lib/images';
 
 interface Props {
 	hero: CollectionEntry<'hero'>;
@@ -10,6 +11,9 @@ interface Props {
 
 const { hero, locale = 'fr' } = Astro.props;
 const { title, label, excerpt, videoFile, poster } = hero.data;
+// Optional lighter encode uploaded next to the original as "<name>-mobile.mp4"; if it is missing the browser falls through to the next <source>.
+const posterImage = poster ? await responsiveImage(poster) : undefined;
+const mobileVideoFile =/\.mp4$/i.test(videoFile) ? videoFile.replace(/\.mp4$/i, '-mobile.mp4') : undefined;
 const tagline = locale === 'en'
 	? 'A new perspective on the Indian Ocean'
 	: "Un nouveau regard sur l'océan Indien";
@@ -17,18 +21,19 @@ const tagline = locale === 'en'
 
 <section class="hero-video">
 	<div class="hero-media">
-		{poster && <img class="hero-poster" src={poster} alt="" fetchpriority="high" />}
+		{posterImage && <img class="hero-poster" src={posterImage.src} srcset={posterImage.srcset} sizes={posterImage.srcset && '100vw'} alt="" fetchpriority="high" />}
 		<video
 			class="hero-r2"
-			src={videoFile}
-			poster={poster}
 			autoplay
 			muted
 			loop
 			playsinline
 			preload="auto"
 			aria-hidden="true"
-		/>
+		>
+			{mobileVideoFile && <source src={mobileVideoFile} type="video/mp4" media="(max-width: 1024px)" />}
+			<source src={videoFile} type="video/mp4" />
+		</video>
 		<button
 			class="hero-play"
 			type="button"

@@ -47,6 +47,7 @@ const translations = {
 	'footer.rights':   { fr: 'Tous droits réservés.',       en: 'All rights reserved.' },
 	'footer.legal':    { fr: 'Mentions légales',            en: 'Legal notice' },
 	'footer.privacy':  { fr: 'Confidentialité',             en: 'Privacy' },
+	'footer.cookies':  { fr: 'Gérer les cookies',           en: 'Cookie preferences' },
 	'footer.videos':   { fr: 'Vidéos',                      en: 'Videos' },
 	'footer.articles': { fr: 'Articles',                    en: 'Articles' },
 	'footer.about':    { fr: 'À propos',                    en: 'About' },
@@ -66,7 +67,7 @@ const translations = {
 	'newsletter.consent':     { fr: 'Désinscription possible à tout moment.',          en: 'You can unsubscribe at any time.' },
 
 	// Cookies
-	'cookies.text':   { fr: 'Ce site utilise des cookies tiers (YouTube, Vimeo) pour la lecture des vidéos.', en: 'This site uses third-party cookies (YouTube, Vimeo) for video playback.' },
+	'cookies.text':   { fr: "Avec votre accord, nous utilisons Google Analytics pour mesurer l'audience et chargeons les lecteurs vidéo (YouTube, Vimeo, Facebook, Instagram), qui déposent des cookies tiers. Votre choix est conservé 6 mois et modifiable à tout moment via « Gérer les cookies ».", en: 'With your consent, we use Google Analytics to measure our audience and load video players (YouTube, Vimeo, Facebook, Instagram), which set third-party cookies. Your choice is kept for 6 months and can be changed at any time via “Cookie preferences”.' },
 	'cookies.accept': { fr: 'Accepter', en: 'Accept' },
 	'cookies.refuse': { fr: 'Refuser',  en: 'Decline' },
 

@@ -2,10 +2,11 @@ name = "traveliles-scheduled-rebuild"
 main = "index.js"
 compatibility_date = "2026-10-01"
 
-# UTC. Toutes les 2 h de 06h à 20h heure de Maurice (UTC+4) : publication programmée.
+# UTC. Toutes les heures de 07h à 20h heure de Maurice (UTC+4) : publication programmée.
+# Plage limitée pour rester sous les 500 builds/mois du plan Pages gratuit.
 # La 2e ligne publie sur Facebook les articles devenus visibles, 20 min après chaque reconstruction.
 [triggers]
-crons = ["0 2,4,6,8,10,12,14,16 * * *", "20 2,4,6,8,10,12,14,16 * * *"]
+crons = ["0 3-16 * * *", "20 3-16 * * *"]
 
 # Identifiant de la Page Facebook Travel-Îles (pas secret). Le jeton est un secret : FB_PAGE_TOKEN.
 [vars]

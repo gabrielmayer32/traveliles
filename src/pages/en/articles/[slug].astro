@@ -10,6 +10,7 @@ import { iconSvg } from '../../../lib/icons';
 import { normalizeTags } from '../../../lib/tags';
 import ShareBar from '../../../components/ShareBar.astro';
 import ShareFloat from '../../../components/ShareFloat.astro';
+import { responsiveImage } from '../../../lib/images';
 
 const locale = 'en' as const;
 
@@ -28,6 +29,7 @@ const alternateUrl = hasFr ? `/articles/${article.id}` : undefined;
 const tags = normalizeTags(article.data.tags);
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 const shareImage = article.data.cover ? new URL(article.data.cover, Astro.site).href : undefined;
+const cover = article.data.cover ? await responsiveImage(article.data.cover) : undefined;
 
 const articleSchema = JSON.stringify({
 	'@context': 'https://schema.org',
@@ -70,10 +72,10 @@ const inlineAd = (await getCollection('ads')).find((ad) => isAdLive(ad) && ad.da
 			<ShareBar url={shareUrl} title={article.data.title} image={shareImage} locale={locale} />
 		</header>
 
-		{article.data.cover && (
+		{cover && (
 			<figure class:list={['article-figure', { 'article-figure--archive': isArchive(article) }]}>
 				<div class="article-cover">
-					<img src={article.data.cover} alt={article.data.title} />
+					<img src={cover.src} srcset={cover.srcset} sizes={cover.srcset && '(max-width: 1032px) 100vw, 62rem'} alt={article.data.title} fetchpriority="high" />
 				</div>
 				<figcaption class="meta article-caption">
 					{article.data.category} · Travel-Îles
