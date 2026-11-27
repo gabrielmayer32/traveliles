@@ -255,7 +255,7 @@ main {
 }
 
 .section-title {
-	font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+	font-size: clamp(var(--text-xl), 2.6vw, var(--text-3xl));
 }
 
 /* ---------- Grids ---------- */
