@@ -31,7 +31,7 @@ i18n:
     - fr
     - en
   default_locale: fr
-  save_all_locales: false
+  initial_locales: all
 
 collections:
   - name: hero
