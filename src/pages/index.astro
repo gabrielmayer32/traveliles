@@ -36,12 +36,8 @@ const carouselVideos = videos.slice(0, 6);
 const visibleAds = (await getCollection('ads')).filter((ad) => isAdLive(ad));
 const inlineAd = visibleAds.find((ad) => ad.data.placement === 'inline' && ad.data.showOnHomepage);
 
-// News: articles in the News category, shuffled randomly at build time
-const newsArticles = allPublishedArticles.filter((a) => a.data.category === 'News');
-for (let i = newsArticles.length - 1; i > 0; i--) {
-	const j = Math.floor(Math.random() * (i + 1));
-	[newsArticles[i], newsArticles[j]] = [newsArticles[j], newsArticles[i]];
-}
+const newsArticles = allPublishedArticles.filter((a) => a.data.category === 'News')
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const carouselNews = newsArticles.slice(0, 6);
 ---
 
@@ -81,30 +77,6 @@ const carouselNews = newsArticles.slice(0, 6);
 
 	{inlineAd && <Fragment><AdPlacement ad={inlineAd} locale="fr" /></Fragment>}
 
-	<!-- Articles: feature lead + grid -->
-	<section class="container-wide section articles-section">
-		<div class="section-header">
-			<div class="section-header-left">
-				<h2 class="section-title">Articles</h2>
-			</div>
-			<a class="section-cta" href="/articles">
-				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
-			</a>
-		</div>
-		{leadArticle && (
-			<div class="articles-lead">
-				<div class="articles-lead-card">
-					<ArticleCard article={leadArticle} size="lg" />
-				</div>
-				{sideArticles.length > 0 && (
-					<div class="articles-lead-grid">
-						{sideArticles.map((article) => <ArticleCard article={article} size="sm" orientation="vertical" />)}
-					</div>
-				)}
-			</div>
-		)}
-	</section>
-
 	<!-- News carousel -->
 	{carouselNews.length > 0 && (
 		<section class="container-wide section carousel-section" id="news-carousel">
@@ -132,6 +104,30 @@ const carouselNews = newsArticles.slice(0, 6);
 			</div>
 		</section>
 	)}
+
+	<!-- Articles: feature lead + grid -->
+	<section class="container-wide section articles-section">
+		<div class="section-header">
+			<div class="section-header-left">
+				<h2 class="section-title">Articles</h2>
+			</div>
+			<a class="section-cta" href="/articles">
+				Tous les articles <Fragment set:html={iconSvg('arrow-right', 16)} />
+			</a>
+		</div>
+		{leadArticle && (
+			<div class="articles-lead">
+				<div class="articles-lead-card">
+					<ArticleCard article={leadArticle} size="lg" />
+				</div>
+				{sideArticles.length > 0 && (
+					<div class="articles-lead-grid">
+						{sideArticles.map((article) => <ArticleCard article={article} size="sm" orientation="vertical" />)}
+					</div>
+				)}
+			</div>
+		)}
+	</section>
 
 	<!-- Video carousel -->
 	{carouselVideos.length > 0 && (
