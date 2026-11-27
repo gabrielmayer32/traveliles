@@ -14,7 +14,7 @@ published: true
 
 Célébrée par la communauté hindoue, Diwali aussi appelée Divali ou Dipavali, la fête de la lumière, symbolise la victoire de la lumière sur les ténèbres, du bien sur le mal. En hommage à Lakshmi, déesse de la prospérité, les familles illuminent leurs maisons pour accueillir les bénédictions divines.
 
-Mais au-delà de sa dimension spirituelle, cette fête célébrée le 8 novembre  dernier, prend à Maurice une résonance toute particulière. Comme le racontent les personnes que nous avons rencontrées à l'occasion de cette célébration, ouvrir les portes de sa maison, c'est aussi accueillir ceux qui passent, sans distinction.
+Mais au-delà de sa dimension spirituelle, cette fête célébrée le 8 novembre cette année, prend à Maurice une résonance toute particulière. Comme le racontent les personnes que nous avons rencontrées à l'occasion de cette célébration, ouvrir les portes de sa maison, c'est aussi accueillir ceux qui passent, sans distinction.
 
 **Le bonheur de donner et de recevoir**
 
